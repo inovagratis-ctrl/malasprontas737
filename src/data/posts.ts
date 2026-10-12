@@ -1,0 +1,3059 @@
+import { PRACTICAL_GUIDES } from "./practicalGuides";
+export interface ItineraryDay {
+  day: number;
+  title: string;
+  activities: string[];
+}
+
+export interface Post {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  destination: string;
+  stateCountry: string;
+  region: "Nordeste" | "Sul" | "Centro-Oeste" | "Sudeste" | "Norte" | "Internacional";
+  category: "Praia" | "Serra & Frio" | "Ecoturismo" | "Urbano & Cultural" | "Mochilão";
+  coverImage: string;
+  author: {
+    name: string;
+    avatar: string;
+    bio: string;
+  };
+  date: string;
+  readTime: string;
+  budgetLevel: "$" | "$$" | "$$$";
+  budgetDescription: string;
+  bestSeason: string;
+  recommendedDays: string;
+  featured?: boolean;
+  isPracticalGuide?: boolean;
+  hubSlug?: string;
+  affiliatePartnerId?: string;
+  executiveSummary?: string;
+  toc?: { id: string; title: string }[];
+  faq?: { question: string; answer: string }[];
+  officialSources?: { name: string; url: string; description: string }[];
+  highlights: string[];
+  gallery: {
+    url: string;
+    caption: string;
+  }[];
+  itinerary: ItineraryDay[];
+  essentialTips: {
+    title: string;
+    description: string;
+  }[];
+  content: string[];
+}
+
+export const POSTS: Post[] = [
+  ...PRACTICAL_GUIDES,
+  {
+    id: "27",
+    slug: "peru-machu-picchu-cusco-vale-sagrado-roteiro-completo",
+    title: "Peru: Roteiro Completo por Machu Picchu, Cusco e Vale Sagrado Sem Gastar Uma Fortuna",
+    subtitle: "A magia da cidade perdida dos Incas, os mistérios do Vale Sagrado, gastronomia premiada e a Montanha das 7 Cores: o guia passo a passo definitivo para a viagem da sua vida na América do Sul.",
+    destination: "Peru (Cusco, Machu Picchu & Vale Sagrado)",
+    stateCountry: "Peru, América do Sul",
+    region: "Internacional",
+    category: "Mochilão",
+    coverImage: "/images/destinations/peru_machu_picchu_capa.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em grandes expedições pela América do Sul, história andina e turismo de montanha com economia real."
+    },
+    date: "02 de Outubro de 2026",
+    readTime: "12 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Econômico a Moderado (Média de R$ 220 a R$ 380/dia por pessoa incluindo hospedagem boutique em Cusco, ingressos dos sítios arqueológicos e gastronomia andina espetacular)",
+    bestSeason: "Maio a Setembro (Estação seca nos Andes: dias ensolarados de céu azul, pouquíssima chuva e trilhas seguras)",
+    recommendedDays: "7 a 10 dias",
+    featured: true,
+    highlights: [
+      "Machu Picchu ao Amanhecer: A emoção indescritível de contemplar uma das 7 Novas Maravilhas do Mundo envolta pela névoa andina",
+      "Cusco Histórica & Bairro de San Blas: A antiga capital do Império Inca com arquitetura colonial sobreposta a muralhas de pedra megalíticas",
+      "Vale Sagrado dos Incas: As impressionantes terrazas agrícolas de Pisac, Moray, as Salineras de Maras e a fortaleza viva de Ollantaytambo",
+      "Montanha das 7 Cores (Vinicunca): Caminhada a 5.036m de altitude cercada por formações minerais com faixas turquesa, magenta e douradas",
+      "Gastronomia Peruana Eleita a Melhor do Mundo: Saboreie o autêntico Ceviche, Lomo Saltado, Ají de Gallina e Pisco Sour por preços locais"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/peru_cusco_plaza_armas.jpg",
+        caption: "A imponente Plaza de Armas e a Catedral de Cusco com os Andes ao fundo"
+      },
+      {
+        url: "/images/destinations/peru_vale_sagrado_ollantaytambo.jpg",
+        caption: "Os monumentais terraços agrícolas e a fortaleza inca de Ollantaytambo no Vale Sagrado"
+      },
+      {
+        url: "/images/destinations/peru_montanha_7_cores_vinicunca.jpg",
+        caption: "Os contrastes minerais surreais da Montanha das 7 Cores (Vinicunca) a mais de 5.000 metros de altitude"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada a Cusco (3.400m): Aclimatação e Charme de San Blas",
+        activities: [
+          "Voo de São Paulo/Rio para Lima e conexão rápida até Cusco (Aeroporto Alejandro Velasco Astete - CUZ).",
+          "DICA DE OURO: Descanse nas primeiras 4 a 6 horas para se aclimatar ao 'Soroche' (mal da altitude), beba bastante chá de coca ou muña e faça refeições leves.",
+          "Caminhada tranquila no fim de tarde pela Plaza de Armas, passando pela famosa Pedra dos 12 Ângulos na Calle Hatun Rumiyoc.",
+          "Jantar leve no charmoso bairro boêmio de San Blas provando uma sopa andina quente (Sopa Criolla ou Chupe) e mate de ervas."
+        ]
+      },
+      {
+        day: 2,
+        title: "Cusco Inca & Imperial: Qorikancha e Sítios Arqueológicos Próximos",
+        activities: [
+          "Visita matinal ao Qorikancha (o lendário Templo do Sol inca sobre o qual foi construído o Convento de Santo Domingo).",
+          "Tour pelos sítios arqueológicos nos arredores de Cusco com o Boleto Turístico: a colossal fortaleza de Sacsayhuamán (com blocos de pedra de até 120 toneladas), Q'enqo e Puka Pukara.",
+          "Almoço no Mercado Central de San Pedro para provar sucos naturais feitos na hora e comprar artesanato em lã de alpaca.",
+          "Pôr do sol no Mirador de San Cristóbal com vista panorâmica de toda a cidade de Cusco."
+        ]
+      },
+      {
+        day: 3,
+        title: "O Fascinante Vale Sagrado dos Incas & Trem para Aguas Calientes",
+        activities: [
+          "Tour matinal pelas ruínas e feira de artesanato de Pisac.",
+          "Parada nos terraços circulares de experimentação agrícola de Moray e nas impressionantes Salineras de Maras (milhares de poços de sal alimentados por nascente subterrânea).",
+          "Almoço buffet com culinária típica andina em Urubamba.",
+          "Exploração da imponente fortaleza de Ollantaytambo e embarque no trem panorâmico (PeruRail ou Inca Rail) margeando o Rio Urubamba até a vila de Aguas Calientes (Machu Picchu Pueblo)."
+        ]
+      },
+      {
+        day: 4,
+        title: "O Grande Dia: A Magia Incomparável de Machu Picchu",
+        activities: [
+          "Subida de micro-ônibus oficial pela estrada sinuosa de Hiram Bingham logo nas primeiras horas da manhã.",
+          "Entrada em Machu Picchu (Circuito clássico) acompanhado de guia oficial credenciado para compreender cada templo, relógio solar (Intihuatana) e praça cerimonial.",
+          "Tempo livre para fotos inesquecíveis nos terraços agrícolas superiores e contemplação da energia do local.",
+          "Almoço em Aguas Calientes e viagem de trem de volta a Ollantaytambo / transfer para Cusco para descanso merecido."
+        ]
+      },
+      {
+        day: 5,
+        title: "Aventura Épica: Montanha das 7 Cores (Vinicunca) ou Laguna Humantay",
+        activities: [
+          "Saída de madrugada (por volta das 4h) para o trekking da espetacular Montanha das 7 Cores (Vinicunca) ou da lagoa glacial turquesa Laguna Humantay.",
+          "Caminhada de tirar o fôlego até o cume a 5.036 metros de altitude para contemplar as camadas minerais multicoloridas esculpidas pela natureza.",
+          "Almoço regional no vilarejo andino e retorno a Cusco no meio da tarde.",
+          "Jantar de celebração em restaurante premiado de Cusco provando Lomo Saltado e brinde com Pisco Sour."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Documentos: Apenas RG Original (Sem Necessidade de Passaporte ou Visto)",
+        description: "Por fazer parte do Mercosul, brasileiros NÃO precisam de passaporte nem de visto para entrar no Peru para turismo de até 90 dias. Basta apresentar seu RG original emitido nos últimos 10 anos em perfeito estado de conservação (CNH NÃO é aceita pela imigração internacional)."
+      },
+      {
+        title: "Como Vencer o Mal da Altitude (Soroche)",
+        description: "Cusco fica a 3.400 metros de altitude. No primeiro dia, não faça esforços físicos pesados, evite bebidas alcoólicas e alimentos pesados, beba chá de folha de coca ou muña (oferecidos gratuitamente em quase todos os hotéis) e tenha em mãos comprimidos de Sorojchi Pills (vendidos em qualquer farmácia peruana)."
+      },
+      {
+        title: "Ingressos de Machu Picchu: Compre com Meses de Antecedência",
+        description: "O governo peruano limita rigorosamente o número diário de visitantes em Machu Picchu para preservar o patrimônio histórico. Os ingressos para os circuitos principais (Circuitos 1 e 2) costumam esgotar com 2 a 3 meses de antecedência pelo site oficial do Ministério da Cultura do Peru (tuboleto.cultura.pe). Não deixe para comprar em cima da hora!"
+      },
+      {
+        title: "Moeda Local (Novo Sol - PEN) e Poder de Compra",
+        description: "A moeda é o Novo Sol (PEN). O Peru é um dos destinos mais econômicos e com melhor poder de compra da América do Sul para quem viaja com Reais. Cartões multimoedas (Wise, Nomad) são aceitos na maioria dos restaurantes e hotéis, mas leve dinheiro em espécie (Soles) para feiras de artesanato, mercados e gorjetas de guias."
+      }
+    ],
+    content: [
+      "Poucos lugares no mundo despertam tanto fascínio e mistério quanto o Peru. Berço do grandioso Império Inca, o país combina uma das histórias pré-colombianas mais ricas da humanidade com paisagens montanhosas de tirar o fôlego na Cordilheira dos Andes e uma gastronomia que se consagrou repetidas vezes como a melhor do planeta.",
+      "A chegada a Cusco é como atravessar um portal no tempo: as bases dos edifícios coloniais espanhóis foram erguidas sobre blocos de pedra incas talhados com uma precisão cirúrgica que resistiu a terremotos e aos séculos. E quando você finalmente cruza as portas de Machu Picchu e vê as ruínas sagradas despontarem entre a bruma matinal e os paredões verdes de Huayna Picchu, a sensação de reverência e emoção é indescritível.",
+      "O mais surpreendente é que viver essa grande expedição é muito mais acessível do que a maioria imagina. Sem exigência de passaporte para brasileiros, com voos frequentes e um custo de vida local extremamente vantajoso frente ao Real, o Peru é a viagem internacional perfeita para quem busca aventura, cultura viva e memórias inesquecíveis que durarão para sempre."
+    ]
+  },
+  {
+    id: "26",
+    slug: "florianopolis-roteiro-completo-ilha-campeche-praias-gastronomia",
+    title: "Florianópolis: Roteiro Completo de 5 Dias pela Ilha da Magia, Ilha do Campeche e Ostras Frescas",
+    subtitle: "Praias de águas caribenhas, vilarejos açorianos coloniais, trilhas com vistas cinematográficas e o melhor pôr do sol gastronômico do Sul do Brasil sem gastar uma fortuna.",
+    destination: "Florianópolis (Norte, Sul & Ilha do Campeche)",
+    stateCountry: "Santa Catarina, Brasil",
+    region: "Sul",
+    category: "Praia",
+    coverImage: "/images/destinations/floripa_ponte_hercilio_luz_capa.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em desbravar o litoral sul brasileiro com roteiros inteligentes, mar limpo e dicas locais sinceras."
+    },
+    date: "24 de Setembro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Econômico a Moderado (Média de R$ 220 a R$ 360/dia por pessoa incluindo pousada bem localizada, passeios de barco e frutos do mar frescos)",
+    bestSeason: "Dezembro a Março (verão com sol e mar quente); Março a Maio (outono com temperaturas agradáveis, ilha vazia e sem trânsito)",
+    recommendedDays: "5 a 7 dias",
+    featured: true,
+    highlights: [
+      "Ilha do Campeche ('Caribe Catarinense'): Águas incrivelmente transparentes, areia branca e sítios arqueológicos com inscrições rupestres milenares",
+      "Pôr do Sol Gastronômico em Santo Antônio de Lisboa e Ribeirão da Ilha: Casarios coloniais portugueses e as ostras mais frescas do Brasil direto dos produtores",
+      "Trilha da Lagoinha do Leste & Mirante da Coroa: O cartão-postal selvagem mais espetacular de Santa Catarina",
+      "Lagoa da Conceição & Dunas da Joaquina: O coração boêmio da ilha, prática de sandboard e polo de cafés artesanais",
+      "Ponte Hercílio Luz & Centro Histórico: Caminhada pela icônica passarela suspensa e compras no Mercado Público de Florianópolis"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/floripa_ilha_campeche_mar_cristalino.jpg",
+        caption: "O mar verde-esmeralda cristalino e a areia de talco da paradisíaca Ilha do Campeche"
+      },
+      {
+        url: "/images/destinations/floripa_santo_antonio_acores_ostras.jpg",
+        caption: "Casarios coloniais de herança açoriana, barcos de pescadores e fazendas de ostras em Santo Antônio de Lisboa"
+      },
+      {
+        url: "/images/destinations/floripa_dunas_joaquina_sunset.jpg",
+        caption: "As famosas dunas da Praia da Joaquina e a atmosfera vibrante da Lagoa da Conceição ao entardecer"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Centro Histórico, Mercado Público & Pôr do Sol na Ponte Hercílio Luz",
+        activities: [
+          "Chegada em Florianópolis pelo Aeroporto Internacional Hercílio Luz (FLN) e retirada do carro alugado ou deslocamento por aplicativo.",
+          "Almoço no tradicional Mercado Público de Floripa provando o famoso pastel de berbigão ou camarão na moranga.",
+          "Caminhada sob a secular Figueira da Praça XV de Novembro e visita à Catedral Metropolitana.",
+          "Fim de tarde inesquecível caminhando pela passarela exclusiva para pedestres da icônica Ponte Hercílio Luz.",
+          "Jantar em Santo Antônio de Lisboa harmonizando ostras gratinadas frescas com vinho branco catarinense."
+        ]
+      },
+      {
+        day: 2,
+        title: "O 'Caribe do Sul': A Inesquecível Ilha do Campeche",
+        activities: [
+          "Travessia de barco ou bote inflável rápido saindo da Praia da Armação ou Praia do Campeche (agende com antecedência devido ao limite diário).",
+          "Manhã de mergulho livre com snorkel nas águas calmas e translúcidas da Ilha do Campeche.",
+          "Trilha guiada pelos monitores do IPHAN para conhecer as inscrições rupestres de mais de 4.000 anos.",
+          "Retorno à tarde para relaxar nas piscinas naturais da Barra da Lagoa.",
+          "Noite descontraída no Centrinho da Lagoa da Conceição com barzinhos e música ao vivo."
+        ]
+      },
+      {
+        day: 3,
+        title: "Aventuras no Sul da Ilha: Trilha da Lagoinha do Leste & Ribeirão da Ilha",
+        activities: [
+          "Trilha até a selvagem Praia da Lagoinha do Leste (acesso pela Pântano do Sul ou Matadeiro).",
+          "Subida ao Mirante da Coroa para contemplar a vista panorâmica de tirar o fôlego da praia encravada entre os morros.",
+          "Almoço tardio no histórico Ribeirão da Ilha, polo gastronômico nacional do cultivo de ostras e mariscos.",
+          "Visita à centenária Igreja Nossa Senhora da Lapa e às lojinhas de artesanato com rendas de bilro."
+        ]
+      },
+      {
+        day: 4,
+        title: "Norte da Ilha: Praias de Águas Calmas & Fortaleza de São José da Ponta Grossa",
+        activities: [
+          "Manhã na Praia do Forte com visita à Fortaleza colonial de São José da Ponta Grossa do século XVIII.",
+          "Banho de mar nas águas tranquilas e mornas de Jurerê Tradicional e Praia de Daniela (perfeitas para famílias e descanso).",
+          "Parada para fotos nos mirantes da Praia Brava com vista para o mar aberto.",
+          "Fim de tarde na charmosa orla de Canasvieiras."
+        ]
+      },
+      {
+        day: 5,
+        title: "Dunas da Joaquina, Praia Mole & Despedida",
+        activities: [
+          "Manhã praticando sandboard (esqui na areia) nas imensas dunas da Praia da Joaquina.",
+          "Caminhada pela orla da Praia Mole, ponto de encontro dos praticantes de surf e esportes ao ar livre.",
+          "Pausa para café colonial ou açaí no mirante do Morro da Lagoa com vista completa de Floripa.",
+          "Compras de lembrancinhas e artesanato local antes do voo de volta."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Estratégia de Hospedagem e Divisão da Ilha",
+        description: "Florianópolis é uma ilha grande (com mais de 54 km de extensão de ponta a ponta) e o trânsito no verão pode ser intenso nas ligações entre norte e sul. A melhor estratégia para roteiros de 4 a 6 dias é hospedar-se na Lagoa da Conceição (região central estratégica que dá acesso rápido a todas as praias) ou dividir a estadia entre o Norte (Jurerê/Canasvieiras) e o Sul (Campeche)."
+      },
+      {
+        title: "Reserva Obrigatória para a Ilha do Campeche",
+        description: "Tombada pelo IPHAN como Patrimônio Arqueológico e Paisagístico Nacional, a Ilha do Campeche possui limite rigoroso de capacidade de visitantes por dia (cerca de 800 pessoas). No verão e feriados, reserve seu barco com pelo menos 5 a 10 dias de antecedência pelas associações de barqueiros da Praia da Armação ou Barra da Lagoa."
+      },
+      {
+        title: "Como Economizar em Transporte e Deslocamento",
+        description: "Alugar um carro dá total liberdade para explorar as praias mais isoladas do Sul e Norte. Se preferir não dirigir, o transporte por aplicativo (Uber/99) funciona muito bem em toda a ilha urbana, além das lanchas coletivas da Lagoa da Conceição para a paradisíaca Costa da Lagoa (que custam menos de R$ 15 por trecho)."
+      },
+      {
+        title: "Ostras Frescas e Gastronomia Açoriana com Preço Local",
+        description: "Florianópolis é responsável por cerca de 80% da produção nacional de ostras. Fuja dos restaurantes caros da beira da estrada e vá direto aos restaurantes dos produtores em Santo Antônio de Lisboa ou Ribeirão da Ilha: você comerá uma dúzia de ostras frescas abertas na hora por valores a partir de R$ 35 a R$ 45."
+      }
+    ],
+    content: [
+      "Conhecida carinhosamente em todo o Brasil como a 'Ilha da Magia', Florianópolis é um destino fascinante que consegue harmonizar a infraestrutura e a modernidade de uma capital desenvolvida com mais de 40 praias paradisíacas, lagoas cinematográficas, vilas coloniais de herança açoriana e trilhas de Mata Atlântica intocadas.",
+      "O grande diferencial de Floripa é a sua impressionante diversidade em um único roteiro: em uma mesma viagem você pode mergulhar nas águas azul-turquesa translúcidas da Ilha do Campeche (muitas vezes comparada ao Caribe), encarar trilhas selvagens até a deslumbrante Lagoinha do Leste, surfar nas ondas da Joaquina e terminar a tarde degustando as ostras mais frescas do país em um casario português do século XVIII vendo o sol se pôr na Baía Norte.",
+      "Seja para uma viagem romântica a dois, férias com a família ou uma expedição de ecoturismo e praias com economia inteligente, Florianópolis entrega uma experiência inesquecível e completa no coração do litoral sul brasileiro."
+    ]
+  },
+  {
+    id: "25",
+    slug: "africa-do-sul-cidade-do-cabo-table-mountain-safari-kruger-roteiro",
+    title: "África do Sul: Roteiro Completo pela Cidade do Cabo, Rota dos Vinhos e Safári no Kruger",
+    subtitle: "A imponência da Table Mountain, pinguins em Boulders Beach, o lendário Cabo da Boa Esperança e o encontro emocionante com os Big Five: o guia passo a passo para sua viagem dos sonhos na África.",
+    destination: "África do Sul (Cidade do Cabo, Stellenbosch & Kruger)",
+    stateCountry: "África do Sul, Continente Africano",
+    region: "Internacional",
+    category: "Ecoturismo",
+    coverImage: "/images/destinations/africa_sul_cidade_do_cabo_table_mountain_capa.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em ecoturismo, grandes expedições pela natureza e viagens internacionais sem complicações."
+    },
+    date: "21 de Setembro de 2026",
+    readTime: "12 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Moderado e com Ótimo Custo-Benefício (Média de R$ 260 a R$ 420/dia por pessoa aproveitando a desvalorização favorável do Rand frente ao Real)",
+    bestSeason: "Novembro a Março para Cidade do Cabo e praias (verão); Maio a Setembro para Safári no Kruger (inverno seco com excelente visibilidade)",
+    recommendedDays: "10 a 14 dias",
+    featured: true,
+    highlights: [
+      "Table Mountain & Mirante do Signal Hill: Subida de teleférico giratório 360° até o topo de uma das 7 Novas Maravilhas da Natureza",
+      "Boulders Beach & Colônia de Pinguins Africanos: Caminhe por passarelas de madeira ao lado de centenas de pinguins em liberdade na areia branca",
+      "Cabo da Boa Esperança & Cape Point: A lendária ponta do continente onde os oceanos Atlântico e Índico se encontram em falésias monumentais",
+      "Rota dos Vinhos em Stellenbosch e Franschhoek: Degustação de vinhos premiados (com a uva emblemática Pinotage) e gastronomia refinada",
+      "Safári Autêntico no Kruger National Park: A emoção de avistar os Big Five (leão, leopardo, elefante, rinoceronte e búfalo) em seu habitat selvagem"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/africa_sul_boulders_beach_pinguins.jpg",
+        caption: "A famosa colônia de pinguins-africanos selvagens nas areias claras de Boulders Beach em Simon's Town"
+      },
+      {
+        url: "/images/destinations/africa_sul_cabo_boa_esperanca_falesias.jpg",
+        caption: "As falésias dramáticas e a imensidão oceânica do Cabo da Boa Esperança e Cape Point"
+      },
+      {
+        url: "/images/destinations/africa_sul_kruger_safari_elefantes.jpg",
+        caption: "Manada de elefantes africanos atravessando a savana no Parque Nacional Kruger durante safári fotográfico"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Cidade do Cabo: Table Mountain, Bo-Kaap & V&A Waterfront",
+        activities: [
+          "Subida matinal pelo teleférico rotatório da Table Mountain (chegue cedo para evitar a famosa 'toalha de mesa' de nuvens).",
+          "Passeio a pé pelo charmoso e colorido bairro histórico muçulmano de Bo-Kaap.",
+          "Almoço e compras de artesanato autêntico no vibrante Victoria & Alfred Waterfront.",
+          "Fim de tarde assistindo ao pôr do sol dourado no mirante de Signal Hill com vista para a costa de Camps Bay."
+        ]
+      },
+      {
+        day: 2,
+        title: "Península do Cabo: Pinguins de Boulders Beach & Cabo da Boa Esperança",
+        activities: [
+          "Passeio pela cinematográfica estrada litorânea Chapman's Peak Drive esculpida nos penhascos.",
+          "Visita matinal à colônia de pinguins em Boulders Beach na charmosa vila de Simon's Town.",
+          "Exploração da Reserva Natural do Cabo da Boa Esperança, subindo ao farol de Cape Point.",
+          "Foto clássica na placa oficial do 'Cape of Good Hope' e retorno apreciando a praia de Muizenberg com suas casinhas coloridas."
+        ]
+      },
+      {
+        day: 3,
+        title: "Rota dos Vinhos: O Charme de Stellenbosch e Franschhoek",
+        activities: [
+          "Deslocamento de apenas 45 minutos até Stellenbosch, cercada por montanhas imponentes e vinhedos históricos.",
+          "Degustação de vinhos sul-africanos premiados, com destaque para a uva Pinotage e espumantes Méthode Cap Classique (MCC).",
+          "Passeio no charmoso Franschhoek Wine Tram (bonde panorâmico pelas vinícolas da herança francesa).",
+          "Almoço harmonizado com tábua de queijos locais e carnes nobres em uma propriedade histórica colonial holandesa."
+        ]
+      },
+      {
+        day: 4,
+        title: "De Joanesburgo ao Kruger: Início da Grande Expedição de Safári",
+        activities: [
+          "Voo doméstico da Cidade do Cabo para Joanesburgo ou diretamente para os aeroportos próximos ao Kruger (Nelspruit/KMIA ou Hoedspruit).",
+          "Check-in em um lodge ou acampamento estruturado na região do Greater Kruger.",
+          "Primeiro game drive (safári) no fim de tarde em veículo 4x4 aberto com guia ranger experiente e rastreador local.",
+          "Jantar tradicional estilo Boma ao redor da fogueira sob um dos céus mais estrelados do planeta."
+        ]
+      },
+      {
+        day: 5,
+        title: "Kruger National Park: Em Busca dos Big Five e Amanhecer na Savana",
+        activities: [
+          "Safári matinal ao nascer do sol, o horário com maior atividade de predadores (leões e leopardos em caça).",
+          "Observação de manadas de elefantes, girafas, zebras, hipopótamos e diversas espécies de antílopes no Rio Sabie.",
+          "Parada para café da savana em um dos mirantes seguros do parque nacional.",
+          "Safári noturno com lanternas especiais para avistar animais de hábitos estritamente noturnos antes do retorno."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Isenção de Visto e Vacina de Febre Amarela Obrigatória",
+        description: "Turistas brasileiros NÃO precisam de visto prévio para a África do Sul para estadias de até 90 dias (basta passaporte com validade mínima de 30 dias após a data de saída e 2 páginas em branco). O Certificado Internacional de Vacinação (CIVP) contra Febre Amarela é OBRIGATÓRIO e deve ser emitido pelo menos 10 dias antes do embarque."
+      },
+      {
+        title: "Moeda Local (Rand Sul-Africano - ZAR) e Câmbio Muito Vantajoso",
+        description: "A moeda é o Rand (ZAR). Devido à cotação favorável em relação ao Real brasileiro, custos de alimentação, transporte e vinhos na África do Sul chegam a ser até 40% mais baratos do que em viagens convencionais pela Europa ou América do Norte. Cartões multimoedas (Wise, Nomad) são aceitos em praticamente 99% dos estabelecimentos."
+      },
+      {
+        title: "Melhor Época para Combinar Cidade do Cabo e Safári",
+        description: "A Cidade do Cabo tem clima mediterrâneo (melhor no verão, de Novembro a Março, com dias longos e quentes). Já o Kruger tem seu ápice de visibilidade no inverno seco (Maio a Setembro), quando os arbustos perdem folhas e os animais se concentram ao redor dos poucos pontos de água. A primavera (Outubro/Novembro) é a época de ouro de transição para conciliar o melhor dos dois mundos."
+      },
+      {
+        title: "Segurança e Locomoção sem Estresse",
+        description: "Na Cidade do Cabo, use amplamente o Uber (é extremamente barato, seguro e confiável para se deslocar entre bairros como Waterfront, Camps Bay, Kloof Street e Green Point). Para passeios pela Península e Vinhedos, alugar um carro é uma ótima opção (lembrando apenas que lá se dirige na mão inglesa)."
+      }
+    ],
+    content: [
+      "A África do Sul é um daqueles destinos que superam todas as expectativas imagináveis. Conhecida como a 'Nação do Arco-Íris' pela sua fascinante diversidade cultural, o país presenteia o viajante com um contraste arrebatador entre montanhas monumentais, praias banhadas por dois oceanos, vinhedos centenários e a vida selvagem mais espetacular da Terra.",
+      "A Cidade do Cabo (Cape Town) figura com frequência no topo das listas de cidades mais lindas do planeta. A fusão da icônica Table Mountain com praias paradisíacas de areias brancas em Camps Bay e o charme de vilarejos costeiros habitados por pinguins cria uma atmosfera cosmopolita, moderna e acolhedora.",
+      "Para completar essa aventura inigualável, a experiência de um safári fotográfico no Parque Nacional Kruger proporciona o contato mais puro e emocionante com a natureza intocada. Ouvir o rugido de um leão ao entardecer e ver uma família de elefantes passar a poucos metros do seu veículo 4x4 são memórias que transformam para sempre a maneira como enxergamos o nosso planeta."
+    ]
+  },
+  {
+    id: "24",
+    slug: "tailandia-bangkok-chiang-mai-ilhas-phi-phi-roteiro-completo",
+    title: "Tailândia: Roteiro Completo por Bangkok, Chiang Mai e Ilhas Phi Phi Sem Gastar Muito",
+    subtitle: "Templos dourados, santuários éticos de elefantes, praias cinematográficas e street food lendária: o guia passo a passo definitivo para sua primeira viagem ao Sudeste Asiático.",
+    destination: "Tailândia (Bangkok, Chiang Mai & Ilhas Phi Phi)",
+    stateCountry: "Tailândia, Sudeste Asiático",
+    region: "Internacional",
+    category: "Mochilão",
+    coverImage: "/images/destinations/tailandia_bangkok_loha_prasat_capa.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Exploradores apaixonados pela Ásia, cultura budista, street food autêntica e viagens econômicas pelo mundo."
+    },
+    date: "17 de Setembro de 2026",
+    readTime: "11 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Super Acessível (Média de R$ 160 a R$ 260/dia por pessoa incluindo hospedagem boutique, alimentação completa e passeios de barco)",
+    bestSeason: "Novembro a Março (Estação seca e fresca com mar calmo, céu límpido e clima ameno)",
+    recommendedDays: "12 a 15 dias",
+    featured: true,
+    highlights: [
+      "Bangkok dos Templos e Canais: Visita ao Grand Palace, Wat Pho (Buda Reclinado), Wat Arun iluminado e cruzeiro pelo Rio Chao Phraya",
+      "Chiang Mai & Cultura do Norte: Mais de 300 templos budistas com arquitetura Lanna, feiras noturnas de rua e pratos típicos como o Khao Soi",
+      "Santuários Éticos de Elefantes: Vivência e cuidado com elefantes resgatados em reservas sem montaria e sem crueldade animal",
+      "Ilhas Phi Phi & Mar de Andaman: Navegação tradicional em Longtail boat por Maya Bay, Pileh Lagoon, Monkey Beach e pôr do sol nos mirantes",
+      "Street Food de Primeira Linha a Preço Real: Pad Thai na wok fumegante, Mango Sticky Rice e espetinhos por menos de 50 a 100 Bahts (R$ 8 a R$ 16)"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/tailandia_phi_phi_longtail_boat.jpg",
+        caption: "Os tradicionais barcos longtail tailandeses nas águas cristalinas e calmas de Koh Phi Phi"
+      },
+      {
+        url: "/images/destinations/tailandia_chiang_mai_templo_dourado.jpg",
+        caption: "A arquitetura sagrada e dourada dos templos budistas milenares em Chiang Mai no norte do país"
+      },
+      {
+        url: "/images/destinations/tailandia_phi_phi_falesias_mar_turquesa.jpg",
+        caption: "Paredões de calcário monumentais debruçados sobre o mar azul-turquesa da baía de Maya Bay e Phi Phi Leh"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Bangkok: Grand Palace, Wat Pho e o Pôr do Sol no Wat Arun",
+        activities: [
+          "Chegada em Bangkok pelo Aeroporto Suvarnabhumi (BKK) ou Don Mueang (DMK) e compra do chip local e-SIM/físico.",
+          "Manhã cedo no Grand Palace e Templo do Buda de Esmeralda (Wat Phra Kaew), admirando mosaicos de vidro e ouro reluzente.",
+          "Caminhada até o Wat Pho para contemplar o majestoso Buda Reclinado de 46 metros folheado a ouro e a escola de massagem tradicional.",
+          "Travessia de barco pelo Rio Chao Phraya (por apenas 5 THB / R$ 0,80) até o Wat Arun (Templo do Amanhecer) para assistir ao pôr do sol iluminando sua torre de porcelana.",
+          "Jantar com Pad Thai fresco e suco de manga com maracujá à beira do rio."
+        ]
+      },
+      {
+        day: 2,
+        title: "Bangkok: Mercados Flutuantes, Chinatown & Khao San Road",
+        activities: [
+          "Bate e volta matinal ao Mercado do Trem (Maeklong Railway Market) e ao Mercado Flutuante de Damnoen Saduak.",
+          "Tarde explorando as ruelas frenéticas de Yaowarat (Chinatown de Bangkok), um dos maiores polos gastronômicos de rua da Ásia.",
+          "Massagem tradicional tailandesa nos pés (Thai Foot Massage) para renovar as energias após o dia de caminhada.",
+          "Noite descontraída na famosa Khao San Road e Rambuttri Road com música ao vivo, smoothies de frutas e artesanato local."
+        ]
+      },
+      {
+        day: 3,
+        title: "Chiang Mai: A Capital Cultural e Espiritual do Norte",
+        activities: [
+          "Voo doméstico curto (1h15) de Bangkok para Chiang Mai pelas companhias low-cost locais (AirAsia, VietJet ou Nok Air).",
+          "Check-in no Centro Histórico cercado pela antiga muralha e canais medievais (Old City).",
+          "Visita aos templos sagrados Wat Phra Singh (com entalhes em madeira e ouro) e Wat Chedi Luang (ruínas monumentais de 600 anos).",
+          "Subida de Songthaew (caminhonete vermelha) ao entardecer até o Wat Phra That Doi Suthep no alto da montanha com vista panorâmica da cidade.",
+          "Jantar saboreando a clássica sopa de curry com macarrão crocante do norte: Khao Soi (por apenas 50 THB / R$ 8)."
+        ]
+      },
+      {
+        day: 4,
+        title: "Chiang Mai: Santuário Ético de Elefantes & Feira Noturna",
+        activities: [
+          "Dia inesquecível em um santuário ético de resgate de elefantes (como Elephant Nature Park ou Elephant Rescue Park) — sem montarias nem truques!",
+          "Preparo de alimentos, caminhada junto aos elefantes na selva e banho de lama e rio com os animais resgatados.",
+          "Tarde livre para fazer uma aula prática de culinária tailandesa aprendendo os segredos de curries verde e vermelho.",
+          "Noite explorando o famoso Night Bazaar ou Sunday Walking Street, com centenas de barracas de artesanato Lanna e comidas típicas."
+        ]
+      },
+      {
+        day: 5,
+        title: "Ilhas Phi Phi: Maya Bay de Longtail Boat & Mar de Andaman",
+        activities: [
+          "Voo de Chiang Mai para Krabi ou Phuket e travessia de ferry boat rápido até Koh Phi Phi Don.",
+          "Aluguel de barco tradicional privativo de madeira (Longtail Boat) bem cedo para explorar Phi Phi Leh sem multidões.",
+          "Parada na lendária Maya Bay (famosa pelo filme 'A Praia'), caminhando na areia de talco e nadando nas águas cristalinas de Pileh Lagoon.",
+          "Mergulho de snorkel com peixes coloridos e tubarões-de-pontas-pretas inofensivos em Shark Point e Monkey Beach.",
+          "Subida no fim de tarde até o Phi Phi Viewpoint para contemplar o pôr do sol dourado emoldurando o istmo da ilha."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Isenção de Visto e Vacina de Febre Amarela Obrigatória",
+        description: "Brasileiros NÃO precisam de visto prévio de turismo para a Tailândia para estadias de até 90 dias. No entanto, é OBRIGATÓRIO apresentar o Certificado Internacional de Vacinação (CIVP) contra Febre Amarela no balcão de Health Control antes da fila de imigração no aeroporto de Bangkok."
+      },
+      {
+        title: "Etiqueta e Código de Vestimenta nos Templos Budistas",
+        description: "Nos templos sagrados budistas (como o Grand Palace e Wat Pho), homens e mulheres devem manter ombros e joelhos totalmente cobertos (não são permitidas regatas, decotes ou transparências). Sempre retire os sapatos na entrada e nunca aponte a sola dos pés para monges ou estátuas de Buda."
+      },
+      {
+        title: "Moeda Local (Baht Tailandês - THB) e Uso de Dinheiro Físico",
+        description: "A moeda é o Baht (THB). Cartões globais (Wise, Nomad) funcionam bem em shoppings e hotéis, mas a cultura tailandesa de rua exige dinheiro em espécie: barraquinhas, feiras, tuk-tuks e barqueiros só aceitam Baht físico. Os caixas eletrônicos (ATMs) cobram uma taxa fixa de 220 THB por saque, então saque quantias maiores para diluir a taxa."
+      },
+      {
+        title: "Locomoção Econômica e Segura: Aplicativos Grab e Bolt",
+        description: "Em Bangkok e cidades maiores, utilize os aplicativos Grab e Bolt (equivalentes locais à Uber) para se locomover com preço fixo justo e evitar motoristas que se recusam a ligar o taxímetro ('meter') ou tuk-tuks que cobram valores exorbitantes."
+      }
+    ],
+    content: [
+      "A Tailândia é a porta de entrada dos sonhos para o continente asiático. Conhecida carinhosamente como o 'País dos Sorrisos', ela combina de maneira harmoniosa a espiritualidade budista milenar, metrópoles vibrantes cheias de modernidade, ilhas com águas em inacreditáveis tons de azul-turquesa e uma gastronomia de rua eleita entre as melhores do planeta.",
+      "O grande atrativo para os brasileiros — além das paisagens cinematográficas — é o excepcional poder de compra: a cotação do Baht torna a viagem extremamente econômica. Com um orçamento diário que no Brasil pagaria apenas um almoço simples, na Tailândia você se hospeda em pousadas e hotéis boutique com piscina, aproveita massagens tradicionais relaxantes de 1 hora por cerca de R$ 35 e faz refeições fartas com ingredientes frescos por menos de R$ 20.",
+      "Com um roteiro clássico de 12 a 15 dias divididos entre a riqueza arquitetônica de Bangkok, a tranquilidade espiritual de Chiang Mai no norte e o paraíso tropical das ilhas no Mar de Andaman, essa viagem entrega uma das experiências culturais e visuais mais marcantes e transformadoras que um viajante pode vivenciar."
+    ]
+  },
+  {
+    id: "23",
+    slug: "turismo-de-mercadinho-como-desbravar-cultura-local-supermercados-pelo-mundo",
+    title: "Turismo de Mercadinho: Como Desbravar a Cultura Local Através dos Supermercados pelo Mundo",
+    subtitle: "A tendência global que conquista viajantes inteligentes: troque armadilhas para turistas por gôndolas autênticas, descubra petiscos locais, vinhos a preços reais e economize até 70% na sua alimentação no exterior.",
+    destination: "Mundo & Tendências de Viagem",
+    stateCountry: "Global",
+    region: "Internacional",
+    category: "Mochilão",
+    coverImage: "/images/destinations/turismo_supermercado_gondolas_capa.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em viagens econômicas, imersões culturais autênticas e compras inteligentes pelo mundo."
+    },
+    date: "14 de Setembro de 2026",
+    readTime: "9 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Super Econômico (Economia de até 70% nas refeições diárias e lembrancinhas)",
+    bestSeason: "Ano todo (Cada estação revela produtos sazonais frescos e promoções locais)",
+    recommendedDays: "Em todas as suas viagens",
+    featured: true,
+    highlights: [
+      "A Revolução do 'Grocery Tourism': Por que visitar supermercados e mercadinhos de bairro virou o passeio cultural favorito de quem viaja pelo mundo",
+      "Lembrancinhas Gourmet a Preço Real: Chocolates europeus, azeites extravirgem, chás, especiarias e vinhos de qualidade custando até 4x menos que no aeroporto",
+      "A Cultura dos Konbinis e Mercados Asiáticos: Como comer incrivelmente bem no Japão com bentôs frescos, onigiris e petiscos por menos de ¥ 600",
+      "O Piquenique Europeu Perfeito: Montando banquetes com queijos com denominação de origem, presunto cru e baguetes quentinhas nos parques de Paris, Roma e Madri",
+      "Hacks de Viagem & Câmbio: Dicas para usar apps de tradução ao vivo, aproveitar descontos de fim de tarde e evitar armadilhas de conversão de moeda"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/turismo_supermercado_hortifruti_precos.jpg",
+        caption: "Seções de hortifrúti e produtos frescos com etiquetagem clara de preços nos supermercados internacionais"
+      },
+      {
+        url: "/images/destinations/turismo_mercado_local_frutas_italia.jpg",
+        caption: "Barracas tradicionais de feirantes e mercadinhos de bairro na Itália com frutas da estação e produtos da terra"
+      },
+      {
+        url: "/images/destinations/turismo_supermercado_compras_sacolas.jpg",
+        caption: "Compras de mercado com pães artesanais, frutas frescas e lanches prontos para piqueniques e lanches de viagem"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "1. Por Que o Supermercado é o Museu Mais Vivo de uma Cidade",
+        activities: [
+          "Nos supermercados você descobre o que os moradores locais realmente comem, bebem e valorizam no dia a dia, longe do teatro montado para turistas.",
+          "As gôndolas contam a história econômica, agrícola e cultural de um país: dos 40 tipos de mostarda em um Monoprix francês às prateleiras infinitas de chás e petiscos de alga em Tóquio.",
+          "A emoção da descoberta: encontrar sabores inusitados de chocolates, batatas fritas (com sabor de trufa na Espanha ou wasabi no Japão) e refrigerantes locais que não existem no Brasil.",
+          "Uma aula prática de economia: você entende na hora o custo de vida real da população e o poder de compra da moeda local."
+        ]
+      },
+      {
+        day: 2,
+        title: "2. As Melhores Redes de Supermercado pelo Mundo para Explorar",
+        activities: [
+          "França (Monoprix, Carrefour, Auchan): O paraíso dos queijos (brie, camembert e roquefort a partir de € 2,50), manteigas com flor de sal (Isigny Sainte-Mère) e vinhos franceses por € 4 a € 8.",
+          "Espanha e Portugal (Mercadona, Pingo Doce, Continente): Fartura de azeites extravirgem por menos de € 5, tábuas de Jamón Serrano curado, queijo da Serra da Estrela e conservas artesanais de sardinha e polvo.",
+          "Japão (7-Eleven, FamilyMart, Lawson, Don Quijote): A lendária cultura dos 'Konbini' com refeições quentes feitas no dia, onigiris recheados de salmão por ¥ 160, gyoza crocante e doces de matcha.",
+          "Estados Unidos (Trader Joe's, Whole Foods, Target): Snacks inovadores de marca própria, molhos picantes artesanais, chocolates com flor de sal e temperos clássicos (como o famoso 'Everything but the Bagel').",
+          "América do Sul (Coto e Jumbo na Argentina; Líder no Chile): Vinhos Malbec e Carménère premiados a preços inacreditáveis e potes generosos de doce de leite artesanal."
+        ]
+      },
+      {
+        day: 3,
+        title: "3. O Guia do Piquenique Gourmet Econômico",
+        activities: [
+          "Em vez de pagar € 35 por pessoa em um bistrô com menu turístico mediano, gaste € 12 no mercado para alimentar 2 pessoas como reis.",
+          "A fórmula mágica do piquenique: 1 pão rústico ou baguette fresca da padaria do mercado + 1 queijo local + 1 embutido fatiado (prosciutto/jamón) + uvas ou morangos + 1 garrafa de vinho ou cidra.",
+          "Os melhores cenários do mundo: Jardins de Luxemburgo em Paris, Villa Borghese em Roma, Parque do Retiro em Madri ou High Line em Nova York.",
+          "Utensílios essenciais para ter na mochila: 1 canivete suíço multifunção com saca-rolhas (despachado na mala) ou compre um abridor simples de € 1 no caixa."
+        ]
+      },
+      {
+        day: 4,
+        title: "4. Lembrancinhas e Souvenirs Gastronômicos por uma Fração do Preço",
+        activities: [
+          "Fuja dos 'Duty Free' e lojas de souvenir do aeroporto: os mesmos chocolates suíços, cafés colombianos e azeites italianos chegam a custar 300% mais caros nos terminais de embarque.",
+          "O que vale muito a pena trazer: Especiarias em pote de vidro, azeites extravirgem em lata metálica (mais segura para transporte), chás em caixas decoradas, doces tradicionais e sabonetes artesanais com ingredientes locais.",
+          "Como embalar líquidos com segurança: Envolva garrafas e vidros em plástico bolha ou meias grossas, coloque dentro de sacos tipo ziplock vedados e acomode sempre no centro da mala despachada cercada por roupas.",
+          "Atenção às regras da Receita Federal e MAPA no retorno ao Brasil: Produtos industrializados, queijos maturados, vinhos (até 12 litros por viajante) e chocolates são liberados; carnes frescas e sementes in natura são proibidas."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Use o Google Tradutor com a câmera ao vivo",
+        description: "Ao se deparar com prateleiras em idiomas com alfabetos diferentes (como cirílico, japonês ou árabe), abra o modo de tradução visual instantânea do Google Tradutor apontando a câmera do celular para os rótulos e tabelas nutricionais para evitar surpresas ou ingredientes indesejados."
+      },
+      {
+        title: "Procure as seções de descontos perto do horário de fechamento",
+        description: "Na Europa e especialmente no Japão, a partir das 18h ou 19h, os supermercados aplicam adesivos de desconto de 20% a 50% em bentôs, sushis, sanduíches frescos e pratos prontos do dia para evitar desperdício. É o momento de ouro para um jantar gourmet ultra-econômico."
+      },
+      {
+        title: "Leve sua própria sacola ecológica (ecobag) dobrável",
+        description: "Na quase totalidade dos países desenvolvidos, sacolas plásticas são cobradas à parte ou banidas. Ter uma ecobag de pano compacta no bolso evita custos extras e facilita o transporte das compras."
+      },
+      {
+        title: "Pague com cartões digitais globais (Wise/Nomad)",
+        description: "Evite usar dinheiro de papel com notas altas em compras pequenas para não acumular moedas pesadas. Cartões globais garantem o IOF reduzido de 1,1% e taxa comercial direta sem taxas abusivas de conversão no caixa."
+      }
+    ],
+    content: [
+      "Existe um ritual que divide os turistas comuns dos viajantes experientes: a primeira parada obrigatória ao chegar em uma nova cidade não é um monumento lotado, mas sim o supermercado ou mercadinho de bairro mais próximo. Conhecido internacionalmente como 'Grocery Tourism', esse movimento transformou os corredores dos mercados em verdadeiras galerias de antropologia urbana, onde é possível decifrar o estilo de vida, os hábitos e a gastronomia de um povo em poucos minutos.",
+      "Além da fascinante imersão cultural, o turismo de supermercado é o maior aliado do orçamento de viagem. Ao substituir refeições medianas em restaurantes inflacionados por piqueniques montados com queijos artesanais, embutidos típicos, pães rústicos e vinhos de denominação de origem comprados a preço de morador local, o viajante reduz em até 70% seus custos diários com alimentação, comendo com muito mais frescor e qualidade.",
+      "Outro grande segredo revelado pelas gôndolas é a compra de lembrancinhas autênticas. Enquanto lojas de souvenir e Free Shops cobram fortunas por produtos padronizados, nos supermercados você encontra os mesmos azeites extravirgem, chocolates nobres, conservas premiadas e especiarias raras por uma fração do valor. Viajar com um olhar curioso nos mercadinhos é garantia de experiências ricas, malas saborosas e bolso protegido."
+    ]
+  },
+  {
+    id: "22",
+    slug: "alerta-passagens-aereas-reforma-tributaria-promocoes-mes-do-cliente-2026",
+    title: "Alerta aos Viajantes: Passagens Aéreas Podem Subir até 16% com a Reforma Tributária — Saiba Como Economizar no Mês do Cliente e Feriados de 2026",
+    subtitle: "Entenda o impacto do alerta emitido por entidades da aviação (ALTA e IATA), descubra como antecipar compras com milhas pela FlipMilhas, aproveitar os feirões de setembro e garantir suas viagens do 2º semestre gastando menos.",
+    destination: "Aviação & Viagens",
+    stateCountry: "Brasil & Internacional",
+    region: "Sudeste",
+    category: "Urbano & Cultural",
+    coverImage: "/images/destinations/noticia_aviao_latam_a320.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em inteligência de viagens, milhas aéreas, tarifas e economia inteligente no turismo."
+    },
+    date: "10 de Setembro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Economia Inteligente (Estratégias para economizar até 60% em voos nacionais e internacionais)",
+    bestSeason: "Setembro e Outubro (Mês do Cliente com promoções relâmpago antes dos reajustes tarifários)",
+    recommendedDays: "Planejamento Estratégico",
+    featured: true,
+    highlights: [
+      "Alerta das Entidades da Aviação: ALTA, IATA e Abear estimam aumento de 10% a 16% nos bilhetes aéreos caso o setor não seja incluído em alíquota diferenciada da Reforma Tributária",
+      "Mês do Cliente em Setembro: Companhias aéreas e plataformas lançam feirões com tarifas promocionais e bônus de transferência de pontos",
+      "Poder das Milhas com FlipMilhas: Como emitir passagens por uma fração do preço em dinheiro sem ficar refém das tarifas pagas das companhias",
+      "Calendário dos Feriados do 2º Semestre de 2026: Datas estratégicas em setembro, outubro e novembro para viajar pagando pouco",
+      "Regras de Ouro para Comprar Voos: Janela ideal de compra (45 a 75 dias para voos nacionais; 90 a 150 dias para internacionais)"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/noticia_embarque_aeroporto_congonhas.jpg",
+        caption: "Movimentação intensa de passageiros no saguão e portões de embarque do Aeroporto de Congonhas (CGH) em São Paulo"
+      },
+      {
+        url: "/images/destinations/noticia_aviao_gol_voo.jpg",
+        caption: "Boeing 737-800 da Gol Linhas Aéreas na pintura padrão oficial taxiando em pátio aeroportuário"
+      },
+      {
+        url: "/images/destinations/noticia_aeroporto_guarulhos_gru.jpg",
+        caption: "Movimentação de viajantes na área de embarque do Terminal 3 do Aeroporto Internacional de Guarulhos (GRU)"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "1. Entendendo o Cenário: Por Que as Passagens Podem Subir?",
+        activities: [
+          "A Associação Latino-Americana e do Caribe de Transporte Aéreo (ALTA), juntamente com a IATA e a ABEAR, alertaram que a regulamentação da Reforma Tributária no Congresso Nacional pode encarecer os bilhetes em até 16%.",
+          "A tributação sobre combustíveis de aviação (QAV), leasing de aeronaves e serviços em solo passará para a alíquota padrão do IVA/CBS/IBS se não houver regime específico aprovado.",
+          "Para o consumidor final, o efeito prático será o repasse do custo operacional para a tarifa básica de trechos nacionais e regionais a médio prazo.",
+          "O momento de blindar o orçamento das suas próximas férias é agora, comprando passagens antes da entrada em vigor das novas regras e aproveitando as promoções vigentes."
+        ]
+      },
+      {
+        day: 2,
+        title: "2. A Janela de Oportunidade do Mês do Cliente (Setembro 2026)",
+        activities: [
+          "Setembro é historicamente o mês com maior concentração de feirões de companhias aéreas (Gol, LATAM, Azul) e agências de viagem, em celebração ao Dia do Cliente (15 de setembro).",
+          "As promoções relâmpago costumam entrar no ar nas noites de quinta-feira e fins de semana, com tarifas com até 35% de desconto para viagens entre outubro e início de dezembro.",
+          "Dica de ouro: Use comparadores confiáveis como o Vai de Promo para checar se a tarifa da agência está mais barata que a da própria companhia aérea.",
+          "Cadastre alertas de preço em rotas de interesse para ser notificado imediatamente no momento em que a tarifa cair."
+        ]
+      },
+      {
+        day: 3,
+        title: "3. O Poder do Resgate com Milhas e Emissão Inteligente (FlipMilhas)",
+        activities: [
+          "Quando o preço das passagens em dinheiro dispara, a melhor saída para não estourar o orçamento é a emissão através de milhas e pontos de programas de fidelidade.",
+          "Plataformas especializadas como a FlipMilhas permitem emitir passagens aéreas nacionais e internacionais aproveitando o balcão de milhas com descontos que chegam a 50% em relação à tarifa balcão.",
+          "Para quem não acumula milhas suficientes no cartão de crédito, a cotação direta em dinheiro via milhas de terceiros na FlipMilhas elimina a barreira do preço alto.",
+          "Simule sempre a mesma rota tanto em dinheiro quanto em milhas para identificar qual modalidade entrega a maior economia no seu caso."
+        ]
+      },
+      {
+        day: 4,
+        title: "4. Calendário Estratégico de Feriados do 2º Semestre para Fugir da Alta",
+        activities: [
+          "Feriados Prolongados: 7 de Setembro (Independência), 12 de Outubro (Nossa Senhora Aparecida), 2 de Novembro (Finados) e 15 de Novembro (Proclamação da República).",
+          "Estratégia de voo: Voe na sexta-feira de manhã cedo ou no sábado de madrugada, e retorne na terça-feira seguinte (em vez de domingo à noite), reduzindo a tarifa em até 40%.",
+          "Destinos alternativos fora do eixo óbvio: Cidades do interior de Minas Gerais, litoral sul da Bahia, serra fluminense e praias ecológicas do Nordeste mantêm tarifas muito mais amigáveis.",
+          "Compre com a antecedência matemática correta: 45 a 75 dias de antecedência para trechos domésticos e 90 a 150 dias para trechos internacionais."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Antecipe a compra das suas viagens de fim de ano e início de 2027",
+        description: "Com a combinação de alta temporada de verão e possíveis pressões de custos no setor aéreo, as tarifas de Natal, Réveillon e férias de janeiro costumam dobrar nas semanas que antecedem o embarque. Fechar voos com 90 dias de antecedência garante as melhores classes tarifárias."
+      },
+      {
+        title: "Monitore promoções em janelas fora do horário comercial",
+        description: "As companhias aéreas costumam liberar tarifas promocionais entre 20h de quinta-feira e 06h de segunda-feira. Utilize janelas anônimas no navegador e limpe os cookies para evitar variação dinâmica de preços baseada em rastreamento."
+      },
+      {
+        title: "Use a FlipMilhas para economizar sem precisar ter milhas",
+        description: "Se você não tem saldo de pontos no cartão de crédito, não se preocupe: a FlipMilhas permite emitir voos utilizando o mercado de milhas com pagamento facilitado em PIX ou cartão de crédito parcelado, entregando economia expressiva sobre o preço de tabela das aéreas."
+      },
+      {
+        title: "Contrate seguro viagem mesmo para viagens nacionais",
+        description: "Atrasos climáticos, extravios temporários de bagagem e imprevistos de saúde em outros estados podem gerar custos imprevistos. Seguros viagem nacionais custam a partir de R$ 8 a R$ 12 por dia via Vai de Promo e evitam grandes dores de cabeça."
+      }
+    ],
+    content: [
+      "O setor de turismo e aviação no Brasil acendeu a luz de alerta com as recentes projeções apresentadas por entidades como ALTA (Associação Latino-Americana e do Caribe de Transporte Aéreo), IATA e ABEAR. Segundo os estudos técnicos, a unificação tributária prevista na regulamentação da Reforma Tributária — caso não contemple uma alíquota reduzida para a cadeia de transporte aéreo — pode elevar os custos operacionais e encarecer as passagens aéreas em até 16% para o passageiro final nos próximos meses.",
+      "No entanto, para o viajante atento e bem informado, todo momento de transição de mercado cria janelas extraordinárias de oportunidade. O mês de setembro coincide com o tradicional 'Mês do Cliente', período em que as companhias aéreas e grandes portais de viagens disputam a atenção do consumidor com feirões relâmpago, descontos expressivos de até 35% e bonificações robustas para quem busca planejar as viagens dos feriados prolongados do segundo semestre e das férias de verão.",
+      "Para escapar das altas de tarifas e não deixar os planos de viagem na gaveta, duas estratégias tornaram-se indispensáveis: a emissão inteligente de passagens via plataformas de milhas como a FlipMilhas (que possibilita emitir passagens com descontos substanciais em relação aos preços de balcão) e o uso criterioso de comparadores como o Vai de Promo para rastrear tarifas e garantir seguros de viagem com excelente custo-benefício. Quem se antecipa e pesquisa com método viaja muito mais pagando muito menos."
+    ]
+  },
+  {
+    id: "21",
+    slug: "bariloche-patagonia-roteiro-neve-guia-completo",
+    title: "Bariloche & Patagônia Argentina: O Guia Definitivo de Inverno com Neve, Esqui, Chocolates e Lagos Andinos",
+    subtitle: "Descubra como planejar sua viagem à capital da neve na América do Sul: roteiro de 5 a 7 dias, custos em pesos/câmbio favorável, estações de esqui (Cerro Catedral), passeios de barco e as melhores fábricas de chocolate.",
+    destination: "Bariloche",
+    stateCountry: "Río Negro, Argentina",
+    region: "Internacional",
+    category: "Serra & Frio",
+    coverImage: "/images/destinations/bariloche-cerro-catedral.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Viajantes apaixonados pela Patagônia andina, esportes de inverno e gastronomia de montanha."
+    },
+    date: "08 de Setembro de 2026",
+    readTime: "14 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Excelente custo-benefício para brasileiros aproveitando o câmbio favorável argentino, contas digitais (Western Union / Nomad / Wise) e passagens com milhas via FlipMilhas.",
+    bestSeason: "Junho a Setembro para curtir neve e esportes de inverno; Novembro a Março para trilhas alpinas e lagos com sol ameno.",
+    recommendedDays: "5 a 7 dias",
+    featured: true,
+    highlights: [
+      "Neve e esqui para todos os níveis no imponente Cerro Catedral (maior centro de esqui da América do Sul)",
+      "Vistas panorâmicas de tirar o fôlego no Cerro Campanário e confeitaria giratória do Cerro Otto",
+      "Circuito Chico com paradas no emblemático Hotel Llao Llao e Capilla San Eduardo",
+      "Navegação pelo Lago Nahuel Huapi até a lendária Ilha Victoria e o Bosque de Arrayanes",
+      "Tour gastronômico pelas clássicas chocolaterias da Calle Mitre (Rapanui, Mamuschka, El Turista)",
+      "Cordeiro patagônico na brasa, trutas frescas e fondues alpinos acompanhados de vinhos Malbec"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/bariloche-cerro-catedral.jpg",
+        caption: "Pistas nevadas e teleféricos do Cerro Catedral, o maior centro de esqui da América do Sul com vista para os lagos."
+      },
+      {
+        url: "/images/destinations/bariloche-circuito-chico.jpg",
+        caption: "Panorâmica dos lagos Nahuel Huapi e Moreno com a Cordilheira dos Andes ao fundo no clássico Circuito Chico."
+      },
+      {
+        url: "/images/destinations/bariloche-centro-civico.jpg",
+        caption: "O charmoso Centro Cívico de Bariloche com sua arquitetura em pedra e madeira típica dos Alpes Suíços."
+      },
+      {
+        url: "/images/destinations/bariloche-bosque-arrayanes.jpg",
+        caption: "Passeio de catamarã pelo Nahuel Huapi até o encantador Bosque de Arrayanes com suas árvores de tronco cor de canela."
+      },
+      {
+        url: "/images/destinations/bariloche-cerro-otto-confeitaria.jpg",
+        caption: "Teleférico e mirantes do Cerro Otto oferecendo visão 360 graus de Bariloche e dos picos nevados."
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada, Centro Cívico e a Rota do Chocolate na Calle Mitre",
+        activities: [
+          "Desembarque no Aeroporto Internacional de Bariloche (BRC) e transfer/táxi até o hotel no centro ou na Av. Bustillo.",
+          "Caminhada pela histórica Plaza del Centro Cívico, foto com os famosos cães São Bernardo e vista para o Lago Nahuel Huapi.",
+          "Explorar a Calle Mitre e se deliciar nas lendárias chocolaterias Rapanui (prove os 'Franui' frescos) e Mamuschka.",
+          "Jantar de boas-vindas com o autêntico Cordeiro Patagônico assado ao estilo cruz no restaurante El Boliche de Alberto ou La Salamandra."
+        ]
+      },
+      {
+        day: 2,
+        title: "Circuito Chico, Cerro Campanário e Hotel Llao Llao",
+        activities: [
+          "Manhã: Subida de teleférico de cadeirinha ao topo do Cerro Campanário (eleita uma das 10 vistas mais lindas do mundo pela National Geographic).",
+          "Percorrer a cênica rota do Circuito Chico, passando pela Playa Bonita, Bahía López e o Mirador Panorâmico com vista para a ponte do Lago Moreno.",
+          "Visita ao histórico e luxuoso Hotel Llao Llao e à charmosa Capilla San Eduardo de madeira e vitrais.",
+          "Tarde: Parada na cervejaria artesanal Patagonia (Km 24.7) para almoço ou degustação de cervejas com vista cinematográfica para o lago e a cordilheira."
+        ]
+      },
+      {
+        day: 3,
+        title: "Dia de Aventura na Neve no Cerro Catedral",
+        activities: [
+          "Saída cedo para o Cerro Catedral, localizado a apenas 19 km do centro da cidade.",
+          "Aluguel de roupas impermeáveis, botas e equipamentos de esqui/snowboard nas lojas da base.",
+          "Aulas para iniciantes nas pistas de aprendizagem da base ou subida nos teleféricos até o Refúgio Lynch para quem busca esquiar no topo.",
+          "Para quem não quer esquiar: curtir a pista de 'tubing' (boias na neve), 'trineos' (trenós) e almoçar chocolate quente com empanadas nos refúgios de montanha.",
+          "Retorno ao centro no final da tarde e descanso aquecido com um delicioso fondue de queijo e chocolate no restaurante Chez Philippe."
+        ]
+      },
+      {
+        day: 4,
+        title: "Navegação pelo Nahuel Huapi: Isla Victoria e Bosque de Arrayanes",
+        activities: [
+          "Embarque no catamarã em Puerto Pañuelo (em frente ao Llao Llao) para navegação pelas águas cristalinas do Nahuel Huapi.",
+          "Primeira parada na Isla Victoria: caminhada pelas trilhas cercadas por sequoias gigantes e pinturas rupestres indígenas.",
+          "Segunda parada no Parque Nacional Los Arrayanes: passeio por passarelas de madeira no único bosque natural de arrayanes do planeta (que inspirou os ilustradores de Bambi da Disney).",
+          "Retorno ao entardecer alimentando as gaivotas que sobrevoam o barco durante a travessia."
+        ]
+      },
+      {
+        day: 5,
+        title: "Cerro Otto (Confeitaria Giratória) ou Piedras Blancas (Trenós)",
+        activities: [
+          "Opção Família/Diversão: Subir ao complexo de Piedras Blancas para descer nas 5 pistas exclusivas de trenós na neve.",
+          "Opção Contemplativa: Subir pelo Teleférico Cerro Otto até a famosa Confeitaria Giratória 360°, que dá uma volta completa enquanto você toma café e come tortas artesanais.",
+          "Tarde livre para compras de lembrancinhas de couro patagônico, vinhos tintos da região de Mendoza e alfajores.",
+          "Jantar de despedida no restaurante La Fonda del Tío provando a gigantesca e famosa Milanesa Napolitana."
+        ]
+      },
+      {
+        day: 6,
+        title: "Bate-volta cênico à Villa La Angostura e Rota dos 7 Lagos (Opcional)",
+        activities: [
+          "Passeio de dia inteiro percorrendo a belíssima Ruta 40 contornando os lagos Nahuel Huapi, Espejo e Correntoso.",
+          "Conhecer o vilarejo alpino de Villa La Angostura, com suas ruas arborizadas, bistrôs acolhedores e centro de esqui Cerro Bayo.",
+          "Retorno a Bariloche com paradas fotográficas nos mirantes à beira da estrada."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Dinheiro e Câmbio na Argentina em 2026",
+        description: "Não leve pesos do Brasil. Utilize cartões digitais globais (Nomad ou Wise que convertem pela cotação MEP próxima ao Blue) ou faça saques/transferências via Western Union. Cartões internacionais normais também aplicam a taxa MEP, tornando tudo muito vantajoso para brasileiros."
+      },
+      {
+        title: "Roupas Térmicas e Equipamento de Neve",
+        description: "Vista-se no sistema de 3 camadas: 1ª camada segunda pele térmica (dry/respirável), 2ª camada fleece ou suéter de lã (isolamento térmico), 3ª camada jaqueta e calça corta-vento impermeáveis. Não compre botas de neve caras no Brasil: alugue o conjunto completo de casaco, calça, bota e luvas impermeáveis nas lojas de Bariloche por valores diários bem acessíveis."
+      },
+      {
+        title: "Seguro Viagem é Indispensável",
+        description: "Especialmente se for praticar esqui, snowboard ou caminhadas na neve, contrate um seguro viagem com cobertura específica para esportes de inverno (garanta pelo nosso parceiro EKTA Seguro Viagem no blog com assistência médica completa)."
+      },
+      {
+        title: "Passagens com Desconto e Milhas",
+        description: "Voos diretos de São Paulo para Bariloche operam principalmente durante a alta temporada de inverno (Aerolíneas Argentinas, Gol e Latam). Utilize nossa integração oficial com a FlipMilhas para emitir passagens promocionais com milhas com tarifas imbatíveis."
+      },
+      {
+        title: "Chip de Internet Internacional (eSIM)",
+        description: "Para manter conexão de alta velocidade nas montanhas, consultar mapas e chamar táxis/remises, ative um eSIM da Airalo antes de embarcar para não pagar roaming exorbitante de operadoras brasileiras."
+      }
+    ],
+    content: [
+      "San Carlos de Bariloche, carinhosamente chamada apenas de Bariloche, é o destino de inverno mais adorado pelos brasileiros — e não por acaso apelidada de 'Brasiloche'. Encravada entre as margens cintilantes do majestoso Lago Nahuel Huapi e os picos imponentes da Cordilheira dos Andes, a cidade combina o charme dos vilarejos alpinos europeus com a hospitalidade calorosa da Patagônia Argentina.",
+      "Seja para quem sonha em ver e tocar na neve pela primeira vez, para famílias com crianças em busca de trenós divertidos, ou para esportistas experientes descendo as pistas do Cerro Catedral, Bariloche entrega uma experiência inesquecível de montanha, recheada das melhores chocolaterias artesanais e uma gastronomia de primeiro mundo.",
+      "Planejar uma viagem para Bariloche nunca esteve tão acessível. Com as vantagens cambiais favoráveis e as facilidades de emissão de passagens por milhas através de plataformas como a FlipMilhas, você consegue estruturar uma viagem internacional inesquecível com orçamento extremamente competitivo. Neste guia completo, detalhamos dia a dia como organizar sua estadia, escolher as melhores atrações de neve e aproveitar o melhor da Patagônia.",
+      "O inverno em Bariloche estende-se de meados de junho até o final de setembro. Os meses de julho e agosto são o ápice da temporada de esqui, com maior acúmulo de neve e a cidade repleta de atmosfera festiva. Se preferir dias ensolarados, caminhadas por praias lacustres e passeios de caiaque, a primavera e o verão (novembro a março) transformam a região em um paraíso verdejante de ecoturismo.",
+      "Para a melhor experiência gastronômica, não deixe de provar o clássico Cordeiro Patagônico assado lentamente no fogo de chão, o Bife de Chorizo alto e suculento, e os irresistíveis fondues suíços. E claro, reserve espaço na mala para trazer os incomparáveis chocolates da Calle Mitre, com destaque absoluto para as framboesas frescas banhadas em chocolate duplo da Rapanui."
+    ]
+  },
+
+  {
+    id: "20",
+    slug: "lencois-maranhenses-roteiro-dunas-lagoas-guia-completo",
+    title: "Lençóis Maranhenses: Roteiro Completo de 4 a 6 Dias pelo Paraíso das Dunas Brancas e Lagoas Cristalinas",
+    subtitle: "O guia definitivo para conhecer o Patrimônio Mundial da UNESCO: melhor época com lagoas cheias, como circular entre Barreirinhas, Santo Amaro e Atins, custos reais e passeios de 4x4.",
+    destination: "Lençóis Maranhenses",
+    stateCountry: "Maranhão, Brasil",
+    region: "Nordeste",
+    category: "Ecoturismo",
+    coverImage: "/images/destinations/lencois_dunas_aerea.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em ecoturismo brasileiro, expedições off-road e roteiros fotográficos pelo Nordeste."
+    },
+    date: "07 de Setembro de 2026",
+    readTime: "12 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "R$ 220 a R$ 460 / dia por pessoa (incluindo jardineiras 4x4 credenciadas pelo ICMBio, lancha voadeira no Rio Preguiças e gastronomia maranhense)",
+    bestSeason: "Junho a Setembro (auge absoluto: as lagoas estão com nível máximo de água azul-turquesa e o sol brilha com céu aberto todos os dias)",
+    recommendedDays: "4 a 6 dias (permite combinar a estrutura de Barreirinhas, o charme rústico de Atins e as lagoas mais intocadas de Santo Amaro)",
+    featured: true,
+    highlights: [
+      "Circuito Lagoa Bonita com a famosa subida de 80 metros e vista panorâmica de tirar o fôlego",
+      "Circuito Lagoa Azul e Lagoa da Esmeralda com banhos refrescantes em águas doces e mornas",
+      "Passeio de lancha voadeira pelo Rio Preguiças até Caburé, com parada nas dunas de Vassouras e Farol de Mandacaru",
+      "Vila rústica e charmosa de Atins: paraíso do kitesurf, ruas de areia e camarão grelhado na brasa",
+      "Santo Amaro do Maranhão: as maiores e mais cristalinas lagoas do parque a poucos passos das dunas"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/lencois_lagoa_bonita.jpg",
+        caption: "Banhistas aproveitando as águas mornas, doces e cristalinas da Lagoa Bonita cercada por dunas brancas"
+      },
+      {
+        url: "/images/destinations/lencois_por_do_sol.jpg",
+        caption: "O espetacular pôr do sol nos Lençóis Maranhenses com reflexo dourado na água entre as dunas"
+      },
+      {
+        url: "/images/destinations/lencois_santo_amaro.jpg",
+        caption: "A imponência da Lagoa da Gaivota em Santo Amaro com águas esmeraldas e dunas intocadas"
+      },
+      {
+        url: "/images/destinations/lencois_rio_preguicas.jpg",
+        caption: "Passeio de lancha voadeira pelo Rio Preguiças entre dunas douradas, manguezais e palmeiras de buriti"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada em São Luís, Transfer para Barreirinhas & Circuito Lagoa Azul",
+        activities: [
+          "Desembarque no Aeroporto de São Luís (SLZ) pela manhã e embarque no transfer executivo/van asfaltada para Barreirinhas (aprox. 3h30 a 4h de viagem)",
+          "Check-in na sua pousada em Barreirinhas e almoço típico na beira do Rio Preguiças provando o peixe frito com arroz de cuxá",
+          "Às 14h, embarque na jardineira 4x4 com travessia de balsa pelo rio para o Circuito Lagoa Azul",
+          "Tome banho nas lagoas Azul, dos Peixes e da Preguiça, e contemple o primeiro pôr do sol inesquecível no topo das dunas"
+        ]
+      },
+      {
+        day: 2,
+        title: "A Emoção da Lagoa Bonita & Pôr do Sol no Alto da Duna de 80m",
+        activities: [
+          "Manhã livre no centro de artesanato de palha de buriti na Avenida Beira Rio",
+          "À tarde (14h), saída no 4x4 em direção ao Circuito Lagoa Bonita",
+          "Suba a famosa escada na duna íngreme (80 metros de altitude) auxiliada por corda para ter a vista panorâmica mais cinematográfica do parque",
+          "Caminhe pelas cristas das dunas e mergulhe nas águas mornas e esmeraldas da Lagoa do Clone e Lagoa Bonita até o entardecer"
+        ]
+      },
+      {
+        day: 3,
+        title: "Passeio de Lancha Voadeira pelo Rio Preguiças, Farol de Mandacaru & Chegada em Atins",
+        activities: [
+          "Embarque em lancha rápida (voadeira) no porto de Barreirinhas descendo as águas calmas do Rio Preguiças",
+          "Primeira parada nos Pequenos Lençóis (Vassouras) para ver macacos-prego nativos e dunas fluviais com quiosques de água de coco",
+          "Segunda parada na Vila de Mandacaru: suba os 160 degraus do Farol Preguiças para uma vista de 360° do rio, oceano e restinga",
+          "Almoço na península de Caburé, uma faixa estreita de areia entre o rio de água doce e o oceano Atlântico",
+          "Travessia de 15 minutos até a vila rústica de Atins, onde as ruas são de areia fofa e não há asfalto. Jantar no famoso Camarão da Luzia ou Camarão do Antônio"
+        ]
+      },
+      {
+        day: 4,
+        title: "Lagoas Secretas de Atins, Canto do Atins & Kitesurf",
+        activities: [
+          "Tour matinal em quadriciclo ou 4x4 pelas lagoas do Canto de Atins (Lagoa Tropical e Lagoa das Sete Mulheres)",
+          "Aprecie os praticantes de kitesurf na foz do Rio Preguiças, um dos melhores picos do esporte no mundo",
+          "Relaxe nos beach clubs com drinks à base de tiquira e frutas tropicais",
+          "À noite, faça o passeio noturno para observar a bioluminescência do plâncton na praia (maré e lua favoráveis)"
+        ]
+      },
+      {
+        day: 5,
+        title: "Expedição para Santo Amaro: As Lagoas Mais Monumentais & Retorno",
+        activities: [
+          "Transfer off-road de Atins para Santo Amaro do Maranhão (ou direto de Barreirinhas)",
+          "Descubra as lagoas mais profundas e imponentes de todo o parque: Lagoa da Gaivota, Lagoa das Andorinhas e Circuito Betânia",
+          "Almoço regional no vilarejo de Betânia com galinha caipira e camarão da água doce",
+          "Retorno de transfer direto de Santo Amaro até o aeroporto ou centro histórico de São Luís"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "A Regra Sagrada da Melhor Época (Junho a Setembro)",
+        description: "Os Lençóis dependem das chuvas do primeiro semestre (fevereiro a maio) para encher as lagoas. O auge absoluto para encontrar o cenário perfeito de cartão-postal com lagoas cheias e sol radiante vai de junho até o início de setembro. A partir de outubro, as lagoas começam a secar, e entre novembro e janeiro a maioria está seca."
+      },
+      {
+        title: "Qual Base Escolher: Barreirinhas, Santo Amaro ou Atins?",
+        description: "Barreirinhas tem a maior estrutura hoteleira, bancos, agências e restaurantes. Santo Amaro fica colada no parque e tem as lagoas mais exuberantes e menos cheias. Atins é a vila charmosa com vibe 'pé na areia', praias, kitesurf e restaurantes renomados. O ideal em 5 dias é combinar Barreirinhas + Atins ou Santo Amaro."
+      },
+      {
+        title: "O Que Levar na Mochila de Ataque para as Dunas",
+        description: "Não há sombra no deserto. Leve: protetor solar resistente à água, óculos escuros com proteção UV, chapéu/boné com cordinha (o vento é constante), toalha de secagem rápida, capa à prova d'água para celular e chinelo (embora caminhe-se descalço na areia macia)."
+      },
+      {
+        title: "Como Chegar sem Complicação",
+        description: "O aeroporto principal é São Luís (SLZ). De lá, vans e transfers compartilhados ou privativos levam até Barreirinhas (3h30) ou Santo Amaro (3h) por rodovias totalmente asfaltadas. Para Atins, o acesso final é feito de lancha pelo rio ou em 4x4 pelas dunas."
+      }
+    ],
+    content: [
+      "Imagine um deserto infinito de dunas de areia branca que parece saído de um filme de ficção científica, entrecortado por milhares de lagoas naturais de água doce com tons que variam entre o azul-turquesa e o verde-esmeralda. Esse lugar existe, é único no planeta Terra e fica no litoral do Maranhão: bem-vindo ao **Parque Nacional dos Lençóis Maranhenses**.",
+      "Recentemente reconhecido pela **UNESCO como Patrimônio Natural da Humanidade**, o parque cobre uma área de mais de 155 mil hectares. Diferente de desertos áridos convencionais, os Lençóis recebem grande volume de chuvas nos primeiros meses do ano, que ficam represadas sobre uma camada de rocha impermeável abaixo da areia, formando piscinas naturais límpidas e mornas com temperatura constante de 28°C.",
+      "Para que sua viagem seja perfeita e você não encontre as lagoas secas nem gaste além da conta, preparamos este roteiro completo com os melhores circuitos, cidades-base, tabela de custos e dicas de quem conhece cada centímetro desse paraíso brasileiro."
+    ]
+  },
+
+  {
+    id: "19",
+    slug: "viagem-com-criancas-o-que-levar-na-mala-de-mao-guia-pratico",
+    title: "Viagem com Crianças: O Que REALMENTE Vale a Pena Levar na Mala de Mão e o Que é Desperdício de Espaço",
+    subtitle: "O guia prático e acolhedor para pais e mães viajarem com leveza, sem perrengues e prontos para qualquer imprevisto no avião, aeroporto ou carro.",
+    destination: "Viagem com Filhos",
+    stateCountry: "Dicas de Bagagem & Família",
+    region: "Sudeste",
+    category: "Mochilão",
+    coverImage: "/images/destinations/criancas_aeroporto_capa.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+      bio: "Pais viajantes, especialistas em organização de malas inteligentes e roteiros familiares pelo Brasil e exterior."
+    },
+    date: "07 de Setembro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Economia real evitando taxas de bagagem despachada, excesso de peso e compras caras de emergência no aeroporto",
+    bestSeason: "Ano todo (o planejamento da mala de mão com crianças é a chave para qualquer viagem em férias, feriados ou fins de semana)",
+    recommendedDays: "Indispensável para voos curtos, conexões longas ou viagens de estrada",
+    featured: true,
+    highlights: [
+      "Top 5 itens indispensáveis que salvam qualquer voo ou conexão com crianças",
+      "O que deixar em casa para não carregar peso inútil nem estragar o passeio",
+      "Como organizar a farmacinha de emergência autorizada pela ANAC e companhias aéreas",
+      "Ideias de lanches práticos anti-sujeira e entretenimento inteligente sem telas excessivas",
+      "Checklist interativo e gratuito pronto para preencher e imprimir no Malas Prontas"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/criancas_mala_organizada.jpg",
+        caption: "Mala de mão perfeitamente organizada com trocas de roupas em ziplocs identificados e bolsos funcionais"
+      },
+      {
+        url: "/images/destinations/criancas_aviao_entretenimento.jpg",
+        caption: "Entretenimento inteligente a bordo: livros de colorir e fones confortáveis para momentos de tranquilidade no voo"
+      },
+      {
+        url: "/images/destinations/criancas_lanches_aviao.jpg",
+        caption: "Lanches práticos, saudáveis e anti-sujeira em marmitinha bento e garrafinha de água para a cabine"
+      },
+      {
+        url: "/images/destinations/criancas_farmacia_bordo.jpg",
+        caption: "Farmacinha de emergência autorizada para bagagem de mão com antitérmico, soro nasal e curativos"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Passo 1: Seleção Estratégica dos Itens Essenciais (3 Dias Antes do Embarque)",
+        activities: [
+          "Separe duas mudas de roupa completas para cada criança e coloque em sacos transparentes tipo ziploc identificados",
+          "Separe uma camiseta extra leve para a mãe e para o pai na mala de mão (caso ocorra refluxo, suco derramado ou acidentes)",
+          "Cheque a validade dos antitérmicos e monte a farmacinha de bordo com frascos líquidos de até 100ml em saquinho vedado",
+          "Abra o Checklist de Bagagem do Malas Prontas e marque os itens essenciais para não deixar nada de fora"
+        ]
+      },
+      {
+        day: 2,
+        title: "Passo 2: Preparação dos Lanchinhos & Brinquedos Compactos (Véspera da Viagem)",
+        activities: [
+          "Prepare lanches sem caldo, que não esfarelem fácil e que não precisem de refrigeração (frutas secas, biscoitos integrais, uvas sem semente cortadas)",
+          "Garanta garrafinhas de água térmicas vazias para encher nos bebedouros da sala de embarque após o raio-X",
+          "Embale 1 ou 2 brinquedos novos e compactos (livro de colorir com caneta mágica de água, massinha pequena ou fone de ouvido acolchoado)",
+          "Baixe desenhos e músicas offline no tablet ou celular para momentos de emergência ou decolagem"
+        ]
+      },
+      {
+        day: 3,
+        title: "Passo 3: Dia do Embarque & Controle de Acesso no Aeroporto",
+        activities: [
+          "Deixe a pasta de documentos (certidão de nascimento, RG e autorizações) no bolso externo superior da mochila",
+          "Mantenha lenços umedecidos e álcool em gel sempre no topo da bolsa para higienizar mesinhas do avião",
+          "Ofereça água ou o peito/chupeta durante a decolagem e o pouso para aliviar a pressão no ouvido das crianças",
+          "Curta a viagem com a tranquilidade de estar 100% equipado sem carregar a casa inteira nas costas!"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "A Regra de Ouro dos Ziplocs de Roupa",
+        description: "Embale cada muda de roupa da criança (body/camiseta + shorts/calça + cueca/calcinha + meias) em um saquinho plástico transparente zip. Na hora do perrengue no banheiro apertado do avião, você puxa apenas um pacotinho completo e já usa o próprio saco plástico para guardar a roupa suja isolada."
+      },
+      {
+        title: "Camiseta Extra para os Pais: O Segredo dos Viajantes Experientes",
+        description: "Muitos pais lembram de levar 3 trocas para os filhos, mas esquecem de si mesmos. Se o bebê regurgitar ou a criança derrubar um copo de suco no seu colo a 10 mil metros de altitude, ter uma camiseta limpa na mochila de mão salva o seu dia."
+      },
+      {
+        title: "Pressão no Ouvido na Decolagem e Pouso",
+        description: "A mudança de altitude causa desconforto no ouvido infantil. Estimule a deglutição oferecendo água na garrafinha, amamentação ou um lanchinho mastigável no momento exato em que o avião começar a subir ou iniciar a descida final."
+      },
+      {
+        title: "Farmácia de Bordo Aprovada pela ANAC",
+        description: "Mantenha na mala de mão os remédios que a criança costuma usar com recomendação pediátrica: antitérmico/analgésico, antialérgico, soro fisiológico nasal, termômetro digital e curativos adesivos. Líquidos devem estar em frascos de até 100ml em voos internacionais."
+      }
+    ],
+    content: [
+      "Quem nunca se sentiu carregando uma mudança inteira só para passar um fim de semana fora com as crianças, que atire a primeira pedra! A ansiedade de faltar algo no meio do caminho faz com que muitos pais e mães encham a mala com brinquedos gigantes, sapatos que nunca serão usados e quilos de roupas desnecessárias.",
+      "A verdade libertadora é que **viajar com leveza muda completamente a dinâmica da família**. Uma mala de mão bem pensada, funcional e sem excessos traz agilidade no aeroporto, evita dores nas costas e garante que você tenha as mãos livres para o que realmente importa: acolher e curtir seus filhos durante a viagem.",
+      "Para ajudar você a desapegar do excesso e focar no que realmente salva o dia, preparamos este guia completo dividindo os **5 itens indispensáveis** e os **principais vilões que só ocupam espaço** na sua bagagem de cabine."
+    ]
+  },
+
+  {
+    id: "18",
+    slug: "natal-rn-roteiro-dunas-lagoas-praias-guia-completo",
+    title: "Natal (RN): Roteiro Completo de 4 a 6 Dias pelas Dunas de Genipabu, Lagoas Paradisíacas e Praias do Sol",
+    subtitle: "O guia definitivo para curtir o litoral potiguar: do Morro do Careca e passeio de buggy com emoção às águas mornas e cristalinas da Lagoa de Arituba e Lagoa do Carcará.",
+    destination: "Natal",
+    stateCountry: "Rio Grande do Norte, Brasil",
+    region: "Nordeste",
+    category: "Praia",
+    coverImage: "/images/destinations/natal_1.jpeg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em ecoturismo, praias do Nordeste e roteiros inesquecíveis pelo litoral brasileiro."
+    },
+    date: "06 de Setembro de 2026",
+    readTime: "11 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "R$ 180 a R$ 390 / dia por pessoa (incluindo passeios de buggy credenciados, gastronomia potiguar de camarão e ingressos de lagoas)",
+    bestSeason: "Setembro a Março (período de estiagem com sol constante, céu azul e visibilidade cristalina nas lagoas e parrachos). Natal tem sol mais de 300 dias por ano!",
+    recommendedDays: "4 a 6 dias (ideal para combinar a Praia de Ponta Negra, passeios pelo Litoral Norte de dunas e as lagoas e falésias do Litoral Sul)",
+    featured: true,
+    highlights: [
+      "Praia de Ponta Negra, calçadão vibrante e o icônico Morro do Careca",
+      "Passeio clássico de buggy 'com emoção' pelas Dunas móveis de Genipabu, aerobunda e esquibunda",
+      "Banho refrescante nas águas doces, calmas e mornas da Lagoa de Arituba e Lagoa do Carcará",
+      "Mergulho de snorkel nas piscinas naturais dos Parrachos de Maracajaú e pôr do sol no Forte dos Reis Magos",
+      "Degustação dos melhores pratos de camarão e carne de sol do Nordeste nos restaurantes da orla"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/natal_lagoa_arituba.jpeg",
+        caption: "As águas calmas, mornas e relaxantes da deslumbrante Lagoa de Arituba em Nísia Floresta"
+      },
+      {
+        url: "/images/destinations/natal_lagoa_carcara.jpeg",
+        caption: "A pureza cristalina e o cenário paradisíaco da Lagoa do Carcará cercada por vegetação nativa"
+      },
+      {
+        url: "/images/destinations/natal_2.jpeg",
+        caption: "A energia vibrante do litoral potiguar com coqueirais, dunas douradas e mar azul-turquesa"
+      },
+      {
+        url: "/images/destinations/natal_3.jpeg",
+        caption: "Mirantes espetaculares e falésias coloridas na Rota do Sol pelo litoral sul potiguar"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada em Natal, Praia de Ponta Negra & Gastronomia Potiguar",
+        activities: [
+          "Instale-se na sua hospedagem em Ponta Negra ou Via Costeira",
+          "Caminhe pela orla de Ponta Negra e tire a clássica foto com o Morro do Careca ao fundo",
+          "Aproveite a praia tomando uma água de coco gelada nas barracas com estrutura de cadeiras",
+          "Jante no famoso Camarões Restaurante ou Farofa D'Água provando os clássicos pratos de camarão e carne de sol na nata"
+        ]
+      },
+      {
+        day: 2,
+        title: "Litoral Norte com Emoção: Dunas de Genipabu, Esquibunda & Lagoa de Pitangui",
+        activities: [
+          "Embarque no buggy credenciado pela manhã com destino ao Litoral Norte",
+          "Atravesse a balsa rústica do Rio Ceará-Mirim e viva a adrenalina das Dunas Móveis de Genipabu",
+          "Divirta-se com as brincadeiras clássicas: aerobunda, tirolesa e esquibunda caindo direto na água",
+          "Relaxe nas mesinhas dentro d'água na Lagoa de Pitangui e deguste peixe frito com macaxeira",
+          "Finalize o dia apreciando as dunas douradas no pôr do sol de retorno a Natal"
+        ]
+      },
+      {
+        day: 3,
+        title: "Rota do Sol Litoral Sul: Maior Cajueiro, Lagoa de Arituba & Lagoa do Carcará",
+        activities: [
+          "Pegue a Rota do Sol (RN-063) rumo ao litoral sul passando pela Praia de Cotovelo e Pirangi",
+          "Visite o impressionante Maior Cajueiro do Mundo em Pirangi do Norte (uma única árvore com mais de 8.500 m²)",
+          "Desfrute de um banho revigorante na Lagoa de Arituba com passeios de pedalinho, caiaque e stand-up paddle",
+          "Siga até o paraíso escondido da Lagoa do Carcará em Nísia Floresta, famosa por suas águas cristalinas e areia fina",
+          "Aproveite o fim de tarde na Praia de Camurupim com seus recifes que formam piscinas calmas sem ondas"
+        ]
+      },
+      {
+        day: 4,
+        title: "Caribe Potiguar: Mergulho nos Parrachos de Maracajaú & Centro Histórico",
+        activities: [
+          "Verifique a tábua das marés e faça a expedição de catamarã ou lancha até os Parrachos de Maracajaú (a 7 km da costa)",
+          "Mergulhe de snorkel ou cilindro entre corais coloridos e centenas de peixes tropicais nas piscinas oceânicas",
+          "No retorno à tarde, visite a histórica Fortaleza dos Reis Magos (construção militar portuguesa de 1598 em formato de estrela)",
+          "Contemple o pôr do sol espetacular sobre a Ponte Newton Navarro e a foz do Rio Potengi"
+        ]
+      },
+      {
+        day: 5,
+        title: "Extensão Bônus: Bate e Volta em Pipa (Baía dos Golfinhos e Chapadão)",
+        activities: [
+          "Faça o bate e volta ou passe a noite no charmoso vilarejo de Praia da Pipa (a 85 km ao sul de Natal)",
+          "Nade na Baía dos Golfinhos e observe os botos selvagens brincando a poucos metros da areia",
+          "Aprecie a vista espetacular das falésias avermelhadas do Mirante do Chapadão e Praia do Amor",
+          "Passeie pela Avenida Baía dos Golfinhos com lojinhas de artesanato, sorveterias artesanais e bistrôs charmosos"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Bugueiros Credenciados: Segurança e Conforto",
+        description: "Contrate apenas bugueiros credenciados pela SETUR (com placa vermelha e selo oficial de turismo). O passeio tradicional de Genipabu inclui emoção na medida certa e paradas estratégicas para fotos nas dunas e lagoas."
+      },
+      {
+        title: "Tábua das Marés para Piscinas Naturais",
+        description: "Para os passeios de mergulho nos Parrachos de Maracajaú e Rio do Fogo, a maré precisa estar baixa (preferencialmente abaixo de 0.5m durante a lua cheia ou lua nova). Consulte sempre a tábua da marinha antes de reservar a data."
+      },
+      {
+        title: "Como Chegar nas Lagoas de Nísia Floresta",
+        description: "As lagoas de Arituba e Carcará ficam no município de Nísia Floresta, ao sul de Natal. O acesso pode ser feito com carro alugado ou passeios de 4x4. A Lagoa do Carcará tem trechos de estrada de terra, mas a beleza do lugar compensa cada minuto!"
+      },
+      {
+        title: "Proteção Solar e Hidratação Contínua",
+        description: "O sol do Rio Grande do Norte é intenso o ano todo com brisa constante que disfarça o calor. Use protetor solar de alto fator, chapéu ou boné bem preso, óculos escuros e beba muita água de coco ao longo dos passeios."
+      }
+    ],
+    content: [
+      '<p class="lead text-xl text-stone-700 font-normal leading-relaxed">Conhecida mundialmente como a <strong>Cidade do Sol</strong> e terra do ar mais puro das Américas, <strong>Natal (RN)</strong> é o destino dos sonhos para quem busca combinar dunas gigantescas, lagoas de águas mornas e doces, mar azul-turquesa e uma gastronomia de frutos do mar inigualável.</p>',
+
+      '<h3>Por Que Natal é um dos Destinos Mais Apaixonantes do Nordeste?</h3><p>O litoral do Rio Grande do Norte reúne uma diversidade de cenários que poucos lugares do mundo conseguem igualar em um raio tão curto. De um lado, as dunas móveis e lagoas do Litoral Norte convidam para passeios cheios de adrenalina em buggys potiguares. Do outro, a deslumbrante <strong>Rota do Sol</strong> no Litoral Sul conduz a praias de falésias avermelhadas e a verdadeiros refúgios de águas doces e límpidas como a <strong>Lagoa de Arituba</strong> e a <strong>Lagoa do Carcará</strong>.</p><p>Com infraestrutura hoteleira completa, voos diretos das principais capitais do Brasil e hospitalidade calorosa, Natal é perfeita tanto para viagens em família e casais quanto para grupos de amigos em busca de sol e diversão.</p>',
+
+      '<h3>1. Ponta Negra & A Imponência do Morro do Careca</h3><p>Ponta Negra é o coração turístico de Natal. A praia urbana conta com uma orla animada, repleta de quiosques, restaurantes de frutos do mar, escolas de surf e feirinhas de artesanato. O grande símbolo do cartão-postal é o <strong>Morro do Careca</strong>, uma imensa duna de mais de 100 metros de altura emoldurada por vegetação nativa que desce até o mar (atualmente preservada para visitação contemplativa).</p><ul class="space-y-2 my-3 pl-5 list-disc text-sm text-stone-700"><li><strong>Dica de Ouro:</strong> O calçadão de Ponta Negra é excelente para caminhadas matinais e para curtir o fim de tarde tomando água de coco fresca com música ao vivo nos quiosques;</li><li><strong>Onde Comer:</strong> Não deixe de jantar na unidade principal do <em>Camarões Restaurante</em>, famoso por porções generosas de camarão internacional, camarão empanado recheado e peixes grelhados nobres.</li></ul>',
+
+      '<h3>2. Dunas de Genipabu: O Clássico Passeio \'Com Emoção\'</h3><p>Nenhuma viagem a Natal está completa sem a clássica pergunta do bugueiro: <em>\'Com ou sem emoção?\'</em>. O passeio pelas <strong>Dunas de Genipabu</strong> no Litoral Norte é uma das atrações mais icônicas do turismo brasileiro.</p><p>A expedição começa com a travessia do Rio Ceará-Mirim em balsas artesanais de madeira guiadas com varas. Em seguida, os buggys sobem e descem pelas dunas douradas com manobras empolgantes, descortinando vistas panorâmicas para a lagoa e o mar.</p><ul class="space-y-2 my-3 pl-5 list-disc text-sm text-stone-700"><li><strong>Esquibunda e Aerobunda:</strong> Nas paradas das lagoas de Genipabu e Jacumã, você pode descer as dunas em pranchas de madeira (esquibunda) ou deslizar em cabos de tirolesa (aerobunda) com mergulho direto nas águas refrescantes;</li><li><strong>Lagoa de Pitangui:</strong> Um verdadeiro oásis com mesas e cadeiras instaladas dentro da água, onde garçons atendem os visitantes com porções de peixe frito, macaxeira e drinks tropicais.</li></ul>',
+
+      '<h3>3. Rota do Sol: As Joias Escondidas de Nísia Floresta (Arituba & Carcará)</h3><p>Rumo ao litoral sul pela rodovia RN-063 (a famosa <em>Rota do Sol</em>), você encontra algumas das paisagens mais belas e preservadas do estado. Entre praias calmas e coqueirais, destacam-se duas lagoas de tirar o fôlego:</p><ul class="space-y-2 my-3 pl-5 list-disc text-sm text-stone-700"><li><strong>Lagoa de Arituba:</strong> Localizada no município de Nísia Floresta, possui águas calmas, límpidas e com temperatura extremamente agradável. A estrutura ao redor conta com restaurantes, aluguel de pedalinhos, caiaques e tirolesa, sendo uma das melhores opções do estado para famílias com crianças;</li><li><strong>Lagoa do Carcará:</strong> Uma joia rústica e intocada de águas transparentes e areia branquinha, cercada por dunas e vegetação exuberante. Perfeita para quem busca tranquilidade, flutuação e fotografias espetaculares;</li><li><strong>Maior Cajueiro do Mundo:</strong> Em Pirangi do Norte, faça uma parada para conhecer essa anomalia genética fascinante: uma única árvore que cresceu para os lados cobrindo mais de 8.500 m², com passarela suspensa para observar a copa gigante.</li></ul>',
+
+      '<h3>4. Parrachos de Maracajaú: O Caribe Brasileiro Potiguar</h3><p>A cerca de 60 km ao norte de Natal, a vila de Maracajaú é a porta de entrada para os <strong>Parrachos de Maracajaú</strong> — uma formação de recifes de corais a 7 km da costa que, durante a maré baixa, transforma-se em um imenso aquário natural de águas cristalinas com tons de turquesa e esmeralda.</p><p>O trajeto é feito em catamarãs ou lanchas rápidas até plataformas flutuantes com apoio completo. O mergulho com máscara e snorkel revela uma rica vida marinha, com cardumes de peixes coloridos, polvos e moreias.</p>',
+
+      '<h3>5. O Que Comer em Natal: O Melhor da Gastronomia Potiguar</h3><p>A culinária potiguar é rica, farta e cheia de identidade. Os principais destaques que você deve provar durante sua estadia:</p><ul class="space-y-2 my-3 pl-5 list-disc text-sm text-stone-700"><li><strong>Camarão Potiguar:</strong> O Rio Grande do Norte é um dos maiores produtores de camarão do Brasil. Prove receitas clássicas ao molho de queijo coalho, à milanesa, gratinado ou na manteiga de garrafa;</li><li><strong>Carne de Sol com Macaxeira e Pirão de Queijo:</strong> Prato sertanejo tradicional de sabor marcante e suculência incomparável;</li><li><strong>Ginga com Tapioca:</strong> O prato mais tradicional da Praia da Redinha: pequenos peixes fritos crocantes servidos dentro de uma tapioca quentinha com coco;</li><li><strong>Doces Típicos:</strong> Cartola (banana frita com queijo manteiga assado, canela e açúcar) e doces caseiros de caju e mamão.</li></ul>',
+
+      '<h3>Planeje Sua Viagem para Natal com Economia e Tranquilidade</h3><p>Natal é um destino que acolhe o viajante com sol radiante, brisa fresca constante e um custo-benefício surpreendente no Nordeste. Seja para uma escapada de fim de semana prolongado de 4 dias ou para um roteiro completo de 6 dias explorando dunas, lagoas e os parrachos, planejar seus passeios e hospedagem com antecedência garante os melhores preços e as melhores experiências.</p>'
+    ]
+  },
+  {
+    id: "17",
+    slug: "manaus-floresta-amazonica-roteiro-completo",
+    title: "Manaus e Floresta Amazônica: Roteiro Completo de 4 a 6 Dias, Hotéis de Selva e Cachoeiras",
+    subtitle: "Guia definitivo para desbravar o Amazonas: do imponente Teatro Amazonas e Encontro das Águas ao nado com botos, hotéis de selva e as cachoeiras de Presidente Figueiredo.",
+    destination: "Manaus",
+    stateCountry: "Amazonas, Brasil",
+    region: "Norte",
+    category: "Ecoturismo",
+    coverImage: "/images/destinations/manaus_teatro_amazonas.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em ecoturismo brasileiro e expedições pelas maravilhas da maior floresta tropical do planeta."
+    },
+    date: "05 de Setembro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "R$ 200 a R$ 420 / dia por pessoa (incluindo passeios de barco fluviais, ingressos e alta gastronomia regional)",
+    bestSeason: "Junho a Novembro (período de vazante/seca com praias fluviais de areia branca); Dezembro a Maio (período de cheia para navegar pelos igapós e floresta inundada)",
+    recommendedDays: "4 a 6 dias (ideal para combinar o centro histórico de Manaus, expedições na selva e bate e volta em Presidente Figueiredo)",
+    featured: true,
+    highlights: [
+      "Teatro Amazonas, Largo de São Sebastião e Mercado Municipal Adolpho Lisboa",
+      "Passeio fluvial no Encontro das Águas dos Rios Negro e Solimões e nado com botos-cor-de-rosa",
+      "Visita cultural à comunidade indígena Dessana e trilhas guiadas de sobrevivência na floresta",
+      "Bate e volta até Presidente Figueiredo com banho nas cachoeiras da Pedra Furada, Iracema e Santuário"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/manaus_encontro_aguas.jpg",
+        caption: "O espetáculo do Encontro das Águas dos Rios Negro e Solimões navegando próximo a Manaus"
+      },
+      {
+        url: "/images/destinations/pres_figueiredo_pedra_furada.jpg",
+        caption: "As quedas d'água cristalinas da Cachoeira da Pedra Furada em Presidente Figueiredo"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1544979590-37e9b47eb705?auto=format&fit=crop&w=1200&q=80",
+        caption: "A imensidão da floresta amazônica e navegação pelos igapós do Rio Negro"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Centro Histórico de Manaus: Teatro Amazonas & Sabores do Rio Negro",
+        activities: [
+          "Faça a visita guiada oficial pelo interior do Teatro Amazonas (salão nobre, piso de marchetaria e camarins históricos)",
+          "Tome um café regional provando o clássico X-Caboquinho (pão francês com tucumã, queijo coalho na chapa e banana frita)",
+          "Visite o Mercado Municipal Adolpho Lisboa à beira do Rio Negro e conheça o artesanato indígena e ervas medicinais",
+          "Aprecie o fim de tarde no Largo de São Sebastião tomando um Tacacá na tradicional banca da Gisela"
+        ]
+      },
+      {
+        day: 2,
+        title: "Expedição Fluvial: Encontro das Águas, Botos & Comunidade Indígena",
+        activities: [
+          "Embarque no porto flutuante de Manaus para testemunhar o Encontro das Águas dos Rios Negro e Solimões",
+          "Interaja e nade respeitosamente com os botos-cor-de-rosa em seu habitat natural no Rio Negro",
+          "Visite a aldeia da etnia Dessana com apresentação de cantos, danças e rituais sagrados da cultura amazônica",
+          "Almoce em restaurante flutuante com buffet livre de peixes amazônicos (Tambaqui assado e Pirarucu à casaca)"
+        ]
+      },
+      {
+        day: 3,
+        title: "Experiência de Selva: Museu da Amazônia (MUSA) & Praia da Ponta Negra",
+        activities: [
+          "Visite o MUSA (Museu da Amazônia) e suba os 242 degraus da Torre de Observação de 42 metros acima da copa das árvores",
+          "Faça trilhas guiadas pela mata primária conhecendo vitórias-régias gigantes e orquidários",
+          "Curta o pôr do sol na Orla da Ponta Negra com vista para a grandiosa Ponte Rio Negro",
+          "Jante no premiado restaurante Banzeiro ou Caxiri saboreando Costela de Tambaqui na brasa"
+        ]
+      },
+      {
+        day: 4,
+        title: "A Terra das Cachoeiras: Bate e Volta em Presidente Figueiredo",
+        activities: [
+          "Viaje 107 km pela BR-174 até o município de Presidente Figueiredo (cerca de 1h40 de carro ou transfer)",
+          "Mergulhe nas águas refrescantes da Cachoeira da Pedra Furada com suas três quedas esculpidas na rocha",
+          "Explore o complexo da Cachoeira de Iracema com suas cavernas de arenito e corredeiras naturais",
+          "Visite a Cachoeira do Santuário cercada por floresta densa e almoce peixe fresco com farinha de Uarini"
+        ]
+      },
+      {
+        day: 5,
+        title: "Imersão em Jungle Lodge ou Arquipélago de Anavilhanas (Opcional)",
+        activities: [
+          "Opção 1: Hospede-se 1 noite em um Hotel de Selva (Jungle Lodge) com focagem noturna de jacarés e nascer do sol amazônico",
+          "Opção 2: Faça uma navegação até o Parque Nacional de Anavilhanas em Novo Airão (um dos maiores arquipélagos fluviais do mundo)",
+          "Compre castanhas-do-brasil frescas, chocolates de cupuaçu e artesanato marajoara antes de seguir para o aeroporto"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Cheia vs. Seca: Qual a Melhor Época para Visitar?",
+        description: "De dezembro a maio (cheia) os rios sobem até 15 metros, permitindo navegar de canoa pelo meio das copas das árvores nos igapós. De junho a novembro (seca/vazante) surgem praias fluviais de areia branca paradisíacas e o clima é ideal para trilhas terrestres e cachoeiras."
+      },
+      {
+        title: "O Que Vestir na Selva Amazônica",
+        description: "O clima é quente e muito úmido (média de 30°C). Use roupas leves de poliamida/dry-fit com proteção UV, calças compridas finas para trilhas na mata (protegem contra insetos e arranhões), bota ou tênis de caminhada impermeável e repelente à base de Icaridina."
+      },
+      {
+        title: "Vacinação e Saúde",
+        description: "A vacina contra a Febre Amarela é altamente recomendada para quem viaja à região Norte (tome pelo menos 10 dias antes do embarque). Mantenha-se sempre muito hidratado durante os passeios sob o sol equatorial."
+      },
+      {
+        title: "Como se Deslocar com Praticidade",
+        description: "Dentro de Manaus, apps de transporte (Uber/99) e táxis atendem muito bem. Para os passeios de rio e Presidente Figueiredo, vale a pena contratar passeios guiados com transfer incluso pelo GetYourGuide ou alugar um carro para ter total flexibilidade."
+      }
+    ],
+    content: [
+      "<p class=\"lead text-xl text-stone-700 font-normal leading-relaxed\">Manaus é o coração pulsante da maior floresta tropical do planeta. Onde a imponência da arquitetura europeia da <em>Belle Époque</em> se encontra com a imensidão das águas escuras do Rio Negro e a biodiversidade colossal da Amazônia, a capital amazonense oferece uma das experiências de viagem mais transformadoras do mundo.</p>",
+
+      "<h3>Por que a Amazônia deve ser sua próxima grande viagem?</h3><p>Visitar o Amazonas é muito mais do que fazer turismo comum: é viver uma verdadeira conexão sensorial com as forças da natureza. Aqui você ouve o canto dos pássaros amazônicos do topo de torres que ultrapassam a copa das árvores, sente a energia do <strong>Encontro das Águas</strong> onde dois rios gigantes correm lado a lado sem se misturar por quilômetros, e degusta uma das gastronomias mais ricas e premiadas do Brasil.</p><p>Seja para uma viagem de 4 dias aproveitando os atrativos da cidade e passeios de barco, ou para uma imersão de 6 dias incluindo hotéis de selva e as cachoeiras de <strong>Presidente Figueiredo</strong>, este guia reúne tudo o que você precisa planejar com economia e segurança.</p>",
+
+      "<h3>1. Centro Histórico de Manaus & O Esplendor do Ciclo da Borracha</h3><p>No final do século XIX, a riqueza gerada pela extração do látex transformou Manaus em uma das capitais mais opulentas do planeta — conhecida como a <em>Paris dos Trópicos</em>. As principais atrações históricas imperdíveis são:</p><ul class=\"space-y-2 my-3 pl-5 list-disc text-sm text-stone-700\"><li><strong>Teatro Amazonas:</strong> Inaugurado em 1896, o teatro é uma obra-prima neoclássica. Sua cúpula externa conta com mais de 36 mil escamas de cerâmica vitrificada com as cores da bandeira brasileira, enquanto o interior exibe lustres de cristal de Murano e pinturas deslumbrantes;</li><li><strong>Largo de São Sebastião:</strong> A praça charmosa em frente ao teatro, repleta de calçadas de pedras portuguesas onduladas, bares, cafés ao ar livre e a famosa banca de <em>Tacacá da Gisela</em>;</li><li><strong>Mercado Municipal Adolpho Lisboa (Mercadão):</strong> Projetado com estruturas de ferro fundido pré-fabricadas na Europa e inspirado no antigo <em>Les Halles</em> de Paris, é o melhor lugar para comprar castanhas-do-pará frescas, farinha de Uarini ovinha, artesanato indígena e ervas amazônicas;</li><li><strong>Palácio Rio Negro & Palacete Provincial:</strong> Antigas mansões dos barões da borracha restauradas com exposições gratuitas de arte, história e numismática.</li></ul>",
+
+      "<h3>2. O Espetáculo do Encontro das Águas & Nado com Botos</h3><p>O passeio de barco mais clássico e emocionante de Manaus leva você ao <strong>Encontro das Águas</strong>: o fenômeno em que as águas escuras, ácidas e quentes do <strong>Rio Negro</strong> encontram as águas barrentas, densas e frias do <strong>Rio Solimões</strong>. Por causa das diferenças de densidade, temperatura e velocidade da correnteza, os dois rios correm lado a lado por mais de 6 km sem se misturar, formando o majestoso Rio Amazonas.</p><p>O tour de dia inteiro geralmente inclui também:</p><ol class=\"space-y-1.5 my-3 pl-5 list-decimal text-sm text-stone-700\"><li><strong>Nado com botos-cor-de-rosa:</strong> Interação com os dóceis golfinhos de água doce em plataformas flutuantes regulamentadas pelo IBAMA;</li><li><strong>Comunidades Indígenas (Dessana / Tatuyo):</strong> Vivência com cânticos, danças, pinturas corporais de urucum/jenipapo e artesanato tradicional;</li><li><strong>Parque Ecológico Janauari:</strong> Caminhada em passarelas suspensas sobre a floresta inundada para observar as gigantescas <em>Vitórias-Régias</em>.</li></ol>",
+
+      "<h3>3. Museu da Amazônia (MUSA) & Torre de Observação de 42 Metros</h3><p>Localizado dentro da Reserva Florestal Adolpho Ducke, o <strong>MUSA (Museu da Amazônia)</strong> é um museu a céu aberto onde a floresta primária é a grande protagonista. A atração máxima é a <strong>Torre de Observação</strong> de metal com 42 metros de altura (242 degraus):</p><p>Lá de cima, você ultrapassa o dossel da floresta e contempla uma visão 360° infinita do oceano verde amazônico. Se puder, agende o horário do <em>nascer do sol</em> ou do <em>pôr do sol</em> para presenciar revoadas de araras e tucanos cortando o céu.</p>",
+
+      "<h3>4. Presidente Figueiredo: A Terra das Cachoeiras e Cavernas da Amazônia</h3><p>A apenas 107 km ao norte de Manaus pela BR-174 (estrada asfaltada em ótimas condições), fica <strong>Presidente Figueiredo</strong>, um paraíso ecológico com mais de 150 cachoeiras catalogadas, grutas de arenito e corredeiras refrescantes. As melhores para visitar em um dia são:</p><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4 my-6\"><div class=\"bg-emerald-50 border border-emerald-200 p-4 rounded-2xl\"><h4 class=\"font-bold text-emerald-950 text-sm mb-1\">🌊 Cachoeira da Pedra Furada</h4><p class=\"text-xs text-emerald-800 leading-relaxed\">Três quedas d'água cristalinas que brotam de furos naturais na rocha e formam uma piscina natural rasa e perfeita para banho.</p></div><div class=\"bg-amber-50 border border-amber-200 p-4 rounded-2xl\"><h4 class=\"font-bold text-amber-950 text-sm mb-1\">🦇 Cachoeira de Iracema</h4><p class=\"text-xs text-amber-800 leading-relaxed\">Queda caudalosa cercada por paredões rochosos imponentes, grutas e a famosa Gruta Palácio dos Galos da Serra.</p></div><div class=\"bg-indigo-50 border border-indigo-200 p-4 rounded-2xl\"><h4 class=\"font-bold text-indigo-950 text-sm mb-1\">🌴 Cachoeira do Santuário</h4><p class=\"text-xs text-indigo-800 leading-relaxed\">Reserva particular com trilhas bem estruturadas, restaurante com peixes assados e múltiplas quedas d'água refrescantes.</p></div></div>",
+
+      "<h3>5. O Banquete Amazônico: O Que e Onde Comer em Manaus</h3><p>A gastronomia de Manaus é uma das mais fascinantes do mundo, com temperos indígenas e peixes nobres dos grandes rios:</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Especialidade</th><th class=\"p-3 text-left border-b border-stone-200\">Descrição do Prato</th><th class=\"p-3 text-left border-b border-stone-200\">Onde Provar</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🥪 X-Caboquinho</td><td class=\"p-3 text-stone-700\">Sanduíche clássico de pão francês com fatias de tucumã, queijo coalho derretido e banana frita</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Café Regional da Priscila / Café do Pina</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🐟 Costela de Tambaqui</td><td class=\"p-3 text-stone-700\">Costelas carnudas assadas na brasa, servidas com baião de dois, vinagrete e farofa de Uarini</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Restaurante Tambaqui de Banda / Banzeiro</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🥘 Pirarucu de Casaca</td><td class=\"p-3 text-stone-700\">O gigante da Amazônia desfiado e gratinado em camadas com banana-da-terra frita e farofa crocante</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Restaurante Caxiri (ao lado do Teatro)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🍲 Tacacá com Jambu</td><td class=\"p-3 text-stone-700\">Caldo de tucupi fervente com goma de mandioca, camarão seco e folhas de jambu que anestesiam a boca</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Tacacá da Gisela (Largo de São Sebastião)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🍨 Frutas Nativas & Doces</td><td class=\"p-3 text-stone-700\">Sucos e mousses de Taperebá (Cajá), Cupuaçu, Graviola, Buriti e Sorvetes Amazônicos</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Glacial Sorvetes / Sorveteria Barbarella</td></tr></tbody></table></div>",
+
+      "<h3>6. Onde se Hospedar: Hotéis Urbanos vs. Jungle Lodges (Hotéis de Selva)</h3><p>Para uma experiência perfeita, você pode dividir a estadia:</p><ul class=\"space-y-2 my-3 pl-5 list-disc text-sm text-stone-700\"><li><strong>Hotéis Urbanos em Manaus:</strong> Prefira ficar no <em>Centro Histórico</em> (próximo ao Teatro Amazonas para caminhar a pé até restaurantes) ou na <em>Ponta Negra</em> (bairro nobre à beira do Rio Negro com vista panorâmica e resorts urbanos);</li><li><strong>Jungle Lodges (Hotéis de Selva):</strong> Para quem quer dormir ouvindo os sons da mata com todo o conforto. Localizados ao longo do Rio Negro e Rio Urubu (como o Juma Amazon Lodge ou Anavilhanas Jungle Lodge), oferecem pacotes com pensão completa e passeios inclusos.</li></ul>",
+
+      "<h3>Checklist Essencial para sua Mochila no Amazonas</h3><p>Para desbravar a floresta e os rios com total tranquilidade:</p><ul class=\"space-y-2 my-4 pl-2\"><li class=\"flex items-center gap-2 text-sm text-stone-800\">🦟 Repelente corporal de alta eficácia (Icaridina) e protetor solar FPS 50+</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">🎒 Mochila de ataque impermeável ou saco estanque para proteger celular e eletrônicos no barco</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">👟 Tênis com bom grip antiderrapante ou papete de trilha aquática para cachoeiras</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">👕 Camisas dry-fit com proteção solar UV50+ e boné ou chapéu com aba larga</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">🔋 Power bank (bateria portátil) e adaptador bivolt para recarregar câmeras durante passeios longos</li></ul><div class=\"bg-stone-900 text-white rounded-3xl p-8 my-8 text-center space-y-4\"><h3 class=\"text-2xl font-extrabold text-amber-400\">A Amazônia espera por você! Suas malas estão prontas?</h3><p class=\"text-sm text-stone-300 max-w-xl mx-auto\">Pesquise suas passagens aéreas no Vai de Promo e Gol, garanta seus passeios de selva no GetYourGuide e equipe sua bagagem com a nossa Vitrine.</p><div class=\"flex flex-wrap items-center justify-center gap-4 pt-2\"><a href=\"/calculadora-viagem\" class=\"bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg transition-all\">Calcular Custo da Viagem ➔</a><a href=\"/roteiro-personalizado\" class=\"bg-stone-800 hover:bg-stone-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-stone-700 transition-all\">Gerar Roteiro Personalizado com IA</a></div></div>"
+    ]
+  },
+  {
+    id: "16",
+    slug: "belem-do-para-o-que-fazer-guia-completo",
+    title: "Belém do Pará: O Que Fazer, Onde Comer e Roteiro Completo de 3 a 5 Dias na Capital Amazônica",
+    subtitle: "Descubra os encantos de Belém: do clássico Mercado Ver-o-Peso e pôr do sol na Estação das Docas aos passeios na Ilha de Combu, Theatro da Paz e o melhor da gastronomia paraense.",
+    destination: "Belém",
+    stateCountry: "Pará, Brasil",
+    region: "Norte",
+    category: "Urbano & Cultural",
+    coverImage: "/images/destinations/belem_ver_o_peso.jpg",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Apaixonados pelas riquezas culturais, sabores autênticos e pela biodiversidade exuberante da Amazônia brasileira."
+    },
+    date: "04 de Setembro de 2026",
+    readTime: "9 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "R$ 170 a R$ 330 / dia por pessoa (excelente custo-benefício para hospedagem, passeios fluviais e alta gastronomia)",
+    bestSeason: "Julho a Dezembro (o 'verão amazônico' com menos chuvas; Outubro para quem deseja viver a emoção do Círio de Nazaré)",
+    recommendedDays: "3 a 5 dias (ideal para conhecer a capital e fazer a travessia para a Ilha de Combu ou Ilha do Marajó)",
+    featured: true,
+    highlights: [
+      "Mercado Ver-o-Peso, Feira do Açaí da madrugada e o histórico Complexo Feliz Lusitânia",
+      "Pôr do sol cinematográfico na Estação das Docas com sorvete da Sorveteria Cairu e cerveja de bacuri",
+      "Passeio de barco até a Ilha de Combu com visita à fábrica de chocolates da Dona Nena e restaurantes ribeirinhos",
+      "Theatro da Paz, Mangal das Garças com borboletário e a imponente Basílica Santuário de Nazaré"
+    ],
+    gallery: [
+      {
+        url: "/images/destinations/belem_docas_sunset.jpg",
+        caption: "A Estação das Docas ao entardecer com os guindastes históricos e vista para a Baía do Guajará"
+      },
+      {
+        url: "/images/destinations/belem_theatro_paz.jpg",
+        caption: "A imponente fachada neoclássica do Theatro da Paz na Praça da República em Belém"
+      },
+      {
+        url: "/images/destinations/belem_ilha_combu.jpg",
+        caption: "Restaurantes rústicos sobre palafitas e travessia de barco na Ilha de Combu"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Centro Histórico, Ver-o-Peso & Pôr do Sol na Estação das Docas",
+        activities: [
+          "Visite o histórico Mercado Ver-o-Peso pela manhã (conheça o setor de ervas, peixes amazônicos e artesanato marajoara)",
+          "Explore o Forte do Presépio, Museu do Encontro e a Casa das Onze Janelas no Complexo Feliz Lusitânia",
+          "Almoce o autêntico Filhote com crosta de castanha ou Tacacá nas barracas tradicionais",
+          "Caminhe pela Estação das Docas no fim de tarde, prove o sorvete de Bacuri ou Castanha na Cairu e aprecie o pôr do sol na Baía do Guajará"
+        ]
+      },
+      {
+        day: 2,
+        title: "Travessia Ecológica para a Ilha de Combu & Gastronomia Ribeirinha",
+        activities: [
+          "Pegue o 'pô-pô-pô' (barco tradicional) na Praça Princesa Isabel rumo à Ilha de Combu (travessia de 10 minutos)",
+          "Visite a plantação de cacau nativo e a fábrica artesanal de chocolates da Dona Nena (Filha do Combu)",
+          "Almoce em um dos restaurantes suspensos sobre as águas (ex: Saldosa Maloca ou Chalé da Ilha) degustando peixes frescos com açaí puro",
+          "Tome um banho de rio ou relaxe nas redes à beira d'água antes de retornar à cidade no meio da tarde"
+        ]
+      },
+      {
+        day: 3,
+        title: "Mangal das Garças, Theatro da Paz & Fé na Basílica de Nazaré",
+        activities: [
+          "Passeie pelo Parque Mangal das Garças: suba no Farol de Belém para uma vista 360°, visite o Borboletário e veja a soltura das garças às 11h",
+          "Faça a visita guiada ao suntuoso Theatro da Paz na Praça da República (ícone do fausto ciclo da borracha)",
+          "Visite a Basílica Santuário de Nossa Senhora de Nazaré e conheça o Memorial do Círio",
+          "Jante no renomado restaurante Remanso do Peixe ou Manjar das Garças"
+        ]
+      },
+      {
+        day: 4,
+        title: "Museu Paraense Emílio Goeldi, Parque da Residência & Compras",
+        activities: [
+          "Visite o Parque Zoobotânico do Museu Emílio Goeldi, o mais antigo centro de pesquisa sobre a Amazônia no Brasil",
+          "Tome um café e conheça o orquidário no charmoso Parque da Residência (antiga residência dos governadores)",
+          "Compre castanhas-do-pará frescas, doces de cupuaçu, cachaça de jambu e cerâmicas marajoaras",
+          "Aproveite a noite no bairro boêmio do Umarizal com música ao vivo e gastronomia contemporânea paraense"
+        ]
+      },
+      {
+        day: 5,
+        title: "Bate e Volta: Ilha do Marajó (Soure) ou Praias de Água Doce em Mosqueiro",
+        activities: [
+          "Opção 1: Embarque na lancha rápida para a Ilha do Marajó (Soure/Salvaterra), conheça as fazendas de búfalos, a Praia do Pesqueiro e prove o queijo do Marajó",
+          "Opção 2: Vá de carro até a Ilha de Mosqueiro para curtir praias fluviais de água doce com ondas (como a Praia do Farol e Praia do Murubira)",
+          "Retorne para o aeroporto com a mala cheia de memórias e sabores únicos da Amazônia"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "A Famosa 'Chuva da Tarde' de Belém",
+        description: "Em Belém, é comum os moradores marcarem compromissos 'antes ou depois da chuva'. As pancadas rápidas de fim de tarde aliviam o calor tropical. Leve sempre uma capa de chuva compacta ou guarda-chuva leve na mochila."
+      },
+      {
+        title: "O Verdadeiro Açaí Paraense",
+        description: "No Pará, o açaí é consumido puro, sem xarope de guaraná nem leite condensado. Ele é servido gelado em cuias com farinha d'água ou farinha de tapioca e acompanha peixe frito ou camarão seco na hora do almoço. Vale muito a experiência!"
+      },
+      {
+        title: "Segurança no Centro Histórico & Ver-o-Peso",
+        description: "Como em qualquer grande centro urbano, redobre a atenção com celulares, correntes de ouro e câmeras fotográficas nos arredores do Ver-o-Peso, Mercado de Carne e Praça do Relógio. Prefira visitar pela manhã e utilize táxis ou Uber para deslocamentos."
+      },
+      {
+        title: "Melhor Época: Verão Amazônico vs. Círio de Nazaré",
+        description: "De julho a dezembro chove bem menos (ótimo para passeios ao ar livre e rios). No segundo domingo de outubro acontece o Círio de Nazaré: a cidade fica lotada e emocionante, mas exige reservas de voos e hotéis com muitos meses de antecedência."
+      }
+    ],
+    content: [
+      "<p class=\"lead text-xl text-stone-700 font-normal leading-relaxed\">Belém do Pará é um dos destinos mais autênticos, vibrantes e sensoriais de todo o continente americano. Porta de entrada da Amazônia atlântica, a capital paraense combina uma história riquíssima herdada do fausto <strong>Ciclo da Borracha</strong>, a imponência dos rios Guamá e Baía do Guajará e uma gastronomia única no mundo, laureada como <strong>Cidade Criativa da Gastronomia pela UNESCO</strong>.</p>",
+
+      "<h3>Por que Belém precisa estar na sua lista de viagens?</h3><p>Diferente de outros destinos puramente turísticos, Belém pulsa verdade. Ao caminhar entre os casarões coloniais azulejados do <strong>Complexo Feliz Lusitânia</strong>, sentir o perfume das folhas cheirosas das erveiras do <strong>Mercado Ver-o-Peso</strong> ou sentir a língua formigar com uma colherada de <em>Tacacá com Jambu</em> fervente na calçada, você percebe que a cultura amazônica é viva, acolhedora e arrebatadora.</p><p>Neste guia completo e atualizado, reunimos o melhor roteiro de 3 a 5 dias, as melhores atrações, onde comer com segurança e economia, além de dicas de logística para aproveitar cada minuto na <em>Cidade das Mangueiras</em>.</p>",
+
+      "<h3>1. Complexo Ver-o-Peso & Centro Histórico (Feliz Lusitânia)</h3><p>O coração de Belém começa às margens da Baía do Guajará. O <strong>Mercado Ver-o-Peso</strong> é a maior feira ao ar livre da América Latina e funciona ininterruptamente há mais de 390 anos. Para uma experiência completa:</p><ul class=\"space-y-2 my-3 pl-5 list-disc text-sm text-stone-700\"><li><strong>Feira do Açaí (madrugada):</strong> Entre 3h e 6h da manhã, centenas de barqueiros ribeirinhos descarregam cestos de açaí fresco colhido nas ilhas — um espetáculo etnográfico inesquecível;</li><li><strong>Setor das Erveiras:</strong> Barracas repletas de poções aromáticas tradicionais amazônicas (como o banho de <em>Cheiro-do-Pará</em>, <em>Abre-Caminho</em> e o folclórico <em>Chora nos Meus Pés</em>);</li><li><strong>Mercado de Carne e Mercado de Peixe:</strong> Edifícios históricos com estruturas de ferro fundido importadas da Europa no início do século XX;</li><li><strong>Forte do Presépio & Casa das Onze Janelas:</strong> A fortaleza onde a cidade foi fundada em 1616, com canhões voltados para a baía e o Museu de Arte Sacra ao lado.</li></ul>",
+
+      "<h3>2. Estação das Docas: Charme, Cervejas Artesanais e Pôr do Sol</h3><p>Resultado de uma revitalização primorosa de três antigos galpões portuários de ferro inglês, a <strong>Estação das Docas</strong> é o ponto de encontro preferido de moradores e turistas ao entardecer. O espaço conta com ar-condicionado central, lojas de artesanato marajoara, palcos flutuantes e excelentes opções gastronômicas.</p><p>Não deixe de:</p><ol class=\"space-y-1.5 my-3 pl-5 list-decimal text-sm text-stone-700\"><li>Provar o sorvete de <strong>Bacuri, Castanha-do-Pará, Carimbó e Cupuaçu</strong> na tradicional <strong>Sorveteria Cairu</strong> (considerada uma das melhores do mundo);</li><li>Degustar uma cerveja artesanal regional na <strong>Cervejaria Amazon Beer</strong> (com destaque para a Stout de Açaí e a Witbier com Bacuri);</li><li>Apreciar os guindastes históricos amarelos iluminados refletindo nas águas da baía ao cair da noite.</li></ol>",
+
+      "<h3>3. Ilha de Combu: Ecoturismo & Gastronomia Ribeirinha a 10 Minutos do Centro</h3><p>Um dos passeios mais prazerosos de Belém é cruzar o Rio Guamá em direção à <strong>Ilha de Combu</strong>. Os barcos saem constantemente do terminal na Praça Princesa Isabel e a travessia custa cerca de R$ 10 a R$ 15 por trecho.</p><p>Na ilha, você caminha por passarelas de madeira sob a copa de açaizeiros e samaúmas centenárias. Os dois pontos altos imperdíveis são:</p><ul class=\"space-y-2 my-3 pl-5 list-disc text-sm text-stone-700\"><li><strong>Filha do Combu (Dona Nena):</strong> A famosa produtora de cacau 100% nativo que fornece chocolates artesanais e brigadeiro de cacau selvagem para os chefs mais renomados do país;</li><li><strong>Restaurantes à Beira-Rio:</strong> Locais como <em>Saldosa Maloca</em> e <em>Chalé da Ilha</em>, onde você degusta peixes amazônicos grelhados (Filhote, Tambaqui, Pirarucu) com os pés quase na água e redes para descansar depois do almoço.</li></ul>",
+
+      "<h3>4. Mangal das Garças, Theatro da Paz e Basílica de Nazaré</h3><p>O roteiro urbano de Belém reserva joias arquitetônicas e ecológicas surpreendentes:</p><div class=\"grid grid-cols-1 md:grid-cols-3 gap-4 my-6\"><div class=\"bg-emerald-50 border border-emerald-200 p-4 rounded-2xl\"><h4 class=\"font-bold text-emerald-950 text-sm mb-1\">🌳 Mangal das Garças</h4><p class=\"text-xs text-emerald-800 leading-relaxed\">Parque natural com mais de 40.000 m², borboletário gigante, orquidário, lago de flamingos e o Farol de Belém com vista panorâmica da cidade e do rio.</p></div><div class=\"bg-amber-50 border border-amber-200 p-4 rounded-2xl\"><h4 class=\"font-bold text-amber-950 text-sm mb-1\">🎭 Theatro da Paz</h4><p class=\"text-xs text-amber-800 leading-relaxed\">Inaugurado em 1878, tem pisos de madeiras nobres amazônicas sem uso de pregos, lustres de cristal francês e afrescos neoclássicos deslumbrantes.</p></div><div class=\"bg-indigo-50 border border-indigo-200 p-4 rounded-2xl\"><h4 class=\"font-bold text-indigo-950 text-sm mb-1\">⛪ Basílica de Nazaré</h4><p class=\"text-xs text-indigo-800 leading-relaxed\">Inspirada na Basílica de São Paulo Extramuros de Roma, é o epicentro da maior manifestação religiosa do Brasil: o Círio de Nazaré.</p></div></div>",
+
+      "<h3>5. O Que e Onde Comer: O Templo Gastronômico da Amazônia</h3><p>A culinária paraense é uma das mais ricas e originais do planeta, fundamentada na herança indígena, ingredientes da floresta e peixes dos grandes rios:</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Prato Típico</th><th class=\"p-3 text-left border-b border-stone-200\">Do Que É Feito</th><th class=\"p-3 text-left border-b border-stone-200\">Onde Provar em Belém</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🍲 Tacacá</td><td class=\"p-3 text-stone-700\">Caldo de tucupi quente, goma de tapioca, folhas de jambu e camarão seco servido na cuia</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Tacacá do Renato ou Tacacá da Dona Maria (Nazaré)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🥘 Maniçoba</td><td class=\"p-3 text-stone-700\">A \"feijoada paraense\" feita com folhas de mandioca-brava moídas e cozidas por 7 dias</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Restaurante Lá em Casa (Estação das Docas) ou Box do Ver-o-Peso</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🐟 Filhote na Brasa</td><td class=\"p-3 text-stone-700\">O peixe nobre de água doce mais macio e saboroso da Amazônia, com crosta de castanha</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Remanso do Peixe / Manjar das Garças</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🦆 Pato no Tucupi</td><td class=\"p-3 text-stone-700\">Carne de pato assada e desfiada cozida no caldo amarelo de tucupi com muito jambu</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Restaurante Círculo Militar (com vista da baía)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🍧 Açaí Tradicional & Sorvetes</td><td class=\"p-3 text-stone-700\">Açaí batido puro com farinha d'água de Bragança e sorvetes artesanais de frutas amazônicas</td><td class=\"p-3 text-stone-600 text-xs font-semibold\">Sorveteria Cairu / Point do Açaí</td></tr></tbody></table></div>",
+
+      "<h3>6. Onde se Hospedar em Belém com Segurança e Praticidade</h3><p>As melhores regiões para se hospedar em Belém são:</p><ul class=\"space-y-2 my-3 pl-5 list-disc text-sm text-stone-700\"><li><strong>Bairro de Nazaré:</strong> Área nobre, arborizada, segura, próxima à Basílica de Nazaré e ao Museu Emílio Goeldi;</li><li><strong>Umarizal:</strong> O bairro moderno com a melhor vida noturna, excelentes bares, bistrôs e restaurantes sofisticados;</li><li><strong>Campina / Reduto (próximo à Estação das Docas):</strong> Ideal para quem quer fazer passeios a pé até a orla das Docas e o Theatro da Paz.</li></ul><p>Você pode pesquisar e comparar tarifas de hotéis em Belém no mapa interativo abaixo com garantia de menor preço via Stay22.</p>",
+
+      "<h3>7. Extensão Marajó: Como Esticar a Viagem até a Maior Ilha Flúvio-Marítima do Mundo</h3><p>Se você tiver 5 ou mais dias disponíveis, vale muito a pena pegar uma lancha rápida no Terminal Hidroviário de Belém rumo a <strong>Soure ou Salvaterra na Ilha do Marajó</strong> (cerca de 2 horas de viagem). No Marajó você encontra praias paradisíacas com ondas e manguezais (Praia do Pesqueiro e Praia de Barra Velha), fazendas com passeios no lombo de búfalos dóceis e o delicioso Queijo do Marajó artesanal feito com leite de búfala.</p>",
+
+      "<h3>Dicas de Ouro para sua Mala Rumo ao Norte</h3><p>O clima no Pará é quente e úmido durante todo o ano, com temperaturas médias entre 24°C e 33°C. Para viajar com conforto:</p><ul class=\"space-y-2 my-4 pl-2\"><li class=\"flex items-center gap-2 text-sm text-stone-800\">👕 Priorize roupas leves de tecidos respiráveis (algodão, linho ou poliamida dry-fit)</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">👟 Calçados confortáveis e com solado antiderrapante para caminhadas no centro histórico e barcos</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">🧴 Protetor solar, óculos escuros e repelente contra mosquitos para passeios nas ilhas</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">🎒 Mochila impermeável ou capa de chuva compacta na bagagem de mão</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">💳 Dinheiro trocado em notas pequenas para compras rápidas no Ver-o-Peso e barcos ribeirinhos</li></ul><div class=\"bg-stone-900 text-white rounded-3xl p-8 my-8 text-center space-y-4\"><h3 class=\"text-2xl font-extrabold text-amber-400\">Pronto para viver a magia de Belém?</h3><p class=\"text-sm text-stone-300 max-w-xl mx-auto\">Pesquise suas passagens aéreas no Vai de Promo, garanta seus passeios oficiais no GetYourGuide e monte sua bagagem perfeita com a nossa Vitrine.</p><div class=\"flex flex-wrap items-center justify-center gap-4 pt-2\"><a href=\"/calculadora-viagem\" class=\"bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg transition-all\">Calcular Custo da Viagem ➔</a><a href=\"/roteiro-personalizado\" class=\"bg-stone-800 hover:bg-stone-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-stone-700 transition-all\">Gerar Roteiro Personalizado com IA</a></div></div>"
+    ]
+  },
+  {
+    id: "15",
+    slug: "primeira-viagem-internacional-o-que-fazer-primeiro",
+    title: "Minha Primeira Viagem Internacional: O Que Fazer Primeiro? Guia Passo a Passo",
+    subtitle: "Vai fazer sua primeira viagem internacional? Descubra a ordem certa para tirar o passaporte, verificar visto, comprar moeda, contratar seguro e organizar tudo sem estresse.",
+    destination: "Guia de Viagem Internacional",
+    stateCountry: "Planejamento para o Exterior",
+    region: "Internacional",
+    category: "Urbano & Cultural",
+    coverImage: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Viajantes experientes compartilhando o passo a passo para você cruzar fronteiras com segurança e economia."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "11 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Planejamento Estratégico (Como economizar em passagens, câmbio, seguro e internet internacional)",
+    bestSeason: "O ano todo (planeje com 3 a 6 meses de antecedência para garantir as melhores tarifas)",
+    recommendedDays: "Ideal para viagens de 7 a 20 dias",
+    featured: true,
+    highlights: [
+      "Ordem ideal: primeiro destino e documentos oficiais, depois passagens e só então o câmbio",
+      "Passaporte na Polícia Federal e consulta ao Portal Consular do Itamaraty para regras de visto",
+      "Seguro Viagem com 25% OFF para cobertura médica de urgência e extravio de bagagem",
+      "Chip eSIM digital para desembarcar no exterior com internet 4G/5G sem surpresas na conta"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=1200&q=80",
+        caption: "Passaporte, bilhetes de embarque e mapa prontos para o primeiro embarque internacional"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+        caption: "A emoção de decolar rumo a um novo país e uma nova cultura"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+        caption: "Chegando ao destino dos sonhos com conexão eSIM e tudo planejado sem estresse"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Fase 1: Destino, Orçamento & Passaporte (6 meses antes)",
+        activities: [
+          "Defina o país de destino, datas aproximadas e calcule o custo total com o Simulador do Malas Prontas",
+          "Consulte o Portal Consular do Itamaraty sobre exigência de visto e validade mínima do passaporte",
+          "Solicite ou renove seu passaporte comum no site oficial da Polícia Federal (Gov.br)"
+        ]
+      },
+      {
+        day: 2,
+        title: "Fase 2: Passagens Aéreas & Hospedagem (3 a 4 meses antes)",
+        activities: [
+          "Pesquise voos evitando conexões muito apertadas (mínimo de 2h30 para voos internacionais)",
+          "Reserve hotel ou pousada com cancelamento grátis e localização próxima ao transporte público",
+          "Salve o endereço completo e o voucher da reserva na memória do celular para a imigração"
+        ]
+      },
+      {
+        day: 3,
+        title: "Fase 3: Seguro Viagem, Chip eSIM & Câmbio (1 a 2 meses antes)",
+        activities: [
+          "Contrate o Seguro Viagem internacional obrigatório com assistência médica e telemedicina",
+          "Ative o chip digital eSIM internacional para chegar conectado logo no aeroporto",
+          "Abra conta global internacional (ex: Wise/Nomad) e compre a moeda gradualmente para fazer preço médio"
+        ]
+      },
+      {
+        day: 4,
+        title: "Fase 4: Roteiro, Documentos Offline & Mala (Na semana do voo)",
+        activities: [
+          "Monte a programação dia a dia e compre ingressos de atrações concorridas com antecedência",
+          "Baixe passagens, apólice do seguro, comprovante de hospedagem e mapas offline no celular",
+          "Arrume a mala de mão de 10kg usando nosso Checklist Interativo e pese na balança digital"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Validade Mínima do Passaporte (Regra dos 6 Meses)",
+        description: "A maioria dos países (como Europa e EUA) exige que o passaporte tenha validade mínima de 6 meses a partir da data de retorno ao Brasil."
+      },
+      {
+        title: "Portal Consular do MRE (Fonte Oficial)",
+        description: "Nunca confie em vídeos antigos para regras de entrada. Sempre consulte o Portal Consular do Itamaraty (gov.br/mre) e o consulado oficial do país."
+      },
+      {
+        title: "Seguro Viagem Internacional (Obrigatório em muitos países)",
+        description: "Na Europa (Espaço Schengen), o seguro com cobertura mínima de 30 mil euros é obrigatório por lei para turistas brasileiros."
+      },
+      {
+        title: "Regras de Dinheiro em Espécie (Banco Central)",
+        description: "Viajantes podem sair do Brasil com até US$ 10.000 (ou equivalente em outra moeda) em espécie sem necessidade de declaração à Receita Federal."
+      }
+    ],
+    content: [
+      "<p>A primeira viagem internacional costuma vir acompanhada de muitas dúvidas: <strong>devo solicitar o passaporte antes de escolher o destino? É melhor comprar dólar ou esperar? Preciso de visto? Seguro viagem é obrigatório? Como usar o celular fora do Brasil?</strong></p><p>A boa notícia é que você não precisa resolver tudo ao mesmo tempo. Organizando as etapas na ordem certa, fica muito mais fácil evitar gastos desnecessários e descobrir com antecedência se existe alguma exigência para entrar no país escolhido.</p><p>Neste guia completo do <strong>Malas Prontas</strong>, você vai encontrar um passo a passo simples e à prova de erros para planejar sua primeira viagem internacional, desde a escolha do destino até o momento do embarque.</p><div class=\"bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl my-4 text-sm text-amber-900\"><strong>💡 Resposta rápida:</strong> primeiro escolha o destino e verifique passaporte, visto e demais requisitos de entrada. Depois, providencie o passaporte na Polícia Federal, compre passagens e hospedagem, contrate o seguro viagem, organize a internet com eSIM e só então monte uma estratégia de câmbio.</div>",
+
+      "<h3>A ordem ideal para planejar sua primeira viagem internacional</h3><p>Seguir este cronograma evita que você gaste dinheiro com passagens antes de ter o passaporte aprovado ou compre a moeda errada:</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Etapa</th><th class=\"p-3 text-left border-b border-stone-200\">O que fazer</th><th class=\"p-3 text-left border-b border-stone-200\">Quando começar</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">1</td><td class=\"p-3 text-stone-900 font-semibold\">Escolher destino, datas aproximadas e orçamento</td><td class=\"p-3 text-stone-600\">Primeiro passo (6 meses antes)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">2</td><td class=\"p-3 text-stone-900 font-semibold\">Verificar passaporte, visto e requisitos de entrada</td><td class=\"p-3 text-stone-600\">Antes de comprar qualquer coisa</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">3</td><td class=\"p-3 text-stone-900 font-semibold\">Solicitar ou renovar o passaporte na Polícia Federal</td><td class=\"p-3 text-stone-600\">O quanto antes (leva até 30 dias)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">4</td><td class=\"p-3 text-stone-900 font-semibold\">Comprar passagem aérea e reservar hospedagem</td><td class=\"p-3 text-stone-600\">Depois de validar os documentos</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">5</td><td class=\"p-3 text-stone-900 font-semibold\">Contratar seguro viagem internacional</td><td class=\"p-3 text-stone-600\">Após definir destino e datas</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">6</td><td class=\"p-3 text-stone-900 font-semibold\">Planejar dinheiro, cartões globais e câmbio</td><td class=\"p-3 text-stone-600\">Algumas semanas antes (compras graduais)</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">7</td><td class=\"p-3 text-stone-900 font-semibold\">Resolver internet (eSIM), transporte e ingressos</td><td class=\"p-3 text-stone-600\">Antes do embarque</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-orange-600\">8</td><td class=\"p-3 text-stone-900 font-semibold\">Organizar documentos offline e fazer a mala</td><td class=\"p-3 text-stone-600\">Na semana da viagem</td></tr></tbody></table></div>",
+
+      "<h3>1. Escolha o destino e faça uma estimativa de orçamento</h3><p>Antes de pensar em dólar, euro ou qualquer outra moeda, defina <strong>para onde você quer ir, por quantos dias e quanto pode gastar</strong>. O orçamento deve incluir passagem aérea, hospedagem, alimentação, transporte, passeios, seguro, taxas, compras e uma reserva para imprevistos.</p><p>Para uma primeira experiência internacional, muitos viajantes optam pela América do Sul (como <a href=\"/post/buenos-aires-argentina-roteiro-completo-economico\" class=\"text-orange-600 underline font-bold\">Buenos Aires na Argentina</a>, Santiago no Chile ou Montevidéu no Uruguai) pela proximidade, facilidade de idioma e custo mais acessível. Mas você também pode começar pela Europa ou Estados Unidos, desde que planeje os custos com antecedência.</p><div class=\"bg-stone-100 border border-stone-200 rounded-2xl p-5 my-4\"><h4 class=\"font-bold text-stone-900 text-sm mb-2\">🧮 Quanto guardar por mês?</h4><p class=\"text-xs text-stone-600 leading-relaxed\">Use o nosso <a href=\"/calculadora-viagem\" class=\"font-bold text-orange-600 underline\">Simulador de Custos de Viagem</a> para calcular os gastos diários estimados. Divida o valor total pelo número de meses até a viagem para criar sua meta mensal de economia sem comprometer o orçamento da sua casa.</p></div>",
+
+      "<h3>2. Verifique passaporte, visto e requisitos de entrada</h3><p>Essa é a etapa mais importante antes de gastar um único centavo. Consulte fontes oficiais para descobrir se o país exige passaporte com validade mínima de 6 meses, visto consular, autorização eletrônica (como o ESTA nos EUA ou ETIAS na Europa), comprovante de vacinas, seguro viagem obrigatório ou comprovante de hospedagem na imigração.</p><p>O Ministério das Relações Exteriores mantém o <strong>Portal Consular do Itamaraty</strong>, que é o canal oficial para verificar exigências consulares para cidadãos brasileiros no exterior.</p><div class=\"bg-red-50 border-l-4 border-red-500 p-4 rounded-r-2xl my-4 text-xs text-red-900\"><strong>⚠️ Atenção:</strong> Regras de entrada podem mudar a qualquer momento. Não confie apenas em relatos antigos da internet. Sempre consulte a embaixada ou consulado do país antes de comprar a passagem.</div>",
+
+      "<h3>3. Solicite ou renove seu passaporte</h3><p>Se o destino exigir passaporte, solicite o documento pelo serviço oficial da <strong>Polícia Federal no portal Gov.br</strong>. O processo é 100% oficial e inclui:</p><ol class=\"space-y-1.5 my-3 pl-5 list-decimal text-sm text-stone-700\"><li>Preenchimento do formulário no site da Polícia Federal;</li><li>Pagamento da taxa GRU (Guia de Recolhimento da União);</li><li>Agendamento do atendimento presencial no posto da PF mais próximo;</li><li>Comparecimento para coleta de biometria e foto;</li><li>Retirada presencial do passaporte após a confecção (geralmente de 6 a 15 dias úteis).</li></ol><div class=\"bg-blue-50 border border-blue-200 rounded-2xl p-4 my-4 text-xs text-blue-900\"><strong>📘 Preciso de passaporte para países do Mercosul?</strong> Brasileiros podem viajar para Argentina, Uruguai, Paraguai, Chile, Peru, Bolívia, Colômbia e Equador apenas com o <strong>RG original em ótimo estado e foto recente</strong> (emitido há menos de 10 anos). CNH e certidão de nascimento NÃO são aceitas na imigração internacional. Mesmo assim, viajar com passaporte facilita muito os trâmites.</div>",
+
+      "<h3>4. Compre a passagem e reserve a hospedagem</h3><p>Com os documentos validados, pesquise passagens com flexibilidade de datas. Fique atento ao tempo de conexão: em voos internacionais com troca de aeronave, conexões menores que 2 horas são arriscadas por conta do raio-X e da imigração intermediária.</p><p>Para a hospedagem, escolha locais próximos a linhas de metrô ou estações centrais. Salve o voucher em PDF no celular e imprima uma cópia física em inglês ou espanhol — os agentes de imigração costumam solicitar a confirmação de onde você vai ficar hospedado.</p>",
+
+      "<h3>5. Contrate o Seguro Viagem Internacional</h3><p>No exterior, você não conta com o SUS e os custos de atendimento médico de emergência nos EUA ou na Europa podem ultrapassar facilmente dezenas de milhares de reais por uma simples consulta com exames.</p><p>O seguro viagem oferece cobertura completa para acidentes, consultas de urgência, internação hospitalar, telemedicina 24h em português, despesas odontológicas e indenização por extravio ou atraso de bagagem.</p><div class=\"bg-gradient-to-r from-blue-900 to-indigo-950 text-white rounded-2xl p-6 my-6 flex flex-col sm:flex-row items-center justify-between gap-4\"><div><span class=\"text-xs font-bold uppercase tracking-wider text-blue-300\">Desconto Exclusivo Malas Prontas</span><h4 class=\"text-lg font-bold mt-1\">Seguro Viagem Internacional com 25% OFF</h4><p class=\"text-xs text-blue-200 max-w-md mt-1\">Cobertura médica global em português, telemedicina e proteção de bagagem pela EKTA.</p></div><a href=\"https://ektatraveling.tpo.lu/QynkhjN8\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"bg-blue-500 hover:bg-blue-400 text-white font-bold text-xs px-5 py-3 rounded-xl shrink-0 shadow-md transition-all\">Cotar com 25% de Desconto ➔</a></div>",
+
+      "<h3>6. Estratégia de Câmbio: Como Levar Dinheiro</h3><p>A melhor recomendação para não perder dinheiro com taxas abusivas de aeroporto é diversificar seus meios de pagamento:</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Forma de Pagamento</th><th class=\"p-3 text-left border-b border-stone-200\">Como Usar na Viagem</th><th class=\"p-3 text-left border-b border-stone-200\">Vantagem</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">💳 Conta Global / Cartão Multimoeda</td><td class=\"p-3 text-stone-700\">Compras do dia a dia no débito e saques no exterior (ex: Wise/Nomad)</td><td class=\"p-3 text-emerald-700 font-bold text-xs\">IOF de apenas 1,1% e câmbio comercial mais barato</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">💵 Dinheiro em Espécie (Papel-moeda)</td><td class=\"p-3 text-stone-700\">Levar de 15% a 25% do total para feiras, gorjetas e pequenos comércios</td><td class=\"p-3 text-stone-600 text-xs\">Segurança caso o cartão não passe na máquina</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">💳 Cartão de Crédito Brasileiro</td><td class=\"p-3 text-stone-700\">Habilitar aviso de viagem no app do banco para emergências e caução de hotel</td><td class=\"p-3 text-stone-600 text-xs\">Exigido na maioria dos hotéis e locadoras de carro</td></tr></tbody></table></div><div class=\"bg-amber-50 border border-amber-200 rounded-2xl p-4 my-4 text-xs text-amber-900\"><strong>💰 Regra de Ouro:</strong> Nunca troque todo o seu dinheiro nas casas de câmbio dentro da área de desembarque do aeroporto, pois elas praticam as piores cotações e taxas de spread do mercado.</div>",
+
+      "<h3>7. Internet & Comunicação: Chip eSIM Internacional</h3><p>Chegar ao exterior sem internet dificulta chamar transporte por aplicativo, abrir o Google Maps, traduzir placas ou acessar vouchers de hospedagem. Para não pagar fortunas com o roaming tradicional da sua operadora:</p><p>Use um <strong>chip virtual eSIM internacional (Airalo)</strong> que você ativa no Brasil direto pelo aplicativo antes de embarcar. Assim que o avião pousa e você desativa o modo avião, seu celular já conecta automaticamente na rede 4G/5G local com velocidade máxima.</p><div class=\"bg-teal-50 border border-teal-200 rounded-2xl p-5 my-4 flex flex-col sm:flex-row items-center justify-between gap-4\"><div><h4 class=\"font-bold text-teal-950 text-sm\">Chegue conectado com o eSIM Airalo</h4><p class=\"text-xs text-teal-800 mt-0.5\">Planos de internet pré-pagos para mais de 200 países sem precisar trocar de chip físico.</p></div><a href=\"https://airalo.tpo.lu/5hX1qKLi\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-xs transition-all shrink-0\">Ver Planos eSIM com Desconto ➔</a></div>",
+
+      "<h3>8. Monte o Roteiro & Faça a Mala Perfeita</h3><p>Não tente abraçar o mundo na primeira viagem. Escolha de 2 a 3 atrações principais por dia para curtir os cafés, parques e o estilo de vida da cidade com calma. Use nosso <a href=\"/roteiro-personalizado\" class=\"font-bold text-orange-600 underline\">Gerador de Roteiro com IA</a> para planejar os trajetos de forma otimizada.</p><p>Na hora de arrumar as malas, consulte nosso guia dos <a href=\"/post/kits-essenciais-de-viagem\" class=\"font-bold text-orange-600 underline\">Kits Essenciais de Viagem</a> e a <a href=\"/vitrine\" class=\"font-bold text-orange-600 underline\">Vitrine de Equipamentos</a> para garantir adaptadores universais de tomadas, cubos organizadores, balança digital e rastreadores Smart Tag.</p>",
+
+      "<h3>Checklist Definitivo da Primeira Viagem Internacional</h3><p>Confira se você marcou todos os itens antes de sair rumo ao aeroporto:</p><ul class=\"space-y-2 my-4 pl-2\"><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Passaporte válido por pelo menos 6 meses (ou RG em ótimo estado para Mercosul)</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Visto ou autorização eletrônica aprovada (quando aplicável)</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Passagens de ida e volta confirmadas com franquia de bagagem conferida</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Comprovante de hospedagem salvo em PDF offline e impresso</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Apólice de Seguro Viagem internacional contratada</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Cartões habilitados para uso no exterior e conta global abastecida</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Chip eSIM instalado no celular para internet imediata</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Adaptador universal de tomadas bivolt na mala de mão</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Mala pesada na balança digital respeitando o limite da companhia</li></ul><div class=\"bg-stone-900 text-white rounded-3xl p-8 my-8 text-center space-y-4\"><h3 class=\"text-2xl font-extrabold text-amber-400\">Boa Viagem! Suas malas estão prontas?</h3><p class=\"text-sm text-stone-300 max-w-xl mx-auto\">Acesse gratuitamente nossas ferramentas para calcular custos, gerar roteiros e fazer o checklist da sua bagagem.</p><div class=\"flex flex-wrap items-center justify-center gap-4 pt-2\"><a href=\"/checklist\" class=\"bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm px-6 py-3 rounded-xl shadow-lg transition-all\">Abrir Checklist da Mala ➔</a><a href=\"/vitrine\" class=\"bg-stone-800 hover:bg-stone-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-stone-700 transition-all\">Ver Vitrine de Viagem</a></div></div>"
+    ]
+  }
+,
+  {
+    id: "14",
+    slug: "kits-essenciais-de-viagem",
+    title: "Kits Essenciais de Viagem: O Que Levar Para Viajar de Avião com Mais Praticidade",
+    subtitle: "Descubra os kits essenciais de viagem para organizar a mala, viajar com mais conforto e evitar perrengues e taxas no aeroporto. Confira o que realmente vale a pena levar.",
+    destination: "Guia de Bagagem & Acessórios",
+    stateCountry: "Dicas de Viagem de Avião & Aeroportos",
+    region: "Sudeste",
+    category: "Mochilão",
+    coverImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em montagem de bagagem inteligente de 10kg e viagens descomplicadas."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Investimento Único Inteligente (Itens duráveis que evitam taxas de bagagem despachada em todas as viagens)",
+    bestSeason: "O ano todo (indispensável para qualquer voo nacional ou internacional)",
+    recommendedDays: "Para viagens de 3 a 30 dias",
+    featured: true,
+    highlights: [
+      "Kit Organização: cubos organizadores, nécessaires e sacos de compressão a vácuo",
+      "Kit Bagagem de Mão: mochila executiva antifurto 45L, balança digital e smart tag de rastreamento",
+      "Kit Conforto em Voo: travesseiro de pescoço ergonômico, fones de ouvido e máscara de dormir",
+      "Kit Eletrônicos & Segurança: adaptador universal para +150 países, porta-documentos e power bank seguro"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1553531384-cc64ac80f931?auto=format&fit=crop&w=1200&q=80",
+        caption: "Mala de viagem de bordo 10kg aberta e organizada com cubos divisórios e nécessaires"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+        caption: "Mochila executiva de cabine e acessórios essenciais para voos confortáveis e produtivos"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
+        caption: "Organização impecável da mala com kits de frascos, documentos e itens essenciais"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Planejamento & Escolha dos Kits pelo Clima",
+        activities: [
+          "Confira a previsão do tempo no destino e a política de bagagem da companhia aérea (tamanho e peso)",
+          "Separe os kits essenciais básicos: Organização, Bagagem de Mão, Conforto, Segurança e Eletrônicos",
+          "Adicione itens extras para destinos específicos (praia, ecoturismo, frio ou mochilão)"
+        ]
+      },
+      {
+        day: 2,
+        title: "Organização das Roupas em Cubos & Vácuo",
+        activities: [
+          "Dobre e acomode as peças por categorias nos cubos organizadores",
+          "Comprima casacos pesados e peças volumosas com sacos a vácuo",
+          "Transfira shampoos, cremes e sabonetes líquidos para frascos de até 100ml"
+        ]
+      },
+      {
+        day: 3,
+        title: "Montagem do Item Pessoal & Pesagem Digital",
+        activities: [
+          "Coloque na mochila de mão: documentos, carregador, adaptador, remédios e 1 muda de roupa",
+          "Ligue a Smart Tag e guarde-a no bolso interno da bagagem",
+          "Pese a mala de bordo com a Balança Digital portátil para garantir menos de 10kg"
+        ]
+      },
+      {
+        day: 4,
+        title: "Embarque Ágil & Voo Relaxante",
+        activities: [
+          "Passe pelo raio-X com líquidos e eletrônicos fáceis de retirar da mochila",
+          "Acomode a mala de 10kg no bagageiro superior e a mochila embaixo do assento",
+          "Use a almofada de pescoço ergonômica, fones e máscara para descansar no voo"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Padrão Oficial de Bagagem ANAC (Brasil)",
+        description: "A mala de bordo deve medir até 55 x 35 x 25 cm (com rodinhas) e pesar no máximo 10 kg. A mochila de item pessoal deve caber embaixo do assento à frente."
+      },
+      {
+        title: "Regras de Power Bank no Avião",
+        description: "Baterias portáteis devem viajar obrigatoriamente na bagagem de mão (nunca despachadas). A LATAM permite até 2 unidades de no máximo 100 Wh por pessoa."
+      },
+      {
+        title: "Regra de Líquidos em Voos",
+        description: "Em voos internacionais e na maioria dos trajetos, líquidos na bagagem de mão devem estar em frascos individuais de no máximo 100ml, dentro de embalagem transparente."
+      },
+      {
+        title: "Documentos e Reservas Offline",
+        description: "Salve PDFs das passagens, vouchers de hotel, apólice do seguro viagem e cópia do passaporte/RG na memória do celular para abrir mesmo sem sinal."
+      }
+    ],
+    content: [
+      "<p>Viajar de avião fica muito mais simples quando você se prepara com os itens certos. Não é preciso comprar dezenas de acessórios ou lotar a mala com produtos que serão usados uma única vez. O segredo está em montar <strong>kits essenciais de viagem</strong> de acordo com a duração do voo, o tipo de bagagem e o destino escolhido.</p><p>Neste guia do <strong>Malas Prontas</strong>, você vai encontrar sugestões práticas para organizar a bagagem, proteger seus documentos, manter os eletrônicos carregados e viajar com mais conforto. Também separamos kits específicos para praia, trilhas, destinos frios e viagens internacionais.</p><div class=\"bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl my-4 text-sm text-amber-900\"><strong>💡 Dica rápida:</strong> antes de comprar qualquer acessório, confira o tamanho permitido para sua bagagem, o peso da mala e as regras da companhia aérea do seu voo. Acesse nosso <a href=\"/checklist\" class=\"font-bold underline text-amber-950\">Checklist Interativo da Mala</a> para não esquecer nada!</div>",
+
+      "<h3>Quais são os kits essenciais para uma viagem de avião?</h3><p>Para a maioria das viagens, cinco kits resolvem as principais necessidades do passageiro: organização da mala, bagagem de mão, conforto durante o voo, documentos e eletrônicos. A seleção abaixo prioriza produtos compactos, reutilizáveis e fáceis de aproveitar em diferentes destinos.</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Kit</th><th class=\"p-3 text-left border-b border-stone-200\">Principais itens</th><th class=\"p-3 text-left border-b border-stone-200\">Indicado para</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">📦 Kit organização</td><td class=\"p-3 text-stone-700\">Cubos organizadores, nécessaire e frascos reutilizáveis</td><td class=\"p-3 text-stone-600\">Qualquer tipo de viagem</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🎒 Kit bagagem de mão</td><td class=\"p-3 text-stone-700\">Mochila 45L, smart tag, cadeado e balança portátil</td><td class=\"p-3 text-stone-600\">Quem quer evitar excesso de peso e facilitar o embarque</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">😴 Kit conforto</td><td class=\"p-3 text-stone-700\">Fone de ouvido, máscara de olhos, almofada de pescoço e protetor auricular</td><td class=\"p-3 text-stone-600\">Voos noturnos, longos ou com conexão</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🛡️ Kit segurança</td><td class=\"p-3 text-stone-700\">Porta-documentos, doleira e rastreador Smart Tag</td><td class=\"p-3 text-stone-600\">Viagens internacionais, mochilão e deslocamentos intensos</td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🔌 Kit eletrônicos</td><td class=\"p-3 text-stone-700\">Carregador, cabos, adaptador universal e power bank</td><td class=\"p-3 text-stone-600\">Viagens com uso intenso do celular e conexões</td></tr></tbody></table></div>",
+
+      "<h3>1. Kit organização da mala</h3><p>O primeiro kit deve ajudar você a encontrar tudo sem precisar revirar a bagagem. Os <strong>cubos organizadores</strong> separam roupas por categoria, pessoa ou momento da viagem. Você pode colocar camisetas em um cubo, roupas íntimas em outro e peças de praia ou de frio em um terceiro.</p><p>Uma <strong>nécessaire</strong>, de preferência lavável e com divisórias, mantém produtos de higiene e pequenos objetos em um só lugar. Para a bagagem de mão, os <strong>frascos reutilizáveis</strong> ajudam a levar shampoo, condicionador e outros líquidos em tamanhos menores até 100ml. Identifique cada frasco para evitar confusão durante a viagem.</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Produto</th><th class=\"p-3 text-left border-b border-stone-200\">Como usar melhor</th><th class=\"p-3 text-left border-b border-stone-200\">Onde Encontrar</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">Cubos organizadores</td><td class=\"p-3 text-stone-700\">Separe roupas por categoria ou por dia do roteiro</td><td class=\"p-3\"><a href=\"/vitrine\" class=\"inline-block bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs\">Ver Cubos na Vitrine</a></td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">Nécessaire lavável</td><td class=\"p-3 text-stone-700\">Reserve para higiene, remédios e pequenos objetos</td><td class=\"p-3\"><a href=\"/vitrine\" class=\"inline-block bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs\">Escolher Nécessaire</a></td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">Sacos a vácuo com bomba</td><td class=\"p-3 text-stone-700\">Comprime até 80% do volume de casacos e edredons</td><td class=\"p-3\"><a href=\"/vitrine\" class=\"inline-block bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs\">Ver Sacos a Vácuo</a></td></tr></tbody></table></div><p><strong>Vale a pena comprar?</strong> Sim, especialmente se você viaja com frequência ou costuma trocar de hospedagem. O ganho principal não é apenas economizar espaço, mas também reduzir o tempo para arrumar e desfazer a mala no hotel.</p>",
+
+      "<h3>2. Kit bagagem de mão</h3><p>A bagagem de mão precisa ser prática, leve e fácil de acessar. Uma <strong>mochila de viagem compatível com o item pessoal</strong> (como as mochilas antifurto de 45L) costuma ser muito útil porque deixa documentos, carregadores, remédios e uma muda de roupa ao alcance durante o voo, cabendo perfeitamente embaixo do assento.</p><p>A <strong>Smart Tag de rastreamento</strong> facilita a localização da bagagem pelo celular, enquanto a <strong>balança portátil digital</strong> permite conferir o peso antes de sair de casa, evitando taxas surpresa de excesso de bagagem no check-in.</p><div class=\"bg-orange-50 border border-orange-200 rounded-2xl p-6 my-6 text-center\"><h4 class=\"font-extrabold text-orange-950 text-base mb-1\">Vai viajar nos próximos dias?</h4><p class=\"text-xs text-orange-800 mb-3\">Confira a lista completa de roupas e documentos antes de fechar o zíper da sua mala.</p><a href=\"/checklist\" class=\"inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all\">Abrir Checklist da Mala Grátis ➔</a></div>",
+
+      "<h3>3. Kit conforto para o voo</h3><p>Mesmo em voos curtos, alguns acessórios tornam a experiência muito mais agradável. Um <strong>fone de ouvido</strong> ajuda a ouvir música, assistir a filmes ou simplesmente reduzir o som ambiente da turbina do avião. Para voos noturnos e viagens longas, um bom fone faz toda a diferença.</p><p>A <strong>almofada de pescoço</strong> é indispensável para quem pretende dormir sentado sem acordar com torcicolo, enquanto a <strong>máscara de olhos</strong> ajuda a bloquear a luz da cabine. O protetor auricular é uma alternativa compacta para quem prefere reduzir ruídos sem usar fones de ouvido por muitas horas consecutivas.</p><p>Para não ocupar espaço interno precioso na mala, escolha almofadas com botão ou encaixe que possam ser presas na alça externa da mochila de cabine.</p>",
+
+      "<h3>4. Kit segurança para documentos e pertences</h3><p>Documentos, cartões e celular merecem atenção especial durante todo o deslocamento. Um <strong>porta-documentos com proteção RFID</strong> ajuda a manter passaporte, documento de identidade, cartões e comprovantes de reserva juntos e seguros contra clonagem por aproximação.</p><p>Para trechos com muito deslocamento urbano ou transporte público, uma <strong>doleira ou carteira slim antifurto</strong> pode ser muito mais discreta do que deixar tudo em bolsos externos da mochila.</p><p>Também é fundamental ter cópias digitais em PDF de documentos, reservas de hotéis, passagens aéreas e apólice do seguro viagem armazenadas offline no celular.</p><div class=\"bg-blue-50 border border-blue-200 rounded-2xl p-4 my-4 text-xs text-blue-900\"><strong>🔒 Dica de Segurança:</strong> Sempre fotografe sua mala pronta aberta e fechada antes de sair de casa e guarde a foto no celular. Caso ocorra qualquer extravio com a companhia aérea, você tem a prova visual exata de todo o conteúdo.</div>",
+
+      "<h3>5. Kit eletrônicos de viagem</h3><p>O smartphone concentra passagem aérea, reserva de hotel, mapas de GPS, tradutor de idiomas, câmeras e comunicação. Por isso, um kit eletrônico compacto é indispensável para todo viajante moderno.</p><p>Leve um carregador de tomada rápido, cabos reforçados e um <strong>adaptador universal de tomadas bivolt</strong> com pinos retráteis compatíveis com mais de 150 países (EUA, Europa, Reino Unido, Ásia e América Latina).</p><p>O <strong>power bank</strong> (bateria portátil) é extremamente útil, mas exige atenção rigorosa às normas da aviação civil: a <strong>LATAM</strong> e a <strong>ANAC</strong> determinam que power banks devem viajar <em>obrigatoriamente na bagagem de mão</em> (nunca despachados no porão) e com capacidade limite de até 100 Wh (cerca de 20.000 mAh).</p>",
+
+      "<h3>Kits essenciais por tipo de destino</h3><p>O kit básico atende à maioria das viagens, mas alguns destinos pedem acessórios adicionais específicos. Confira as recomendações:</p><div class=\"overflow-x-auto my-6\"><table class=\"min-w-full border border-stone-200 rounded-2xl overflow-hidden shadow-xs\"><thead class=\"bg-stone-100 text-stone-900 font-bold\"><tr><th class=\"p-3 text-left border-b border-stone-200\">Tipo de Viagem</th><th class=\"p-3 text-left border-b border-stone-200\">Itens Complementares</th><th class=\"p-3 text-left border-b border-stone-200\">Roteiro Relacionado</th></tr></thead><tbody class=\"divide-y divide-stone-100\"><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🏖️ Praia & Ilhas</td><td class=\"p-3 text-stone-700\">Capa impermeável para celular, saco estanque, toalha de microfibra e protetor solar</td><td class=\"p-3\"><a href=\"/post/arraial-do-cabo-caribe-brasileiro-guia-completo\" class=\"text-orange-600 underline font-bold text-xs\">Guia de Arraial do Cabo</a></td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">🌲 Ecoturismo & Trilhas</td><td class=\"p-3 text-stone-700\">Mochila de ataque, repelente forte (Icaridina), lanterna e garrafa térmica</td><td class=\"p-3\"><a href=\"/post/bonito-ms-guia-flutuacao-ecoturismo\" class=\"text-orange-600 underline font-bold text-xs\">Guia de Bonito MS</a></td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">❄️ Serra & Frio</td><td class=\"p-3 text-stone-700\">Sacos a vácuo para casacos, segunda pele térmica, meias de lã e protetor labial</td><td class=\"p-3\"><a href=\"/post/gramado-canela-guia-completo-serra-gaucha\" class=\"text-orange-600 underline font-bold text-xs\">Guia de Gramado & Canela</a></td></tr><tr class=\"hover:bg-stone-50\"><td class=\"p-3 font-bold text-stone-900\">✈️ Internacional</td><td class=\"p-3 text-stone-700\">Adaptador universal, chip eSIM internacional, porta-passaporte e seguro viagem</td><td class=\"p-3\"><a href=\"/post/buenos-aires-argentina-roteiro-completo-economico\" class=\"text-orange-600 underline font-bold text-xs\">Guia de Buenos Aires</a></td></tr></tbody></table></div>",
+
+      "<h3>Checklist final dos kits essenciais</h3><p>Antes de sair de casa para o aeroporto, faça a checagem rápida dos 9 pontos cruciais:</p><ul class=\"space-y-2 my-4 pl-2\"><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Roupas separadas em cubos organizadores por categoria</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Nécessaire e frascos de até 100ml preparados</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Documentos e reservas salvos offline no celular</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Carregador rápido, cabos e adaptador universal na mochila</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Power bank de até 100 Wh na bagagem de mão</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Almofada de pescoço, fone e máscara acessíveis</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Mala identificada com tag de contato e Smart Tag ligada</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Peso conferido na balança digital (máx. 10kg)</li><li class=\"flex items-center gap-2 text-sm text-stone-800\">✅ Seguro viagem e chip eSIM contratados para o exterior</li></ul><div class=\"bg-stone-900 text-white rounded-3xl p-8 my-8 text-center space-y-4\"><h3 class=\"text-2xl font-extrabold text-amber-400\">Pronto para montar seus kits de viagem?</h3><p class=\"text-sm text-stone-300 max-w-xl mx-auto\">Conheça todos os produtos testados e aprovados pelo Canal Malas Prontas com os melhores preços e entrega rápida no Mercado Livre.</p><div class=\"flex flex-wrap items-center justify-center gap-4 pt-2\"><a href=\"/vitrine\" class=\"bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm px-6 py-3 rounded-xl shadow-lg transition-all\">Ver Todos os Produtos na Vitrine ➔</a><a href=\"/checklist\" class=\"bg-stone-800 hover:bg-stone-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-stone-700 transition-all\">Abrir Checklist da Mala</a></div></div>"
+    ]
+  }
+,
+  {
+    id: "10",
+    slug: "arraial-do-cabo-caribe-brasileiro-guia-completo",
+    title: "Arraial do Cabo: O Guia Completo do Caribe Brasileiro Sem Gastar Muito",
+    subtitle: "Águas azul-turquesa cristalinas, praias paradisíacas e o segredo para fazer o passeio de barco mais incrível da Região dos Lagos.",
+    destination: "Arraial do Cabo",
+    stateCountry: "Rio de Janeiro, Brasil",
+    region: "Sudeste",
+    category: "Praia",
+    coverImage: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Caçadores de praias secretas e roteiros inteligentes que cabem no bolso."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "8 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Econômico a Moderado (Média de R$ 190 - R$ 320/dia por pessoa incluindo pousada e passeios)",
+    bestSeason: "Ano todo (Dezembro a Março é mais quente; Abril a Novembro tem águas mais calmas e menos vento)",
+    recommendedDays: "3 a 5 dias",
+    featured: true,
+    highlights: [
+      "Prainhas do Pontal do Atalaia: a famosa escadaria de madeira com vista deslumbrante",
+      "Praia do Farol: uma das praias mais perfeitas e preservadas do Brasil (acesso restrito da Marinha)",
+      "Praia do Forno: trilha leve com mirante panorâmico e águas calmas para snorkel",
+      "Pôr do sol cinematográfico no Mirante da Praia Grande e Pontal do Atalaia"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
+        caption: "As águas calmas e transparentes da deslumbrante Praia do Forno"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+        caption: "Barcos tradicionais navegando pelas águas azul-turquesa da baía de Arraial"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=1200&q=80",
+        caption: "O espetacular pôr do sol nas falésias e mirantes do Pontal do Atalaia"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada em Arraial & O Famoso Passeio de Barco",
+        activities: [
+          "Embarque pela manhã na Praia dos Anjos no passeio de barco tradicional",
+          "Desembarque exclusivo na Ilha do Farol (45 min de banho no paraíso de areia branca)",
+          "Contemplação da Fenda de Nossa Senhora e Gruta Azul",
+          "Parada para mergulho nas Prainhas do Pontal do Atalaia",
+          "Almoço com frutos do mar frescos e pastel de camarão na orla dos Anjos"
+        ]
+      },
+      {
+        day: 2,
+        title: "Trilha da Praia do Forno & Mirante Secreto",
+        activities: [
+          "Trilha de 15 minutos a partir do porto da Praia dos Anjos",
+          "Foto clássica no mirante no topo do morro com vista total da enseada",
+          "Dia inteiro relaxando na Praia do Forno com aluguel de caiaque e snorkel",
+          "Fim de tarde assistindo ao pôr do sol na Praia Grande com petiscos nos quiosques"
+        ]
+      },
+      {
+        day: 3,
+        title: "Prainhas do Pontal por Terra & Gruta do Amor",
+        activities: [
+          "Subida até o Pontal do Atalaia (de carro, táxi ou Uber)",
+          "Descida da lendária escadaria de madeira de 255 degraus",
+          "Caminhada até a misteriosa Gruta do Amor na maré baixa",
+          "Passeio noturno pela Praça do Cinto e jantar em restaurante de massas caseiras"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Temperatura da água: o fenômeno da ressurgência",
+        description: "Arraial do Cabo tem águas cristalinas estilo Caribe por causa da ressurgência (correntes profundas e ricas em vida marinha). Por isso, a água costuma ser fresca (18°C a 22°C). Em dias quentes de sol, é o banho mais refrescante do Brasil."
+      },
+      {
+        title: "Como economizar na hospedagem",
+        description: "Hospedar-se perto da Praia Grande ou Praia dos Anjos custa bem menos do que pousadas em Búzios. Você pode fazer base em Arraial e visitar Cabo Frio (15 min) e Búzios (35 min) facilmente."
+      },
+      {
+        title: "Chegue cedo nas Prainhas do Pontal",
+        description: "O acesso de veículos ao Pontal do Atalaia tem limite diário de carros. Se for de carro próprio, chegue antes das 08h30 para garantir entrada e estacionamento tranquilo."
+      }
+    ],
+    content: [
+      "Arraial do Cabo é justamente apelidado de 'Caribe Brasileiro'. Localizada a cerca de 160 km da cidade do Rio de Janeiro, na famosa Região dos Lagos, a cidade possui praias com tons de azul e turquesa que rivalizam com as ilhas mais paradisíacas do mundo.",
+      "A grande vantagem de Arraial sobre outros destinos luxuosos é a simplicidade acolhedora de uma vila de pescadores: pousadas com excelente custo-benefício, gastronomia farta de frutos do mar a preços honestos e praias de tirar o fôlego que podem ser exploradas tanto por trilhas gratuitas quanto por passeios de barco muito acessíveis.",
+      "Com um planejamento de 3 a 4 dias, você consegue vivenciar o melhor da vida marinha (tartarugas, golfinhos e até arraias são vistos com facilidade nos mergulhos de snorkel) sem estourar o limite do cartão."
+    ]
+  },
+  {
+    id: "11",
+    slug: "bonito-ms-guia-flutuacao-ecoturismo",
+    title: "Bonito (MS): O Guia Definitivo do Ecoturismo e Rios Mais Transparentes do Mundo",
+    subtitle: "Como planejar sua viagem à capital do ecoturismo, melhores flutuações, grutas e como economizar nos passeios tabelados.",
+    destination: "Bonito e Serra da Bodoquena",
+    stateCountry: "Mato Grosso do Sul, Brasil",
+    region: "Centro-Oeste",
+    category: "Ecoturismo",
+    coverImage: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em expedições off-road e ecoturismo pelo coração do Brasil."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$$$",
+    budgetDescription: "Investimento Moderado a Alto (Média de R$ 450 - R$ 750/dia por pessoa com passeios e entradas)",
+    bestSeason: "Maio a Outubro (Período seco: águas mais transparentes e sem chuvas)",
+    recommendedDays: "5 a 6 dias",
+    featured: true,
+    highlights: [
+      "Flutuação no Rio Sucuri e Rio da Prata: sensação de voar em um aquário gigante de água doce",
+      "Gruta do Lago Azul: o cartão-postal místico com águas de um azul elétrico indescritível",
+      "Buraco das Araras: a maior dolina da América do Sul com centenas de araras-vermelhas voando",
+      "Cachoeiras da Serra da Bodoquena e Boca da Onça: a maior queda d'água do estado"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1563784462041-5f92ac8b675b?auto=format&fit=crop&w=1200&q=80",
+        caption: "As águas de azul intenso e estalactites milenares da Gruta do Lago Azul em Bonito"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80",
+        caption: "Trilhas suspensas e cachoeiras cristalinas na mata ciliar da Serra da Bodoquena"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada em Bonito & Gruta de São Miguel",
+        activities: [
+          "Transfer ou carro alugado a partir de Campo Grande (300 km) ou voo direto para Bonito",
+          "Check-in na pousada no centro da cidade",
+          "Passeio à tarde nas Grutas de São Miguel com passarela suspensa",
+          "Jantar no centro provando carne de jacaré e peixes do Pantanal"
+        ]
+      },
+      {
+        day: 2,
+        title: "Gruta do Lago Azul & Flutuação no Rio Sucuri",
+        activities: [
+          "Visita logo cedo à impressionante Gruta do Lago Azul",
+          "Flutuação no Rio Sucuri (eleito o rio de água mais cristalina do Brasil)",
+          "Almoço de fazenda tradicional com doce de leite caseiro",
+          "Tarde relaxante no Balneário Municipal nadando com piraputangas"
+        ]
+      },
+      {
+        day: 3,
+        title: "Recanto Ecológico Rio da Prata & Buraco das Araras",
+        activities: [
+          "Deslocamento até Jardim (50 km de Bonito)",
+          "Flutuação épica no Rio da Prata e no Olho d'Água cercado por cardumes de dourados",
+          "Almoço pantaneiro no receptivo da fazenda",
+          "Final de tarde contemplando o voo das araras-vermelhas no Buraco das Araras"
+        ]
+      },
+      {
+        day: 4,
+        title: "Circuito de Cachoeiras Boca da Onça",
+        activities: [
+          "Trilha ecológica de 4 km passando por 8 cachoeiras preservadas",
+          "Banho na piscina natural da Cachoeira Boca da Onça (156m de altura)",
+          "Almoço e descanso em redes sob a mata nativa"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Todos os passeios são tabelados por lei",
+        description: "Em Bonito, nenhuma agência pode cobrar mais caro ou dar desconto abaixo do preço oficial tabelado pela prefeitura (Voucher Único). Reserve os passeios mais concorridos (Lago Azul e Rio da Prata) com pelo menos 2 a 3 meses de antecedência."
+      },
+      {
+        title: "Alugar carro em Campo Grande economiza muito",
+        description: "Os atrativos ficam espalhados entre 15 e 60 km do centro da cidade. Pagar transfers diários para cada passeio custa uma fortuna. Alugar um carro econômico no aeroporto de Campo Grande compensa a viagem inteira."
+      },
+      {
+        title: "Protetor solar e repelente são proibidos nas nascentes",
+        description: "Para preservar a pureza absoluta dos rios e peixes, é proibido usar cremes ou protetores antes da flutuação. Use camisas de manga longa com proteção UV."
+      }
+    ],
+    content: [
+      "Bonito é a capital mundial da sustentabilidade e do ecoturismo responsável. Localizada no sudoeste do Mato Grosso do Sul, sobre um solo riquíssimo em rochas calcárias que funcionam como filtros naturais de água, a cidade abriga rios cuja transparência faz você se sentir flutuando no próprio ar.",
+      "A experiência de colocar máscara, snorkel e roupa de neoprene para descer a correnteza mansa dos rios, acompanhado por dourados, piraputangas e plantas aquáticas de verde brilhante, é considerada por viajantes do mundo todo uma das sensações mais mágicas do planeta.",
+      "Com seu sistema pioneiro de controle de capacidade diária em cada atrativo, Bonito garante uma viagem organizada, sem aglomerações e com natureza 100% intocada."
+    ]
+  },
+  {
+    id: "12",
+    slug: "foz-do-iguacu-cataratas-triplice-fronteira",
+    title: "Foz do Iguaçu: O Roteiro Perfeito de 4 Dias Entre Brasil, Argentina e Paraguai",
+    subtitle: "Cataratas dos dois lados, Macuco Safari, compras inteligentes em Ciudad del Este e o melhor da gastronomia de fronteira.",
+    destination: "Foz do Iguaçu (PR)",
+    stateCountry: "Paraná, Brasil",
+    region: "Sul",
+    category: "Ecoturismo",
+    coverImage: "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Explorando montanhas, fronteiras e as maiores maravilhas naturais do mundo."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "9 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Moderado (Média de R$ 220 - R$ 380/dia por pessoa)",
+    bestSeason: "Ano todo (Dezembro a Março: maior volume de água; Maio a Setembro: menos calor e menos filas)",
+    recommendedDays: "4 a 5 dias",
+    featured: true,
+    highlights: [
+      "Cataratas do Iguaçu (lado brasileiro): a visão panorâmica mais impressionante das 275 quedas",
+      "Cataratas do Iguaçu (lado argentino): a passarela emocionante por cima da colossal Garganta do Diabo",
+      "Macuco Safari: a aventura de barco a motor que navega embaixo das quedas d'água",
+      "Parque das Aves: imersão com tucanos, araras e flamingos em viveiros gigantes de preservação",
+      "Marco das Três Fronteiras e Usina Hidrelétrica de Itaipu"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80",
+        caption: "A emoção do passeio de barco Macuco Safari sob a névoa das cataratas"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80",
+        caption: "Passarelas suspensas na exuberante floresta subtropical do Parque Nacional"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Cataratas Brasileiras, Parque das Aves & Macuco Safari",
+        activities: [
+          "Visita matinal ao Parque Nacional do Iguaçu (lado brasileiro)",
+          "Caminhada pela passarela que leva ao coração da Garganta do Diabo",
+          "Passeio de barco Macuco Safari (prepare-se para tomar um banho de lavagem de alma)",
+          "Visita ao Parque das Aves logo na saída do parque",
+          "Pôr do sol no Marco das Três Fronteiras com show cultural de danças típicas"
+        ]
+      },
+      {
+        day: 2,
+        title: "Cataratas Argentinas & Jantar em Puerto Iguazú",
+        activities: [
+          "Travessia da fronteira para Puerto Iguazú na Argentina",
+          "Trem ecológico até a passarela da Garganta del Diablo",
+          "Circuito Superior e Inferior com vistas deslumbrantes bem de perto da água",
+          "Noite na feirinha de Puerto Iguazú comendo empanadas, queijo provolone e bife de chorizo com vinho Malbec"
+        ]
+      },
+      {
+        day: 3,
+        title: "Compras em Ciudad del Este & Usina de Itaipu",
+        activities: [
+          "Manhã de compras no Paraguai (Shoppings confiáveis: Cellshop, Monalisa e Shopping China)",
+          "Almoço e retorno ao Brasil pela Ponte da Amizade",
+          "Visita Panorâmica ou Especial à grandiosa Usina Hidrelétrica de Itaipu",
+          "Templo Budista Chen Tien com vista panorâmica de Foz e Ciudad del Este"
+        ]
+      },
+      {
+        day: 4,
+        title: "Mesquita Islâmica & Rota Gastronômica Árabe",
+        activities: [
+          "Visita guiada à bela Mesquita Omar Ibn Al-Khattab",
+          "Almoço tradicional árabe (Foz possui a segunda maior comunidade árabe do Brasil)",
+          "Compras de doces folhados e especiarias antes do voo de volta"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Não deixe de fazer os dois lados das Cataratas",
+        description: "O lado brasileiro entrega o cartão-postal panorâmico de frente para os paredões. O lado argentino coloca você dentro das quedas d'água. Ambos se complementam perfeitamente."
+      },
+      {
+        title: "Documentos para cruzar as fronteiras",
+        description: "Para entrar na Argentina e no Paraguai, leve seu RG original emitido nos últimos 10 anos ou Passaporte válido (CNH não é aceita para cruzar a fronteira argentina além do trânsito vicinal)."
+      },
+      {
+        title: "Use capas impermeáveis e roupas de secagem rápida",
+        description: "A névoa das cataratas molha bastante nas passarelas principais. Leve capa de chuva leve e proteja celulares e câmeras."
+      }
+    ],
+    content: [
+      "Eleita uma das 7 Novas Maravilhas da Natureza, Foz do Iguaçu abriga o maior conjunto de quedas d'água do planeta. São cerca de 275 saltos que despejam milhões de litros de água por segundo em um estrondo que faz a terra tremer e cria arco-íris constantes sob o sol.",
+      "Além da imponência das cataratas, Foz do Iguaçu é um dos destinos mais multiculturais e completos da América do Sul. Em uma mesma viagem de 4 dias, você acorda no Brasil, almoça no Paraguai e janta na Argentina provando um autêntico bife de chorizo com vinho de Mendoza.",
+      "Com excelente infraestrutura hoteleira, voos diretos de várias capitais e passeios estruturados para todas as idades, Foz do Iguaçu é uma viagem obrigatória na vida de qualquer viajante apaixonado por belezas naturais."
+    ]
+  },
+  {
+    id: "13",
+    slug: "ouro-preto-tiradentes-roteiro-historico-minas",
+    title: "Ouro Preto e Tiradentes: O Roteiro de Charme, Barroco e Sabores de Minas Gerais",
+    subtitle: "Casarões coloniais, obras de Aleijadinho, passeio de Maria Fumaça e a culinária mais acolhedora do Brasil.",
+    destination: "Ouro Preto, Mariana e Tiradentes",
+    stateCountry: "Minas Gerais, Brasil",
+    region: "Sudeste",
+    category: "Urbano & Cultural",
+    coverImage: "https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Apaixonados pelas cores, ritmos e esquinas históricas do Brasil."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "8 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Econômico a Moderado (Média de R$ 180 - R$ 300/dia por pessoa)",
+    bestSeason: "Abril a Setembro (Outono e inverno: menos chuvas, noites frescas e neblina charmosa)",
+    recommendedDays: "4 a 5 dias",
+    featured: true,
+    highlights: [
+      "Igreja São Francisco de Assis em Ouro Preto: a obra-prima barroca esculpida por Aleijadinho",
+      "Passeio de Maria Fumaça ligando as históricas Tiradentes e São João del-Rei",
+      "Mina da Passagem em Mariana: descida de carrinho nos trilhos até o interior de uma mina de ouro real",
+      "Polo gastronômico de Tiradentes com comida mineira em fogão a lenha e doces de leite artesanais"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=80",
+        caption: "As ruas calçadas de pé-de-moleque e o charme colonial iluminado à noite em Tiradentes"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
+        caption: "A autêntica gastronomia mineira servida em panelas de pedra sabão e fogão a lenha"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1200&q=80",
+        caption: "A serra de São José emoldurando os casarios coloniais preservados"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Ouro Preto Barroca & Praça Tiradentes",
+        activities: [
+          "Chegada a Ouro Preto via Belo Horizonte (100 km de estrada)",
+          "Caminhada pela Praça Tiradentes e visita ao Museu da Inconfidência",
+          "Tour guiado pela deslumbrante Igreja São Francisco de Assis e Museu do Aleijadinho",
+          "Almoço com tutu à mineira, feijão tropeiro e couve refogada",
+          "Pôr do sol no Mirante da Igreja Santa Efigênia"
+        ]
+      },
+      {
+        day: 2,
+        title: "Mina de Ouro da Passagem & Centro Histórico de Mariana",
+        activities: [
+          "Descida de vagonete subterrâneo nos trilhos da Mina da Passagem",
+          "Visita à praça central de Mariana e Catedral da Sé com concerto de órgão histórico",
+          "Retorno a Ouro Preto para jantar com fondue de queijo canastra e vinhos mineiros"
+        ]
+      },
+      {
+        day: 3,
+        title: "Aconchego e Charme em Tiradentes",
+        activities: [
+          "Deslocamento pela Estrada Real até Tiradentes (160 km)",
+          "Caminhada relaxante pelo Largo das Forras e lojas de artesanato em estanho e ferro",
+          "Visita à imponente Igreja Matriz de Santo Antônio com entalhes folheados a ouro",
+          "Jantar nos bistrôs premiados da cidadezinha"
+        ]
+      },
+      {
+        day: 4,
+        title: "Passeio de Maria Fumaça & São João del-Rei",
+        activities: [
+          "Viagem nostrólgica de Maria Fumaça a vapor até São João del-Rei",
+          "Visita ao túmulo de Tancredo Neves e Igreja de São Francisco de Assis",
+          "Parada em alambique artesanal para degustação de cachaça de cana e compra de queijos artesanais",
+          "Retorno com gostinho de quero mais"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Calçado antiderrapante é fundamental",
+        description: "As ladeiras de Ouro Preto têm calçamento de pedras coloniais irregulares (pé-de-moleque) que podem ser escorregadias. Use tênis confortáveis com solado de borracha aderente. Deixe os saltos em casa!"
+      },
+      {
+        title: "Contrate guias credenciados pela Embratur",
+        description: "A história de cada igreja e mina ganha vida quando explicada por um guia local. Na Praça Tiradentes você encontra guias com crachá oficial por diárias muito acessíveis."
+      },
+      {
+        title: "Maria Fumaça funciona de sexta a domingo",
+        description: "O passeio de trem a vapor entre Tiradentes e São João del-Rei costuma operar nos fins de semana e feriados. Compre o bilhete antecipado pelo site oficial da VLI."
+      }
+    ],
+    content: [
+      "Visitar as cidades históricas de Minas Gerais é fazer uma viagem no tempo para o coração do Ciclo do Ouro e da Inconfidência Mineira. Ouro Preto, com suas ladeiras debruçadas sobre igrejas barrocas monumentais tombadas como Patrimônio Mundial pela UNESCO, respira arte e poesia em cada esquina.",
+      "Mais adiante, Tiradentes complementa o roteiro com uma atmosfera romântica, pacata e sofisticada: casarios brancos com portas coloridas emoldurados pela Serra de São José, charretes circulando pelas ruas de pedra e uma das cenas gastronômicas mais ricas do Brasil.",
+      "A combinação do calor humano mineiro, cafezinho passado na hora com pão de queijo quentinho e paisagens montanhosas cinematográficas faz dessa viagem um dos roteiros mais prazerosos e inesquecíveis do país."
+    ]
+  },
+  {
+    id: "9",
+    slug: "5-destinos-mais-baratos-do-nordeste-para-viajar",
+    title: "Os 5 Destinos Mais Baratos do Nordeste para Viajar: Praias Paradisíacas Gastando Pouco",
+    subtitle: "Descubra 5 paraísos no Nordeste onde você curte praias cristalinas, comidas deliciosas e pousadas charmosas por menos de R$ 180 por dia.",
+    destination: "Nordeste Econômico (PB, AL, SE, CE, BA)",
+    stateCountry: "Nordeste, Brasil",
+    region: "Nordeste",
+    category: "Praia",
+    coverImage: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Caçadores de praias secretas e roteiros inteligentes que cabem no bolso."
+    },
+    date: "03 de Setembro de 2026",
+    readTime: "9 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Super Econômico (Média de R$ 140 - R$ 220/dia por pessoa incluindo pousada, refeições e passeios)",
+    bestSeason: "Setembro a Março (Primavera e verão com sol garantido, mar azul turquesa e pouca chuva)",
+    recommendedDays: "4 a 7 dias por destino",
+    featured: true,
+    highlights: [
+      "João Pessoa e Costa do Conde (PB): a capital com melhor custo-benefício do Brasil e praias selvagens intocadas",
+      "Praia do Francês e Marechal Deodoro (AL): piscinas naturais cristalinas coladas em Maceió com diárias a preços acessíveis",
+      "Aracaju e Cânion do Xingó (SE): orla modelo de Atalaia, passarela do caranguejo e passeios deslumbrantes sem inflação turística",
+      "Canoa Quebrada e Morro Branco (CE): o labirinto de falésias alaranjadas e pousadas pé na areia acolhedoras",
+      "Ilhéus e Serra Grande (BA): praias cercadas de coqueirais e Mata Atlântica, fazendas de cacau e culinária baiana autêntica"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80",
+        caption: "Falésias coloridas e coqueirais intocados da Costa do Conde na Paraíba"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1200&q=80",
+        caption: "Praias de águas calmas e areias douradas em vilas econômicas do Nordeste"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
+        caption: "Vilarejos rústicos e acolhedores com pousadas econômicas à beira-mar"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "1. João Pessoa e Costa do Conde (Paraíba)",
+        activities: [
+          "Por que é barato: João Pessoa é reconhecida como a capital com menor custo de vida do litoral nordestino, com hospedagens a partir de R$ 130/dia em Tambaú e Cabo Branco.",
+          "O que fazer: Passeio de barco até as piscinas naturais de Picãozinho ou Seixas, caminhada na orla arborizada e pôr do sol inesquecível ao som do Bolero de Ravel na Praia do Jacaré.",
+          "Bate e volta imperdível: Costa do Conde (Praia de Coqueirinho, Tabatinga e Tambaba), com paredões de falésias coloridas e mar esmeralda.",
+          "Gasto médio diário: R$ 140 a R$ 190 por pessoa."
+        ]
+      },
+      {
+        day: 2,
+        title: "2. Praia do Francês e Marechal Deodoro (Alagoas)",
+        activities: [
+          "Por que é barato: Fica a apenas 25 minutos do aeroporto de Maceió, permitindo aproveitar as águas cristalinas do 'Caribe Brasileiro' pagando metade do preço de Maragogi ou São Miguel dos Milagres.",
+          "O que fazer: Banho nas piscinas naturais protegidas pela barreira de corais na maré baixa, mergulho com snorkel e caminhada até a Praia do Saco da Pedra.",
+          "Cultura e gastronomia: Passeio pelo centro histórico de Marechal Deodoro (berço da República) e almoço no polo gastronômico da Massagueira provando o famoso Siri Mole.",
+          "Gasto médio diário: R$ 130 a R$ 180 por pessoa."
+        ]
+      },
+      {
+        day: 3,
+        title: "3. Aracaju e Cânion do São Francisco (Sergipe)",
+        activities: [
+          "Por que é barato: Sergipe é o menor estado do Brasil, o que barateia deslocamentos. A cidade de Aracaju não cobra preços inflacionados de cidades superturísticas.",
+          "O que fazer: Orla de Atalaia (uma das mais bem estruturadas do país), visita ao Oceanário do Projeto Tamar e Praia de Aruana.",
+          "Passeio estrela: Navegação de catamarã pelos paredões alaranjados do Cânion do Xingó no Rio São Francisco em Canindé de São Francisco.",
+          "Gasto médio diário: R$ 150 a R$ 200 por pessoa."
+        ]
+      },
+      {
+        day: 4,
+        title: "4. Canoa Quebrada e Morro Branco (Ceará)",
+        activities: [
+          "Por que é barato: Alternativa perfeita para quem quer curtir a energia e os ventos do Ceará sem pagar os preços altos de Jericoacoara.",
+          "O que fazer: Caminhada pelo Labirinto das Falésias de Morro Branco, passeio de buggy pelas dunas e banho de mar nas águas calmas de Canoa Quebrada.",
+          "Noite: A famosa rua 'Broadway' de Canoa Quebrada reúne barzinhos com música ao vivo, crepes artesanais e frutos do mar com preços amigos.",
+          "Gasto médio diário: R$ 140 a R$ 190 por pessoa."
+        ]
+      },
+      {
+        day: 5,
+        title: "5. Ilhéus e Costa do Cacau (Bahia)",
+        activities: [
+          "Por que é barato: A Costa do Cacau no sul da Bahia oferece praias desertas quilométricas, pousadas históricas charmosas e fartura de peixes frescos a preços locais.",
+          "O que fazer: Visita às históricas Fazendas de Cacau com degustação de chocolate artesanal, Centro Histórico de Jorge Amado (Bar Vesúvio e Bataclan) e Praias dos Milionários e Cururupe.",
+          "Refúgio secreto: Suba até o Mirante de Serra Grande na estrada cênica para admirar uma das vistas mais espetaculares do litoral brasileiro.",
+          "Gasto médio diário: R$ 135 a R$ 180 por pessoa."
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Evite os meses de pico (Julho, Réveillon e Carnaval)",
+        description: "Viajando na média estação (Setembro a Novembro ou Março a Maio), os preços de pousadas e passeios caem até 50%, as praias ficam vazias e o clima continua quente e ensolarado."
+      },
+      {
+        title: "Monitore a tábua de marés",
+        description: "No Nordeste, a maré é tudo! Para ver as piscinas naturais transparentes (em Alagoas e na Paraíba), planeje sua viagem nas semanas de Lua Nova ou Lua Cheia, quando a maré baixa fica entre 0.0 e 0.3."
+      },
+      {
+        title: "Aluguel de carro compartilhado",
+        description: "Alugar um carro econômico dividindo entre 2 ou mais pessoas sai muito mais barato do que pagar passeios privativos de agência todos os dias, dando total liberdade de horários."
+      },
+      {
+        title: "Coma nos restaurantes tradicionais de pescadores",
+        description: "Fuja dos restaurantes de beira de estrada voltados apenas para grandes excursões. Pergunte aos moradores locais onde fica o restaurante de peixe frito do bairro: você comerá o peixe mais fresco da sua vida pagando muito pouco."
+      }
+    ],
+    content: [
+      "Viajar para o Nordeste é o sonho de quase todo brasileiro — e você não precisa esperar juntar uma fortuna para viver essa experiência. Enquanto destinos famosos como Fernando de Noronha e Trancoso cobram preços astronômicos, o litoral nordestino esconde verdadeiras joias com mar azul-turquesa, areias douradas e culinária espetacular que cabem perfeitamente em qualquer orçamento.",
+      "Neste guia especial do Malas Prontas, selecionamos 5 destinos consagrados pelo custo-benefício imbatível. Em todos eles, é possível encontrar pousadas confortáveis por R$ 120 a R$ 180 a diária para casal com café da manhã reforçado, além de pratos com camarão e peixe fresco servidos fartamente por menos de R$ 40 por pessoa.",
+      "Com planejamento prévio, monitoramento de passagens aéreas e a escolha certa da época da viagem, você pode passar uma semana inesquecível no paraíso gastando menos do que gastaria em um final de semana comum em muitas capitais do Sudeste e Sul."
+    ]
+  },
+  {
+    id: "8",
+    slug: "roteiro-jalapao-5-dias-fervedouros-dunas-cachoeiras",
+    title: "Jalapão: Roteiro de 5 Dias pelos Fervedouros, Dunas e Cachoeiras do Tocantins",
+    subtitle: "Planeje sua viagem ao Jalapão com um roteiro de 5 dias pelos fervedouros, dunas e cachoeiras, além de dicas de custos, transporte, hospedagem e melhor época para viajar.",
+    destination: "Jalapão (Mateiros, Ponte Alta e São Félix)",
+    stateCountry: "Tocantins, Brasil",
+    region: "Norte",
+    category: "Ecoturismo",
+    coverImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em expedições off-road e ecoturismo pelo coração do Brasil."
+    },
+    date: "02 de Setembro de 2026",
+    readTime: "11 min de leitura",
+    budgetLevel: "$$$",
+    budgetDescription: "Médio a Alto (Média de R$ 550 - R$ 850/dia por pessoa com expedição 4x4, alimentação e taxas)",
+    bestSeason: "Maio a Setembro (Período de seca: estradas melhores, águas limpas e pôr do sol inesquecível)",
+    recommendedDays: "5 a 6 dias",
+    featured: true,
+    highlights: [
+      "Fervedouro Bela Vista e Ceiça: a sensação inexplicável de flutuar sem afundar em nascentes azul-turquesa",
+      "Dunas do Jalapão: areias douradas que mudam de cor no pôr do sol com vista para a Serra do Espírito Santo",
+      "Cachoeira da Formiga: piscina natural verde-esmeralda com águas transparentes e quentinhas o ano todo",
+      "Pedra Furada em Ponte Alta: portal esculpido pelo vento no arenito com visual cinematográfico",
+      "Comunidade Quilombola Mumbuca: o berço do artesanato mundialmente famoso de Capim Dourado"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=1200&q=80",
+        caption: "Cachoeira da Velha e corredeiras do Rio Novo com águas límpidas no Jalapão"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+        caption: "Nascentes cristalinas dos fervedouros onde é impossível afundar"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
+        caption: "Expedição 4x4 nas estradas de terra avermelhada do Tocantins"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "De Palmas a Ponte Alta (Portal do Jalapão) & Pedra Furada",
+        activities: [
+          "Saída de Palmas bem cedo rumo a Ponte Alta do Tocantins (150 km de asfalto)",
+          "Parada no Cânion Sussuapara: caminhada curta entre paredões de pedra gotejante e musgos verdes",
+          "Almoço com comida caseira tocantinense (galinha caipira e arroz com pequi)",
+          "Final de tarde na lendária Pedra Furada: contemplação do pôr do sol através dos arcos de arenito",
+          "Noite de descanso em pousada rústica e charmosa em Ponte Alta"
+        ]
+      },
+      {
+        day: 2,
+        title: "A Caminho de Mateiros: Cachoeira da Velha & Dunas Douradas",
+        activities: [
+          "Entrada oficial nas estradas de terra e areião fofo (tração 4x4 ligada)",
+          "Visita à grandiosa Cachoeira da Velha (a maior queda d'água do parque em formato de ferradura)",
+          "Pausa relaxante na Prainha do Rio Novo: águas calmas, doces e de pureza intocada",
+          "Tarde nas imperdíveis Dunas do Jalapão: subida suave e espetáculo de cores ao entardecer",
+          "Chegada a Mateiros e jantar na vila com artesanato noturno"
+        ]
+      },
+      {
+        day: 3,
+        title: "O Dia dos Fervedouros Mágicos & Comunidade Mumbuca",
+        activities: [
+          "Manhã no Fervedouro do Ceiça: o primeiro fervedouro aberto ao turismo, cercado de bananeiras",
+          "Flutuação no Fervedouro Buritis ou Buritizinho (águas inacreditavelmente azuis)",
+          "Almoço quilombola tradicional na Comunidade Mumbuca",
+          "Conversa com os artesãos e compras de peças legítimas de Capim Dourado",
+          "Pôr do sol no Mirante da Serra do Espírito Santo"
+        ]
+      },
+      {
+        day: 4,
+        title: "Cachoeira da Formiga & Fervedouro Bela Vista em São Félix",
+        activities: [
+          "Banho revigorante na Cachoeira da Formiga (eleita a água mais gostosa e verde do Brasil)",
+          "Deslocamento pela estrada cênica até São Félix do Tocantins",
+          "Visita ao Fervedouro Bela Vista: o maior e mais famoso de todos, com deck de madeira e estrutura excelente",
+          "Flutuação no Fervedouro do Alecrim e banho noturno sob céu estrelado"
+        ]
+      },
+      {
+        day: 5,
+        title: "Serra da Catedral, Cachoeira das Araras & Retorno a Palmas",
+        activities: [
+          "Foto clássica no mirante da imponente Serra da Catedral (formação que lembra uma igreja gótica)",
+          "Banho na refrescante Cachoeira das Araras ou Poço Encantado",
+          "Almoço regional em Taquaruçu",
+          "Chegada em Palmas no final da tarde para descanso ou voo de volta"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Veículo 4x4 com tração é inegociável",
+        description: "Não tente ir de carro de passeio ou SUV 4x2. As estradas do Jalapão têm 'costelas de vaca', valas profundas e trechos de areião fofo onde carros sem tração atolam sem sinal de celular para pedir socorro."
+      },
+      {
+        title: "Viajar com agência ou por conta própria?",
+        description: "Viajar em pacote de expedição é a escolha de 85% dos viajantes porque inclui carro 4x4 preparado, motorista-guia experiente, combustível, pousadas e agendamento nos fervedouros (que têm limite de 6 a 10 pessoas por 20 minutos). Se for por conta, reserve as pousadas com meses de antecedência e contrate um guia condutor."
+      },
+      {
+        title: "O que não pode faltar na mala",
+        description: "Sapatilhas aquáticas de neoprene (essenciais para não queimar os pés nas pedras e areia quente), óculos escuros com proteção UV, camisetas com proteção solar (evite protetor químico dentro dos fervedouros para preservar o ecossistema), colírio e soro fisiológico para a poeira e dinheiro em espécie."
+      },
+      {
+        title: "Melhor época para visitar",
+        description: "A época de ouro é na estação seca, entre Maio e Setembro. As chuvas cessam, o céu fica límpido, as dunas ficam mais douradas e o risco de atolar nas estradas diminui consideravelmente."
+      }
+    ],
+    content: [
+      "O Jalapão não é uma viagem convencional: é uma expedição de alma para quem busca conexão pura com uma das naturezas mais selvagens e bem preservadas do planeta. Localizado no leste do estado do Tocantins, esse oásis do cerrado brasileiro ocupa uma área maior que o estado de Sergipe, intercalando chapadões monumentais, dunas de areia alaranjada e rios de água cristalina potável.",
+      "O grande fenômeno que tornou o Jalapão mundialmente famoso são os seus fervedouros — nascentes de rios subterrâneos que brotam sobre uma camada espessa de areia fina. A força da água que sobe sob alta pressão é tão constante que cria o fenômeno da ressurgência: é absolutamente impossível afundar, mesmo para quem não sabe nadar. Você simplesmente flutua suspenso como se estivesse no espaço sideral.",
+      "Para aproveitar esse paraíso com segurança e conforto, o planejamento é crucial. As distâncias entre os atrativos de Ponte Alta, Mateiros e São Félix exigem dias inteiros de deslocamento em estradas de terra desafiadoras, onde a poeira avermelhada do cerrado marca o passaporte de todo viajante aventureiro que tem a coragem de desbravar o coração do Brasil."
+    ]
+  },
+  {
+    id: "7",
+    slug: "praia-do-frances-marechal-deodoro-alagoas",
+    title: "Praia do Francês e Marechal Deodoro: Piscinas Naturais, História e o Melhor de Alagoas",
+    subtitle: "Águas esmeralda protegidas por arrecifes, casarões coloniais e a autêntica gastronomia alagoana a apenas 25 minutos de Maceió.",
+    destination: "Praia do Francês (Marechal Deodoro)",
+    stateCountry: "Alagoas, Brasil",
+    region: "Nordeste",
+    category: "Praia",
+    coverImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Apaixonados por explorar o litoral do Nordeste e desbravar a cultura de cada vila."
+    },
+    date: "01 de Setembro de 2026",
+    readTime: "7 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Econômico a Moderado (Média de R$ 200 - R$ 320/dia por pessoa)",
+    bestSeason: "Setembro a Março (Verão com águas cristalinas e sol constante)",
+    recommendedDays: "2 a 3 dias",
+    featured: true,
+    highlights: [
+      "Lado esquerdo da praia: uma imensa piscina natural sem ondas na maré baixa",
+      "Passeio de caiaque transparente e Stand Up Paddle até a barreira de corais",
+      "Centro Histórico colonial de Marechal Deodoro, primeira capital de Alagoas",
+      "Pôr do sol cinematográfico na Lagoa Manguaba comendo peixada e massunim",
+      "Artesanato tradicional de Renda Filé direto das artesãs locais"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+        caption: "Barreira de corais criando lagoas calmas de águas quentes e transparentes"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1200&q=80",
+        caption: "Orla arborizada com coqueiros e quiosques com petiscos típicos do Francês"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+        caption: "O polo gastronômico da Massagueira e o famoso Siri Mole à beira da lagoa"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Piscinas Naturais do Francês & Caiaque nos Corais",
+        activities: [
+          "Chegada pela AL-101 Sul (apenas 25 minutos do centro de Maceió)",
+          "Manhã inteira no lado esquerdo da Praia do Francês na maré baixa",
+          "Aluguel de caiaque transparente ou snorkel para ver peixinhos nos arrecifes",
+          "Almoço à beira-mar com peixe frito crocante, macaxeira e água de coco",
+          "Caminhada até o lado direito para ver a agitação e os surfistas"
+        ]
+      },
+      {
+        day: 2,
+        title: "Imersão Colonial em Marechal Deodoro & Renda Filé",
+        activities: [
+          "Visita ao Centro Histórico tombado pelo IPHAN a 10 minutos da praia",
+          "Tour pelo Museu Casa de Marechal Deodoro da Fonseca e Convento Franciscano",
+          "Compras de toalhas e roupas de Renda Filé na Feirinha das Rendeiras",
+          "Almoço tradicional com massunim na casca e sururu ao coco",
+          "Fim de tarde relaxante com passeio de barco pela Lagoa Manguaba"
+        ]
+      },
+      {
+        day: 3,
+        title: "Praia do Saco da Pedra & Barra de São Miguel",
+        activities: [
+          "Trilha curta ou passeio de barco até a rústica e deserta Praia do Saco",
+          "Esticadinha até o Mirante do Gunga e falésias coloridas",
+          "Jantar de despedida na charmosa vila gastronômica do Francês"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Entenda os dois lados da praia",
+        description: "Quem vai para relaxar ou com crianças deve ficar no canto esquerdo, protegido pela barreira de arrecifes (mar calmo estilo piscina). O lado direito tem mar aberto e ondas fortes para surf."
+      },
+      {
+        title: "Excelente base de hospedagem mais barata que Maceió",
+        description: "As pousadas na vila do Francês costumam custar até 40% menos do que hotéis em Ponta Verde ou Pajuçara em Maceió, além de terem clima charmoso e sem trânsito."
+      },
+      {
+        title: "Não deixe de ir ao Centro Histórico",
+        description: "Muitos turistas só vão à praia e perdem o centro colonial de Marechal Deodoro, que é uma joia histórica às margens da lagoa."
+      }
+    ],
+    content: [
+      "A Praia do Francês, localizada no município histórico de Marechal Deodoro, é um dos maiores tesouros do litoral sul alagoano. A apenas 25 km de Maceió pela rodovia duplicada AL-101 Sul, o destino combina a beleza estonteante das praias do Nordeste com o peso da história do Brasil.",
+      "A praia possui uma característica geográfica única: de um lado, uma barreira de recifes de corais amortece completamente a força do oceano, criando uma gigantesca lagoa de águas verdes, mornas e transparentes onde é possível nadar com pequenos cardumes de peixes coloridos. Do outro lado, o mar aberto oferece ondas perfeitas que atraem surfistas de todo o país.",
+      "Além da praia, Marechal Deodoro foi a primeira capital de Alagoas e é a cidade natal do proclamador da República. Seus casarios coloniais coloridos, igrejas barrocas preservadas e as artesãs que tecem a famosa Renda Filé fazem desta viagem uma experiência completa e inesquecível."
+    ]
+  },
+  {
+    id: "1",
+    slug: "maragogi-alagoas-caribe-brasileiro",
+    title: "Maragogi e Costa dos Corais: O Caribe Brasileiro com Economia Real",
+    subtitle: "Águas cristalinas, piscinas naturais e dicas para fugir das armadilhas de turistas.",
+    destination: "Maragogi",
+    stateCountry: "Alagoas, Brasil",
+    region: "Nordeste",
+    category: "Praia",
+    coverImage: "https://images.unsplash.com/photo-1589553416260-f586c8f1514f?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Apaixonados por explorar o Brasil pé na areia e sem gastar fortunas."
+    },
+    date: "15 de Fevereiro de 2026",
+    readTime: "7 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Moderado (Média de R$ 250 - R$ 380/dia por pessoa)",
+    bestSeason: "Outubro a Março (Águas mais calmas e claras)",
+    recommendedDays: "4 a 5 dias",
+    featured: true,
+    highlights: [
+      "Piscinas Naturais de Galés com maré baixa (0.1 a 0.3)",
+      "Passeio de buggy pelas praias desertas de Antunes e Barra Grande",
+      "Caminho de Moisés na maré seca",
+      "Gastronomia com frutos do mar fresquinhos e bolinhos de goma"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+        caption: "Mergulho de snorkel com peixinhos coloridos nas piscinas naturais das Galés"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1200&q=80",
+        caption: "A famosa faixa de areia do Caminho de Moisés e praia de Antunes"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1200&q=80",
+        caption: "Coqueirais inclinados e mar azul-turquesa de Barra Grande"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada em Alagoas & Reconhecimento da Vila",
+        activities: [
+          "Transfer ou carro alugado a partir de Recife (130km) ou Maceió (130km)",
+          "Check-in na pousada e caminhada pela orla central de Maragogi",
+          "Jantar com peixe na telha e caipirinha de frutas regionais"
+        ]
+      },
+      {
+        day: 2,
+        title: "As Famosas Galés & Piscinas Naturais",
+        activities: [
+          "IMPORTANTE: Conferir tábua de marés (só faça o passeio com maré até 0.4)",
+          "Passeio de catamarã ou lancha até as Galés principais",
+          "Mergulho de snorkel com peixinhos sargentos e corais coloridos",
+          "Tarde relaxando na praia de Burgalhau com petiscos à beira-mar"
+        ]
+      },
+      {
+        day: 3,
+        title: "Expedição de Buggy: Antunes e Caminho de Moisés",
+        activities: [
+          "Contratação de buggy credenciado logo cedo",
+          "Parada em Antunes para fotos no famoso coqueiro torto",
+          "Atravessar o Caminho de Moisés em Barra Grande na maré baixa",
+          "Almoço no Pontal do Maragogi com estrutura completa"
+        ]
+      },
+      {
+        day: 4,
+        title: "Praias do Sul e São Miguel dos Milagres",
+        activities: [
+          "Bate e volta rápido até Japaratinga e mirante da orla",
+          "Passeio de balsa para a Rota Ecológica dos Milagres",
+          "Visita à fábrica dos tradicionais Biscoitos de Goma da Dona Marlene"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Consulte a Tábua de Marés antes de fechar a data",
+        description: "As piscinas naturais só existem na maré baixa. Se a maré estiver acima de 0.6, o passeio perde 80% do encanto. Prefira semanas de lua cheia ou nova."
+      },
+      {
+        title: "Alugar carro vale muito a pena",
+        description: "Ficar dependente de transfers privados custa caro. Com um carro alugado básico retirado em Recife ou Maceió, você economiza muito e tem liberdade total."
+      },
+      {
+        title: "O que não pode faltar na mala",
+        description: "Sapatilhas de neoprene (para não machucar o pé nos corais), protetor solar biodegradável, camiseta com proteção UV e capa à prova d'água para celular."
+      }
+    ],
+    content: [
+      "Maragogi é um daqueles destinos que todo viajante sonha em ver de perto. Conhecida internacionalmente como a 'Capital da Costa dos Corais', a cidade abriga a segunda maior barreira de corais do planeta, perdendo apenas para a Austrália.",
+      "O segredo para transformar essa viagem numa experiência inesquecível — e não numa cilada cara — está quase que exclusivamente no planejamento da maré. Quando a maré seca recua a 0.1 ou 0.2, o mar se transforma em verdadeiras lagoas cor turquesa mornas e transparentes.",
+      "Outro grande mito é que só se aproveita Maragogi hospedando-se em resorts all-inclusive caríssimos. A vila possui pousadas charmosas e familiares a duas quadras do mar, com café da manhã farto repleto de tapioca, queijo coalho e frutas tropicais por um terço do preço."
+    ]
+  },
+  {
+    id: "2",
+    slug: "gramado-canela-roteiro-inverno-economico",
+    title: "Gramado e Canela: Como Curtir o Clima Europeu Sem Estourar o Orçamento",
+    subtitle: "Dicas de restaurantes com fondue de verdade, parques imperdíveis e rotas gratuitas na Serra Gaúcha.",
+    destination: "Gramado e Canela",
+    stateCountry: "Rio Grande do Sul, Brasil",
+    region: "Sul",
+    category: "Serra & Frio",
+    coverImage: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Explorando montanhas, vinhos e o aconchego do inverno brasileiro."
+    },
+    date: "10 de Fevereiro de 2026",
+    readTime: "8 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Moderado a Alto (Média de R$ 300 - R$ 500/dia por pessoa)",
+    bestSeason: "Maio a Agosto (frio intenso) ou Outubro a Janeiro (Natal Luz)",
+    recommendedDays: "4 a 6 dias",
+    featured: true,
+    highlights: [
+      "Lago Negro com pedalinhos cercado por pinheiros da Floresta Negra",
+      "Cascata do Caracol e Bondinhos Aéreos em Canela",
+      "Sequência de Fondue tradicional sem pegadinha de preço",
+      "Passeio fotográfico pela Rua Torta e Igreja Matriz São Pedro"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+        caption: "Sequência de fondue tradicional em restaurantes acolhedores da serra"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80",
+        caption: "Bruma matinal e pedalinhos cercados por pinheiros no Lago Negro"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+        caption: "Charme da arquitetura colonial alpina de Gramado e Canela"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada e Passeio a Pé pelo Centro",
+        activities: [
+          "Subida da serra via Nova Petrópolis (paisagens deslumbrantes)",
+          "Passeio a pé pela Avenida Borges de Medeiros e Palácio dos Festivais",
+          "Degustação de chocolates artesanais nas fábricas temáticas",
+          "Jantar com galeto al primo canto tradicional"
+        ]
+      },
+      {
+        day: 2,
+        title: "Natureza no Lago Negro & Charme de Canela",
+        activities: [
+          "Manhã cedo no Lago Negro com bruma matinal",
+          "Deslocamento de 10 min para Canela: Visita à Catedral de Pedra",
+          "Parque da Serra e Bondinhos com vista frontal da Cascata do Caracol",
+          "Noite do Fondue em Canela (costuma ser 30% mais em conta que Gramado)"
+        ]
+      },
+      {
+        day: 3,
+        title: "Vinho, Queijos e Colonização Italiana",
+        activities: [
+          "Passeio pela Linha Bella ou Olivas de Gramado",
+          "Degustação de azeites e piquenique ao ar livre no cânion",
+          "Noite de descanso em café colonial farto"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Compre ingressos e vouchers antecipados",
+        description: "Aplicativos de desconto e sites locais oferecem até 40% de desconto em sequência de fondue e parques quando comprados com antecedência."
+      },
+      {
+        title: "Hospede-se em Canela",
+        description: "Canela fica colada em Gramado (são 7 km entre os centros) e oferece pousadas tão charmosas quanto, por uma fração do preço da diária."
+      }
+    ],
+    content: [
+      "Gramado é o principal polo de turismo de inverno do Brasil. A cidade parece uma vila cenográfica saída dos Alpes suíços, com hortênsias, chalés de madeira e aromas de chocolate no ar.",
+      "Muita gente tem medo dos custos elevados, mas com a estratégia certa é perfeitamente possível viver a magia da serra com bom senso e economia inteligente."
+    ]
+  },
+  {
+    id: "3",
+    slug: "chapada-dos-veadeiros-guia-completo-natureza",
+    title: "Chapada dos Veadeiros: O Guia Definitivo do Ecoturismo Místico",
+    subtitle: "Cachoeiras gigantes, piscinas de quartzo e pores do sol inacreditáveis no cerrado goiano.",
+    destination: "Alto Paraíso e São Jorge",
+    stateCountry: "Goiás, Brasil",
+    region: "Centro-Oeste",
+    category: "Ecoturismo",
+    coverImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Trilheiros convictos buscando ar puro e energia renovada."
+    },
+    date: "02 de Fevereiro de 2026",
+    readTime: "9 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Econômico (Média de R$ 180 - R$ 260/dia por pessoa)",
+    bestSeason: "Maio a Outubro (Período seco: águas cristalinas e sem trombas d'água)",
+    recommendedDays: "5 a 7 dias",
+    featured: true,
+    highlights: [
+      "Parque Nacional da Chapada dos Veadeiros: Cânions e Carrossel",
+      "Vale da Lua com formações rochosas esculpidas pela água",
+      "Catarata dos Couros: Complexo de quedas espetaculares",
+      "Céu noturno mais estrelado do Brasil no cerrado"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
+        caption: "Trilhas nos cânions e planaltos sobre placas de quartzo"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=80",
+        caption: "O pôr do sol dourado no Mirante da Janela e Jardim de Maytrea"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Brasília a Alto Paraíso & Pôr do Sol no Mirante",
+        activities: [
+          "Retirada do carro em Brasília e viagem de 230 km por asfalto excelente",
+          "Chegada em Alto Paraíso, cidade dos cristais e boas energias",
+          "Pôr do sol no Mirante da Janela ou Jardim de Maytrea"
+        ]
+      },
+      {
+        day: 2,
+        title: "O Fascinante Vale da Lua e Cachoeira Almécegas",
+        activities: [
+          "Visita matinal às crateras e corredores de pedra do Vale da Lua",
+          "Almoço caipira na Fazenda São Bento",
+          "Banho revigorante na Almécegas I e salto na Almécegas II"
+        ]
+      },
+      {
+        day: 3,
+        title: "A Majestosa Catarata dos Couros",
+        activities: [
+          "Trilha com guia local pelas quedas sucessivas dos Couros",
+          "Piscinas de borda infinita naturais e massagem sob as cascatas",
+          "Noite relaxante na charmosa Vila de São Jorge com luau e forró pé-de-serra"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Calçado de trilha é inegociável",
+        description: "Nada de chinelos ou tênis lisos. As pedras molhadas podem ser escorregadias; botas de trekking ou tênis com solado aderente são indispensáveis."
+      },
+      {
+        title: "Dinheiro vivo e combustível",
+        description: "Na vila de São Jorge não há postos de gasolina e algumas cachoeiras não têm sinal de maquininha de cartão. Abasteça sempre em Alto Paraíso."
+      }
+    ],
+    content: [
+      "A Chapada dos Veadeiros não é apenas um destino de viagem, é um divisor de águas. Situada sobre uma imensa placa de quartzo visível até do espaço pela NASA, a região vibra em uma sintonia de paz que desacelera qualquer rotina agitada.",
+      "Para quem busca aventura autêntica, cachoeiras de tirar o fôlego e um turismo sustentável e consciente, este é o melhor destino do Brasil."
+    ]
+  },
+  {
+    id: "4",
+    slug: "buenos-aires-5-dias-roteiro-economico",
+    title: "Buenos Aires: 5 Dias na Capital Mundial da Carne e do Tango Sem Sofrer com Câmbio",
+    subtitle: "Roteiro completo pelos bairros de Palermo, San Telmo e Recoleta comendo nos melhores bodegones.",
+    destination: "Buenos Aires",
+    stateCountry: "Argentina",
+    region: "Internacional",
+    category: "Mochilão",
+    coverImage: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      bio: "Especialistas em cruzar fronteiras com orçamento inteligente."
+    },
+    date: "25 de Janeiro de 2026",
+    readTime: "8 min de leitura",
+    budgetLevel: "$",
+    budgetDescription: "Econômico a Moderado (Excelente custo-benefício para brasileiros)",
+    bestSeason: "Março a Maio (Outono com temperaturas amenas e árvores douradas)",
+    recommendedDays: "5 dias",
+    featured: false,
+    highlights: [
+      "Livraria El Ateneo Grand Splendid (eleita uma das mais belas do mundo)",
+      "Feira de San Telmo no domingo com show de tango de rua",
+      "Ojo de bife suculento nos bodegones tradicionais",
+      "Passeio pelos bosques e cafés descolados de Palermo Soho"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1583531352565-3254bc013129?auto=format&fit=crop&w=1200&q=80",
+        caption: "As cores vibrantes dos cortiços e artistas de tango no Caminito, em La Boca"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80",
+        caption: "Gastronomia portenha nos bodegones e parrillas tradicionais de Palermo"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1612294037637-ec328d0e075e?auto=format&fit=crop&w=1200&q=80",
+        caption: "A moderna Puente de la Mujer ao entardecer em Puerto Madero"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Centro Histórico, Plaza de Mayo e Teatro Colón",
+        activities: [
+          "Troca de guarda na Casa Rosada e Catedral Metropolitana",
+          "Caminhada pela elegante Calle Florida e Café Tortoni",
+          "Visita guiada ou foto na fachada do imponente Teatro Colón"
+        ]
+      },
+      {
+        day: 2,
+        title: "Recoleta Cultural e Livraria Histórica",
+        activities: [
+          "Cemitério da Recoleta e túmulo de Evita Perón",
+          "Museo Nacional de Bellas Artes (entrada gratuita)",
+          "Tarde na Livraria El Ateneo com café no antigo palco"
+        ]
+      },
+      {
+        day: 3,
+        title: "Domingo Clássico em San Telmo e Puerto Madero",
+        activities: [
+          "Feira de antiguidades e compras em San Telmo",
+          "Foto com a estátua da Mafalda na esquina de Chile com Defensa",
+          "Pôr do sol na Puente de la Mujer em Puerto Madero"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Como lidar com a moeda e cartões",
+        description: "Contas globais digitais como Nomad e Wise aplicam a cotação MEP diretamente no cartão, garantindo excelente cotação sem precisar carregar maços de dinheiro físico."
+      },
+      {
+        title: "Use o transporte público SUBE",
+        description: "O metrô (Subte) e ônibus de Buenos Aires cobrem toda a cidade de forma muito barata. Compre o cartão SUBE logo no primeiro quiosque ou estação."
+      }
+    ],
+    content: [
+      "Buenos Aires é a primeira viagem internacional de milhares de brasileiros por uma razão muito simples: é linda, cultural, próxima e oferece uma gastronomia impecável por preços muito justos.",
+      "Caminhar pelas ruas arborizadas de Palermo ou provar uma medialuna quentinha com café con leche logo pela manhã é um dos maiores prazeres acessíveis da América do Sul."
+    ]
+  },
+  {
+    id: "5",
+    slug: "rio-de-janeiro-essencial-3-dias",
+    title: "Rio de Janeiro Essencial: 3 Dias Vibrantes Entre o Mar, Morros e Samba",
+    subtitle: "Roteiro descomplicado para aproveitar a Cidade Maravilhosa com segurança e muita beleza.",
+    destination: "Rio de Janeiro",
+    stateCountry: "Rio de Janeiro, Brasil",
+    region: "Sudeste",
+    category: "Urbano & Cultural",
+    coverImage: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Apaixonados pelas cores, ritmos e esquinas históricas do Brasil."
+    },
+    date: "18 de Janeiro de 2026",
+    readTime: "6 min de leitura",
+    budgetLevel: "$$",
+    budgetDescription: "Moderado (Média de R$ 250 - R$ 400/dia por pessoa)",
+    bestSeason: "Ano todo (Primavera e outono têm menos chuvas e temperaturas ideais)",
+    recommendedDays: "3 a 4 dias",
+    featured: false,
+    highlights: [
+      "Subida no Cristo Redentor logo no primeiro horário da manhã",
+      "Pôr do sol sagrado na Pedra do Arpoador com palmas",
+      "Bonde histórico de Santa Teresa e Escadaria Selarón",
+      "Roda de samba tradicional na Pedra do Sal ou Lapa"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=1200&q=80",
+        caption: "Vista panorâmica da Baía de Guanabara e Pão de Açúcar"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80",
+        caption: "Os azulejos coloridos da Escadaria Selarón na boêmia da Lapa"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Cartões-Postais Clássicos: Cristo e Arpoador",
+        activities: [
+          "Trem do Corcovado às 08h00 para ver o Cristo sem multidões",
+          "Almoço descontraído na mureta da Urca com empada e mate gelado",
+          "Pão de Açúcar de bondinho no final da tarde",
+          "Encerramento no Arpoador com aplausos ao sol poente"
+        ]
+      },
+      {
+        day: 2,
+        title: "Cultura, Bohemia e Charme em Santa Teresa",
+        activities: [
+          "Subida de bonde amarelo a partir do centro até Santa Teresa",
+          "Almoço no Bar do Mineiro com feijoada e pastel de feijão",
+          "Descida pelos mosaicos coloridos da Escadaria Selarón",
+          "Noite com samba ao vivo e caipirinha"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Ingresso do Cristo com hora marcada",
+        description: "Compre pelo aplicativo oficial dias antes para garantir o horário da manhã (08:00 às 09:00), quando o sol bate direto no rosto do Cristo e a visibilidade é perfeita."
+      },
+      {
+        title: "Deslocamento prático com metrô e bike",
+        description: "O metrô carioca é limpo, seguro e conecta Copacabana, Ipanema e Botafogo com facilidade. As laranjinhas (Bike Itaú) pela ciclovia da praia são imperdíveis."
+      }
+    ],
+    content: [
+      "Poucas cidades no mundo conseguem juntar floresta tropical imensa, praia de areia branca e metrópole vibrante no mesmo cenário. O Rio de Janeiro pulsa vida em cada esquina.",
+      "Seguindo dicas simples de segurança e aproveitando os pontos altos nos momentos certos do dia, a viagem se torna pura poesia carioca."
+    ]
+  },
+  {
+    id: "6",
+    slug: "fernando-de-noronha-guia-planejamento",
+    title: "Fernando de Noronha: O Passo a Passo Real Para Tirar Esse Sonho do Papel",
+    subtitle: "Taxas ambientais, melhor época de mar calmo, praias secretas e como não gastar uma fortuna.",
+    destination: "Fernando de Noronha",
+    stateCountry: "Pernambuco, Brasil",
+    region: "Nordeste",
+    category: "Praia",
+    coverImage: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1600&q=80",
+    author: {
+      name: "Equipe Malas Prontas",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      bio: "Buscando os santuários naturais mais preservados do planeta."
+    },
+    date: "12 de Janeiro de 2026",
+    readTime: "10 min de leitura",
+    budgetLevel: "$$$",
+    budgetDescription: "Investimento Alto (Média de R$ 600 - R$ 1.100/dia por pessoa)",
+    bestSeason: "Agosto a Novembro (Mar calmo como piscina no Mar de Dentro)",
+    recommendedDays: "5 a 7 dias",
+    featured: true,
+    highlights: [
+      "Baía do Sancho: eleita múltiplas vezes a melhor praia do mundo",
+      "Mergulho com tartarugas marinhas e arraias na Praia do Sueste",
+      "Mirante dos Golfinhos no amanhecer",
+      "Pôr do sol inesquecível no Bar do Meio"
+    ],
+    gallery: [
+      {
+        url: "https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?auto=format&fit=crop&w=1200&q=80",
+        caption: "Tartarugas marinhas e santuário marinho intocado na Baía do Sueste"
+      },
+      {
+        url: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=1200&q=80",
+        caption: "Pôr do sol cinematográfico no Forte de São Pedro do Boldró"
+      }
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Chegada, Ilhatur e Reconhecimento",
+        activities: [
+          "Pouso cinematográfico com vista para o Morro do Pico",
+          "Pagamento da TPA e retirada da carteirinha do Parque Nacional",
+          "Ilhatur de 4x4 para conhecer os principais pontos e se localizar"
+        ]
+      },
+      {
+        day: 2,
+        title: "A Consagração da Baía do Sancho",
+        activities: [
+          "Descida pela fenda da rocha até as areias douradas do Sancho",
+          "Snorkel ao longo dos costões com centenas de espécies marinhas",
+          "Caminhada pelas passarelas de madeira suspensas até a Baía dos Porcos"
+        ]
+      }
+    ],
+    essentialTips: [
+      {
+        title: "Pague a taxa TPA online antes de embarcar",
+        description: "Pague a Taxa de Preservação Ambiental (TPA) pelo site oficial do Governo de Pernambuco antes do voo para evitar filas enormes no pequeno aeroporto de Noronha."
+      },
+      {
+        title: "Agendamento das trilhas no ICMBio",
+        description: "Trilhas famosas como Atalaia e Morro São José exigem agendamento prévio presencial na sede do ICMBio. Vá no primeiro dia assim que abrir!"
+      }
+    ],
+    content: [
+      "Fernando de Noronha é um santuário ecológico de preservação ímpar. Cada minuto na ilha justifica todo o planejamento e esforço para chegar até lá.",
+      "Nadar lado a lado com tartarugas marinhas centenárias e ver cardumes de golfinhos rotadores saltando nas primeiras horas da manhã é algo que fica gravado para sempre na alma de qualquer viajante."
+    ]
+  }
+];
+
+export const CATEGORIES = [
+  { id: "Todas", name: "Todas as Viagens", icon: "Compass" },
+  { id: "Praia", name: "Praias Paradisíacas", icon: "Palmtree" },
+  { id: "Serra & Frio", name: "Serras & Frio", icon: "Mountain" },
+  { id: "Ecoturismo", name: "Ecoturismo & Trilhas", icon: "Trees" },
+  { id: "Urbano & Cultural", name: "Cidades & Cultura", icon: "Landmark" },
+  { id: "Mochilão", name: "Mochilão Econômico", icon: "Backpack" },
+] as const;
+
+export const CHECKLIST_PRESETS = {
+  geral: [
+    { id: "g1", text: "Passaporte ou RG atualizado com foto", category: "Documentos" },
+    { id: "g2", text: "Cartões de crédito/débito e um pouco de dinheiro físico", category: "Financeiro" },
+    { id: "g3", text: "Passagens aéreas e reservas de hospedagem baixadas offline", category: "Documentos" },
+    { id: "g4", text: "Carregadores de celular e Powerbank (bateria portátil)", category: "Eletrônicos" },
+    { id: "g5", text: "Adaptador universal de tomadas", category: "Eletrônicos" },
+    { id: "g6", text: "Farmacinha básica (analgésico, antialérgico, band-aid e remédio para enjoo)", category: "Saúde" },
+    { id: "g7", text: "Kit higiene em frascos de até 100ml (se for mala de mão)", category: "Higiene" },
+    { id: "g8", text: "Fones de ouvido para voos e deslocamentos", category: "Conforto" }
+  ],
+  praia: [
+    { id: "p1", text: "Roupas de banho (sungas, biquínis ou maiôs)", category: "Vestuário" },
+    { id: "p2", text: "Protetor solar corporal e facial FPS 50+", category: "Saúde" },
+    { id: "p3", text: "Óculos escuros com proteção UV", category: "Acessórios" },
+    { id: "p4", text: "Chapéu, viseira ou boné", category: "Acessórios" },
+    { id: "p5", text: "Capa estanque / à prova d'água para celular", category: "Eletrônicos" },
+    { id: "p6", text: "Canga ou toalha de microfibra de secagem rápida", category: "Praia" },
+    { id: "p7", text: "Sapatilhas aquáticas de neoprene (para corais e pedras)", category: "Praia" },
+    { id: "p8", text: "Pós-sol calmante ou hidratante de aloe vera", category: "Saúde" }
+  ],
+  frio: [
+    { id: "f1", text: "Segunda pele térmica (calça e blusa)", category: "Vestuário" },
+    { id: "f2", text: "Casaco corta-vento e casaco impermeável pesado", category: "Vestuário" },
+    { id: "f3", text: "Cachecol, gorro de lã e luvas térmicas", category: "Acessórios" },
+    { id: "f4", text: "Meias térmicas grossas de lã", category: "Vestuário" },
+    { id: "f5", text: "Protetor labial hidratante", category: "Saúde" },
+    { id: "f6", text: "Bota confortável e impermeável para caminhada", category: "Calçados" }
+  ],
+  ecoturismo: [
+    { id: "e1", text: "Bota ou tênis de trekking amaciado", category: "Calçados" },
+    { id: "e2", text: "Mochila leve de ataque (15L a 20L) para o dia a dia", category: "Equipamentos" },
+    { id: "e3", text: "Garrafa térmica de água ou camelbak", category: "Equipamentos" },
+    { id: "e4", text: "Repelente forte contra insetos (ex: Icaridina)", category: "Saúde" },
+    { id: "e5", text: "Capa de chuva ou poncho impermeável", category: "Vestuário" },
+    { id: "e6", text: "Lanterna de cabeça com pilhas extras", category: "Equipamentos" }
+  ]
+};
