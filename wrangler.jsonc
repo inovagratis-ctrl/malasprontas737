@@ -1,23 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "malas-prontas",
+  "name": "malasprontas737",
+  "main": "src/worker.js",
   "compatibility_date": "2026-10-12",
   "observability": {
     "enabled": true
   },
-  "routes": [
-    {
-      "pattern": "malasprontas737.com.br/*",
-      "zone_name": "malasprontas737.com.br"
-    },
-    {
-      "pattern": "www.malasprontas737.com.br/*",
-      "zone_name": "malasprontas737.com.br"
-    }
-  ],
+  "workers_dev": true,
   "assets": {
-    "directory": ".next",
+    "directory": "out",
     "binding": "ASSETS",
+    "run_worker_first": true,
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   }
