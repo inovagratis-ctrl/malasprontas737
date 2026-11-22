@@ -12,7 +12,7 @@ export default function Footer() {
               <img
                 src="/logo-malasprontas-737.png"
                 alt="Malas Prontas 737"
-                className="h-10 sm:h-12 w-auto object-contain block group-hover:opacity-90 transition-opacity"
+                className="h-12 sm:h-16 w-auto object-contain block group-hover:opacity-90 transition-opacity"
               />
             </Link>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
@@ -127,8 +127,8 @@ export default function Footer() {
             <div>
               © {new Date().getFullYear()} Malas Prontas 737. Todos os direitos reservados.
             </div>
-            <div>
-              ID AdSense Autorizado: <span className="font-mono text-slate-300">ca-pub-3922432751903141</span>
+            <div className="text-slate-400">
+              Guia prático e independente de bagagens e normas de voo.
             </div>
           </div>
         </div>

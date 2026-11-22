@@ -29,11 +29,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo Principal Boeing 737 */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <Link href="/" className="flex items-center gap-3 shrink-0 group py-1">
             <img
               src="/logo-malasprontas-737.png"
-              alt="Malas Prontas 737 - Embarque Sem Taxa Surpresa"
-              className="h-9 sm:h-11 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-200"
+              alt="Malas Prontas 737 - Planeje sua mala. Viaje mais tranquilo."
+              className="h-12 sm:h-16 md:h-18 w-auto max-w-[270px] sm:max-w-none object-contain block group-hover:scale-[1.02] transition-transform duration-200"
+              style={{ imageRendering: "auto" }}
             />
           </Link>
 
