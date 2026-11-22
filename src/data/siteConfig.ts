@@ -30,8 +30,8 @@ export const SITE_CONFIG = {
     "Valores, taxas governamentais, franquias de bagagem e tarifas cambiais consultados em Outubro de 2026. Os preços de passagens aéreas, diárias de hospedagem, seguros e passeios sofrem variação dinâmica conforme antecedência da compra, sazonalidade, ocupação e câmbio do dia.",
   affiliateTransparencyBanner:
     "Transparência Editorial: Este guia contém links de parceiros afiliados verificados (identificados com rel='sponsored'). Se você contratar um serviço ou comprar um equipamento através deles, o Malas Prontas pode receber uma pequena comissão sem nenhum custo extra para você. Nossas recomendações são 100% independentes e sempre apresentamos alternativas gratuitas ou econômicas sem vínculo comercial.",
-  adsenseGlobalEnabledDefault: false, // Ativável via /admin quando conta AdSense estiver pronta para exibição
-  adsenseClientId: "ca-pub-0000000000000000",
+  adsenseGlobalEnabledDefault: true,
+  adsenseClientId: "ca-pub-3922432751903141",
 };
 
 export const EDITORIAL_TEAM: EditorialAuthor[] = [
