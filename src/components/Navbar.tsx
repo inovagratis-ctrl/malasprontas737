@@ -33,7 +33,7 @@ export default function Navbar() {
             <img
               src="/logo-malasprontas-737.png"
               alt="Malas Prontas 737 - Planeje sua mala. Viaje mais tranquilo."
-              className="h-12 sm:h-16 md:h-18 w-auto max-w-[270px] sm:max-w-none object-contain block group-hover:scale-[1.02] transition-transform duration-200"
+              className="h-10 sm:h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-200"
               style={{ imageRendering: "auto" }}
             />
           </Link>

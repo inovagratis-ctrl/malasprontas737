@@ -1,3 +1,3 @@
-:HL["/_next/static/chunks/1hj0ay4tmwyh2.css","style"]
+:HL["/_next/static/chunks/1-4azovrk9kko.css","style"]
 :HL["/logo-malasprontas-737.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"o24ZPsE_DBdEYED6zpdCz"}
+0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"Jb3n1FNciGgo1A-oDaSUl"}
