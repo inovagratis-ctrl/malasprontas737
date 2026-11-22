@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Equipe Editorial Malas Prontas 737" }],
   openGraph: {
-    title: "Malas Prontas 737 | Suíte Completa de Bagagem & Aviação",
+    title: "Malas Prontas 737 | Guia Completo de Bagagem & Regras de Voo",
     description: "Verificador de mala por companhia aérea, scanner de itens ANAC, simulador de líquidos de 100ml e gerador de checklist de viagem em PDF.",
     url: "https://malasprontas737.com.br",
     siteName: "Malas Prontas 737",

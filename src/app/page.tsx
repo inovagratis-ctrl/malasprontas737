@@ -37,7 +37,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-amber-400 text-xs sm:text-sm font-bold tracking-wide">
             <Sparkles className="w-4 h-4" />
-            A Suíte Definitiva do Passageiro Moderno • Normas 2026
+            Guia Prático de Bagagem & Raio-X • Atualizado 2026
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
