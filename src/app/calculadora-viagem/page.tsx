@@ -2,27 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import TravelGearShowcase from "@/components/TravelGearShowcase";
 import {
   Calculator,
-  DollarSign,
-  Calendar,
-  Users,
   Bed,
   Utensils,
   Plane,
   Ticket,
-  ShieldCheck,
   ArrowRight,
   Sparkles,
-  HelpCircle,
   CheckCircle2,
   MapPin,
-  Search,
-  ExternalLink,
   Loader2,
-  Car,
-  X
+  X,
+  Luggage
 } from "lucide-react";
 
 interface CostProfile {
@@ -225,33 +217,29 @@ export default function CalculadoraViagemPage() {
   const displayDest = destinationCity.trim() || destinationInput.trim() || "seu destino";
   const displayOrigin = originCity.trim() || originInput.trim() || "São Paulo, SP";
 
-  // Link de afiliado oficial Vai de Promo (Actionpay)
-  const flightAffiliateLink = "https://apretailer.com.br/click/6a9a1f372bfa8131323fd1a2/183142/360329/subaccount";
-  const stay22SearchQuery = encodeURIComponent(displayDest);
-
   return (
-    <div className="min-h-screen bg-stone-50 pb-24">
-      {/* Hero Header */}
-      <section className="bg-stone-900 text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-stone-800">
+    <div className="min-h-screen bg-[#FAF8F5] pb-24">
+      {/* Hero Header Light Mode */}
+      <section className="bg-white border-b border-stone-200/80 py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-semibold mb-4 backdrop-blur-md">
-            <Calculator className="w-4 h-4 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold mb-4">
+            <Calculator className="w-4 h-4 text-emerald-600" />
             Simulador Financeiro com Busca por CEP ou Cidade
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-stone-900 tracking-tight">
             Simulador de Custos: Quanto Custa Viajar?
           </h1>
-          <p className="mt-3 text-stone-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Digite o CEP ou nome da sua cidade e do seu destino para calcular os gastos exatos com passagens, hospedagem e passeios na ponta do lápis.
+          <p className="mt-3 text-stone-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            Digite o CEP ou nome da sua cidade e do seu destino para calcular os gastos estimados com passagens, hospedagem, alimentação e passeios.
           </p>
         </div>
       </section>
 
       {/* Main Grid */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Controles da Calculadora (7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-8 shadow-xl space-y-6">
+          <div className="lg:col-span-7 bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-8 shadow-sm space-y-6">
             <h2 className="text-base font-bold text-stone-900 pb-3 border-b border-stone-100 flex items-center gap-2">
               <MapPin className="w-5 h-5 text-orange-600" />
               1. Sua Origem & Destino
@@ -417,7 +405,7 @@ export default function CalculadoraViagemPage() {
                       : "border-stone-200 hover:bg-stone-50 text-stone-600 font-medium"
                   }`}
                 >
-                  <span className="block text-xs">🎒 Econômico</span>
+                  <span className="block text-xs">Econômico</span>
                   <span className="text-[10px] opacity-75">Hostel & Pousadas</span>
                 </button>
 
@@ -430,7 +418,7 @@ export default function CalculadoraViagemPage() {
                       : "border-stone-200 hover:bg-stone-50 text-stone-600 font-medium"
                   }`}
                 >
-                  <span className="block text-xs">🏨 Moderado</span>
+                  <span className="block text-xs">Moderado</span>
                   <span className="text-[10px] opacity-75">Conforto Médio</span>
                 </button>
 
@@ -443,8 +431,8 @@ export default function CalculadoraViagemPage() {
                       : "border-stone-200 hover:bg-stone-50 text-stone-600 font-medium"
                   }`}
                 >
-                  <span className="block text-xs">⭐ Alto Padrão</span>
-                  <span className="text-[10px] opacity-75">Resort & Luxo</span>
+                  <span className="block text-xs">Alto Padrão</span>
+                  <span className="text-[10px] opacity-75">Resort & Conforto</span>
                 </button>
               </div>
             </div>
@@ -469,157 +457,91 @@ export default function CalculadoraViagemPage() {
             </div>
           </div>
 
-          {/* Resumo dos Gastos & Conversão (5 cols) */}
+          {/* Resumo dos Gastos Light Mode (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Card Totalizador */}
-            <div className="bg-gradient-to-br from-stone-900 to-stone-950 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-stone-800">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-400 block">
-                Custo Total Estimado
+            {/* Card Totalizador Light Mode */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-stone-200/90">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-block">
+                Custo Total Estimado (Outubro/2026)
               </span>
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="text-3xl sm:text-4xl font-black text-white">
+              <div className="mt-3 flex items-baseline gap-2">
+                <span className="text-3xl sm:text-4xl font-black text-stone-900">
                   R$ {grandTotal.toLocaleString("pt-BR")}
                 </span>
-                <span className="text-xs text-stone-400">para {safeTravelers} pessoa{safeTravelers > 1 ? "s" : ""}</span>
+                <span className="text-xs text-stone-500">para {safeTravelers} pessoa{safeTravelers > 1 ? "s" : ""}</span>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-stone-800 grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <span className="text-stone-400 block">Por pessoa:</span>
-                  <span className="font-bold text-stone-100">R$ {perPersonTotal.toLocaleString("pt-BR")}</span>
+              <div className="mt-4 pt-4 border-t border-stone-100 grid grid-cols-2 gap-3 text-xs">
+                <div className="bg-[#FAF8F5] p-3 rounded-xl border border-stone-200/70">
+                  <span className="text-stone-500 block">Por pessoa:</span>
+                  <span className="font-bold text-stone-900 text-sm">R$ {perPersonTotal.toLocaleString("pt-BR")}</span>
                 </div>
-                <div>
-                  <span className="text-stone-400 block">Média diária/pessoa:</span>
-                  <span className="font-bold text-emerald-400">R$ {perDayPerPerson.toLocaleString("pt-BR")}/dia</span>
+                <div className="bg-emerald-50/60 p-3 rounded-xl border border-emerald-200/70">
+                  <span className="text-emerald-800 block">Média diária/pessoa:</span>
+                  <span className="font-bold text-emerald-700 text-sm">R$ {perDayPerPerson.toLocaleString("pt-BR")}/dia</span>
                 </div>
               </div>
 
               {/* Detalhamento */}
-              <div className="mt-6 space-y-2.5 text-xs">
-                <div className="flex justify-between text-stone-300">
+              <div className="mt-6 space-y-3 text-xs">
+                <div className="flex justify-between text-stone-700 py-1.5 border-b border-stone-100">
                   <span className="flex items-center gap-1.5">
-                    <Bed className="w-3.5 h-3.5 text-orange-400" /> Hospedagem ({safeDays} noites):
+                    <Bed className="w-3.5 h-3.5 text-orange-600" /> Hospedagem ({safeDays} noites):
                   </span>
-                  <span className="font-mono font-bold text-white">R$ {hotelTotal.toLocaleString("pt-BR")}</span>
+                  <span className="font-mono font-bold text-stone-900">R$ {hotelTotal.toLocaleString("pt-BR")}</span>
                 </div>
-                <div className="flex justify-between text-stone-300">
+                <div className="flex justify-between text-stone-700 py-1.5 border-b border-stone-100">
                   <span className="flex items-center gap-1.5">
-                    <Utensils className="w-3.5 h-3.5 text-amber-400" /> Alimentação:
+                    <Utensils className="w-3.5 h-3.5 text-amber-600" /> Alimentação:
                   </span>
-                  <span className="font-mono font-bold text-white">R$ {foodTotal.toLocaleString("pt-BR")}</span>
+                  <span className="font-mono font-bold text-stone-900">R$ {foodTotal.toLocaleString("pt-BR")}</span>
                 </div>
-                <div className="flex justify-between text-stone-300">
+                <div className="flex justify-between text-stone-700 py-1.5 border-b border-stone-100">
                   <span className="flex items-center gap-1.5">
-                    <Ticket className="w-3.5 h-3.5 text-emerald-400" /> Passeios & Taxas:
+                    <Ticket className="w-3.5 h-3.5 text-emerald-600" /> Passeios & Transporte Local:
                   </span>
-                  <span className="font-mono font-bold text-white">R$ {toursTotal.toLocaleString("pt-BR")}</span>
+                  <span className="font-mono font-bold text-stone-900">R$ {(toursTotal + transportTotal + extrasTotal).toLocaleString("pt-BR")}</span>
                 </div>
-                <div className="flex justify-between text-stone-300">
+                <div className="flex justify-between text-stone-700 py-1.5">
                   <span className="flex items-center gap-1.5">
-                    <Plane className="w-3.5 h-3.5 text-sky-400" /> Passagens Aéreas ({safeTravelers}x):
+                    <Plane className="w-3.5 h-3.5 text-sky-600" /> Passagens Aéreas ({safeTravelers}x):
                   </span>
-                  <span className="font-mono font-bold text-white">R$ {flightTotal.toLocaleString("pt-BR")}</span>
+                  <span className="font-mono font-bold text-stone-900">R$ {flightTotal.toLocaleString("pt-BR")}</span>
                 </div>
               </div>
 
-              {/* BOTÕES DE AFILIADOS / MONETIZAÇÃO */}
-              <div className="mt-6 pt-5 border-t border-stone-800 space-y-2.5">
-                {/* 1. Comprar Passagens com Milhas (FlipMilhas) */}
-                <a
-                  href="https://afiliados.flipmilhas.com/r/bjreyuf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 text-white font-extrabold text-xs py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 cursor-pointer text-center"
-                >
-                  <Plane className="w-4 h-4 shrink-0" />
-                  <span>Emitir Passagens com Milhas (Até 50% OFF na FlipMilhas)</span>
-                  <ExternalLink className="w-3.5 h-3.5 opacity-80 shrink-0" />
-                </a>
-
-                {/* 2. Comparar Passagens Tradicionais (Vai de Promo) */}
-                <a
-                  href={flightAffiliateLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-600/30 cursor-pointer text-center"
-                >
-                  <Plane className="w-4 h-4 shrink-0" />
-                  <span>Comparar Passagens em Dinheiro ({displayOrigin} ➔ {displayDest})</span>
-                  <ExternalLink className="w-3 h-3 opacity-75 shrink-0" />
-                </a>
-
-                {/* 2. Reservar Hospedagem Stay22 */}
-                <a
-                  href={`https://www.stay22.com/embed/gm?aid=6a99930410f03364e343f876&address=${stay22SearchQuery}&hidefaves=true`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-orange-600/30 cursor-pointer text-center"
-                >
-                  <Bed className="w-4 h-4 shrink-0" />
-                  <span>Ver Menor Tarifa de Hotel em {displayDest} (Stay22)</span>
-                </a>
-
-                {/* 3. Aluguel de Carros (EconomyBookings) */}
-                <a
-                  href="https://economybookings.tpo.lu/rXOQqeTJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/30 cursor-pointer text-center"
-                >
-                  <Car className="w-4 h-4 shrink-0" />
-                  <span>Alugar Carro com Desconto (EconomyBookings)</span>
-                  <ExternalLink className="w-3 h-3 opacity-75 shrink-0" />
-                </a>
-
-                {/* 4. Seguro Viagem (EKTA) */}
-                <a
-                  href="https://ektatraveling.tpo.lu/QynkhjN8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-blue-700 hover:bg-blue-600 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-700/30 cursor-pointer text-center"
-                >
-                  <ShieldCheck className="w-4 h-4 shrink-0" />
-                  <span>Cotar Seguro Viagem com 25% OFF (EKTA)</span>
-                  <ExternalLink className="w-3 h-3 opacity-75 shrink-0" />
-                </a>
-
-                {/* 5. Ingressos & Passeios (GetYourGuide) */}
-                <a
-                  href="https://apretailer.com.br/click/6a9a1ee02bfa8131446932d2/185623/360329/subaccount"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 cursor-pointer text-center"
-                >
-                  <Ticket className="w-4 h-4 shrink-0" />
-                  <span>Ingressos e Passeios em {displayDest} (GetYourGuide)</span>
-                  <ExternalLink className="w-3 h-3 opacity-75 shrink-0" />
-                </a>
-              </div>
+              <p className="mt-5 text-[11px] text-stone-500 leading-relaxed bg-[#FAF8F5] p-3 rounded-xl border border-stone-200/70">
+                Nota: Os valores acima são estimativas médias de planejamento e variam conforme antecedência da compra, temporada e câmbio.
+              </p>
             </div>
 
-            {/* Ação: Roteiro com IA */}
+            {/* Ação: Roteiro e Checklist */}
             <div className="bg-white rounded-3xl border border-stone-200/90 p-6 shadow-xs text-center space-y-3">
-              <Sparkles className="w-8 h-8 text-orange-600 mx-auto" />
+              <Sparkles className="w-7 h-7 text-orange-600 mx-auto" />
               <h3 className="font-bold text-stone-900 text-sm sm:text-base">
-                Já sabe o custo? Monte agora a programação dia a dia!
+                Continue o planejamento da sua viagem
               </h3>
-              <p className="text-xs text-stone-500">
-                Nosso motor de IA gera o roteiro com os horários ideais para você não perder tempo e economizar na viagem.
+              <p className="text-xs text-stone-600">
+                Monte a programação dia a dia para {displayDest} ou confira o checklist completo de bagagem.
               </p>
-              <Link
-                href="/roteiro-personalizado"
-                className="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2"
-              >
-                Gerar Roteiro Personalizado com IA
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <div className="grid grid-cols-1 gap-2 pt-1">
+                <Link
+                  href="/roteiro-personalizado"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  Planejar Roteiro por Dias
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="/checklist"
+                  className="w-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold text-xs py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <Luggage className="w-3.5 h-3.5" />
+                  Abrir Checklist de Bagagem
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* VITRINE DE EQUIPAMENTOS RECOMENDADOS */}
-        <div className="mt-16">
-          <TravelGearShowcase />
         </div>
       </main>
     </div>

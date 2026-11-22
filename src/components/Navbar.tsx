@@ -2,194 +2,129 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Luggage, Compass, CheckSquare, Info, Menu, X, Heart, Sparkles, Calculator, ShoppingBag } from "lucide-react";
+import {
+  Luggage,
+  Search,
+  Droplets,
+  CheckSquare,
+  Menu,
+  X,
+  Plane,
+  Sparkles,
+  ShieldAlert
+} from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const TOOLS_NAV = [
+    { href: "/bagagem", label: "Medidor de Mala", icon: Luggage, desc: "Gabarito Gol, LATAM e Azul" },
+    { href: "/posso-levar", label: "Posso Levar?", icon: Search, desc: "Scanner ANAC & TSA" },
+    { href: "/liquidos", label: "Líquidos 100ml", icon: Droplets, desc: "Simulador de Raio-X" },
+    { href: "/checklist", label: "Mala Inteligente", icon: CheckSquare, desc: "Checklist com PDF A4" },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs">
+    <header className="sticky top-0 z-50 bg-[#0B1E36]/95 backdrop-blur-md border-b border-blue-900/60 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 rounded-2xl overflow-hidden shadow-md shadow-orange-600/20 group-hover:scale-105 transition-transform shrink-0 border border-stone-100">
-              <img
-                src="/logo.png"
-                alt="Logo Malas Prontas"
-                className="w-full h-full object-cover"
-              />
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Logo Principal Boeing 737 */}
+          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center shadow-md ring-2 ring-blue-400/20 group-hover:scale-105 transition-transform">
+              <Plane className="w-6 h-6 text-amber-400 -rotate-45" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-2xl tracking-tight text-stone-900">
-                  Malas<span className="text-orange-600">Prontas</span>
+                <span className="font-black text-lg sm:text-xl tracking-tight text-white block leading-none">
+                  MALAS PRONTAS
+                </span>
+                <span className="text-xs font-black px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950">
+                  737
                 </span>
               </div>
-              <p className="text-xs text-stone-700 tracking-wide font-medium">
-                Dicas & Roteiros de Viagem
-              </p>
+              <span className="text-[10px] sm:text-[11px] text-blue-200/80 font-medium block mt-0.5 tracking-wide">
+                Scanner ANAC • Medidor de Bordo • Regras 2026
+              </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2 lg:gap-3">
-            <Link
-              href="/"
-              className="text-stone-900 hover:text-orange-600 font-bold text-sm transition-all px-3 py-1.5 rounded-xl hover:bg-stone-100/80 flex items-center gap-1.5"
-            >
-              <Compass className="w-4 h-4 text-orange-600" />
-              Início
-            </Link>
-            <Link
-              href="/destinos"
-              className="text-stone-900 hover:text-orange-600 font-bold text-sm transition-all px-3 py-1.5 rounded-xl hover:bg-stone-100/80 flex items-center gap-1.5"
-            >
-              <Luggage className="w-4 h-4 text-orange-600" />
-              Destinos
-            </Link>
-            <Link
-              href="/roteiro-personalizado"
-              className="font-bold text-sm transition-all flex items-center gap-1.5 bg-orange-50 text-orange-800 hover:text-orange-900 px-3.5 py-1.5 rounded-full border border-orange-200/80 shadow-2xs hover:bg-orange-100"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-orange-600" />
-              Roteiro IA
-              <span className="bg-orange-600 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full uppercase">Novo</span>
-            </Link>
-            <Link
-              href="/calculadora-viagem"
-              className="font-bold text-sm transition-all flex items-center gap-1.5 bg-emerald-50 text-emerald-800 hover:text-emerald-900 px-3.5 py-1.5 rounded-full border border-emerald-200/80 shadow-2xs hover:bg-emerald-100"
-            >
-              <Calculator className="w-3.5 h-3.5 text-emerald-600" />
-              Simulador de Custos
-              <span className="bg-emerald-600 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full uppercase">Grátis</span>
-            </Link>
-            <Link
-              href="/vitrine"
-              className="font-bold text-sm transition-all flex items-center gap-1.5 bg-amber-50 text-amber-900 hover:text-amber-950 px-3.5 py-1.5 rounded-full border border-amber-300 shadow-2xs hover:bg-amber-100"
-            >
-              <ShoppingBag className="w-3.5 h-3.5 text-amber-600" />
-              Vitrine
-              <span className="bg-amber-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full uppercase">Ofertas</span>
-            </Link>
-            <Link
-              href="/checklist"
-              className="text-stone-900 hover:text-emerald-700 font-bold text-sm transition-all px-3 py-1.5 rounded-xl hover:bg-stone-100/80 flex items-center gap-1.5"
-            >
-              <CheckSquare className="w-4 h-4 text-emerald-600" />
-              Checklist
-            </Link>
-            <Link
-              href="/sobre"
-              className="text-stone-900 hover:text-orange-600 font-bold text-sm transition-all px-3 py-1.5 rounded-xl hover:bg-stone-100/80 flex items-center gap-1.5"
-            >
-              <Info className="w-4 h-4 text-stone-500" />
-              Sobre
-            </Link>
+          {/* Links Desktop dos 4 Sistemas */}
+          <nav className="hidden lg:flex items-center gap-1.5" aria-label="Ferramentas Principais">
+            {TOOLS_NAV.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-slate-200 hover:text-white hover:bg-blue-800/40 transition-colors"
+                >
+                  <Icon className="w-4 h-4 text-amber-400" />
+                  <span>{tool.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* CTA Action */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Botão de Ação Rápida */}
+          <div className="hidden sm:flex items-center gap-3">
             <Link
-              href="/checklist"
-              className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm shadow-orange-600/30 transition-all hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+              href="/#ferramentas"
+              className="inline-flex items-center gap-1.5 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold px-4 py-2.5 rounded-xl shadow-md transition-all hover:shadow-amber-400/20"
             >
-              <Luggage className="w-4 h-4" />
-              Arrumar a Mala
+              <Sparkles className="w-3.5 h-3.5 text-slate-900" />
+              Abrir 4 Ferramentas
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="p-2 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-colors focus:outline-hidden"
-              aria-label="Menu principal"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Botão Mobile Hamburger */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            type="button"
+            className="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-blue-900/50"
+            aria-label="Abrir menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Menu Mobile */}
       {isOpen && (
-        <div className="md:hidden border-b border-stone-200 bg-white px-4 pt-3 pb-6 space-y-3">
-          <Link
-            href="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-base font-bold text-stone-900 hover:bg-orange-50 hover:text-orange-600 transition-colors"
-          >
-            <Compass className="w-5 h-5 text-orange-600" />
-            Início
-          </Link>
-          <Link
-            href="/destinos"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-base font-bold text-stone-900 hover:bg-orange-50 hover:text-orange-600 transition-colors"
-          >
-            <Luggage className="w-5 h-5 text-orange-600" />
-            Destinos & Roteiros
-          </Link>
-          <Link
-            href="/roteiro-personalizado"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-bold text-orange-800 bg-orange-50 transition-colors"
-          >
-            <span className="flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-orange-600" />
-              Roteiro Sob Medida com IA
-            </span>
-            <span className="bg-orange-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">Novo</span>
-          </Link>
-          <Link
-            href="/calculadora-viagem"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-bold text-emerald-900 bg-emerald-50 transition-colors"
-          >
-            <span className="flex items-center gap-3">
-              <Calculator className="w-5 h-5 text-emerald-600" />
-              Simulador de Custos da Viagem
-            </span>
-            <span className="bg-emerald-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">Grátis</span>
-          </Link>
-          <Link
-            href="/vitrine"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-base font-bold text-amber-950 bg-amber-50 border border-amber-200 transition-colors"
-          >
-            <span className="flex items-center gap-3">
-              <ShoppingBag className="w-5 h-5 text-amber-600" />
-              Vitrine de Equipamentos & Ofertas
-            </span>
-            <span className="bg-amber-500 text-white text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">Ofertas</span>
-          </Link>
-          <Link
-            href="/checklist"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-base font-bold text-stone-900 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
-          >
-            <CheckSquare className="w-5 h-5 text-emerald-600" />
-            Checklist Interativo da Mala
-          </Link>
-          <Link
-            href="/sobre"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-base font-bold text-stone-900 hover:bg-orange-50 hover:text-orange-600 transition-colors"
-          >
-            <Info className="w-5 h-5 text-stone-500" />
-            Sobre o Blog
-          </Link>
-          <div className="pt-2">
-            <Link
-              href="/checklist"
-              onClick={() => setIsOpen(false)}
-              className="w-full flex items-center justify-center gap-2 bg-orange-600 text-white font-semibold py-3 rounded-xl shadow-xs"
-            >
-              <Luggage className="w-5 h-5" />
-              Abrir Checklist Grátis
-            </Link>
+        <div className="lg:hidden bg-[#0A192F] border-b border-blue-900/80 px-4 pt-3 pb-6 space-y-3">
+          <div className="text-xs font-bold uppercase tracking-wider text-blue-300 px-2">
+            As 4 Micro-Ferramentas de Voo:
+          </div>
+          <div className="grid grid-cols-1 gap-2">
+            {TOOLS_NAV.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between p-3 rounded-xl bg-blue-950/60 border border-blue-900/50 hover:bg-blue-900/50 text-white"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-blue-800/40 text-amber-400">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-xs">{tool.label}</div>
+                      <div className="text-[11px] text-blue-200/70">{tool.desc}</div>
+                    </div>
+                  </div>
+                  <span className="text-xs font-extrabold text-amber-400">Abrir →</span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="pt-2 border-t border-blue-900/50 flex flex-wrap gap-2 text-xs text-blue-200/70 px-2">
+            <Link href="/sobre" onClick={() => setIsOpen(false)} className="hover:text-white">Sobre Nós</Link>
+            <span>•</span>
+            <Link href="/politica-de-privacidade" onClick={() => setIsOpen(false)} className="hover:text-white">Privacidade</Link>
+            <span>•</span>
+            <Link href="/contato" onClick={() => setIsOpen(false)} className="hover:text-white">Contato</Link>
           </div>
         </div>
       )}

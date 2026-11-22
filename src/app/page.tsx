@@ -2,284 +2,365 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { POSTS, CATEGORIES } from "@/data/posts";
-import PostCard from "@/components/PostCard";
-import ChecklistWidget from "@/components/ChecklistWidget";
-import TravelGearShowcase from "@/components/TravelGearShowcase";
+import BaggageCheckerTool from "@/components/tools/BaggageCheckerTool";
+import CanIBringTool from "@/components/tools/CanIBringTool";
+import LiquidsSimulatorTool from "@/components/tools/LiquidsSimulatorTool";
+import SmartPackingTool from "@/components/tools/SmartPackingTool";
 import {
-  Search,
-  Compass,
   Luggage,
+  Search,
+  Droplets,
+  CheckSquare,
+  Plane,
+  AlertTriangle,
+  ShieldCheck,
   Sparkles,
-  Palmtree,
-  Mountain,
-  Trees,
-  Landmark,
-  Backpack,
   ArrowRight,
-  MapPin,
-  Flame,
-  DollarSign
+  CreditCard,
+  Wifi,
+  HeartPulse,
+  Scale,
+  PackageCheck,
+  HelpCircle
 } from "lucide-react";
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Todas");
-
-  // Filter posts
-  const filteredPosts = POSTS.filter((post) => {
-    const matchesCategory =
-      selectedCategory === "Todas" || post.category === selectedCategory;
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.destination.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.stateCountry.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.subtitle.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const featuredPosts = POSTS.filter((p) => p.featured);
+  const [activeTab, setActiveTab] = useState<"bagagem" | "possolevar" | "liquidos" | "checklist">("bagagem");
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-stone-900 text-white py-20 lg:py-28">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2000&q=80"
-            alt="Viagem na estrada"
-            className="w-full h-full object-cover opacity-35"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/70 to-stone-900/40" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/20 border border-orange-500/40 text-orange-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-orange-400" />
-            Roteiros sinceros, dicas de economia e mapas reais
+    <main className="min-h-screen bg-[#F8FAFC]">
+      {/* HERO SECTION CINEMATOGRÁFICO DE AVIAÇÃO */}
+      <section className="bg-gradient-to-b from-[#0B1E36] via-[#0F2847] to-[#0B1E36] text-white pt-12 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Elementos Gráficos de Fundo */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]" />
+        
+        <div className="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-amber-400 text-xs sm:text-sm font-bold tracking-wide">
+            <Sparkles className="w-4 h-4" />
+            A Suíte Definitiva do Passageiro Moderno • Normas 2026
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none">
-            O mundo te espera. <br />
-            Suas <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400">malas estão prontas?</span>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+            Sua Viagem <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500">Sem Taxa Surpresa</span> no Aeroporto
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg text-stone-300 max-w-2xl mx-auto leading-relaxed">
-            Descubra roteiros completos dia a dia, custos reais de cada viagem, o que levar na mala e segredos para viajar mais gastando menos.
+          <p className="max-w-3xl mx-auto text-slate-300 text-sm sm:text-lg leading-relaxed font-normal">
+            Verifique o gabarito de mala da sua companhia aérea, consulte o scanner oficial da ANAC antes do raio-X, simule seus cosméticos de 100ml e gere seu checklist de viagem imprimível em segundos.
           </p>
 
-          {/* Search Bar */}
-          <div className="mt-8 max-w-2xl mx-auto">
-            <div className="relative flex items-center bg-white/95 backdrop-blur-md rounded-2xl p-2 shadow-2xl border border-white/20">
-              <div className="pl-3 pr-2 text-stone-400">
-                <Search className="w-5 h-5" />
-              </div>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Para onde você quer ir? (Ex: Maragogi, Gramado, Buenos Aires...)"
-                className="w-full bg-transparent text-stone-900 text-sm sm:text-base placeholder-stone-600 focus:outline-hidden py-2"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="px-3 text-xs font-semibold text-stone-600 hover:text-stone-900"
-                >
-                  Limpar
-                </button>
-              )}
+          {/* Mini Estatísticas de Confiança */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-blue-200/90 font-medium">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Gabarito Oficial ANAC 55×35×25cm</span>
             </div>
-          </div>
-
-          {/* Quick Filter Pills */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
-            {CATEGORIES.map((cat) => {
-              const isActive = selectedCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  type="button"
-                  className={`text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition-all ${
-                    isActive
-                      ? "bg-orange-600 text-white shadow-md shadow-orange-600/30 scale-105"
-                      : "bg-white/10 hover:bg-white/20 text-stone-200 border border-white/10"
-                  }`}
-                >
-                  {cat.name}
-                </button>
-              );
-            })}
+            <div className="flex items-center gap-2">
+              <CheckSquare className="w-4 h-4 text-emerald-400" />
+              <span>120+ Itens no Scanner de Raio-X</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Plane className="w-4 h-4 text-amber-400" />
+              <span>Regras Gol, LATAM, Azul & Internacionais</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* MAIN CONTAINER */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
-        {/* DESTAQUES DA SEMANA */}
-        {selectedCategory === "Todas" && !searchQuery && (
-          <section>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-              <div>
-                <div className="flex items-center gap-2 text-orange-600 text-xs font-bold uppercase tracking-wider mb-1">
-                  <Flame className="w-4 h-4" />
-                  Top Destinos Mais Amados
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900">
-                  Viagens em Destaque
-                </h2>
-              </div>
-              <Link
-                href="/destinos"
-                className="text-sm font-semibold text-orange-600 hover:text-orange-700 flex items-center gap-1 group"
-              >
-                Ver todos os destinos
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredPosts.slice(0, 3).map((post) => (
-                <PostCard key={post.id} post={post} priority />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* FEED DE TODOS OS ROTEIROS */}
-        <section>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-            <div>
-              <div className="flex items-center gap-2 text-orange-600 text-xs font-bold uppercase tracking-wider mb-1">
-                <Compass className="w-4 h-4" />
-                Explore Nossos Roteiros
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900">
-                {selectedCategory === "Todas" ? "Últimos Roteiros Publicados" : `Roteiros em: ${selectedCategory}`}
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-stone-700">
-              {filteredPosts.length} {filteredPosts.length === 1 ? "viagem encontrada" : "viagens encontradas"}
-            </p>
-          </div>
-
-          {filteredPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post) => (
-                <PostCard key={post.id} post={post} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16 bg-white rounded-3xl border border-stone-200 p-8">
-              <Luggage className="w-12 h-12 text-stone-300 mx-auto mb-3" />
-              <h3 className="font-bold text-lg text-stone-800">Nenhum roteiro encontrado</h3>
-              <p className="text-sm text-stone-500 mt-1 max-w-md mx-auto">
-                Não encontramos viagens para a busca "{searchQuery}". Tente pesquisar por outro destino ou selecione "Todas as Viagens".
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("Todas");
-                }}
-                className="mt-4 inline-block bg-orange-600 text-white text-xs font-semibold px-4 py-2 rounded-xl"
-              >
-                Limpar Filtros
-              </button>
-            </div>
-          )}
-        </section>
-
-        {/* RECURSO EXCLUSIVO: CHECKLIST DA MALA */}
-        <section id="checklist-section">
-          <ChecklistWidget />
-        </section>
-
-        {/* VITRINE DE EQUIPAMENTOS & ACESSÓRIOS */}
-        <section id="vitrine-section">
-          <TravelGearShowcase />
-        </section>
-
-        {/* SEÇÃO OFICIAL YOUTUBE COM O BANNER */}
-        <section className="bg-gradient-to-br from-stone-900 via-stone-900 to-stone-950 rounded-3xl p-6 sm:p-10 border border-stone-800 shadow-2xl text-white">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <span className="bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                Canal Oficial no YouTube
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mt-3 leading-tight">
-                Acompanhe Nossos Roteiros Também em Vídeo!
-              </h2>
-              <p className="text-stone-300 text-xs sm:text-sm mt-2 leading-relaxed">
-                Dicas práticas, guias de cidades, custos reais e experiências de viagem cinematográficas no nosso canal oficial. Inscreva-se para não perder nenhum destino!
-              </p>
-              <div className="mt-5">
-                <a
-                  href="https://www.youtube.com/@canalmalasprontas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-2xl shadow-lg shadow-red-600/30 transition-all hover:scale-105"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                  Inscrever-se no @canalmalasprontas
-                </a>
+      {/* ÁREA CENTRAL DAS 4 FERRAMENTAS UNIFICADAS */}
+      <section id="ferramentas" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20 pb-20">
+        {/* BARRAS DE SELEÇÃO DAS 4 ABAS */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 p-2 bg-[#0B1E36]/90 backdrop-blur-md rounded-3xl border border-blue-900/60 shadow-2xl mb-8">
+          <button
+            onClick={() => setActiveTab("bagagem")}
+            type="button"
+            className={`flex items-center justify-center sm:justify-start gap-2.5 p-3.5 sm:p-4 rounded-2xl font-black text-xs sm:text-sm transition-all text-left ${
+              activeTab === "bagagem"
+                ? "bg-amber-400 text-slate-950 shadow-lg scale-[1.02]"
+                : "text-slate-300 hover:text-white hover:bg-blue-800/40"
+            }`}
+          >
+            <Luggage className={`w-5 h-5 shrink-0 ${activeTab === "bagagem" ? "text-slate-950" : "text-amber-400"}`} />
+            <div className="truncate">
+              <div className="truncate">1. Medidor de Mala</div>
+              <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "bagagem" ? "text-slate-800" : "text-slate-400"}`}>
+                Gabarito por Cia Aérea
               </div>
             </div>
+          </button>
 
-            {/* Banner Oficial */}
-            <a
-              href="https://www.youtube.com/@canalmalasprontas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full lg:w-1/2 rounded-2xl overflow-hidden shadow-2xl border border-stone-700/80 group block"
-            >
-              <img
-                src="/banner.jpg"
-                alt="Banner Oficial Malas Prontas YouTube"
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </a>
-          </div>
-        </section>
+          <button
+            onClick={() => setActiveTab("possolevar")}
+            type="button"
+            className={`flex items-center justify-center sm:justify-start gap-2.5 p-3.5 sm:p-4 rounded-2xl font-black text-xs sm:text-sm transition-all text-left ${
+              activeTab === "possolevar"
+                ? "bg-amber-400 text-slate-950 shadow-lg scale-[1.02]"
+                : "text-slate-300 hover:text-white hover:bg-blue-800/40"
+            }`}
+          >
+            <Search className={`w-5 h-5 shrink-0 ${activeTab === "possolevar" ? "text-slate-950" : "text-amber-400"}`} />
+            <div className="truncate">
+              <div className="truncate">2. Posso Levar Isso?</div>
+              <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "possolevar" ? "text-slate-800" : "text-slate-400"}`}>
+                Scanner ANAC / TSA
+              </div>
+            </div>
+          </button>
 
-        {/* BANNER POSTAL: SOBRE O BLOG */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-orange-600 via-amber-600 to-amber-700 text-white p-8 sm:p-12 shadow-xl">
-          <div className="relative z-10 max-w-2xl">
-            <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              Nossa Missão
+          <button
+            onClick={() => setActiveTab("liquidos")}
+            type="button"
+            className={`flex items-center justify-center sm:justify-start gap-2.5 p-3.5 sm:p-4 rounded-2xl font-black text-xs sm:text-sm transition-all text-left ${
+              activeTab === "liquidos"
+                ? "bg-amber-400 text-slate-950 shadow-lg scale-[1.02]"
+                : "text-slate-300 hover:text-white hover:bg-blue-800/40"
+            }`}
+          >
+            <Droplets className={`w-5 h-5 shrink-0 ${activeTab === "liquidos" ? "text-slate-950" : "text-amber-400"}`} />
+            <div className="truncate">
+              <div className="truncate">3. Regra dos 100ml</div>
+              <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "liquidos" ? "text-slate-800" : "text-slate-400"}`}>
+                Matriz de Líquidos 1L
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("checklist")}
+            type="button"
+            className={`flex items-center justify-center sm:justify-start gap-2.5 p-3.5 sm:p-4 rounded-2xl font-black text-xs sm:text-sm transition-all text-left ${
+              activeTab === "checklist"
+                ? "bg-amber-400 text-slate-950 shadow-lg scale-[1.02]"
+                : "text-slate-300 hover:text-white hover:bg-blue-800/40"
+            }`}
+          >
+            <CheckSquare className={`w-5 h-5 shrink-0 ${activeTab === "checklist" ? "text-slate-950" : "text-amber-400"}`} />
+            <div className="truncate">
+              <div className="truncate">4. Mala Inteligente</div>
+              <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "checklist" ? "text-slate-800" : "text-slate-400"}`}>
+                PackPoint com PDF A4
+              </div>
+            </div>
+          </button>
+        </div>
+
+        {/* RENDERIZAÇÃO DA FERRAMENTA SELECIONADA */}
+        <div className="transition-all duration-300">
+          {activeTab === "bagagem" && <BaggageCheckerTool />}
+          {activeTab === "possolevar" && <CanIBringTool />}
+          {activeTab === "liquidos" && <LiquidsSimulatorTool />}
+          {activeTab === "checklist" && <SmartPackingTool />}
+        </div>
+      </section>
+
+      {/* SEÇÃO INFORMATIVA: POR QUE CONFERIR ANTES DE SAIR DE CASA? */}
+      <section className="bg-white py-16 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="text-xs font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+              Economia Real no Aeroporto
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold mt-4 leading-tight">
-              Viajar não precisa ser um luxo inalcançável.
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              Os 4 Maiores Erros Que Custam Caro no Portão de Embarque
             </h2>
-            <p className="mt-3 text-stone-100 text-sm sm:text-base leading-relaxed">
-              No <strong>Malas Prontas</strong>, nós testamos os passeios, calculamos os custos na ponta do lápis e mostramos o caminho das pedras para você realizar a viagem dos seus sonhos.
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Companhias aéreas aumentaram drasticamente o rigor de fiscalização no momento da chamada dos grupos de embarque.
             </p>
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link
-                href="/sobre"
-                className="bg-white text-orange-700 hover:bg-stone-100 font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-colors inline-flex items-center gap-2"
-              >
-                Conheça Nossa História
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/checklist"
-                className="bg-orange-800/40 hover:bg-orange-800/60 border border-white/20 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-colors inline-flex items-center gap-2"
-              >
-                <Luggage className="w-4 h-4" />
-                Arrumar as Malas Agora
-              </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center">
+                <AlertTriangle className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-base text-slate-900">
+                1. A Taxa Surpresa no Portão
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Despachar mala antecipadamente pelo site custa de R$ 90 a R$ 130. Se sua mala enroscar no gabarito do portão de embarque, a taxa compulsória sobe para <strong>R$ 160 a R$ 380 na hora</strong>.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                <Droplets className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-base text-slate-900">
+                2. Perfumes e Cremes no Lixo
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                A segurança de voos internacionais confere a capacidade impressa no frasco, não o que restou dentro. Frascos de 150ml ou 200ml são <strong>jogados no lixo sumariamente</strong> pelo agente de raio-X.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                <Scale className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-base text-slate-900">
+                3. Baterias e Fogo no Porão
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Powerbanks e baterias de lítio soltas são <strong>estritamente proibidos na mala despachada</strong> em todo o mundo. O raio-X do aeroporto abre sua mala e apreende o item sem devolução.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <PackageCheck className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-base text-slate-900">
+                4. O Peso Inútil de Roupas
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Viajar leve permite embarcar direto sem pegar fila de despacho, economiza até 40 minutos na esteira de desembarque e elimina o risco de extravio de bagagem.
+              </p>
             </div>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+
+      {/* SEÇÃO DE EQUIPAMENTOS HOMOLOGADOS & RECOMENDAÇÕES ESTRATÉGICAS */}
+      <section className="bg-slate-50 py-16 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs font-black uppercase tracking-wider text-blue-700">
+                Kit do Viajante Inteligente
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">
+                Acessórios Essenciais Homologados para Aviação
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md">
+              Itens selecionados pela equipe editorial para garantir que sua mala passe 100% lisa em qualquer aeroporto do mundo.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Card 1: Balança Digital */}
+            <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
+                  <Scale className="w-5 h-5" />
+                </div>
+                <h3 className="font-extrabold text-lg text-slate-900">
+                  Balança Digital Portátil (Até 50kg)
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Pesa 90g e garante que sua mala não ultrapasse os 10kg da cabine ou os 23kg do porão antes de você sair de casa.
+                </p>
+              </div>
+              <a
+                href="https://mercadolivre.com/sec/24v3yB2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-1.5"
+              >
+                Ver Ofertas no Mercado Livre
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Card 2: Mala de Bordo 55x35x25 */}
+            <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center">
+                  <Luggage className="w-5 h-5" />
+                </div>
+                <h3 className="font-extrabold text-lg text-slate-900">
+                  Mala de Bordo no Gabarito ANAC 55×35×25cm
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Feita em policarbonato leve com rodinhas 360° duplas que entram sem enroscar nas caixas de medição da Gol, LATAM e Azul.
+                </p>
+              </div>
+              <a
+                href="https://mercadolivre.com/sec/24v3yB2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-1.5"
+              >
+                Ver Malas Homologadas
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Card 3: Kit Frascos Silicone */}
+            <div className="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <Droplets className="w-5 h-5" />
+                </div>
+                <h3 className="font-extrabold text-lg text-slate-900">
+                  Kit de Frascos de Silicone TSA 80ml
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  À prova de vazamentos provocados pela despressurização do avião. Acompanha saquinho plástico transparente de 1L oficial.
+                </p>
+              </div>
+              <a
+                href="https://mercadolivre.com/sec/24v3yB2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-1.5"
+              >
+                Ver Kits de Silicone
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEÇÃO DE PERGUNTAS FREQUENTES (FAQ ESTRUTURADO PARA SEO) */}
+      <section className="bg-white py-16 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Tira-Dúvidas Aeroportuário</span>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+              Perguntas Frequentes sobre Bagagem e Regras ANAC
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h3 className="font-bold text-sm sm:text-base text-slate-900">
+                As rodinhas da mala contam nas medidas oficiais da ANAC (55×35×25cm)?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                <strong>Sim, obrigatoriamente.</strong> A regulamentação da ANAC estabelece que as medidas máximas de 55cm de altura, 35cm de largura e 25cm de profundidade incluem rodinhas, alças superiores, bolsos frontais e qualquer suporte externo. Os gabaritos de metal nos aeroportos são caixas fechadas: se a rodinha sobrar para fora, a mala não entra e é barrada.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h3 className="font-bold text-sm sm:text-base text-slate-900">
+                Posso levar mala de mão de 10kg E TAMBÉM uma mochila?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                <strong>Sim!</strong> Em quase todas as tarifas regulares da Gol, LATAM e Azul no Brasil, todo passageiro tem direito a <strong>1 mala de mão de até 10kg</strong> (que vai no bagageiro superior) <strong>MAIS 1 item pessoal</strong> (como uma mochila, pasta de notebook ou bolsa) que deve caber completamente debaixo do assento à frente. Cuidado apenas com companhias ultra-low-cost internacionais (como Flybondi e JetSMART), cuja tarifa mais barata inclui somente a mochila.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h3 className="font-bold text-sm sm:text-base text-slate-900">
+                Por que o Powerbank é estritamente proibido na mala despachada?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                Baterias portáteis de íons de lítio sofrem risco de um fenômeno químico chamado <em>fuga térmica (thermal runaway)</em> quando sofrem pressão ou curto-circuito. No porão de carga da aeronave, um fogo desse tipo é muito difícil de combater. Já na cabine de passageiros, a tripulação possui extintores e bolsas de contenção antichamas para isolar o dispositivo instantaneamente.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <h3 className="font-bold text-sm sm:text-base text-slate-900">
+                A regra dos líquidos de 100ml vale para voos domésticos dentro do Brasil?
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                Em voos 100% domésticos no Brasil, a ANAC permite frascos de aerossol de cuidados pessoais de até 300ml ou 300g (máximo de 4 frascos / 1,2kg no total). No entanto, se o seu voo tiver conexão internacional ou for direto para o exterior, <strong>a regra rígida da IATA/TSA de 100ml por frasco em saquinho plástico de 1L aplica-se imediatamente</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

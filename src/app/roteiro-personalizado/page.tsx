@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AFFILIATES } from "@/data/affiliates";
-import AirHelpBanner from "@/components/AirHelpBanner";
-import BeachParkBanner from "@/components/BeachParkBanner";
 import {
   Sparkles,
   MapPin,
@@ -13,24 +10,12 @@ import {
   Compass,
   DollarSign,
   Printer,
-  Bed,
   CheckCircle2,
   AlertTriangle,
   Clock,
-  ArrowRight,
   Luggage,
-  Heart,
-  Share2,
   Loader2,
-  HelpCircle,
-  Copy,
-  Check,
-  Ticket,
-  Plane,
-  Music,
-  ExternalLink,
-  Train,
-  Palmtree
+  Calculator
 } from "lucide-react";
 
 interface ItineraryResult {
@@ -59,13 +44,6 @@ export default function RoteiroPersonalizadoPage() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ItineraryResult | null>(null);
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyPix = () => {
-    navigator.clipboard.writeText("malasprontas737@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
-  };
 
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,26 +86,26 @@ export default function RoteiroPersonalizadoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 pb-24">
-      {/* HEADER HERO */}
-      <section className="bg-stone-900 text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-stone-800">
+    <div className="min-h-screen bg-[#FAF8F5] pb-24">
+      {/* HEADER HERO LIGHT MODE */}
+      <section className="bg-white border-b border-stone-200/80 py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30 text-orange-300 text-xs font-semibold mb-4 backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-orange-400" />
-            Inteligência Artificial Exclusiva Malas Prontas
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-bold mb-4">
+            <Sparkles className="w-4 h-4 text-orange-600" />
+            Ferramenta de Planejamento Malas Prontas
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-            Gerador de Roteiro Sob Medida
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-stone-900 tracking-tight">
+            Planejador de Roteiro por Número de Dias
           </h1>
-          <p className="mt-3 text-stone-300 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Diga para onde você quer ir e nosso motor de inteligência artificial criará um roteiro dia a dia personalizado com estimativa de custos e dicas locais.
+          <p className="mt-3 text-stone-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            Diga para onde você quer ir e gere um roteiro dia a dia organizado por regiões com estimativa de custos e itens essenciais de bagagem.
           </p>
         </div>
       </section>
 
       {/* FORMULÁRIO */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
-        <div className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-10 shadow-xl shadow-stone-900/5">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <div className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-10 shadow-sm">
           <form onSubmit={handleGenerate} className="space-y-6">
             {/* Destino */}
             <div>
@@ -151,7 +129,7 @@ export default function RoteiroPersonalizadoPage() {
                     key={s}
                     type="button"
                     onClick={() => setDestination(s)}
-                    className="text-[11px] bg-stone-100 hover:bg-orange-50 hover:text-orange-600 text-stone-600 px-2.5 py-1 rounded-lg transition-colors"
+                    className="text-[11px] bg-stone-100 hover:bg-orange-50 hover:text-orange-600 text-stone-600 px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
                   >
                     {s}
                   </button>
@@ -238,18 +216,18 @@ export default function RoteiroPersonalizadoPage() {
 
             {/* Botão de Geração */}
             <div className="pt-4 border-t border-stone-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-stone-400">
-                ⚡ Processado com tecnologia Xiaomi MiMo IA em segundos.
+              <span className="text-xs text-stone-500">
+                Planejamento estruturado por proximidade geográfica para evitar gastos extras com deslocamento.
               </span>
               <button
                 type="submit"
                 disabled={loading || !destination.trim()}
-                className="w-full sm:w-auto bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-sm px-8 py-3.5 rounded-2xl shadow-md shadow-orange-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm px-8 py-3.5 rounded-2xl shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
               >
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    Criando Roteiro com IA...
+                    Montando Roteiro...
                   </>
                 ) : (
                   <>
@@ -274,7 +252,7 @@ export default function RoteiroPersonalizadoPage() {
         {result && (
           <div id="itinerary-pdf-view" className="mt-12 space-y-8 animate-in fade-in duration-500">
             {/* Header do Resultado */}
-            <div className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-10 shadow-lg">
+            <div className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-10 shadow-sm">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-stone-100">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-orange-600 flex items-center gap-1">
@@ -292,7 +270,7 @@ export default function RoteiroPersonalizadoPage() {
                   <button
                     onClick={handlePrint}
                     type="button"
-                    className="inline-flex items-center gap-1.5 bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors shadow-xs"
+                    className="inline-flex items-center gap-1.5 bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200 text-xs font-bold px-4 py-2.5 rounded-xl transition-colors cursor-pointer"
                   >
                     <Printer className="w-4 h-4" />
                     Imprimir ou Salvar em PDF
@@ -309,7 +287,7 @@ export default function RoteiroPersonalizadoPage() {
               {/* Ficha Rápida Gerada */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                 {result.estimatedBudget && (
-                  <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100">
+                  <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-stone-200/80">
                     <span className="text-xs font-bold text-stone-500 flex items-center gap-1 mb-1">
                       <DollarSign className="w-3.5 h-3.5 text-emerald-600" />
                       Estimativa de Gasto Médio:
@@ -318,7 +296,7 @@ export default function RoteiroPersonalizadoPage() {
                   </div>
                 )}
                 {result.bestTime && (
-                  <div className="bg-stone-50 p-4 rounded-2xl border border-stone-100">
+                  <div className="bg-[#FAF8F5] p-4 rounded-2xl border border-stone-200/80">
                     <span className="text-xs font-bold text-stone-500 flex items-center gap-1 mb-1">
                       <Calendar className="w-3.5 h-3.5 text-amber-500" />
                       Melhor Época do Ano:
@@ -371,25 +349,25 @@ export default function RoteiroPersonalizadoPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pl-2 border-l-2 border-orange-100 ml-4">
                       {d.morning && (
-                        <div className="bg-stone-50/70 p-3 rounded-xl border border-stone-100">
+                        <div className="bg-[#FAF8F5] p-3 rounded-xl border border-stone-200/70">
                           <span className="text-[11px] font-bold text-amber-600 uppercase block mb-1">
-                            🌅 Manhã
+                            Manhã
                           </span>
                           <p className="text-xs text-stone-700 leading-relaxed">{d.morning}</p>
                         </div>
                       )}
                       {d.afternoon && (
-                        <div className="bg-stone-50/70 p-3 rounded-xl border border-stone-100">
+                        <div className="bg-[#FAF8F5] p-3 rounded-xl border border-stone-200/70">
                           <span className="text-[11px] font-bold text-orange-600 uppercase block mb-1">
-                            ☀️ Tarde & Almoço
+                            Tarde & Almoço
                           </span>
                           <p className="text-xs text-stone-700 leading-relaxed">{d.afternoon}</p>
                         </div>
                       )}
                       {d.evening && (
-                        <div className="bg-stone-50/70 p-3 rounded-xl border border-stone-100">
+                        <div className="bg-[#FAF8F5] p-3 rounded-xl border border-stone-200/70">
                           <span className="text-[11px] font-bold text-indigo-600 uppercase block mb-1">
-                            🌙 Noite & Jantar
+                            Noite & Jantar
                           </span>
                           <p className="text-xs text-stone-700 leading-relaxed">{d.evening}</p>
                         </div>
@@ -405,7 +383,7 @@ export default function RoteiroPersonalizadoPage() {
               <div className="bg-orange-50/70 border border-orange-200/70 rounded-3xl p-6 sm:p-8">
                 <h3 className="text-lg font-bold text-stone-900 mb-3 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-orange-600" />
-                  Segredos de Quem Conhece {destination}:
+                  Dicas Práticas para {destination}:
                 </h3>
                 <ul className="space-y-2.5">
                   {result.localTips.map((tip, idx) => (
@@ -418,190 +396,31 @@ export default function RoteiroPersonalizadoPage() {
               </div>
             )}
 
-            {/* MONETIZAÇÃO & RESERVAS INTEGRADAS */}
-            <div className="bg-stone-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
-              <div className="text-center max-w-xl mx-auto mb-6">
-                <span className="bg-orange-500/20 text-orange-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  Planejamento Completo
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold mt-2">
-                  Reserve os Melhores Serviços para {destination}
+            {/* PRÓXIMOS PASSOS DE PLANEJAMENTO (LIGHT MODE) */}
+            <div className="bg-white rounded-3xl border border-stone-200 p-6 sm:p-8 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <h3 className="font-extrabold text-lg text-stone-900">
+                  Quer calcular o orçamento completo para {destination}?
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-300 mt-1">
-                  Compre passagens, passeios oficiais, shows exclusivos e hotéis com os melhores descontos do Malas Prontas.
+                <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                  Simule gastos com hospedagem, alimentação, transporte e bagagem na nossa calculadora gratuita.
                 </p>
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* 1. PASSAGENS VAI DE PROMO & GOL */}
-                <a
-                  href={AFFILIATES.VAI_DE_PROMO_VOOS}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-stone-800/80 hover:bg-stone-800 border border-stone-700/60 p-4 rounded-2xl flex items-center justify-between group transition-all"
+              <div className="flex flex-wrap gap-3 shrink-0">
+                <Link
+                  href="/calculadora-viagem"
+                  className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs px-5 py-3 rounded-xl transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Plane className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-white flex items-center gap-1.5">
-                        Passagens Aéreas
-                        <ExternalLink className="w-3 h-3 text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </h4>
-                      <p className="text-[11px] text-stone-400">Até 40% OFF no Vai de Promo & Gol</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-indigo-400 group-hover:translate-x-0.5 transition-transform">Buscar &rarr;</span>
-                </a>
-
-                {/* 2. PACOTES PARTIU VIAJAR */}
-                <a
-                  href={AFFILIATES.PARTIU_VIAJAR}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-stone-800/80 hover:bg-stone-800 border border-stone-700/60 p-4 rounded-2xl flex items-center justify-between group transition-all"
+                  <Calculator className="w-4 h-4" />
+                  Abrir Calculadora
+                </Link>
+                <Link
+                  href="/checklist"
+                  className="inline-flex items-center gap-2 bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold text-xs px-5 py-3 rounded-xl transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Palmtree className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-white flex items-center gap-1.5">
-                        Pacotes de Viagem
-                        <ExternalLink className="w-3 h-3 text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </h4>
-                      <p className="text-[11px] text-stone-400">Roteiros prontos no Partiu Viajar</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-emerald-400 group-hover:translate-x-0.5 transition-transform">Ver &rarr;</span>
-                </a>
-
-                {/* 3. PASSEIOS GETYOURGUIDE */}
-                <a
-                  href={AFFILIATES.GET_YOUR_GUIDE}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-stone-800/80 hover:bg-stone-800 border border-stone-700/60 p-4 rounded-2xl flex items-center justify-between group transition-all"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Ticket className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-white flex items-center gap-1.5">
-                        Tours & Ingressos
-                        <ExternalLink className="w-3 h-3 text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </h4>
-                      <p className="text-[11px] text-stone-400">Passeios oficiais no GetYourGuide</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-red-400 group-hover:translate-x-0.5 transition-transform">Ver &rarr;</span>
-                </a>
-
-                {/* 4. SHOWS & CANDLELIGHT FEVER BR */}
-                <a
-                  href={AFFILIATES.FEVER_BR}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-stone-800/80 hover:bg-stone-800 border border-stone-700/60 p-4 rounded-2xl flex items-center justify-between group transition-all"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Music className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-white flex items-center gap-1.5">
-                        Candlelight & Shows
-                        <ExternalLink className="w-3 h-3 text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </h4>
-                      <p className="text-[11px] text-stone-400">Experiências exclusivas na Fever</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-purple-400 group-hover:translate-x-0.5 transition-transform">Explorar &rarr;</span>
-                </a>
-
-                {/* 5. TRENS & ÔNIBUS OMIO */}
-                <a
-                  href={AFFILIATES.OMIO_TRANSPORTE}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-stone-800/80 hover:bg-stone-800 border border-stone-700/60 p-4 rounded-2xl flex items-center justify-between group transition-all"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Train className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-white flex items-center gap-1.5">
-                        Trens & Ônibus
-                        <ExternalLink className="w-3 h-3 text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </h4>
-                      <p className="text-[11px] text-stone-400">Bilhetes nacionais & internacionais</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-amber-400 group-hover:translate-x-0.5 transition-transform">Buscar &rarr;</span>
-                </a>
-
-                {/* 6. HOSPEDAGEM STAY22 */}
-                <a
-                  href={`https://www.stay22.com/embed/gm?aid=${AFFILIATES.STAY22_AID}&address=${encodeURIComponent(destination)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-stone-800/80 hover:bg-stone-800 border border-stone-700/60 p-4 rounded-2xl flex items-center justify-between group transition-all"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Bed className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-white flex items-center gap-1.5">
-                        Hotéis & Pousadas
-                        <ExternalLink className="w-3 h-3 text-stone-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </h4>
-                      <p className="text-[11px] text-stone-400">Menores tarifas com Stay22</p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-bold text-teal-400 group-hover:translate-x-0.5 transition-transform">Reservar &rarr;</span>
-                </a>
-              </div>
-            </div>
-
-            {/* DIREITOS DO PASSAGEIRO AÉREO */}
-            <AirHelpBanner />
-
-            {/* MONETIZAÇÃO 2: APOIO PIX VOLUNTÁRIO */}
-            <div className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-8 shadow-xs text-center">
-              <Heart className="w-8 h-8 text-rose-500 fill-rose-500 mx-auto mb-2" />
-              <h3 className="font-bold text-lg text-stone-900">
-                Gostou do seu Roteiro Exclusivo?
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-500 max-w-md mx-auto mt-1">
-                O gerador com IA do <strong>Malas Prontas</strong> é 100% gratuito. Se este roteiro te ajudou a economizar tempo e planejar sua viagem, você pode apoiar nosso projeto com qualquer contribuição no PIX!
-              </p>
-              <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2">
-                <div className="inline-flex items-center gap-2 bg-stone-100 border border-stone-200 px-4 py-2.5 rounded-xl text-xs font-mono text-stone-800">
-                  <span className="text-stone-500 font-sans font-medium">Chave PIX (E-mail):</span>
-                  <span className="font-bold text-orange-600 select-all">malasprontas737@gmail.com</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleCopyPix}
-                  className="bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-4 h-4 text-emerald-400" />
-                      Chave Copiada!
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" />
-                      Copiar Chave PIX
-                    </>
-                  )}
-                </button>
+                  <Luggage className="w-4 h-4" />
+                  Checklist de Bagagem
+                </Link>
               </div>
             </div>
           </div>

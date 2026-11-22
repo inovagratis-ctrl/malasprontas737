@@ -1,72 +1,58 @@
-import { Metadata } from "next";
-import { POSTS } from "@/data/posts";
-import HubTemplate from "@/components/HubTemplate";
-import ChecklistWidget from "@/components/ChecklistWidget";
-import TravelGearShowcase from "@/components/TravelGearShowcase";
+import type { Metadata } from "next";
+import BaggageCheckerTool from "@/components/tools/BaggageCheckerTool";
+import Link from "next/link";
+import { Plane, ArrowLeft, ShieldCheck, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Regras de Bagagem ANAC (10kg e 23kg): Medidas, Líquidos e Taxas | Malas Prontas",
-  description:
-    "Tabelas oficiais de medidas e peso de bagagem de mão (55x35x25 cm - 10kg), item pessoal e mala despachada na Gol, Latam, Azul e voos internacionais.",
+  title: "Verificador de Mala de Bordo e Gabarito por Cia Aérea | Malas Prontas 737",
+  description: "Verifique se sua mala de mão está dentro dos limites da GOL, LATAM, Azul, TAP e internacionais (55x35x25cm e 10kg). Evite taxas de R$ 160 a R$ 380 no portão.",
   alternates: {
-    canonical: "https://malasprontas737.com.br/bagagem",
+    canonical: "/bagagem",
   },
 };
 
-export default function BagagemHubPage() {
-  const bagagemPosts = POSTS.filter(
-    (p) =>
-      p.hubSlug === "bagagem" ||
-      p.slug.includes("bagagem") ||
-      p.slug.includes("mala") ||
-      p.slug.includes("kits-essenciais") ||
-      p.slug.includes("aeroporto") ||
-      p.slug.includes("criancas")
-  );
-
+export default function BagagemPage() {
   return (
-    <HubTemplate
-      badge="Hub de Utilidade • Normas ANAC & IATA"
-      title="Central da Bagagem: Medidas Oficiais (10kg), Líquidos e Como Viajar Leve"
-      subtitle="Consulte as tabelas de dimensões das companhias aéreas, o que pode ou não passar no raio-X e organize sua mala sem pagar excesso no aeroporto."
-      heroImage="https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?auto=format&fit=crop&w=1600&q=80"
-      posts={bagagemPosts}
-      stats={[
-        {
-          label: "Mala de Bordo (Padrão ANAC)",
-          value: "55 x 35 x 25 cm (Até 10 kg)",
-          detail: "Medida total externa incluindo rodinhas, alça e bolsos aceita na cabine da Gol, Latam e Azul.",
-        },
-        {
-          label: "Artigo Pessoal Gratuito",
-          value: "40 x 30 x 15 cm (Sob Assento)",
-          detail: "Toda passagem dá direito a 1 mochila ou bolsa que caiba embaixo da poltrona da frente.",
-        },
-        {
-          label: "Líquidos na Cabine",
-          value: "100 ml (Int.) | 300 ml (Nacional)",
-          detail: "Em voos internacionais, frascos de até 100 ml devem ir dentro de 1 saquinho plástico vedado de 1 litro.",
-        },
-      ]}
-      tableData={{
-        title: "Tabela Oficial de Medidas e Taxas de Bagagem por Companhia Aérea (Outubro/2026)",
-        subtitle: "Confira os limites exatos e a diferença de preço entre comprar bagagem despachada online vs. no balcão do aeroporto:",
-        headers: ["Companhia Aérea", "Mala de Mão (10 kg)", "Item Pessoal (Sob Assento)", "Mala Despachada 23 kg (Online)", "Mala Despachada 23 kg (Balcão)"],
-        rows: [
-          ["GOL Linhas Aéreas", "55 x 35 x 25 cm (Inclusa)", "40 x 30 x 20 cm (Incluso)", "R$ 110 a R$ 145 / trecho", "R$ 180 a R$ 220 / trecho"],
-          ["LATAM Airlines", "55 x 35 x 25 cm (Inclusa*)", "45 x 35 x 20 cm (Incluso)", "R$ 115 a R$ 165 / trecho", "R$ 185 a R$ 240 / trecho"],
-          ["Azul Linhas Aéreas", "55 x 35 x 25 cm (Inclusa)", "45 x 35 x 20 cm (Incluso)", "R$ 120 a R$ 160 / trecho", "R$ 190 a R$ 230 / trecho"],
-          ["TAP / Air France / Iberia", "55 x 40 x 20-23 cm (8 a 10 kg)", "40 x 30 x 15 cm (Incluso)", "US$ 65 a € 75 / trecho (Light)", "€ 90 a € 120 / trecho"],
-          ["Low-Costs (Sky / JetSmart / Ryanair)", "Paga à parte na tarifa Zero/Basic", "40 x 25 x 20 cm (Único item grátis)", "US$ 28 a € 45 / trecho", "US$ 65 a € 75 no portão"],
-        ],
-      }}
-      customWidget={
-        <div className="space-y-12">
-          <ChecklistWidget />
-          <TravelGearShowcase />
+    <main className="min-h-screen bg-[#F8FAFC] py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto space-y-6">
+        <div className="flex items-center justify-between">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Voltar para o Início
+          </Link>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md">
+            Gabarito Oficial ANAC 2026
+          </span>
         </div>
-      }
-      allowAdSense={false}
-    />
+
+        <BaggageCheckerTool />
+
+        {/* Guia Informativo Complementar */}
+        <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 space-y-6 mt-8">
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+            Como Funciona o Gabarito de Metal nos Aeroportos Brasileiros?
+          </h2>
+          <div className="text-xs sm:text-sm text-slate-600 leading-relaxed space-y-3">
+            <p>
+              A Agência Nacional de Aviação Civil (ANAC), por meio da Resolução nº 400/2016, assegura a todo passageiro o direito de transportar gratuitamente na cabine uma <strong>bagagem de mão de até 10 kg</strong>, observados os limites de dimensões e a capacidade do bagageiro superior da aeronave.
+            </p>
+            <p>
+              Para padronizar o embarque, a Associação Brasileira das Empresas Aéreas (ABEAR) — que reúne Gol e LATAM — definiu o gabarito oficial máximo de:
+            </p>
+            <ul className="list-disc pl-5 font-semibold text-slate-800 space-y-1">
+              <li>55 cm de altura (incluindo rodinhas e alça superior retraída)</li>
+              <li>35 cm de largura</li>
+              <li>25 cm de profundidade (com bolsos externos cheios)</li>
+            </ul>
+            <p>
+              Além da mala de mão, você tem direito a 1 item pessoal (mochila ou bolsa) com limite de até 45 × 35 × 20 cm, que deve caber 100% sob a poltrona à sua frente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }

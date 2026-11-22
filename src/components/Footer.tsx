@@ -1,229 +1,137 @@
-"use client";
-
 import Link from "next/link";
-import { Luggage, Compass, Heart, MapPin, Mail, Sparkles } from "lucide-react";
+import { Plane, ShieldCheck, HeartHandshake, AlertCircle } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-900 text-stone-300 border-t border-stone-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Brand Col */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl overflow-hidden shadow-md shrink-0 border border-stone-800">
-                <img src="/logo.png" alt="Logo Malas Prontas" className="w-full h-full object-cover" />
+    <footer className="bg-[#071322] text-slate-400 border-t border-blue-950 pt-16 pb-12 print:hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Coluna 1 & 2: Marca & Missão */}
+          <div className="lg:col-span-2 space-y-4">
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
+                <Plane className="w-5 h-5 text-amber-400 -rotate-45" />
               </div>
-              <span className="font-bold text-2xl text-white tracking-tight">
-                Malas<span className="text-orange-500">Prontas</span>
+              <span className="font-black text-xl text-white tracking-tight">
+                MALAS PRONTAS <span className="text-amber-400">737</span>
               </span>
             </Link>
-            <p className="text-sm text-stone-400 leading-relaxed">
-              Inspirando viajantes a explorarem destinos incríveis pelo Brasil e pelo mundo, com roteiros detalhados, dicas sinceras e economia real.
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
+              O portal de utilidade prática aeronáutica e bagagem para viagens sem perrengue. Reunimos verificadores de gabarito por companhia aérea, buscadores de regras ANAC e geradores inteligentes de malas com foco em economia real e conformidade aeroportuária.
             </p>
-            <div className="flex items-center gap-3 pt-2 text-stone-400">
-              <span className="w-9 h-9 rounded-lg bg-stone-800 flex items-center justify-center hover:bg-orange-600 hover:text-white transition-colors cursor-pointer" aria-label="Instagram">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </span>
-              <a
-                href="https://www.youtube.com/@canalmalasprontas"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-stone-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors"
-                aria-label="YouTube"
-              >
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-              <a
-                href="mailto:malasprontas737@gmail.com"
-                className="w-9 h-9 rounded-lg bg-stone-800 flex items-center justify-center hover:bg-orange-600 hover:text-white transition-colors"
-                aria-label="Email"
-                title="malasprontas737@gmail.com"
-              >
-                <Mail className="w-4 h-4" />
-              </a>
+            <div className="flex items-center gap-2 text-xs text-slate-400">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Baseado nas Resoluções ANAC nº 400/2016 e RBAC 175</span>
             </div>
           </div>
 
-          {/* Links Rápidos */}
-          <div>
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">
-              Ferramentas & Serviços
-            </h3>
-            <ul className="space-y-2.5 text-sm">
+          {/* Coluna 3: As 4 Ferramentas */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-white">
+              Micro-Ferramentas de Voo
+            </h4>
+            <ul className="space-y-2 text-xs font-medium">
               <li>
-                <Link href="/calculadora-viagem" className="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-                  Simulador de Custos
-                  <span className="bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded-full">Grátis</span>
+                <Link href="/bagagem" className="hover:text-amber-400 transition-colors">
+                  Verificador de Medidas por Cia Aérea
                 </Link>
               </li>
               <li>
-                <Link href="/roteiro-personalizado" className="hover:text-orange-400 transition-colors">
-                  Gerador de Roteiro IA
+                <Link href="/posso-levar" className="hover:text-amber-400 transition-colors">
+                  Scanner "Posso Levar Isso no Avião?"
                 </Link>
               </li>
               <li>
-                <Link href="/checklist" className="hover:text-orange-400 transition-colors flex items-center gap-1.5">
-                  Checklist da Mala
-                  <span className="bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-bold px-1.5 py-0.5 rounded-full">Grátis</span>
+                <Link href="/liquidos" className="hover:text-amber-400 transition-colors">
+                  Simulador da Regra dos Líquidos (100ml)
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://economybookings.tpo.lu/rXOQqeTJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1"
-                >
-                  🚗 Aluguel de Carros
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://ektatraveling.tpo.lu/QynkhjN8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors flex items-center gap-1"
-                >
-                  🛡️ Seguro Viagem (25% OFF)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://airhelp.tpo.lu/8hNOeALJ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-amber-400 transition-colors flex items-center gap-1"
-                >
-                  ⚖️ Indenização de Voo Atrasado
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://airalo.tpo.lu/5hX1qKLi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-teal-400 transition-colors flex items-center gap-1"
-                >
-                  📱 Chip eSIM Internacional (Airalo)
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Categorias */}
-          <div>
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">
-              Categorias Populares
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link href="/destinos?categoria=Praia" className="hover:text-orange-400 transition-colors">
-                  🏖️ Praias Paradisíacas
-                </Link>
-              </li>
-              <li>
-                <Link href="/destinos?categoria=Serra%20%26%20Frio" className="hover:text-orange-400 transition-colors">
-                  ⛰️ Serras & Frio
-                </Link>
-              </li>
-              <li>
-                <Link href="/destinos?categoria=Ecoturismo" className="hover:text-orange-400 transition-colors">
-                  🌿 Ecoturismo & Cachoeiras
-                </Link>
-              </li>
-              <li>
-                <Link href="/destinos?categoria=Mochilão" className="hover:text-orange-400 transition-colors">
-                  🎒 Mochilão Econômico
+                <Link href="/checklist" className="hover:text-amber-400 transition-colors">
+                  Gerador PackPoint & PDF A4 Imprimível
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Institucional & Legal */}
-          <div>
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-4">
+          {/* Coluna 4: Guias e Dicas */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-white">
+              Regulamentações Oficiais
+            </h4>
+            <ul className="space-y-2 text-xs font-medium">
+              <li>
+                <span className="text-slate-300">Bagagem de Mão ANAC (10kg)</span>
+              </li>
+              <li>
+                <span className="text-slate-300">Regras de Lítio & Powerbank (IATA)</span>
+              </li>
+              <li>
+                <span className="text-slate-300">Líquidos em Voos Internacionais (TSA)</span>
+              </li>
+              <li>
+                <span className="text-slate-300">Alimentos e Queijos (Vigiagro/MAPA)</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Coluna 5: Institucional e Legal */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-white">
               Institucional & Legal
-            </h3>
-            <ul className="space-y-2.5 text-sm">
+            </h4>
+            <ul className="space-y-2 text-xs font-medium">
               <li>
-                <Link href="/sobre" className="hover:text-orange-400 transition-colors">
-                  📖 Sobre Nós
+                <Link href="/sobre" className="hover:text-white transition-colors">
+                  Sobre Nós & Metodologia
                 </Link>
               </li>
               <li>
-                <Link href="/contato" className="hover:text-orange-400 transition-colors">
-                  ✉️ Fale Conosco
+                <Link href="/politica-de-privacidade" className="hover:text-white transition-colors">
+                  Política de Privacidade (LGPD)
                 </Link>
               </li>
               <li>
-                <Link href="/politica-de-privacidade" className="hover:text-orange-400 transition-colors">
-                  🛡️ Política de Privacidade
+                <Link href="/termos-de-uso" className="hover:text-white transition-colors">
+                  Termos de Uso
                 </Link>
               </li>
               <li>
-                <Link href="/termos-de-uso" className="hover:text-orange-400 transition-colors">
-                  ⚖️ Termos de Uso
+                <Link href="/politica-de-cookies" className="hover:text-white transition-colors">
+                  Política de Cookies
                 </Link>
               </li>
               <li>
-                <Link href="/transparencia-editorial" className="hover:text-orange-400 transition-colors">
-                  ✨ Transparência Editorial
+                <Link href="/transparencia-editorial" className="hover:text-white transition-colors">
+                  Transparência & Afiliação
+                </Link>
+              </li>
+              <li>
+                <Link href="/contato" className="hover:text-white transition-colors">
+                  Fale Conosco
                 </Link>
               </li>
             </ul>
-          </div>
-
-          {/* Newsletter Box */}
-          <div>
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase mb-2 flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              Diário de Viagem
-            </h3>
-            <p className="text-xs text-stone-400 mb-3">
-              Receba novos roteiros e promoções de passagens no seu e-mail toda semana.
-            </p>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
-              <input
-                type="email"
-                placeholder="Seu melhor e-mail..."
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-stone-800 border border-stone-700 text-stone-100 placeholder-stone-400 focus:outline-hidden focus:border-orange-500 transition-colors"
-              />
-              <button
-                type="submit"
-                className="w-full bg-orange-600 hover:bg-orange-500 text-white text-xs font-semibold py-2.5 rounded-xl transition-colors shadow-sm cursor-pointer"
-              >
-                Quero Receber Roteiros
-              </button>
-            </form>
           </div>
         </div>
 
-        {/* Bottom Legal Sub-bar */}
-        <div className="mt-12 pt-8 border-t border-stone-800 text-xs text-stone-400 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4">
-            <p>© {new Date().getFullYear()} Malas Prontas. Todos os direitos reservados.</p>
-            <span className="hidden sm:inline text-stone-700">|</span>
-            <Link href="/politica-de-privacidade" className="hover:text-stone-200 transition-colors underline">
-              Privacidade
-            </Link>
-            <Link href="/termos-de-uso" className="hover:text-stone-200 transition-colors underline">
-              Termos de Uso
-            </Link>
-            <Link href="/transparencia-editorial" className="hover:text-stone-200 transition-colors underline">
-              Transparência
-            </Link>
-            <Link href="/contato" className="hover:text-stone-200 transition-colors underline">
-              Contato
-            </Link>
+        {/* Disclaimer Legal Obrigatório */}
+        <div className="pt-8 border-t border-blue-950/80 space-y-4">
+          <div className="bg-[#0B1E36]/60 p-4 rounded-2xl border border-blue-900/40 flex items-start gap-3 text-[11px] leading-relaxed text-slate-300">
+            <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+            <div>
+              <strong>Aviso Legal & Regulatório:</strong> O portal <em>Malas Prontas 737</em> é um recurso independente de utilidade pública informativa e planejamento de viagens. Embora nossos dados sejam constantemente atualizados com base nas resoluções da Agência Nacional de Aviação Civil (ANAC Resolução nº 400/2016 e RBAC 175), da Transportation Security Administration (TSA) e da International Air Transport Association (IATA), as companhias aéreas e as autoridades de segurança aeroportuária reservam-se o direito soberano de interpretar dimensões, pesos e artigos perigosos na inspeção de raio-X do portão de embarque.
+            </div>
           </div>
-          <p className="flex items-center gap-1">
-            Feito com <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> para quem ama viajar pelo mundo.
-          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2">
+            <div>
+              © {new Date().getFullYear()} Malas Prontas 737. Todos os direitos reservados.
+            </div>
+            <div>
+              ID AdSense Autorizado: <span className="font-mono text-slate-300">ca-pub-3922432751903141</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

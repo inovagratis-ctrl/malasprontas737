@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,37 +17,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://malasprontas737.com.br"),
-  title: "Malas Prontas | Dicas, Roteiros e Inspiração para sua Próxima Viagem",
+  title: "Malas Prontas 737 | Verificador de Bagagem de Mão, Scanner ANAC & Mala Inteligente",
   description:
-    "Blog de viagem completo com roteiros dia a dia, custos reais, checklist de mala interativo e dicas sinceras para viajar mais gastando menos pelo Brasil e pelo mundo.",
+    "Portal prático aeronáutico: verifique as medidas da sua mala contra o gabarito oficial da Gol, LATAM, Azul e TAP, consulte o scanner 'Posso Levar Isso no Avião?', simule a regra dos líquidos de 100ml e gere seu checklist de viagem em PDF.",
   keywords: [
-    "viagem",
-    "blog de viagem",
-    "roteiro de viagem",
-    "dicas de viagem",
-    "turismo",
-    "checklist de mala",
-    "Maragogi",
-    "Gramado",
-    "Chapada dos Veadeiros",
-    "Fernando de Noronha",
-    "Buenos Aires",
-    "Jalapão"
+    "medidas mala de mao",
+    "gabarito anac gol latam azul",
+    "posso levar no aviao",
+    "powerbank mala despachada",
+    "regra dos liquidos 100ml aviao",
+    "packpoint brasil",
+    "checklist de viagem imprimivel",
+    "mala de bordo 10kg",
+    "taxa portao embarque mala"
   ],
-  authors: [{ name: "Malas Prontas" }],
+  authors: [{ name: "Equipe Editorial Malas Prontas 737" }],
   openGraph: {
-    title: "Malas Prontas | Dicas e Roteiros de Viagem",
-    description: "Roteiros dia a dia, custos reais e checklist inteligente para a sua próxima aventura.",
+    title: "Malas Prontas 737 | Suíte Completa de Bagagem & Aviação",
+    description: "Verificador de mala por companhia aérea, scanner de itens ANAC, simulador de líquidos de 100ml e gerador de checklist de viagem em PDF.",
     url: "https://malasprontas737.com.br",
-    siteName: "Malas Prontas",
+    siteName: "Malas Prontas 737",
     type: "website",
     locale: "pt_BR",
   },
   alternates: {
     canonical: "./",
   },
-  verification: {
-    google: "JEKsKX4v9JuqJOkkIeUOFQg-X9sm98ZH13iQFru-ZrE",
+  other: {
+    "google-adsense-account": "ca-pub-3922432751903141",
   },
 };
 
@@ -63,50 +59,18 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <meta name="google-site-verification" content="JEKsKX4v9JuqJOkkIeUOFQg-X9sm98ZH13iQFru-ZrE" />
-        <meta name="lomadee" content="2324685" />
-
-        {/* Google tag (gtag.js) - Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-KB3NV0104N"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-KB3NV0104N');
-            `,
-          }}
-        />
-
-        {/* Stay22 Spark / LetMeAllez Monetization Script */}
-        <Script
-          id="stay22-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function (s, t, a, y, twenty, two) { s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '6a99930410f03364e343f876' }; twenty = t.createElement(a); two = t.getElementsByTagName(a)[0]; twenty.async = 1; twenty.src = y; two.parentNode.insertBefore(twenty, two); })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');`,
-          }}
-        />
-
-        {/* Travelpayouts Drive Script */}
-        <Script
-          id="travelpayouts-drive"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function () { var script = document.createElement("script"); script.async = 1; script.setAttribute("data-cmp-ab","2"); script.src = 'https://emrldtp.cc/NTcwMDI1.js?t=570025'; document.head.appendChild(script); })();`,
-          }}
+        <meta name="google-adsense-account" content="ca-pub-3922432751903141" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3922432751903141"
+          crossOrigin="anonymous"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-stone-50 text-stone-900 font-sans selection:bg-orange-200 selection:text-orange-900">
-        <GoogleAnalytics gaId="G-KB3NV0104N" />
+      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

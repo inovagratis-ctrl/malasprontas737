@@ -9,11 +9,8 @@ import {
   Luggage,
   Baby,
   Globe,
-  Sun,
   Snowflake,
-  Trees,
   ArrowRight,
-  FileCheck
 } from "lucide-react";
 
 const PRINTABLE_PACKS = [
@@ -22,7 +19,7 @@ const PRINTABLE_PACKS = [
     title: "Checklist Mala de Mão 10kg (Padrão ANAC Sem Despacho)",
     subtitle: "Focado em viagens de 4 a 8 dias usando apenas mala 55x35x25 cm + mochila pessoal",
     icon: Luggage,
-    color: "text-orange-600 bg-orange-50 border-orange-200",
+    color: "text-blue-600 bg-blue-50 border-blue-200",
     items: [
       "1 Mala rígida ou semirrígida até 55 x 35 x 25 cm (pesando até 2,8 kg vazia)",
       "1 Mochila pessoal até 40 x 30 x 15 cm (para levar sob o assento da frente)",
@@ -94,31 +91,31 @@ export default function ChecklistsHubPage() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 pb-24">
-      <section className="bg-stone-900 text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-stone-800">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 pb-24">
+      <section className="bg-white border-b border-slate-200 py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-4">
             <CheckSquare className="w-4 h-4" />
             Central de Checklists Imprimíveis & Interativos
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Checklists de Viagem Prontos para Marcar ou Imprimir em PDF
           </h1>
-          <p className="mt-3 text-stone-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             Escolha entre o nosso checklist interativo dinâmico ou os pacotes prontos para mala de 10kg, viagem internacional, família com crianças e destinos de frio.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <button
               type="button"
               onClick={() => handlePrint("all_checklists_pdf")}
-              className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl shadow-lg transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-xl shadow-2xs transition-colors cursor-pointer"
             >
               <Printer className="w-4 h-4" />
               Imprimir ou Salvar Página em PDF
             </button>
             <Link
               href="/bagagem"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold px-5 py-3 rounded-xl border border-white/20 transition-colors"
+              className="inline-flex items-center gap-2 bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs sm:text-sm font-semibold px-5 py-3 rounded-xl border border-slate-200 transition-colors"
             >
               Ver Tabelas de Medidas da ANAC
               <ArrowRight className="w-4 h-4" />
@@ -128,18 +125,16 @@ export default function ChecklistsHubPage() {
       </section>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
-        {/* Widget Interativo Principal */}
         <section>
           <ChecklistWidget />
         </section>
 
-        {/* Pacotes de Checklists Específicos */}
         <section className="space-y-6">
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-wider text-orange-600">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-blue-600">
               Listas Especializadas Prontas
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
               Pacotes de Checklists por Tipo de Viagem
             </h2>
           </div>
@@ -150,34 +145,34 @@ export default function ChecklistsHubPage() {
               return (
                 <div
                   key={pack.id}
-                  className="bg-white rounded-3xl border border-stone-200/90 p-6 sm:p-7 shadow-sm flex flex-col justify-between"
+                  className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-2xs flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-3 mb-4">
-                      <div className={`w-11 h-11 rounded-2xl border flex items-center justify-center shrink-0 ${pack.color}`}>
+                      <div className={`w-11 h-11 rounded-xl border flex items-center justify-center shrink-0 ${pack.color}`}>
                         <IconComponent className="w-5 h-5" />
                       </div>
                       <button
                         type="button"
                         onClick={() => handlePrint(pack.id)}
-                        className="text-xs font-bold text-stone-600 hover:text-orange-600 bg-stone-100 hover:bg-orange-50 px-3 py-1.5 rounded-xl inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                        className="text-xs font-bold text-slate-700 hover:text-blue-600 bg-slate-100 hover:bg-blue-50 px-3 py-1.5 rounded-xl inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                       >
                         <Printer className="w-3.5 h-3.5" />
                         Imprimir PDF
                       </button>
                     </div>
 
-                    <h3 className="text-lg font-extrabold text-stone-900">
+                    <h3 className="text-lg font-extrabold text-slate-900">
                       {pack.title}
                     </h3>
-                    <p className="text-xs text-stone-600 mt-1 mb-4">
+                    <p className="text-xs text-slate-600 mt-1 mb-4">
                       {pack.subtitle}
                     </p>
 
-                    <ul className="space-y-2.5 border-t border-stone-100 pt-4">
+                    <ul className="space-y-2.5 border-t border-slate-100 pt-4">
                       {pack.items.map((it, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs text-stone-700 leading-relaxed">
-                          <span className="w-4 h-4 rounded border border-stone-300 bg-stone-50 shrink-0 mt-0.5 inline-block" />
+                        <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 leading-relaxed">
+                          <span className="w-4 h-4 rounded border border-slate-300 bg-slate-50 shrink-0 mt-0.5 inline-block" />
                           <span>{it}</span>
                         </li>
                       ))}
