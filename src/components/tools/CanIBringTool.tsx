@@ -94,13 +94,13 @@ export default function CanIBringTool() {
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Shield className="w-3.5 h-3.5" />
-            Scanner Oficial ANAC & TSA Brasil 2026
+            Guia Independente de Segurança Aeronáutica (ANAC, RBAC 175 & IATA)
           </div>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
             Buscador "Posso Levar Isso no Avião?"
           </h2>
           <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
-            Consulte instantaneamente se o seu item vai na mala de mão, na mala despachada ou se é proibido a bordo pelas normas da ANAC, Receita Federal e IATA.
+            Consulte as orientações de transporte para cada objeto na mala de mão ou despachada com base nas resoluções da ANAC, IATA DGR e Polícia Federal.
           </p>
         </div>
       </div>
@@ -261,6 +261,13 @@ export default function CanIBringTool() {
               );
             })
           )}
+        </div>
+        {/* Aviso de Soberania do Raio-X */}
+        <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-slate-500 leading-relaxed flex items-start gap-2.5">
+          <HelpCircle className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+          <div>
+            <strong>Aviso Legal de Soberania de Inspeção:</strong> Este buscador é uma ferramenta informativa independente. Em conformidade com o RBAC nº 175 e normas internacionais da OACI, a decisão final sobre a aceitação de qualquer artigo, ferramenta ou dispositivo cabe soberanamente ao agente de proteção da aviação civil (APAC) no posto de inspeção de raio-X do aeroporto, considerando o nível de alerta e segurança da operação.
+          </div>
         </div>
       </div>
     </div>

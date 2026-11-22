@@ -18,10 +18,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const TOOLS_NAV = [
-    { href: "/bagagem", label: "Medidor de Mala", icon: Luggage, desc: "Gabarito Gol, LATAM e Azul" },
-    { href: "/posso-levar", label: "Posso Levar?", icon: Search, desc: "Scanner ANAC & TSA" },
-    { href: "/liquidos", label: "Líquidos 100ml", icon: Droplets, desc: "Simulador de Raio-X" },
-    { href: "/checklist", label: "Mala Inteligente", icon: CheckSquare, desc: "Checklist com PDF A4" },
+    { href: "/bagagem", label: "Medidor de Mala", icon: Luggage, desc: "Simulador por Cia & Tarifa" },
+    { href: "/posso-levar", label: "Posso Levar?", icon: Search, desc: "Guia de Itens & Raio-X" },
+    { href: "/liquidos", label: "Líquidos 100ml", icon: Droplets, desc: "Matriz Internacional 1L" },
+    { href: "/checklist", label: "Mala Inteligente", icon: CheckSquare, desc: "Checklist com Peso & PDF" },
   ];
 
   return (
@@ -30,22 +30,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo Principal Boeing 737 */}
           <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center shadow-md ring-2 ring-blue-400/20 group-hover:scale-105 transition-transform">
-              <Plane className="w-6 h-6 text-amber-400 -rotate-45" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-black text-lg sm:text-xl tracking-tight text-white block leading-none">
-                  MALAS PRONTAS
-                </span>
-                <span className="text-xs font-black px-1.5 py-0.5 rounded-md bg-amber-400 text-slate-950">
-                  737
-                </span>
-              </div>
-              <span className="text-[10px] sm:text-[11px] text-blue-200/80 font-medium block mt-0.5 tracking-wide">
-                Scanner ANAC • Medidor de Bordo • Regras 2026
-              </span>
-            </div>
+            <img
+              src="/logo-malasprontas-737.png"
+              alt="Malas Prontas 737 - Embarque Sem Taxa Surpresa"
+              className="h-9 sm:h-11 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-200"
+            />
           </Link>
 
           {/* Links Desktop dos 4 Sistemas */}

@@ -15,10 +15,11 @@ import {
   Snowflake,
   Compass,
   Briefcase,
-  FileText,
-  ShieldCheck,
+  Scale,
   CheckSquare,
-  Square
+  Square,
+  ArrowRight,
+  ShieldAlert
 } from "lucide-react";
 
 export default function SmartPackingTool() {
@@ -37,7 +38,6 @@ export default function SmartPackingTool() {
   const [customItemName, setCustomItemName] = useState("");
   const [customCategory, setCustomCategory] = useState<PackingItem["category"]>("vestuario");
 
-  // Atualizar quando os parâmetros mudarem
   const handleRegenerate = () => {
     const fresh = generateSmartPackingList({ destinationType, days, hasLaundry, profile });
     setActiveItems(fresh);
@@ -63,6 +63,7 @@ export default function SmartPackingTool() {
       id: `custom-${Date.now()}`,
       name: customItemName.trim(),
       category: customCategory,
+      estimatedWeightGrams: 200,
       categoryLabel:
         customCategory === "documentos"
           ? "Documentos & Dinheiro"
@@ -75,7 +76,7 @@ export default function SmartPackingTool() {
           : customCategory === "eletronicos"
           ? "Eletrônicos & Cabos"
           : customCategory === "farmacia"
-          ? "Farmácia de Viagem"
+          ? "Farmácia de Viagem & Saúde"
           : "Mala de Mão & Bordo",
       essential: true
     };
@@ -98,7 +99,11 @@ export default function SmartPackingTool() {
   const checkedCount = activeItems.filter((it) => !!checkedMap[it.id]).length;
   const progressPercent = totalItemsCount > 0 ? Math.round((checkedCount / totalItemsCount) * 100) : 0;
 
-  // Agrupar por categorias
+  // Cálculo de peso estimado
+  const baseSuitcaseWeightGrams = 2200; // peso médio de mala vazia de bordo
+  const itemsWeightGrams = activeItems.reduce((acc, it) => acc + (it.estimatedWeightGrams || 150), 0);
+  const totalEstimatedWeightKg = ((itemsWeightGrams + baseSuitcaseWeightGrams) / 1000).toFixed(1);
+
   const categoriesList: { key: PackingItem["category"]; label: string }[] = [
     { key: "documentos", label: "Documentos & Dinheiro" },
     { key: "vestuario", label: "Vestuário & Roupas Calculadas" },
@@ -116,18 +121,18 @@ export default function SmartPackingTool() {
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <Luggage className="w-3.5 h-3.5" />
-            Gerador PackPoint & Voyasee Brasil 2026
+            Planejador Inteligente de Bagagem & Estimativa de Peso
           </div>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-            Gerador Dinâmico "Mala Pronta" com PDF Imprimível
+            Gerador Dinâmico "Mala Pronta" com Estimativa de Peso
           </h2>
           <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
-            Responda 4 perguntas rápidas e nosso algoritmo calculará a quantidade exata de peças, documentos e remédios para seu destino, sem excesso de peso.
+            Informe o destino, duração e infraestrutura para calcular a quantidade sugerida de roupas, documentos e itens essenciais com estimativa de peso total.
           </p>
         </div>
       </div>
 
-      {/* Formulário de 4 Perguntas (Oculto na impressão) */}
+      {/* Formulário de 4 Perguntas */}
       <div className="p-6 sm:p-8 space-y-6 border-b border-slate-200 print:hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Pergunta 1: Destino */}
@@ -203,7 +208,7 @@ export default function SmartPackingTool() {
               >
                 <div>🧺 Sim, vou lavar roupas</div>
                 <div className="text-[11px] font-normal text-slate-500 mt-0.5">
-                  Reduz ~40% das peças e cabe fácil na mala de mão de 10kg.
+                  Calcula giro para 5 dias de roupas, aliviando o peso da mala.
                 </div>
               </button>
 
@@ -218,7 +223,7 @@ export default function SmartPackingTool() {
               >
                 <div>🚫 Não vou lavar roupas</div>
                 <div className="text-[11px] font-normal text-slate-500 mt-0.5">
-                  Calcula peças limpas para todos os dias da viagem.
+                  Calcula mudas de roupas para o itinerário completo.
                 </div>
               </button>
             </div>
@@ -254,21 +259,21 @@ export default function SmartPackingTool() {
               className="w-full mt-3 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs py-2.5 rounded-xl shadow-xs transition-colors flex items-center justify-center gap-1.5"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              Recalcular Roupas
+              Recalcular Itens
             </button>
           </div>
         </div>
       </div>
 
-      {/* Cabeçalho da Lista & Barra de Progresso */}
+      {/* Estimador de Peso da Mala & Barra de Progresso */}
       <div className="p-6 sm:p-8 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h3 className="text-xl sm:text-2xl font-black text-slate-900">
-              Checklist Oficial da Sua Viagem
+              Checklist Personalizado de Viagem
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-              Configurado para: <strong>{days} dias</strong> em destino de <strong>{destinationType}</strong> ({hasLaundry ? "com lavanderia" : "sem lavanderia"}).
+              Configurado para: <strong>{days} dias</strong> ({destinationType}) — {hasLaundry ? "com lavanderia" : "sem lavanderia"}.
             </p>
           </div>
 
@@ -279,12 +284,30 @@ export default function SmartPackingTool() {
               className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
             >
               <Printer className="w-4 h-4 text-amber-400" />
-              Imprimir / Salvar em PDF
+              Imprimir / Salvar em PDF A4
             </button>
           </div>
         </div>
 
-        {/* Barra de Progresso Interativa (Screen only) */}
+        {/* Card do Estimador de Peso Real */}
+        <div className="bg-blue-50/70 border border-blue-200 p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 print:hidden">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-xl bg-blue-600 text-white">
+              <Scale className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-slate-700">Estimativa de Peso Carregado:</div>
+              <div className="text-lg font-black text-slate-900">
+                ~{totalEstimatedWeightKg} kg <span className="text-xs font-semibold text-slate-500">(Mala vazia ~2.2kg + Roupas/Itens ~{((itemsWeightGrams) / 1000).toFixed(1)}kg)</span>
+              </div>
+            </div>
+          </div>
+          <div className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-white border border-blue-200 text-blue-900">
+            {Number(totalEstimatedWeightKg) <= 10 ? "🟢 Encaixa na franquia de 10kg" : Number(totalEstimatedWeightKg) <= 12 ? "🟡 Atenção: limite de 12kg" : "🔴 Provável excesso de peso"}
+          </div>
+        </div>
+
+        {/* Barra de Progresso Interativa */}
         <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 print:hidden">
           <div className="flex items-center justify-between text-xs font-bold mb-1.5">
             <span className="text-slate-700">Progresso da Mala:</span>
@@ -300,13 +323,13 @@ export default function SmartPackingTool() {
           </div>
         </div>
 
-        {/* Adicionar Item Customizado (Screen only) */}
+        {/* Adicionar Item Customizado */}
         <form onSubmit={addCustomItem} className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-col sm:flex-row gap-2 print:hidden">
           <input
             type="text"
             value={customItemName}
             onChange={(e) => setCustomItemName(e.target.value)}
-            placeholder="Adicionar item extra na sua lista (ex: Livro, Almofada, Biquíni extra)..."
+            placeholder="Adicionar item extra na sua lista (ex: Livro, Almofada de pescoço, Protetor extra)..."
             className="flex-1 text-xs bg-white border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-600 focus:outline-hidden"
           />
           <select
@@ -414,6 +437,11 @@ export default function SmartPackingTool() {
               </div>
             );
           })}
+        </div>
+
+        {/* Aviso de Saúde / Farmácia */}
+        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-500 leading-relaxed print:hidden">
+          <strong>Aviso de Saúde & Cuidados Médicos:</strong> As sugestões de farmácia são itens preventivos básicos de primeiros socorros. Nunca se automedique. Consulte sempre seu médico ou farmacêutico antes da viagem para orientações adequadas ao seu histórico clínico e aos destinos visitados.
         </div>
 
         {/* Rodapé de Impressão Especial */}

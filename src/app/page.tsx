@@ -45,22 +45,22 @@ export default function Home() {
           </h1>
 
           <p className="max-w-3xl mx-auto text-slate-300 text-sm sm:text-lg leading-relaxed font-normal">
-            Verifique o gabarito de mala da sua companhia aérea, consulte o scanner oficial da ANAC antes do raio-X, simule seus cosméticos de 100ml e gere seu checklist de viagem imprimível em segundos.
+            Consulte as franquias por companhia e tarifa, verifique o que pode ir na cabine antes do raio-X, simule seus cosméticos de 100ml e gere seu checklist de viagem com estimativa de peso.
           </p>
 
           {/* Mini Estatísticas de Confiança */}
           <div className="pt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-blue-200/90 font-medium">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>Gabarito Oficial ANAC 55×35×25cm</span>
+              <span>Franquias Gol, LATAM, Azul & Low-Costs</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckSquare className="w-4 h-4 text-emerald-400" />
-              <span>120+ Itens no Scanner de Raio-X</span>
+              <span>Guia de Artigos Perigosos & Raio-X</span>
             </div>
             <div className="flex items-center gap-2">
               <Plane className="w-4 h-4 text-amber-400" />
-              <span>Regras Gol, LATAM, Azul & Internacionais</span>
+              <span>Baseado em Resoluções ANAC & IATA DGR</span>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function Home() {
             <div className="truncate">
               <div className="truncate">1. Medidor de Mala</div>
               <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "bagagem" ? "text-slate-800" : "text-slate-400"}`}>
-                Gabarito por Cia Aérea
+                Franquia por Tarifa
               </div>
             </div>
           </button>
@@ -101,7 +101,7 @@ export default function Home() {
             <div className="truncate">
               <div className="truncate">2. Posso Levar Isso?</div>
               <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "possolevar" ? "text-slate-800" : "text-slate-400"}`}>
-                Scanner ANAC / TSA
+                Guia de Itens & Raio-X
               </div>
             </div>
           </button>
@@ -137,7 +137,7 @@ export default function Home() {
             <div className="truncate">
               <div className="truncate">4. Mala Inteligente</div>
               <div className={`text-[10px] font-semibold hidden sm:block ${activeTab === "checklist" ? "text-slate-800" : "text-slate-400"}`}>
-                PackPoint com PDF A4
+                Checklist com Peso (PDF)
               </div>
             </div>
           </button>

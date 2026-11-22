@@ -27,20 +27,20 @@ export const ITEMS_ALLOWED_DATA: TravelItemRule[] = [
     name: "Powerbank (Bateria Portátil / Carregador de Lítio)",
     category: "eletronicos",
     categoryLabel: "Eletrônicos & Baterias",
-    keywords: ["bateria", "power bank", "carregador portátil", "litio", "celular", "anker", "xiaomi"],
+    keywords: ["bateria", "power bank", "carregador portátil", "litio", "celular", "anker", "xiaomi", "azul 2026"],
     carryOn: {
       status: "allowed",
-      badgeText: "OBRIGATÓRIO NA CABINE",
-      description: "Permitido até 100 Wh (cerca de 27.000 mAh). Entre 100 Wh e 160 Wh necessita de autorização prévia da companhia."
+      badgeText: "SOMENTE NA CABINE",
+      description: "Permitido levar na bagagem de mão: até 100 Wh (aprox. 27.000 mAh). Entre 100 Wh e 160 Wh necessita de autorização prévia da companhia (máx. 2 unidades). Proibido carregar o powerbank a bordo."
     },
     checked: {
       status: "forbidden",
-      badgeText: "PROIBIDO NO PORÃO",
-      description: "PROIBIÇÃO SEVERA em todo o mundo. O risco de curto-circuito e incêndio por superaquecimento (thermal runaway) é incontrolável no porão de carga."
+      badgeText: "ESTRITAMENTE PROIBIDO NO PORÃO",
+      description: "PROIBIÇÃO SEVERA mundial por risco de superaquecimento e fogo incontrolável no compartimento de carga da aeronave."
     },
     regulatoryAgency: "IATA / DGR",
-    officialRuleText: "Baterias de íon-lítio sobressalentes e powerbanks só podem ser transportados na bagagem de mão, protegidos contra acionamento involuntário.",
-    practicalAdvice: "NUNCA coloque sua bateria portátil na mala despachada. Se o raio-X do aeroporto detectar, sua mala será aberta e o item apreendido sem devolução."
+    officialRuleText: "RBAC 175 da ANAC e Resoluções IATA DGR determinam transporte exclusivo na cabine, com terminais elétricos protegidos contra curto-circuito.",
+    practicalAdvice: "Mantenha o rótulo de capacidade (Wh/mAh) legível. Conforme regras atualizadas pelas companhias (como Azul e LATAM em 2026), powerbanks sem identificação clara de potência ou acima de 160 Wh podem ser retidos no raio-X."
   },
   {
     id: "chapinha",
@@ -90,17 +90,17 @@ export const ITEMS_ALLOWED_DATA: TravelItemRule[] = [
     keywords: ["vape", "pod", "cigarro eletronico", "juul", "vaporizador", "nicotina", "essencia"],
     carryOn: {
       status: "restricted",
-      badgeText: "RESTRITO NA CABINE",
-      description: "Permitido transportar apenas desligado junto ao passageiro. É expressamente proibido carregar e PROIBIDO usar a bordo."
+      badgeText: "SOMENTE NA CABINE (DESLIGADO)",
+      description: "Permitido transportar apenas na cabine de passageiros e completamente desligado. É expressamente proibido carregar na tomada da aeronave e ESTRITAMENTE PROIBIDO vaporizar a bordo."
     },
     checked: {
       status: "forbidden",
-      badgeText: "TOTALMENTE PROIBIDO",
-      description: "Proibido no porão em todas as companhias do mundo por risco de explosão de bateria."
+      badgeText: "PROIBIDO NO PORÃO",
+      description: "Proibido despacho no porão de carga em todas as companhias aéreas do mundo por risco de explosão térmica da bateria."
     },
     regulatoryAgency: "ANAC / RBAC 175",
-    officialRuleText: "Dispositivos eletrônicos para fumar (DEF) devem ser transportados exclusivamente na bagagem de mão ou no bolso do passageiro.",
-    practicalAdvice: "No Brasil, a comercialização é proibida pela Anvisa. Não traga grandes quantidades de viagens ao exterior para não ser enquadrado em contrabando pela Receita Federal."
+    officialRuleText: "Dispositivos eletrônicos para fumar (DEF) devem permanecer na bagagem de mão ou no corpo do passageiro e não podem ser acionados ou recarregados a bordo.",
+    practicalAdvice: "A venda e importação comercial são proibidas no Brasil pela Anvisa (RDC nº 855/2024). O transporte de quantidade pessoal desligada na cabine é tolerado pela segurança aeronáutica, mas o uso dentro do avião resulta em desembarque forçado e ação policial na chegada."
   },
   {
     id: "notebook",
@@ -324,23 +324,23 @@ export const ITEMS_ALLOWED_DATA: TravelItemRule[] = [
   },
   {
     id: "garrafa-agua",
-    name: "Garrafa de Água / Squeeze / Refrigerante",
+    name: "Garrafa de Água / Squeeze / Bebidas Não Alcoólicas",
     category: "alimentos",
     categoryLabel: "Alimentos & Bebidas",
     keywords: ["agua", "garrafa", "garrafa termica", "stanley", "refrigerante", "squeeze", "suco"],
     carryOn: {
       status: "restricted",
-      badgeText: "PROIBIDO CHEIA NO RAIO-X",
-      description: "Garrafas cheias de líquidos acima de 100ml não passam pelo raio-X de voos internacionais e nem com bebidas abertas no controle de segurança."
+      badgeText: "DEPENDE DO TIPO DE EMBARQUE",
+      description: "Voos Internacionais (ou voos domésticos em portões com inspeção mista internacional): Frascos com mais de 100ml de líquido NÃO passam no raio-X. Em voos 100% domésticos com inspeção regular, água mineral lacrada pode ser aceita se o nível de segurança do aeroporto permitir."
     },
     checked: {
       status: "allowed",
       badgeText: "PERMITIDO",
-      description: "Garrafas fechadas podem ir na mala despachada."
+      description: "Garrafas fechadas e lacradas podem ir na mala despachada (embale bem contra vazamentos)."
     },
     regulatoryAgency: "ANAC / TSA",
-    officialRuleText: "Líquidos não inspecionados são barrados na entrada da sala de embarque.",
-    practicalAdvice: "TRUQUE DE OURO DO VIAJANTE: Leve sua garrafa térmica ou squeeze 100% VAZIA pela inspeção de raio-X. Depois de passar o controle, encha gratuitamente nos bebedouros da sala de embarque!"
+    officialRuleText: "A restrição métrica rigorosa de 100ml por recipiente aplica-se obrigatoriamente a voos internacionais e áreas de trânsito internacional.",
+    practicalAdvice: "DICA MAIS SEGURA: Leve sua garrafa térmica vazia pelo raio-X para evitar qualquer discussão com o agente de segurança. Logo após cruzar o posto de inspeção, encha-a gratuitamente nos bebedouros da sala de embarque."
   },
   {
     id: "vinho-bebidas",

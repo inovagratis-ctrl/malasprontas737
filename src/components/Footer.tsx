@@ -8,13 +8,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Coluna 1 & 2: Marca & Missão */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
-                <Plane className="w-5 h-5 text-amber-400 -rotate-45" />
-              </div>
-              <span className="font-black text-xl text-white tracking-tight">
-                MALAS PRONTAS <span className="text-amber-400">737</span>
-              </span>
+            <Link href="/" className="inline-flex items-center group">
+              <img
+                src="/logo-malasprontas-737.png"
+                alt="Malas Prontas 737"
+                className="h-10 sm:h-12 w-auto object-contain block group-hover:opacity-90 transition-opacity"
+              />
             </Link>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
               O portal de utilidade prática aeronáutica e bagagem para viagens sem perrengue. Reunimos verificadores de gabarito por companhia aérea, buscadores de regras ANAC e geradores inteligentes de malas com foco em economia real e conformidade aeroportuária.

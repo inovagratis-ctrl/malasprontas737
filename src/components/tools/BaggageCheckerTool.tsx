@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AIRLINES_DATA, AirlineBaggageRule } from "@/data/airlinesData";
+import { AIRLINES_DATA, AirlineBaggageRule, AirlineFareOption } from "@/data/airlinesData";
 import {
   Luggage,
   AlertTriangle,
@@ -11,14 +11,20 @@ import {
   Plane,
   Scale,
   Ruler,
-  DollarSign,
   ArrowRight,
-  ShieldAlert,
-  Sparkles
+  ShieldCheck,
+  ExternalLink,
+  Info
 } from "lucide-react";
 
 export default function BaggageCheckerTool() {
   const [selectedAirlineId, setSelectedAirlineId] = useState<string>("gol");
+  const selectedAirline = AIRLINES_DATA.find((a) => a.id === selectedAirlineId) || AIRLINES_DATA[0];
+
+  // Tarifa selecionada da cia aérea
+  const [selectedFareId, setSelectedFareId] = useState<string>(selectedAirline.fares[0]?.id || "");
+  const currentFare = selectedAirline.fares.find((f) => f.id === selectedFareId) || selectedAirline.fares[0];
+
   const [bagType, setBagType] = useState<"cabin" | "personal">("cabin");
   
   // Dimensões do usuário
@@ -27,15 +33,28 @@ export default function BaggageCheckerTool() {
   const [depth, setDepth] = useState<number>(25);
   const [weight, setWeight] = useState<number>(9.5);
 
-  const selectedAirline = AIRLINES_DATA.find((a) => a.id === selectedAirlineId) || AIRLINES_DATA[0];
+  // Mudar companhia altera a tarifa padrão
+  const handleAirlineChange = (airlineId: string) => {
+    setSelectedAirlineId(airlineId);
+    const targetAir = AIRLINES_DATA.find((a) => a.id === airlineId) || AIRLINES_DATA[0];
+    setSelectedFareId(targetAir.fares[0]?.id || "");
+  };
 
-  const targetLimit = bagType === "cabin" ? selectedAirline.cabinBag : {
-    height: selectedAirline.personalItem.height,
-    width: selectedAirline.personalItem.width,
-    depth: selectedAirline.personalItem.depth,
-    maxWeight: bagType === "personal" && selectedAirline.id === "tap" ? 2 : 5, // peso médio estimado
-    includedInStandardFare: selectedAirline.personalItem.included,
-    description: selectedAirline.personalItem.description
+  // Limite alvo dinâmico baseado na Cia aérea e na TARIFA escolhida
+  const targetLimit = bagType === "cabin" ? {
+    height: currentFare.cabinMaxDimensions.height,
+    width: currentFare.cabinMaxDimensions.width,
+    depth: currentFare.cabinMaxDimensions.depth,
+    maxWeight: currentFare.cabinMaxWeight,
+    included: currentFare.includesCabinBag,
+    description: currentFare.notes
+  } : {
+    height: currentFare.personalItemMaxDimensions.height,
+    width: currentFare.personalItemMaxDimensions.width,
+    depth: currentFare.personalItemMaxDimensions.depth,
+    maxWeight: selectedAirline.id === "tap" ? 2 : 10,
+    included: currentFare.includesPersonalItem,
+    description: "Item pessoal que deve caber 100% debaixo da poltrona à sua frente."
   };
 
   // Avaliação matemática
@@ -47,27 +66,26 @@ export default function BaggageCheckerTool() {
   const hasSevereDimensionExceed = heightDiff > 2 || widthDiff > 2 || depthDiff > 2;
   const hasModerateDimensionExceed = (heightDiff > 0 && heightDiff <= 2) || (widthDiff > 0 && widthDiff <= 2) || (depthDiff > 0 && depthDiff <= 2);
   const hasWeightExceed = weightDiff > 0;
-  const hasFareExclusion = bagType === "cabin" && !selectedAirline.cabinBag.includedInStandardFare;
+  const isExcludedByFare = bagType === "cabin" && !currentFare.includesCabinBag;
 
   let verdict: "approved" | "warning" | "barred" = "approved";
-  let verdictTitle = "🟢 Bagagem 100% Aprovada para Voar";
-  let verdictDesc = "Suas medidas e peso estão dentro da franquia oficial sem cobrança de taxas no portão de embarque.";
+  let verdictTitle = "🟢 Compatível com a Franquia da Tarifa";
+  let verdictDesc = `Suas medidas e peso estão dentro das regras informadas pela ${selectedAirline.name} para a tarifa "${currentFare.name}".`;
 
-  if (hasFareExclusion) {
+  if (isExcludedByFare) {
     verdict = "barred";
-    verdictTitle = "🔴 Atenção: Não Inclusa na Tarifa Básica!";
-    verdictDesc = `A ${selectedAirline.name} cobra à parte pela mala de mão na tarifa mais barata. Se você tentar embarcar sem contratar antes pelo site, pagará a taxa máxima no balcão.`;
+    verdictTitle = "🔴 Franquia Não Inclusa na Tarifa Selecionada!";
+    verdictDesc = `A tarifa selecionada ("${currentFare.name}") NÃO dá direito a levar mala no bagageiro superior, apenas a mochila sob o assento. Se você levar mala de rodinhas ao portão, o despacho será cobrado na hora (estimativa: ${selectedAirline.gateFeeEstimate}).`;
   } else if (hasSevereDimensionExceed || weightDiff > 1.5) {
     verdict = "barred";
-    verdictTitle = "🔴 Será Barrada no Gabarito do Portão";
-    verdictDesc = `Sua bagagem excede os limites máximos permitidos. O despacho forçado no portão de embarque custará em média ${selectedAirline.gateFeeEstimate}.`;
+    verdictTitle = "🔴 Risco Alto de Retenção no Portão";
+    verdictDesc = `Sua bagagem excede os limites de tamanho ou peso estabelecidos pela companhia. Pode haver cobrança de despacho no balcão de embarque (estimativa média: ${selectedAirline.gateFeeEstimate}).`;
   } else if (hasModerateDimensionExceed || hasWeightExceed) {
     verdict = "warning";
-    verdictTitle = "🟡 No Limite Crítico do Risco";
-    verdictDesc = "Ultrapassa por poucos centímetros ou está no peso limítrofe. Em malas rígidas, as rodinhas podem travar no gabarito de metal da fiscalização.";
+    verdictTitle = "🟡 No Limite de Risco do Gabarito";
+    verdictDesc = "Ultrapassa por poucos centímetros ou está no peso limítrofe. Em malas rígidas, rodinhas ou bolsos estufados podem enroscar no gabarito de metal da fiscalização.";
   }
 
-  // Predefinições rápidas
   const applyPreset = (h: number, w: number, d: number, wt: number, type: "cabin" | "personal") => {
     setHeight(h);
     setWidth(w);
@@ -80,19 +98,16 @@ export default function BaggageCheckerTool() {
     <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
       {/* Top Banner de Identidade Aeronáutica */}
       <div className="bg-[#0B1E36] text-white p-6 sm:p-8 relative overflow-hidden">
-        <div className="absolute -right-8 -bottom-8 opacity-10 pointer-events-none">
-          <Plane className="w-56 h-56 text-white" />
-        </div>
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            Simulador de Gabarito Aeroportuário 2026
+            <Info className="w-3.5 h-3.5" />
+            Simulador de Franquias por Companhia & Tarifa
           </div>
           <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-            Verificador de Medidas & Bagagem por Cia Aérea
+            Verificador de Medidas & Peso por Cia Aérea
           </h2>
           <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
-            Evite a taxa surpresa de R$ 160 a R$ 380 no portão de embarque. Teste as medidas da sua mala contra o gabarito oficial da Gol, LATAM, Azul e internacionais.
+            Consulte a franquia contratada da sua passagem. As regras de dimensões, quantidade de peças e peso de cabine variam conforme o contrato de transporte de cada companhia aérea.
           </p>
         </div>
       </div>
@@ -101,7 +116,7 @@ export default function BaggageCheckerTool() {
         {/* Passo 1: Seleção da Companhia Aérea */}
         <div>
           <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
-            1. Selecione a Companhia Aérea do seu voo:
+            1. Selecione a Companhia Aérea:
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
             {AIRLINES_DATA.map((airline) => {
@@ -109,7 +124,7 @@ export default function BaggageCheckerTool() {
               return (
                 <button
                   key={airline.id}
-                  onClick={() => setSelectedAirlineId(airline.id)}
+                  onClick={() => handleAirlineChange(airline.id)}
                   type="button"
                   className={`flex flex-col items-center justify-center p-3 rounded-xl border text-center transition-all ${
                     isSelected
@@ -130,10 +145,55 @@ export default function BaggageCheckerTool() {
           </div>
         </div>
 
-        {/* Passo 2: Tipo de Bagagem (Mala de Bordo vs Mochila/Item Pessoal) */}
+        {/* Passo 2: Seleção da Família Tarifária da Passagem */}
+        <div className="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+              2. Qual a Tarifa do seu Bilhete na {selectedAirline.name}?
+            </label>
+            <span className="text-[11px] text-slate-400 font-medium">
+              Consulta: {selectedAirline.lastConsultationDate}
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {selectedAirline.fares.map((fare) => {
+              const isFareSelected = fare.id === currentFare.id;
+              return (
+                <button
+                  key={fare.id}
+                  type="button"
+                  onClick={() => setSelectedFareId(fare.id)}
+                  className={`p-3 rounded-xl border text-left transition-all ${
+                    isFareSelected
+                      ? "bg-white border-blue-600 shadow-xs ring-2 ring-blue-600/20"
+                      : "bg-white/60 border-slate-200 hover:bg-white text-slate-700"
+                  }`}
+                >
+                  <div className="text-xs font-bold text-slate-900 flex items-center justify-between">
+                    <span>{fare.name}</span>
+                    {fare.includesCabinBag ? (
+                      <span className="text-[10px] font-black bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
+                        Mala de Bordo ({fare.cabinMaxWeight}kg)
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-black bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
+                        Sem Mala de Cabine
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-slate-500 mt-1 leading-tight">
+                    {fare.notes}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Passo 3: Tipo de Peça a testar */}
         <div>
           <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
-            2. Qual tipo de bagagem você quer testar?
+            3. Qual peça você deseja simular agora?
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <button
@@ -149,9 +209,9 @@ export default function BaggageCheckerTool() {
                 <Luggage className="w-6 h-6" />
               </div>
               <div>
-                <div className="font-bold text-sm">Mala de Bordo / Cabine</div>
+                <div className="font-bold text-sm">Mala de Cabine / Bordo</div>
                 <div className={`text-xs ${bagType === "cabin" ? "text-blue-100" : "text-slate-500"}`}>
-                  Vai no bagageiro superior (overhead bin)
+                  Bagageiro superior (overhead bin)
                 </div>
               </div>
             </button>
@@ -169,44 +229,46 @@ export default function BaggageCheckerTool() {
                 <Scale className="w-6 h-6" />
               </div>
               <div>
-                <div className="font-bold text-sm">Item Pessoal / Mochila de Assento</div>
+                <div className="font-bold text-sm">Item Pessoal (Mochila / Bolsa)</div>
                 <div className={`text-xs ${bagType === "personal" ? "text-blue-100" : "text-slate-500"}`}>
-                  Deve caber 100% debaixo do assento dianteiro
+                  Sob o assento à sua frente
                 </div>
               </div>
             </button>
           </div>
         </div>
 
-        {/* Predefinições Rápidas */}
+        {/* Modelos rápidos */}
         <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 flex flex-wrap items-center gap-2">
           <span className="text-xs font-bold text-slate-600">Modelos Prontos:</span>
           <button
             onClick={() => applyPreset(55, 35, 25, 9.5, "cabin")}
             className="text-xs px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-blue-500 font-medium text-slate-700"
           >
-            Mala ANAC Padrão (55×35×25)
+            Mala Típica Nacional (55×35×25cm, 9.5kg)
           </button>
           <button
             onClick={() => applyPreset(40, 30, 20, 4.5, "personal")}
             className="text-xs px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-blue-500 font-medium text-slate-700"
           >
-            Mochila Pessoal (40×30×20)
+            Mochila Pessoal (40×30×20cm, 4.5kg)
           </button>
           <button
-            onClick={() => applyPreset(58, 38, 28, 11.5, "cabin")}
-            className="text-xs px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-rose-500 font-medium text-rose-700"
+            onClick={() => applyPreset(55, 40, 20, 9.5, "cabin")}
+            className="text-xs px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:border-emerald-500 font-medium text-emerald-800"
           >
-            Mala Estufada / Risco (58×38×28)
+            Mala Estilo Europeu TAP (55×40×20cm, 9.5kg)
           </button>
         </div>
 
-        {/* Passo 3: Entradas de Medidas e Peso */}
+        {/* Entradas numéricas */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-600">Altura (cm)</span>
-              <span className="text-[11px] font-semibold text-blue-600">Max: {targetLimit.height}cm</span>
+              <span className="text-[11px] font-semibold text-blue-600">
+                {targetLimit.height > 0 ? `Max: ${targetLimit.height}cm` : "N/D"}
+              </span>
             </div>
             <input
               type="number"
@@ -220,7 +282,9 @@ export default function BaggageCheckerTool() {
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-600">Largura (cm)</span>
-              <span className="text-[11px] font-semibold text-blue-600">Max: {targetLimit.width}cm</span>
+              <span className="text-[11px] font-semibold text-blue-600">
+                {targetLimit.width > 0 ? `Max: ${targetLimit.width}cm` : "N/D"}
+              </span>
             </div>
             <input
               type="number"
@@ -234,7 +298,9 @@ export default function BaggageCheckerTool() {
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-600">Profundidade (cm)</span>
-              <span className="text-[11px] font-semibold text-blue-600">Max: {targetLimit.depth}cm</span>
+              <span className="text-[11px] font-semibold text-blue-600">
+                {targetLimit.depth > 0 ? `Max: ${targetLimit.depth}cm` : "N/D"}
+              </span>
             </div>
             <input
               type="number"
@@ -248,7 +314,9 @@ export default function BaggageCheckerTool() {
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-600">Peso (kg)</span>
-              <span className="text-[11px] font-semibold text-blue-600">Max: {targetLimit.maxWeight}kg</span>
+              <span className="text-[11px] font-semibold text-blue-600">
+                {targetLimit.maxWeight > 0 ? `Max: ${targetLimit.maxWeight}kg` : "0kg"}
+              </span>
             </div>
             <input
               type="number"
@@ -261,7 +329,7 @@ export default function BaggageCheckerTool() {
           </div>
         </div>
 
-        {/* VEREDITO VISUAL INSTANTÂNEO */}
+        {/* VEREDITO VISUAL CONTEXTUAL */}
         <div
           className={`p-6 sm:p-7 rounded-3xl border-2 transition-all ${
             verdict === "approved"
@@ -282,78 +350,91 @@ export default function BaggageCheckerTool() {
               <p className="text-sm sm:text-base leading-relaxed opacity-90">{verdictDesc}</p>
 
               {/* Comparador de Métricas com Barras */}
-              <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
-                  <div className="text-[11px] font-bold text-slate-500">Altura</div>
-                  <div className="text-base font-black">
-                    {height} cm / <span className="text-slate-500 font-semibold">{targetLimit.height} cm</span>
+              {targetLimit.height > 0 && (
+                <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
+                    <div className="text-[11px] font-bold text-slate-500">Altura</div>
+                    <div className="text-base font-black">
+                      {height} cm / <span className="text-slate-500 font-semibold">{targetLimit.height} cm</span>
+                    </div>
+                    <div className={`text-xs font-bold mt-0.5 ${heightDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
+                      {heightDiff > 0 ? `+${heightDiff} cm (passou)` : `OK (${Math.abs(heightDiff)}cm folga)`}
+                    </div>
                   </div>
-                  <div className={`text-xs font-bold mt-0.5 ${heightDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
-                    {heightDiff > 0 ? `+${heightDiff} cm (passou)` : `OK (${Math.abs(heightDiff)}cm folga)`}
-                  </div>
-                </div>
 
-                <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
-                  <div className="text-[11px] font-bold text-slate-500">Largura</div>
-                  <div className="text-base font-black">
-                    {width} cm / <span className="text-slate-500 font-semibold">{targetLimit.width} cm</span>
+                  <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
+                    <div className="text-[11px] font-bold text-slate-500">Largura</div>
+                    <div className="text-base font-black">
+                      {width} cm / <span className="text-slate-500 font-semibold">{targetLimit.width} cm</span>
+                    </div>
+                    <div className={`text-xs font-bold mt-0.5 ${widthDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
+                      {widthDiff > 0 ? `+${widthDiff} cm (passou)` : `OK (${Math.abs(widthDiff)}cm folga)`}
+                    </div>
                   </div>
-                  <div className={`text-xs font-bold mt-0.5 ${widthDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
-                    {widthDiff > 0 ? `+${widthDiff} cm (passou)` : `OK (${Math.abs(widthDiff)}cm folga)`}
-                  </div>
-                </div>
 
-                <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
-                  <div className="text-[11px] font-bold text-slate-500">Profundidade</div>
-                  <div className="text-base font-black">
-                    {depth} cm / <span className="text-slate-500 font-semibold">{targetLimit.depth} cm</span>
+                  <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
+                    <div className="text-[11px] font-bold text-slate-500">Profundidade</div>
+                    <div className="text-base font-black">
+                      {depth} cm / <span className="text-slate-500 font-semibold">{targetLimit.depth} cm</span>
+                    </div>
+                    <div className={`text-xs font-bold mt-0.5 ${depthDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
+                      {depthDiff > 0 ? `+${depthDiff} cm (passou)` : `OK (${Math.abs(depthDiff)}cm folga)`}
+                    </div>
                   </div>
-                  <div className={`text-xs font-bold mt-0.5 ${depthDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
-                    {depthDiff > 0 ? `+${depthDiff} cm (passou)` : `OK (${Math.abs(depthDiff)}cm folga)`}
-                  </div>
-                </div>
 
-                <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
-                  <div className="text-[11px] font-bold text-slate-500">Peso Carregado</div>
-                  <div className="text-base font-black">
-                    {weight} kg / <span className="text-slate-500 font-semibold">{targetLimit.maxWeight} kg</span>
-                  </div>
-                  <div className={`text-xs font-bold mt-0.5 ${weightDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
-                    {weightDiff > 0 ? `+${weightDiff.toFixed(1)} kg (excesso)` : `OK (${Math.abs(weightDiff).toFixed(1)}kg livre)`}
+                  <div className="bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-black/5">
+                    <div className="text-[11px] font-bold text-slate-500">Peso Carregado</div>
+                    <div className="text-base font-black">
+                      {weight} kg / <span className="text-slate-500 font-semibold">{targetLimit.maxWeight} kg</span>
+                    </div>
+                    <div className={`text-xs font-bold mt-0.5 ${weightDiff > 0 ? "text-rose-600" : "text-emerald-600"}`}>
+                      {weightDiff > 0 ? `+${weightDiff.toFixed(1)} kg (excesso)` : `OK (${Math.abs(weightDiff).toFixed(1)}kg livre)`}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Ficha Oficial da Cia Aérea Selecionada */}
-        <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
-          <div className="flex items-center gap-2 text-slate-900 font-bold text-sm mb-2">
-            <ShieldAlert className="w-4 h-4 text-blue-600" />
-            Regra Oficial da {selectedAirline.name} ({selectedAirline.country})
+        {/* Ficha da Companhia & Link da Fonte Oficial */}
+        <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
+              <ShieldCheck className="w-4 h-4 text-blue-600" />
+              Contrato de Transporte: {selectedAirline.name} ({selectedAirline.country})
+            </div>
+            <a
+              href={selectedAirline.officialSourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800"
+            >
+              Consultar Página Oficial da Companhia
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-3">
-            {selectedAirline.officialRuleSummary}
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            {selectedAirline.contractRuleSummary}
           </p>
           <div className="bg-amber-50 rounded-xl p-3 border border-amber-200 text-xs text-amber-900">
-            <strong>Dica de Ouro dos Viajantes:</strong> {selectedAirline.proTip}
+            <strong>Dica Prática:</strong> {selectedAirline.proTip}
           </div>
         </div>
 
-        {/* Callout de Acessório Essencial: Balança Digital e Mala Homologada */}
+        {/* Callout de Acessório Oficial Amazon Brasil */}
         <div className="bg-gradient-to-r from-blue-900 to-[#0B1E36] rounded-2xl p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <span className="text-amber-400 font-bold text-xs uppercase tracking-wider">Acessório Recomendado</span>
+            <span className="text-amber-400 font-bold text-xs uppercase tracking-wider">Acessório Recomendado • Link de Afiliado</span>
             <h4 className="font-extrabold text-base sm:text-lg">Balança Digital Portátil de Precisão (Até 50kg)</h4>
             <p className="text-xs text-slate-300 max-w-xl">
-              Pesa menos de 90 gramas e evita o constrangimento de ter que abrir a mala no meio do aeroporto para tirar roupas antes da esteira.
+              Pese sua bagagem em casa e evite o desconforto de abrir a mala no aeroporto para remanejar peso.
             </p>
           </div>
           <a
             href="https://www.amazon.com.br/s?k=balanca+digital+portatil+mala+viagem&tag=achadospro09-20"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored nofollow noopener noreferrer"
             className="shrink-0 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-1.5"
           >
             Ver Balanças na Amazon Brasil

@@ -3,6 +3,7 @@ export interface PackingItem {
   name: string;
   quantity?: number;
   unit?: string;
+  estimatedWeightGrams?: number; // Peso estimado unitário em gramas
   category: "documentos" | "vestuario" | "calcados" | "higiene" | "eletronicos" | "farmacia" | "bordo";
   categoryLabel: string;
   checked?: boolean;
@@ -20,116 +21,125 @@ export interface PackingPlanParams {
 export function generateSmartPackingList(params: PackingPlanParams): PackingItem[] {
   const { destinationType, days, hasLaundry, profile } = params;
 
-  // Se tem lavanderia, calculamos roupas para no máximo 6 a 7 dias de rotação
-  const effectiveDays = hasLaundry ? Math.min(days, 6) : Math.min(days, 18);
+  // Se tem lavanderia, calculamos roupas para rotação de 5 a 6 dias para caber com folga na mala de 10-12kg
+  const effectiveDays = hasLaundry ? Math.min(days, 5) : Math.min(days, 12);
 
   const items: PackingItem[] = [];
 
-  // 1. DOCUMENTOS & FINANÇAS
+  // 1. DOCUMENTOS & FINANÇAS (~250g no total)
   items.push({
     id: "doc-passaporte",
-    name: "Passaporte válido ou RG recente (máximo 10 anos de emissão)",
+    name: "Passaporte válido ou RG recente (emissão nos últimos 10 anos)",
     quantity: 1,
     unit: "unidade",
+    estimatedWeightGrams: 50,
     category: "documentos",
     categoryLabel: "Documentos & Dinheiro",
     essential: true,
-    tip: "Para América do Sul (Mercosul), RG em ótimo estado; para demais países, passaporte com pelo menos 6 meses de validade."
+    tip: "Para América do Sul (Mercosul), RG em bom estado; para o Espaço Schengen, passaporte válido por pelo menos 3 meses além da data prevista de saída."
   });
   items.push({
     id: "doc-seguro",
-    name: "Apólice de Seguro Viagem impressa com telefones de emergência",
+    name: "Comprovante de Seguro Viagem com canais de atendimento 24h",
     quantity: 1,
     unit: "cópia",
+    estimatedWeightGrams: 20,
     category: "documentos",
     categoryLabel: "Documentos & Dinheiro",
     essential: true,
-    tip: "Obrigatório para Europa (Tratado de Schengen - mínimo € 30.000) e essencial para os EUA (custos médicos altíssimos)."
+    tip: "Altamente recomendado para o exterior: atendimentos hospitalares de urgência nos EUA e Europa podem custar milhares de dólares/euros para estrangeiros."
   });
   items.push({
     id: "doc-cartoes",
-    name: "Cartão de Débito Global (Wise / Nomad) + Cartão de Crédito físico",
+    name: "Cartão de Débito Internacional (Wise / Nomad) + Cartão de Crédito físico",
     quantity: 2,
     unit: "cartões",
+    estimatedWeightGrams: 30,
     category: "documentos",
     categoryLabel: "Documentos & Dinheiro",
     essential: true,
-    tip: "Desbloqueie o aviso de viagem no app do banco e leve pelo menos 2 bandeiras diferentes (Visa e Mastercard)."
+    tip: "Habilite o aviso de viagem no app e leve pelo menos 2 opções de bandeiras diferentes."
   });
   items.push({
     id: "doc-hospedagem",
-    name: "Comprovantes de reserva de hotel/Airbnb e passagens de retorno salvas offline",
+    name: "Comprovantes de hospedagem e bilhete aéreo de retorno salvos offline",
     category: "documentos",
     categoryLabel: "Documentos & Dinheiro",
     essential: true,
-    tip: "Tenha em PDF no celular e 1 folha impressa para a fila da imigração."
+    tip: "Tenha em PDF no celular e uma folha impressa para apresentar no controle de imigração se solicitado."
   });
 
-  // 2. VESTUÁRIO (CÁLCULO DINÂMICO)
-  // Roupas íntimas: dias + 2 de segurança (ou dias da rotação da lavanderia)
+  // 2. VESTUÁRIO (CÁLCULO DINÂMICO COM PESOS REAIS)
+  // Roupas íntimas: ~50g por peça
   const underwearCount = effectiveDays + 2;
   items.push({
     id: "vest-intimas",
     name: profile === "feminino" ? "Calcinhas e sutiãs confortáveis" : "Cuecas / boxers confortáveis",
     quantity: underwearCount,
     unit: "peças",
+    estimatedWeightGrams: 50 * underwearCount,
     category: "vestuario",
     categoryLabel: "Vestuário & Roupas",
     essential: true,
-    tip: "Dica de ouro: embale em saco à vácuo manual ou organizadores de mala (packing cubes)."
+    tip: "Embale em organizadores de tecido ou saco compressivo para poupar volume."
   });
 
-  // Meias
-  const socksCount = destinationType === "praia" ? Math.max(3, Math.ceil(effectiveDays / 2)) : effectiveDays + 1;
+  // Meias: ~40g por par
+  const socksCount = destinationType === "praia" ? Math.max(2, Math.ceil(effectiveDays / 2)) : effectiveDays + 1;
   items.push({
     id: "vest-meias",
-    name: "Pares de meias (algodão ou térmicas para frio)",
+    name: "Pares de meias (algodão ou térmicas)",
     quantity: socksCount,
     unit: "pares",
+    estimatedWeightGrams: 40 * socksCount,
     category: "vestuario",
     categoryLabel: "Vestuário & Roupas",
     essential: true
   });
 
-  // Camisetas / Blusas
+  // Camisetas / Blusas: ~170g por peça
   const shirtsCount = Math.max(3, effectiveDays + 1);
   items.push({
     id: "vest-camisetas",
-    name: profile === "feminino" ? "Blusas, regatas e camisetas versáteis" : "Camisetas básicas / gola polo",
+    name: profile === "feminino" ? "Blusas e camisetas versáteis" : "Camisetas básicas neutras",
     quantity: shirtsCount,
     unit: "peças",
+    estimatedWeightGrams: 170 * shirtsCount,
     category: "vestuario",
     categoryLabel: "Vestuário & Roupas",
     essential: true,
-    tip: "Opte por cores neutras que combinem entre si, multiplicando os looks com menos peças."
+    tip: "Cores neutras facilitam a combinação de diferentes conjuntos com menos peças na mala."
   });
 
-  // Calças / Bermudas / Saias
-  const bottomsCount = Math.max(2, Math.ceil(effectiveDays / 2) + 1);
+  // Calças / Bermudas: calça ~500g, shorts ~250g
   if (destinationType === "praia") {
+    const shortsCount = Math.max(2, Math.ceil(effectiveDays / 2));
     items.push({
       id: "vest-shorts",
-      name: "Shorts, bermudas leves e saias/vestidos de verão",
-      quantity: Math.max(3, Math.ceil(effectiveDays / 2)),
+      name: "Bermudas leves, shorts ou saias/vestidos de verão",
+      quantity: shortsCount,
       unit: "peças",
+      estimatedWeightGrams: 220 * shortsCount,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
     });
     items.push({
       id: "vest-praia",
-      name: profile === "feminino" ? "Biquínis / maiôs e saídas de praia" : "Sungas ou bermudas de banho",
-      quantity: 3,
+      name: profile === "feminino" ? "Biquínis / maiôs e saída de praia" : "Sungas ou bermudas de banho",
+      quantity: 2,
       unit: "conjuntos",
+      estimatedWeightGrams: 200,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
     });
     items.push({
       id: "vest-calca-leve",
-      name: "Calça leve ou jeans confortável (já use uma no voo)",
-      quantity: 2,
-      unit: "peças",
+      name: "Calça leve ou jeans (dica: use uma no corpo durante o voo)",
+      quantity: 1,
+      unit: "peça",
+      estimatedWeightGrams: 450,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
@@ -137,89 +147,78 @@ export function generateSmartPackingList(params: PackingPlanParams): PackingItem
   } else if (destinationType === "frio") {
     items.push({
       id: "vest-termica",
-      name: "Segunda pele térmica (blusa + calça)",
-      quantity: Math.min(3, Math.max(2, Math.ceil(effectiveDays / 3))),
+      name: "Conjunto de segunda pele térmica (blusa + calça)",
+      quantity: 2,
       unit: "conjuntos",
+      estimatedWeightGrams: 400,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true,
-      tip: "A chave do conforto no inverno é vestir em camadas: segunda pele + fleece/lã + casaco corta-vento."
+      tip: "Vista-se em 3 camadas: segunda pele térmica + camada intermediária de fleece/lã + casaco corta-vento."
     });
     items.push({
-      id: "vest-calcas",
-      name: "Calças resistentes (jeans, veludo ou impermeável)",
-      quantity: Math.min(4, Math.max(2, Math.ceil(effectiveDays / 2))),
+      id: "vest-calcas-frio",
+      name: "Calças resistentes de inverno (jeans grosso ou veludo)",
+      quantity: Math.min(3, Math.max(2, Math.ceil(effectiveDays / 3))),
       unit: "peças",
+      estimatedWeightGrams: 550 * 2,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
     });
     items.push({
       id: "vest-sueter",
-      name: "Suéteres de lã, blusões fleece ou moletom pesado",
-      quantity: Math.min(4, Math.max(2, Math.ceil(effectiveDays / 2))),
+      name: "Blusões de lã, fleece ou moletom quente",
+      quantity: Math.min(3, Math.max(2, Math.ceil(effectiveDays / 3))),
       unit: "peças",
+      estimatedWeightGrams: 450 * 2,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
     });
     items.push({
       id: "vest-casaco-pesado",
-      name: "Casaco pesado de frio / sobretudo ou jaqueta puffer acolchoada",
+      name: "Casaco pesado de inverno / jaqueta puffer",
       quantity: 1,
       unit: "peça",
+      estimatedWeightGrams: 850,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true,
-      tip: "Leve no corpo durante o embarque para economizar peso e volume na mala de mão!"
-    });
-    items.push({
-      id: "vest-gorro-luvas",
-      name: "Gorro térmico, cachecol e luvas corta-vento",
-      quantity: 2,
-      unit: "conjuntos",
-      category: "vestuario",
-      categoryLabel: "Vestuário & Roupas",
-      essential: true
-    });
-  } else if (destinationType === "negocios") {
-    items.push({
-      id: "vest-social",
-      name: profile === "feminino" ? "Camisas sociais, blazer e calças de alfaiataria" : "Camisas sociais passadas, calças chino/alfaiataria e blazer",
-      quantity: Math.min(5, effectiveDays),
-      unit: "peças",
-      category: "vestuario",
-      categoryLabel: "Vestuário & Roupas",
-      essential: true
+      tip: "Viaje vestindo o casaco no aeroporto para economizar volume e cerca de 1kg na balança da mala."
     });
   } else {
-    // Cidade / Urbano / Aventura
+    // Cidade / Urbano / Negócios
+    const pantsCount = Math.min(3, Math.max(2, Math.ceil(effectiveDays / 3)));
     items.push({
-      id: "vest-calcas-cidade",
-      name: "Calças confortáveis para caminhar o dia todo",
-      quantity: bottomsCount,
+      id: "vest-calcas",
+      name: "Calças confortáveis para caminhar",
+      quantity: pantsCount,
       unit: "peças",
+      estimatedWeightGrams: 480 * pantsCount,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
     });
     items.push({
-      id: "vest-casaco-leve",
-      name: "Jaqueta leve corta-vento ou cardigan para ar-condicionado",
+      id: "vest-jaqueta-leve",
+      name: "Jaqueta leve ou corta-vento",
       quantity: 1,
       unit: "peça",
+      estimatedWeightGrams: 400,
       category: "vestuario",
       categoryLabel: "Vestuário & Roupas",
       essential: true
     });
   }
 
-  // Pijamas
+  // Pijama: ~250g
   items.push({
     id: "vest-pijama",
-    name: "Pijamas / roupas confortáveis para dormir",
-    quantity: Math.min(3, Math.max(1, Math.ceil(effectiveDays / 3))),
+    name: "Roupas confortáveis para dormir",
+    quantity: Math.min(2, Math.max(1, Math.ceil(effectiveDays / 4))),
     unit: "conjuntos",
+    estimatedWeightGrams: 300,
     category: "vestuario",
     categoryLabel: "Vestuário & Roupas",
     essential: true
@@ -231,167 +230,127 @@ export function generateSmartPackingList(params: PackingPlanParams): PackingItem
     name: "Tênis mais confortável e amaciado (viaje calçando ele)",
     quantity: 1,
     unit: "par",
+    estimatedWeightGrams: 0, // no corpo do passageiro
     category: "calcados",
     categoryLabel: "Calçados & Acessórios",
     essential: true,
-    tip: "Nunca viaje com tênis novinho direto da caixa para não sofrer com bolhas dolorosas."
+    tip: "Viaje calçando o sapato mais pesado para não pesar na mala de cabine."
   });
   if (destinationType === "praia") {
     items.push({
       id: "calc-chinelo",
-      name: "Sandália rasteira ou chinelo tipo Havaianas",
+      name: "Sandália ou chinelo leve",
       quantity: 1,
       unit: "par",
-      category: "calcados",
-      categoryLabel: "Calçados & Acessórios",
-      essential: true
-    });
-  } else if (destinationType === "frio") {
-    items.push({
-      id: "calc-bota",
-      name: "Bota quente e impermeável com solado de boa aderência",
-      quantity: 1,
-      unit: "par",
+      estimatedWeightGrams: 280,
       category: "calcados",
       categoryLabel: "Calçados & Acessórios",
       essential: true
     });
   } else {
     items.push({
-      id: "calc-extra",
-      name: "Segundo calçado reserva (sapatilha, mocassim ou tênis casual)",
+      id: "calc-reserva",
+      name: "Segundo calçado casual leve para revezamento",
       quantity: 1,
       unit: "par",
+      estimatedWeightGrams: 550,
       category: "calcados",
       categoryLabel: "Calçados & Acessórios",
       essential: true
     });
   }
 
-  // 4. HIGIENE & NÉCESSAIRE
+  // 4. HIGIENE & NÉCESSAIRE (~600g a 900g)
   items.push({
     id: "hig-kit-frascos",
-    name: "Kit de frascos de viagem de silicone (até 100ml) com shampoo e sabonete",
+    name: "Frascos de viagem (até 100ml) com shampoo, sabonete e condicionador",
     category: "higiene",
+    estimatedWeightGrams: 350,
     categoryLabel: "Higiene & Cuidados Pessoais",
     essential: true,
-    tip: "Para voos internacionais, guarde todos dentro do saquinho transparente lacrado de até 1 Litro."
+    tip: "Em voos internacionais, mantenha em embalagem transparente de até 1 Litro para o raio-X."
   });
   items.push({
     id: "hig-dental",
-    name: "Escova de dentes com protetor, pasta de dente pequena e fio dental",
+    name: "Escova com protetor, creme dental compacto e fio dental",
     category: "higiene",
+    estimatedWeightGrams: 150,
     categoryLabel: "Higiene & Cuidados Pessoais",
     essential: true
   });
   items.push({
     id: "hig-desodorante",
-    name: "Desodorante roll-on ou aerossol viagem (até 100ml se internacional)",
+    name: "Desodorante roll-on ou compacto de viagem",
     category: "higiene",
-    categoryLabel: "Higiene & Cuidados Pessoais",
-    essential: true
-  });
-  items.push({
-    id: "hig-solar",
-    name: destinationType === "praia" ? "Protetor solar corporal e facial + repelente" : "Protetor solar facial e hidratante labial",
-    category: "higiene",
+    estimatedWeightGrams: 120,
     categoryLabel: "Higiene & Cuidados Pessoais",
     essential: true
   });
 
-  // 5. ELETRÔNICOS & CABOS
+  // 5. ELETRÔNICOS & CABOS (~650g)
   items.push({
     id: "elet-powerbank",
-    name: "Powerbank (Bateria portátil de até 100Wh) na mala de mão",
+    name: "Powerbank (Bateria portátil até 100 Wh) obrigatoriamente na mala de mão",
     category: "eletronicos",
+    estimatedWeightGrams: 250,
     categoryLabel: "Eletrônicos & Cabos",
     essential: true,
-    tip: "Lembre-se: proibido despachar no porão do avião!"
+    tip: "Proibido despachar no porão por determinação do RBAC 175 e normas IATA."
   });
   items.push({
     id: "elet-adaptador",
-    name: "Adaptador universal de tomadas (padrão internacional)",
+    name: "Adaptador universal de tomadas (para viagens internacionais)",
     category: "eletronicos",
+    estimatedWeightGrams: 150,
     categoryLabel: "Eletrônicos & Cabos",
-    essential: true,
-    tip: "Indispensável na Europa, Reino Unido, EUA e Argentina (o padrão de 3 pinos do Brasil não entra)."
+    essential: true
   });
   items.push({
-    id: "elet-cabos",
-    name: "Carregador rápido de celular e cabos extras longos",
+    id: "elet-carregadores",
+    name: "Carregador de celular e cabos essenciais",
     category: "eletronicos",
+    estimatedWeightGrams: 180,
     categoryLabel: "Eletrônicos & Cabos",
     essential: true
   });
 
-  // 6. FARMACINHA PREVENTIVA
+  // 6. FARMACINHA PREVENTIVA DE PRIMEIROS SOCORROS (~250g)
   items.push({
-    id: "farm-dor",
-    name: "Analgésico e antitérmico de confiança (Dipirona, Paracetamol ou Ibuprofeno)",
+    id: "farm-basica",
+    name: "Kit de primeiros socorros preventivos (analgésico, antitérmico, curativos)",
     category: "farmacia",
-    categoryLabel: "Farmácia de Viagem",
+    estimatedWeightGrams: 200,
+    categoryLabel: "Farmácia de Viagem & Saúde",
     essential: true,
-    tip: "Dipirona não é vendida em farmácias dos EUA e Europa sem receita. Leve do Brasil na quantidade necessária."
-  });
-  items.push({
-    id: "farm-enjoo",
-    name: "Antienjoo (Dramin ou Vonau) para turbulência e passeios de barco",
-    category: "farmacia",
-    categoryLabel: "Farmácia de Viagem",
-    essential: true
-  });
-  items.push({
-    id: "farm-digestivo",
-    name: "Antiácido e remédio digestivo / cólica (reeducação alimentar no destino)",
-    category: "farmacia",
-    categoryLabel: "Farmácia de Viagem",
-    essential: true
-  });
-  items.push({
-    id: "farm-curativos",
-    name: "Band-aids e protetor para bolhas nos pés (tipo Compeed)",
-    category: "farmacia",
-    categoryLabel: "Farmácia de Viagem",
-    essential: true
+    tip: "Aviso de Saúde: Consulte seu médico ou farmacêutico para orientações personalizadas sobre medicamentos."
   });
   items.push({
     id: "farm-continuo",
-    name: "Medicamentos de uso contínuo para todos os dias + 3 dias de reserva com receita",
+    name: "Medicamentos de uso contínuo para todos os dias + reserva com receita médica",
     category: "farmacia",
-    categoryLabel: "Farmácia de Viagem",
+    estimatedWeightGrams: 150,
+    categoryLabel: "Farmácia de Viagem & Saúde",
     essential: true,
-    tip: "Sempre na mala de mão junto a você!"
+    tip: "Transporte sempre na mala de mão junto a você, nunca na mala despachada."
   });
 
   // 7. MALA DE MÃO & CONFORTO A BORDO
   items.push({
-    id: "bordo-almofada",
-    name: "Almofada ergonômica de pescoço e tapa-olhos para dormir no avião",
+    id: "bordo-casaco-voo",
+    name: "Agasalho leve ou pashmina para o ar-condicionado da cabine",
     category: "bordo",
-    categoryLabel: "Mala de Mão & Conforto a Bordo",
-    essential: false
-  });
-  items.push({
-    id: "bordo-fone",
-    name: "Fones de ouvido com cancelamento de ruído e adaptador P2 para telas do avião",
-    category: "bordo",
-    categoryLabel: "Mala de Mão & Conforto a Bordo",
-    essential: false
-  });
-  items.push({
-    id: "bordo-casaco",
-    name: "Agasalho leve / pashmina para o frio do ar-condicionado da cabine",
-    category: "bordo",
-    categoryLabel: "Mala de Mão & Conforto a Bordo",
+    estimatedWeightGrams: 300,
+    categoryLabel: "Mala de Mão & Bordo",
     essential: true
   });
   items.push({
-    id: "bordo-troca-reserva",
-    name: "1 muda completa de roupa limpa de emergência (camiseta e roupa íntima)",
+    id: "bordo-muda-reserva",
+    name: "1 troca completa de roupa de emergência (camiseta e peça íntima)",
     category: "bordo",
-    categoryLabel: "Mala de Mão & Conforto a Bordo",
+    estimatedWeightGrams: 250,
+    categoryLabel: "Mala de Mão & Bordo",
     essential: true,
-    tip: "Salva seu primeiro dia se a sua mala despachada atrasar na esteira."
+    tip: "Proteção caso sua bagagem despachada sofra extravio temporário."
   });
 
   return items;

@@ -43,6 +43,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "./",
   },
+  icons: {
+    icon: "/favicon-32x32.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   other: {
     "google-adsense-account": "ca-pub-3922432751903141",
   },

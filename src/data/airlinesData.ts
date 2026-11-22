@@ -1,3 +1,14 @@
+export interface AirlineFareOption {
+  id: string;
+  name: string;
+  includesCabinBag: boolean;
+  cabinMaxWeight: number; // kg
+  cabinMaxDimensions: { height: number; width: number; depth: number };
+  includesPersonalItem: boolean;
+  personalItemMaxDimensions: { height: number; width: number; depth: number };
+  notes: string;
+}
+
 export interface AirlineBaggageRule {
   id: string;
   name: string;
@@ -5,24 +16,12 @@ export interface AirlineBaggageRule {
   category: "nacional" | "internacional" | "lowcost";
   logoText: string;
   badgeColor: string;
-  cabinBag: {
-    height: number; // cm
-    width: number; // cm
-    depth: number; // cm
-    maxWeight: number; // kg
-    includedInStandardFare: boolean;
-    description: string;
-  };
-  personalItem: {
-    height: number;
-    width: number;
-    depth: number;
-    included: boolean;
-    description: string;
-  };
+  fares: AirlineFareOption[];
   gateFeeEstimate: string;
-  officialRuleSummary: string;
+  contractRuleSummary: string;
   proTip: string;
+  officialSourceUrl: string;
+  lastConsultationDate: string;
 }
 
 export const AIRLINES_DATA: AirlineBaggageRule[] = [
@@ -33,50 +32,78 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "nacional",
     logoText: "GOL",
     badgeColor: "bg-orange-500",
-    cabinBag: {
-      height: 55,
-      width: 35,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: true,
-      description: "Mala de bordo oficial padrão ANAC com rodinhas e alça inclusas nas medidas."
-    },
-    personalItem: {
-      height: 45,
-      width: 35,
-      depth: 20,
-      included: true,
-      description: "Bolsa ou mochila pequena que deve caber 100% embaixo do assento à sua frente."
-    },
-    gateFeeEstimate: "R$ 160 a R$ 220 (se despachada no portão)",
-    officialRuleSummary: "Garante 1 mala de mão de até 10kg + 1 item pessoal em todas as tarifas comerciais (Light, Plus e Max).",
-    proTip: "A GOL utiliza gabaritos de metal no portão. Se a sua mala for rígida e as rodinhas não entrarem na caixa, o despacho é obrigatório e cobrado na hora."
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://www.voegol.com.br/informacoes/tarifas",
+    fares: [
+      {
+        id: "gol-light-plus-max",
+        name: "Tarifas Light, Plus e Max (Padrão)",
+        includesCabinBag: true,
+        cabinMaxWeight: 12,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "Dá direito a 1 mala de mão de até 12kg no bagageiro + 1 bolsa/mochila sob o assento."
+      },
+      {
+        id: "gol-basic",
+        name: "Tarifa Sem Bagagem / Basic (Promocional)",
+        includesCabinBag: false,
+        cabinMaxWeight: 0,
+        cabinMaxDimensions: { height: 0, width: 0, depth: 0 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "ATENÇÃO: Inclui APENAS 1 item pessoal (mochila ou bolsa) de até 10kg sob o assento. Mala de rodinhas deve ser comprada à parte!"
+      }
+    ],
+    gateFeeEstimate: "R$ 160 a R$ 220 (despacho compulsório no portão para voos nacionais)",
+    contractRuleSummary: "A Resolução ANAC nº 400/2016 garante franquia mínima de 10kg, mas a distribuição entre mala de rodinhas ou item pessoal varia conforme o contrato da tarifa adquirida.",
+    proTip: "Na tarifa básica da GOL, não leve mala de rodinhas ao portão sem ter contratado bagagem com antecedência pelo site ou app, pois a cobrança de balcão é substancialmente mais cara."
   },
   {
     id: "latam",
     name: "LATAM Airlines",
-    country: "Brasil / América Latina",
+    country: "Brasil / América do Sul",
     category: "nacional",
     logoText: "LATAM",
     badgeColor: "bg-indigo-700",
-    cabinBag: {
-      height: 55,
-      width: 35,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: true,
-      description: "Mala de até 10kg na classe Economy (até 16kg em Premium Economy/Business)."
-    },
-    personalItem: {
-      height: 45,
-      width: 35,
-      depth: 20,
-      included: true,
-      description: "Mochila ou bolsa com pertences pessoais guardada sob o assento dianteiro."
-    },
-    gateFeeEstimate: "R$ 160 a R$ 220 (doméstico) / até R$ 380 (internacional)",
-    officialRuleSummary: "1 peça de mão até 10kg + 1 item pessoal inclusos na maioria das tarifas nacionais.",
-    proTip: "Em voos lotados (A320/A321 cheios), a LATAM frequentemente convida passageiros dos últimos grupos a despachar a mala de mão gratuitamente no portão."
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://www.latamairlines.com/br/pt/experiencia/prepare-sua-viagem/bagagem/bagagem-de-mao",
+    fares: [
+      {
+        id: "latam-standard-economy",
+        name: "Tarifa Light / Standard (Classe Economy)",
+        includesCabinBag: true,
+        cabinMaxWeight: 12,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "1 mala de cabine de até 12kg + 1 bolsa/mochila pequena sob o assento."
+      },
+      {
+        id: "latam-basic",
+        name: "Tarifa Basic (Sem Mala de Cabine)",
+        includesCabinBag: false,
+        cabinMaxWeight: 0,
+        cabinMaxDimensions: { height: 0, width: 0, depth: 0 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "Tarifa mais barata da LATAM: inclui SOMENTE o item pessoal debaixo do assento. Mala de cabine é cobrada como extra!"
+      },
+      {
+        id: "latam-premium",
+        name: "Premium Economy / Premium Business",
+        includesCabinBag: true,
+        cabinMaxWeight: 16,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "Franquia estendida de cabine até 16kg + item pessoal."
+      }
+    ],
+    gateFeeEstimate: "R$ 160 a R$ 220 (doméstico) / até R$ 380+ (voos internacionais)",
+    contractRuleSummary: "A LATAM diferencia a franquia de mala pequena de acordo com a família tarifária (Basic vs. Light/Standard/Premium).",
+    proTip: "Ao comprar passagem LATAM em sites parceiros ou agências, confira se a emissão é 'Basic'. Se for Basic, comprar a bagagem pelo app com pelo menos 6h de antecedência custa quase metade da taxa de aeroporto."
   },
   {
     id: "azul",
@@ -85,24 +112,23 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "nacional",
     logoText: "AZUL",
     badgeColor: "bg-blue-600",
-    cabinBag: {
-      height: 55,
-      width: 35,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: true,
-      description: "Mala de cabine de até 10kg medindo no máximo 55x35x25cm."
-    },
-    personalItem: {
-      height: 45,
-      width: 35,
-      depth: 25,
-      included: true,
-      description: "Mochila, bolsa ou sacola colocada sob a poltrona à frente."
-    },
-    gateFeeEstimate: "R$ 160 a R$ 200 (despacho compulsório no portão)",
-    officialRuleSummary: "Atende rigorosamente à Resolução 400 da ANAC com mala de até 10kg gratuita em todas as tarifas.",
-    proTip: "Nos jatos Embraer E1 e ATR da Azul, os bagageiros superiores são mais estreitos. Malas no limite de 25cm de profundidade podem ter que ser despachadas na porta da aeronave."
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://www.voeazul.com.br/br/pt/sua-viagem/planeje/bagagens/de-mao",
+    fares: [
+      {
+        id: "azul-standard",
+        name: "Tarifas Azul (Azul / MaisAzul)",
+        includesCabinBag: true,
+        cabinMaxWeight: 10,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "1 mala de mão de até 10kg no bagageiro + 1 artigo pessoal de 45x35x20cm sob o assento."
+      }
+    ],
+    gateFeeEstimate: "R$ 160 a R$ 200 (despacho forçado no portão)",
+    contractRuleSummary: "Franquia padrão de 10kg para mala de bordo (55x35x25cm) mais artigo pessoal sob o assento (45x35x20cm).",
+    proTip: "Em aeronaves turboélice ATR ou jatos Embraer menores da Azul, o compartimento superior é reduzido. Malas rígidas de 25cm de profundidade podem ser recolhidas na escada do avião para acomodação no porão sem custo se estiverem dentro do peso."
   },
   {
     id: "tap",
@@ -111,24 +137,33 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "internacional",
     logoText: "TAP",
     badgeColor: "bg-emerald-600",
-    cabinBag: {
-      height: 55,
-      width: 40,
-      depth: 20,
-      maxWeight: 10,
-      includedInStandardFare: true,
-      description: "Medida máxima de 55x40x20cm (soma 115cm) até 10kg na Economy."
-    },
-    personalItem: {
-      height: 40,
-      width: 30,
-      depth: 15,
-      included: true,
-      description: "Item pessoal de até 2kg (bolsa, pasta de laptop)."
-    },
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://www.flytap.com/pt-br/bagagem/bagagem-de-mao",
+    fares: [
+      {
+        id: "tap-economy",
+        name: "Classe Econômica (Discount, Basic, Classic, Plus)",
+        includesCabinBag: true,
+        cabinMaxWeight: 10,
+        cabinMaxDimensions: { height: 55, width: 40, depth: 20 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 40, width: 30, depth: 15 },
+        notes: "Atenção crucial: profundidade máxima de 20cm (5cm mais fina que as malas padrão do Brasil de 25cm!)."
+      },
+      {
+        id: "tap-executive",
+        name: "Classe Executiva (Executive, Top Executive)",
+        includesCabinBag: true,
+        cabinMaxWeight: 16,
+        cabinMaxDimensions: { height: 55, width: 40, depth: 20 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 40, width: 30, depth: 15 },
+        notes: "Permite 2 peças de até 8kg cada (total 16kg) + item pessoal."
+      }
+    ],
     gateFeeEstimate: "€ 70 a € 125 (~R$ 440 a R$ 780)",
-    officialRuleSummary: "Atenção: profundidade máxima é de apenas 20cm (5cm mais fina que as malas nacionais padrão de 25cm!).",
-    proTip: "Cuidado clássico do brasileiro: malas de 55x35x25cm compram na ida no Brasil e na volta em Lisboa a TAP barra pela profundidade de 25cm!"
+    contractRuleSummary: "A TAP limita a profundidade a estritos 20cm (soma 115cm). Malas brasileiras convencionais de 25cm de espessura são barradas com frequência no hub de Lisboa.",
+    proTip: "Se a sua mala de viagem for rígida e medir 25cm de profundidade, não force o embarque na TAP sem testar no gabarito em Lisboa, pois a taxa em euros é uma das mais caras da Europa."
   },
   {
     id: "airfrance-klm",
@@ -137,24 +172,33 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "internacional",
     logoText: "AF-KLM",
     badgeColor: "bg-blue-900",
-    cabinBag: {
-      height: 55,
-      width: 35,
-      depth: 25,
-      maxWeight: 12,
-      includedInStandardFare: true,
-      description: "Mala de 55x35x25cm. Peso SOMADO com o item pessoal não pode passar de 12kg."
-    },
-    personalItem: {
-      height: 40,
-      width: 30,
-      depth: 15,
-      included: true,
-      description: "Item pessoal incluído dentro do peso total combinado de 12kg."
-    },
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://www.airfrance.com.br/information/bagages/bagage-cabine-soute",
+    fares: [
+      {
+        id: "af-economy",
+        name: "Economy (Tarifa Padrão)",
+        includesCabinBag: true,
+        cabinMaxWeight: 12,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 40, width: 30, depth: 15 },
+        notes: "IMPORTANTE: O limite de 12kg é a SOMA CONJUNTA da mala de rodinhas + mochila pessoal!"
+      },
+      {
+        id: "af-business",
+        name: "Business Class",
+        includesCabinBag: true,
+        cabinMaxWeight: 18,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 40, width: 30, depth: 15 },
+        notes: "2 malas de cabine + 1 acessório pessoal, peso total combinado de até 18kg."
+      }
+    ],
     gateFeeEstimate: "€ 75 a € 140 (~R$ 470 a R$ 880)",
-    officialRuleSummary: "O limite de 12kg é a SOMA da mala de rodinhas + mochila de ombro na classe econômica.",
-    proTip: "A pesagem conjunta é comum nas áreas de conexão em Paris (CDG) e Amsterdã (AMS). Não encha a mochila com livros pesados se a mala já estiver com 10kg."
+    contractRuleSummary: "Diferente das brasileiras, a Air France e a KLM somam o peso da mala de mão com a mochila do ombro para o cômputo dos 12kg.",
+    proTip: "Não coloque laptop pesado, livros e casacos na mochila se a mala de bordo já estiver com 10kg, pois na pesagem conjunta em Paris (CDG) ou Amsterdã (AMS) o total passará de 12kg."
   },
   {
     id: "american",
@@ -163,50 +207,23 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "internacional",
     logoText: "AA",
     badgeColor: "bg-red-600",
-    cabinBag: {
-      height: 56,
-      width: 36,
-      depth: 23,
-      maxWeight: 18,
-      includedInStandardFare: true,
-      description: "56x36x23cm (22x14x9 polegadas). Sem limite rígido de peso se conseguir levantar sozinho."
-    },
-    personalItem: {
-      height: 45,
-      width: 35,
-      depth: 20,
-      included: true,
-      description: "Deve caber perfeitamente sob o assento dianteiro (18x14x8 polegadas)."
-    },
-    gateFeeEstimate: "$ 60 a $ 100 (~R$ 340 a R$ 570)",
-    officialRuleSummary: "1 mala de mão de tamanho padrão + 1 item pessoal em todas as classes, inclusive na maioria das tarifas de voos internacionais.",
-    proTip: "Companhias americanas raramente pesam a mala de mão, mas conferem as dimensões rígidas caso os bagageiros do Boeing 777/787 estejam lotados."
-  },
-  {
-    id: "united",
-    name: "United Airlines",
-    country: "Estados Unidos",
-    category: "internacional",
-    logoText: "UNITED",
-    badgeColor: "bg-sky-700",
-    cabinBag: {
-      height: 56,
-      width: 35,
-      depth: 22,
-      maxWeight: 18,
-      includedInStandardFare: true,
-      description: "56x35x22cm (22x14x9 pol). Permitido em voos internacionais padrão."
-    },
-    personalItem: {
-      height: 43,
-      width: 25,
-      depth: 22,
-      included: true,
-      description: "Item pessoal até 43x25x22cm."
-    },
-    gateFeeEstimate: "$ 65 a $ 110 (~R$ 370 a R$ 620)",
-    officialRuleSummary: "Atenção máxima: se emitir voo doméstico interno nos EUA na tarifa 'Basic Economy', a mala de mão é PROIBIDA (apenas item pessoal).",
-    proTip: "Em trechos internos nos EUA compre Economy Regular, pois a taxa no portão da Basic Economy custa a tarifa cheia de mala despachada + multa de $25."
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://www.aa.com/i18n/travel-info/baggage/carry-on-baggage.jsp",
+    fares: [
+      {
+        id: "aa-standard",
+        name: "Todas as Tarifas (Inclusive Basic em voos internacionais)",
+        includesCabinBag: true,
+        cabinMaxWeight: 18,
+        cabinMaxDimensions: { height: 56, width: 36, depth: 23 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 20 },
+        notes: "56x36x23cm (22x14x9 polegadas). Sem limite rígido de peso se o passageiro erguer ao bagageiro sem auxílio."
+      }
+    ],
+    gateFeeEstimate: "$ 60 a $ 100 USD",
+    contractRuleSummary: "Companhias norte-americanas costumam fiscalizar dimensões geométricas mais do que o peso em balança.",
+    proTip: "Em voos domésticos dentro dos EUA operados pela American, a mala de mão continua permitida, mas o espaço no bagageiro acaba rápido nos grupos de embarque finais."
   },
   {
     id: "flybondi",
@@ -215,24 +232,33 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "lowcost",
     logoText: "FLYBONDI",
     badgeColor: "bg-amber-500",
-    cabinBag: {
-      height: 55,
-      width: 45,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: false,
-      description: "NÃO INCLUSA NA TARIFA BÁSICA! Deve ser contratada à parte antes do check-in."
-    },
-    personalItem: {
-      height: 40,
-      width: 30,
-      depth: 20,
-      included: true,
-      description: "Apenas 1 mochila/bolsa pequena de até 6kg sob o assento incluída grátis."
-    },
-    gateFeeEstimate: "$ 40 a $ 75 USD (~R$ 230 a R$ 430 cobrado no aeroporto)",
-    officialRuleSummary: "Modelo Ultra Low-Cost: a tarifa básica dá direito SOMENTE à mochila de 6kg sob o assento.",
-    proTip: "Se tentar embarcar com mala de rodinhas sem ter pago previamente pelo site, a taxa cobrada no balcão em Buenos Aires é o dobro do valor online!"
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://flybondi.com/br/informacion-util/equipaje",
+    fares: [
+      {
+        id: "flybondi-basic",
+        name: "Tarifa Básica (Apenas Mochila)",
+        includesCabinBag: false,
+        cabinMaxWeight: 0,
+        cabinMaxDimensions: { height: 0, width: 0, depth: 0 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 40, width: 30, depth: 20 },
+        notes: "NÃO INCLUI MALA DE CABINE! Apenas 1 mochila/bolsa de até 6kg sob o assento."
+      },
+      {
+        id: "flybondi-with-carryon",
+        name: "Tarifa com Bagagem de Cabine Contratada",
+        includesCabinBag: true,
+        cabinMaxWeight: 10,
+        cabinMaxDimensions: { height: 55, width: 45, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 40, width: 30, depth: 20 },
+        notes: "Mala de até 10kg comprada antecipadamente no bilhete."
+      }
+    ],
+    gateFeeEstimate: "$ 40 a $ 75 USD",
+    contractRuleSummary: "Modelo Ultra Low-Cost: mala de bordo é produto pago à parte na tarifa básica.",
+    proTip: "Comprar a bagagem de mão com antecedência pelo site custa menos da metade do preço exigido no balcão de check-in em Buenos Aires."
   },
   {
     id: "jetsmart",
@@ -241,101 +267,32 @@ export const AIRLINES_DATA: AirlineBaggageRule[] = [
     category: "lowcost",
     logoText: "JETSMART",
     badgeColor: "bg-red-700",
-    cabinBag: {
-      height: 55,
-      width: 35,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: false,
-      description: "PAGA À PARTE na tarifa básica. Medida máxima 55x35x25cm até 10kg."
-    },
-    personalItem: {
-      height: 45,
-      width: 35,
-      depth: 25,
-      included: true,
-      description: "1 item pessoal de até 10kg sob o assento dianteiro."
-    },
+    lastConsultationDate: "Novembro/2026",
+    officialSourceUrl: "https://jetsmart.com/br/pt/opcoes-de-bagagem",
+    fares: [
+      {
+        id: "jetsmart-basic",
+        name: "Tarifa Vuela Ligero (Apenas Mochila)",
+        includesCabinBag: false,
+        cabinMaxWeight: 0,
+        cabinMaxDimensions: { height: 0, width: 0, depth: 0 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 25 },
+        notes: "Apenas 1 bolsa ou mochila de até 10kg sob o assento."
+      },
+      {
+        id: "jetsmart-with-carryon",
+        name: "Com Adicional de Bagagem de Mão (Cabin Bag)",
+        includesCabinBag: true,
+        cabinMaxWeight: 10,
+        cabinMaxDimensions: { height: 55, width: 35, depth: 25 },
+        includesPersonalItem: true,
+        personalItemMaxDimensions: { height: 45, width: 35, depth: 25 },
+        notes: "Mala de rodinhas contratada à parte até 10kg."
+      }
+    ],
     gateFeeEstimate: "$ 35 a $ 70 USD",
-    officialRuleSummary: "Tarifa 'Vuela Ligero' inclui apenas a mochila de costas. Mala de cabine no bagageiro precisa ser adicionada no carrinho.",
-    proTip: "Contrate a mala de mão no momento da compra da passagem. Adicionar no portão de embarque é a opção mais cara da companhia."
-  },
-  {
-    id: "sky-airline",
-    name: "Sky Airline",
-    country: "Chile / Peru",
-    category: "lowcost",
-    logoText: "SKY",
-    badgeColor: "bg-purple-700",
-    cabinBag: {
-      height: 55,
-      width: 35,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: false,
-      description: "Incluída apenas nas tarifas Plus/Full ou adicionada como bagagem de mão extra."
-    },
-    personalItem: {
-      height: 45,
-      width: 35,
-      depth: 25,
-      included: true,
-      description: "Mochila ou bolsa até 45x35x25cm guardada debaixo do assento."
-    },
-    gateFeeEstimate: "$ 35 a $ 65 USD",
-    officialRuleSummary: "Tarifa Zero da Sky só permite 1 item de mão pessoal sob o assento.",
-    proTip: "O tamanho da mochila permitida é generoso (45x35x25cm). Uma boa mochila de viagem expansível substitui a mala de rodinhas com folga."
-  },
-  {
-    id: "copa",
-    name: "Copa Airlines",
-    country: "Panamá / Américas",
-    category: "internacional",
-    logoText: "COPA",
-    badgeColor: "bg-blue-800",
-    cabinBag: {
-      height: 56,
-      width: 36,
-      depth: 26,
-      maxWeight: 10,
-      includedInStandardFare: true,
-      description: "Dimensões máximas 56x36x26cm (118cm no total) até 10kg."
-    },
-    personalItem: {
-      height: 43,
-      width: 25,
-      depth: 22,
-      included: true,
-      description: "Item pessoal incluído em todas as tarifas."
-    },
-    gateFeeEstimate: "$ 50 a $ 90 USD",
-    officialRuleSummary: "1 bagagem de mão 10kg + 1 item pessoal em todas as tarifas internacionais que conectam via Cidade do Panamá.",
-    proTip: "As conexões no Panamá (Aeroporto de Tocumen) exigem novo raio-X antes do portão para voos com destino aos EUA. Atenção aos líquidos!"
-  },
-  {
-    id: "iberia",
-    name: "Iberia",
-    country: "Espanha / Europa",
-    category: "internacional",
-    logoText: "IBERIA",
-    badgeColor: "bg-yellow-600",
-    cabinBag: {
-      height: 56,
-      width: 40,
-      depth: 25,
-      maxWeight: 10,
-      includedInStandardFare: true,
-      description: "56x40x25cm incluindo alças e bolsos, até 10kg na tarifa Turista."
-    },
-    personalItem: {
-      height: 40,
-      width: 30,
-      depth: 15,
-      included: true,
-      description: "Acessório pessoal sob o assento dianteiro."
-    },
-    gateFeeEstimate: "€ 60 a € 120",
-    officialRuleSummary: "Mala de mão de 56x40x25cm até 10kg + acessório pessoal incluídos.",
-    proTip: "A largura de 40cm da Iberia é mais tolerante que os 35cm das empresas brasileiras, facilitando o transporte de malas um pouco mais largas."
+    contractRuleSummary: "Companhia ultra low-cost: a mala de cabine só está autorizada se constar expressamente no bilhete.",
+    proTip: "A mochila permitida na JetSMART (45x35x25cm) tem bom volume. Uma mochila de viagem flexível bem organizada evita o pagamento de franquia extra."
   }
 ];
