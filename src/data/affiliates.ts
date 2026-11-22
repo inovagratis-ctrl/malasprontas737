@@ -38,13 +38,21 @@ export const AFFILIATES = {
   BOOKING_STAY22: "https://www.stay22.com/allez/roam?aid=6a99930410f03364e343f876&campaign=malasprontas-booking",
   EXPEDIA_STAY22: "https://www.stay22.com/allez/roam?aid=6a99930410f03364e343f876&campaign=malasprontas-expedia",
 
-  // Equipamentos e Bagagem (Mercado Livre Oficial)
-  ML_MALA_BORDO_ANAC: "https://meli.la/25WLYqu",
-  ML_SACOS_VACUO: "https://meli.la/1j7pz2A",
-  ML_BALANCA_DIGITAL: "https://meli.la/1YPPHRA",
-  ML_ADAPTADOR_UNIVERSAL: "https://meli.la/27ngTTr",
-  ML_MOCHILA_ANTIFURTO: "https://meli.la/1PYPZMU",
-  ML_SMART_TAG: "https://meli.la/296uRhE"
+  // Equipamentos e Bagagem (Amazon Brasil - Tag Oficial: achadospro09-20)
+  AMAZON_TAG: "achadospro09-20",
+  AMAZON_BALANCA_DIGITAL: "https://www.amazon.com.br/s?k=balanca+digital+portatil+mala+viagem&tag=achadospro09-20",
+  AMAZON_MALA_BORDO_ANAC: "https://www.amazon.com.br/s?k=mala+de+bordo+55x35x25+anac+10kg&tag=achadospro09-20",
+  AMAZON_KIT_FRASCOS_100ML: "https://www.amazon.com.br/s?k=kit+frascos+silicone+viagem+100ml+necessaire&tag=achadospro09-20",
+  AMAZON_ADAPTADOR_UNIVERSAL: "https://www.amazon.com.br/s?k=adaptador+universal+tomada+internacional&tag=achadospro09-20",
+  AMAZON_ORGANIZADORES_MALA: "https://www.amazon.com.br/s?k=organizadores+de+mala+viagem+packing+cubes&tag=achadospro09-20",
+
+  // Equipamentos e Bagagem (Mercado Livre Busca Direta)
+  ML_MALA_BORDO_ANAC: "https://lista.mercadolivre.com.br/mala-de-bordo-55x35x25-anac",
+  ML_SACOS_VACUO: "https://lista.mercadolivre.com.br/sacos-a-vacuo-viagem",
+  ML_BALANCA_DIGITAL: "https://lista.mercadolivre.com.br/balanca-digital-portatil-viagem",
+  ML_ADAPTADOR_UNIVERSAL: "https://lista.mercadolivre.com.br/adaptador-universal-tomada",
+  ML_MOCHILA_ANTIFURTO: "https://lista.mercadolivre.com.br/mochila-antifurto-viagem",
+  ML_SMART_TAG: "https://lista.mercadolivre.com.br/smart-tag-rastreador-mala"
 };
 
 export type AffiliateCategory =

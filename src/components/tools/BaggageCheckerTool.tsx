@@ -351,12 +351,12 @@ export default function BaggageCheckerTool() {
             </p>
           </div>
           <a
-            href="https://mercadolivre.com/sec/24v3yB2"
+            href="https://www.amazon.com.br/s?k=balanca+digital+portatil+mala+viagem&tag=achadospro09-20"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-1.5"
           >
-            Ver Balança no Mercado Livre
+            Ver Balanças na Amazon Brasil
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>

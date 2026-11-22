@@ -322,12 +322,12 @@ export default function LiquidsSimulatorTool() {
             </p>
           </div>
           <a
-            href="https://mercadolivre.com/sec/24v3yB2"
+            href="https://www.amazon.com.br/s?k=kit+frascos+silicone+viagem+100ml+necessaire&tag=achadospro09-20"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs px-5 py-3 rounded-xl shadow-md transition-all flex items-center gap-1.5"
           >
-            Ver Kits no Mercado Livre
+            Ver Kits de Frascos na Amazon Brasil
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </div>

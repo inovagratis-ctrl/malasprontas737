@@ -251,12 +251,12 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="https://mercadolivre.com/sec/24v3yB2"
+                href="https://www.amazon.com.br/s?k=balanca+digital+portatil+mala+viagem&tag=achadospro09-20"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-1.5"
               >
-                Ver Ofertas no Mercado Livre
+                Ver Balanças na Amazon Brasil
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -275,12 +275,12 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="https://mercadolivre.com/sec/24v3yB2"
+                href="https://www.amazon.com.br/s?k=mala+de+bordo+55x35x25+anac+10kg&tag=achadospro09-20"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-1.5"
               >
-                Ver Malas Homologadas
+                Ver Malas Homologadas na Amazon
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -299,12 +299,12 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="https://mercadolivre.com/sec/24v3yB2"
+                href="https://www.amazon.com.br/s?k=kit+frascos+silicone+viagem+100ml+necessaire&tag=achadospro09-20"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3 rounded-xl transition-colors flex items-center justify-center gap-1.5"
               >
-                Ver Kits de Silicone
+                Ver Kits de Frascos na Amazon
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
